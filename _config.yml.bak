@@ -125,3 +125,8 @@ feed:
 markdown:
   plugins:
     - "@traptitech/markdown-it-katex"
+
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
