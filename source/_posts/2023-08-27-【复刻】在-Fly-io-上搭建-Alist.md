@@ -1,0 +1,178 @@
+---
+title: 【复刻】在 Fly.io 上搭建 Alist
+urlname: -fu-ke--zai-Flyio-shang-da-jian-Alist
+date: 2023-08-27 20:46:29
+tags: ['alist', 'fly.io']
+excerpt: 在moeyy的教程《使用Fly.io部署Alist》完成后，还有一些优化体验的小细节需要注意。首先，需要获取管理员账号，可以使用命令"flyctl ssh console"来获取。接下来，需要更改静态资源地址，可以使用Cloudflare反代jsDelivr来实现。然后，需要新建一个Worker并替换其中的内容。最后，需要在AList管理页面中将所有的cdn.jsdelivr.net修改为自己反代的地址，并在Vercel上部署Waline来添加评论系统。
+---
+按 [@moeyy](https://moeyy.xlog.app/) 的教程《[使用 Fly.io 部署 Alist](https://xlog.moeyy.cn/shi-yong-Flyio-bu-shu-Alistmd)》完成后，还有一些优化体验的小细节，在此记录一下。
+## 获取管理员账号
+```bash
+flyctl ssh console # 如果失败，打开所部署的应用页面，刷新后多尝试几次
+./alist admin random
+```
+## 更改静态资源地址
+### Cloudflare 反代 jsDelivr
+1. 新建一个Worker
+```js
+// 替换成你想镜像的站点
+const upstream = 'cdn.jsdelivr.net'
+ 
+// 如果那个站点有专门的移动适配站点，否则保持和上面一致
+const upstream_mobile = 'cdn.jsdelivr.net'
+ 
+const blocked_region = []
+ 
+const blocked_ip_address = ['0.0.0.0', '127.0.0.1']
+ 
+const replace_dict = {
+    '$upstream': 'jscdn.limour.top',
+    '//cdn.jsdelivr.net': '//jscdn.limour.top'
+}
+ 
+//以下内容都不用动
+addEventListener('fetch', event => {
+    event.respondWith(fetchAndApply(event.request));
+})
+ 
+async function fetchAndApply(request) {
+ 
+    const region = request.headers.get('cf-ipcountry').toUpperCase();
+    const ip_address = request.headers.get('cf-connecting-ip');
+    const user_agent = request.headers.get('user-agent');
+ 
+    let response = null;
+    let url = new URL(request.url);
+    let url_host = url.host;
+ 
+    if (url.protocol == 'http:') {
+        url.protocol = 'https:'
+        response = Response.redirect(url.href);
+        return response;
+    }
+ 
+    if (await device_status(user_agent)) {
+        upstream_domain = upstream
+    } else {
+        upstream_domain = upstream_mobile
+    }
+ 
+    url.host = upstream_domain;
+ 
+    if (blocked_region.includes(region)) {
+        response = new Response('Access denied: WorkersProxy is not available in your region yet.', {
+            status: 403
+        });
+    } else if(blocked_ip_address.includes(ip_address)){
+        response = new Response('Access denied: Your IP address is blocked by WorkersProxy.', {
+            status: 403
+        });
+    } else{
+        let method = request.method;
+        let request_headers = request.headers;
+        let new_request_headers = new Headers(request_headers);
+ 
+        new_request_headers.set('Host', upstream_domain);
+        new_request_headers.set('Referer', url.href);
+ 
+        let original_response = await fetch(url.href, {
+            method: method,
+            headers: new_request_headers
+        })
+ 
+        let original_response_clone = original_response.clone();
+        let original_text = null;
+        let response_headers = original_response.headers;
+        let new_response_headers = new Headers(response_headers);
+        let status = original_response.status;
+ 
+        new_response_headers.set('access-control-allow-origin', '*');
+        new_response_headers.set('access-control-allow-credentials', true);
+        new_response_headers.delete('content-security-policy');
+        new_response_headers.delete('content-security-policy-report-only');
+        new_response_headers.delete('clear-site-data');
+ 
+        const content_type = new_response_headers.get('content-type');
+        if (content_type.includes('text/html') && content_type.includes('UTF-8')) {
+            original_text = await replace_response_text(original_response_clone, upstream_domain, url_host);
+        } else {
+            original_text = original_response_clone.body
+        }
+ 
+        response = new Response(original_text, {
+            status,
+            headers: new_response_headers
+        })
+    }
+    return response;
+}
+ 
+async function replace_response_text(response, upstream_domain, host_name) {
+    let text = await response.text()
+ 
+    var i, j;
+    for (i in replace_dict) {
+        j = replace_dict[i]
+        if (i == '$upstream') {
+            i = upstream_domain
+        } else if (i == '$custom_domain') {
+            i = host_name
+        }
+ 
+        if (j == '$upstream') {
+            j = upstream_domain
+        } else if (j == '$custom_domain') {
+            j = host_name
+        }
+ 
+        let re = new RegExp(i, 'g')
+        text = text.replace(re, j);
+    }
+    return text;
+}
+ 
+async function device_status (user_agent_info) {
+    var agents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod"];
+    var flag = true;
+    for (var v = 0; v < agents.length; v++) {
+        if (user_agent_info.indexOf(agents[v]) > 0) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
+```
+2. 触发器-路由设置为 `jscdn.limour.top/*`
+![](https://img.limour.top/2023/08/30/64ef2038be38d.webp)
+### 转换规则设置允许跨域
+![](https://img.limour.top/2023/08/30/64ef3b2e23a94.webp)
+![](https://img.limour.top/2023/08/30/64ef3b3d28651.webp)
+### 替换CDN
+在AList 管理页面中，将所有的 `cdn.jsdelivr.net` 修改为自己反代的地址
+## 添加评论系统
+1. [在 Vercel 上部署 Waline](https://waline.js.org/guide/get-started)
+2. AList 管理-设置-全局-自定义头部 中引入 Waline 样式
+```html
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
+```
+![](https://img.limour.top/2023/08/30/64ef3b54db28b.webp)
+1.  AList 管理-元信息 中引入 Waline 客户端
+```html
+#  <center> - 评论 Comments -
+<div id="waline"></div>
+<script type="module">
+    import { init } from 'https://unpkg.com/@waline/client@v2/dist/waline.mjs';
+    init({
+      el: '#waline',
+      serverURL: 'https://comments.limour.top',
+    });
+</script>
+```
+![](https://img.limour.top/2023/08/30/64ef3b65d06fb.webp)
+## 自定义域名
++ DNS 解析只能是<仅 DNS>
++ Domain ownership verification 是 **CNAME**
+![](https://img.limour.top/2023/08/30/64ef3b77a0779.webp)
+## 演示地址
++ https://od.limour.top
