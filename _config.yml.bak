@@ -121,3 +121,7 @@ feed:
     - atom.xml
     - rss2.xml
   limit: 20
+
+markdown:
+  plugins:
+    - "@traptitech/markdown-it-katex"
