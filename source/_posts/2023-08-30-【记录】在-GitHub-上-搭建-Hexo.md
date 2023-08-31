@@ -74,3 +74,13 @@ git add . && git commit -m 'backup' && git push -u origin +main
 ```
 ## 演示地址
 + https://hexo.limour.top
+
+## 附加 Waline 换 MongoDB
+1. [MongoDB 官网](https://mongodb.com) 新建免费的 M0 数据库，地区选新加坡，放行 `0.0.0.0/0`
+2. [Vercel](https://vercel.com) 上的 Waline 项目，Settings/Functions 里更改 Region 到新加坡
+3. MongoDB 连接里记录下连接信息，选项如下
+4. 选择 Drivers 作为连接方式，Driver 为 Node.js，Version为 `2.2.12 or later`
+5. 进入 Waline 管理后台，导出数据
+6. Vercel 里删除 LEAN 相关的环境变量，按 [说明](https://waline.js.org/guide/database.html#mongodb) 添加 MongoDB 的连接信息
+7. Vercel/Deployments 里选择合适的分支，点旁边的三个点，选择 Redeploy
+8. 进入 Waline 管理后台，重新注册后，导入数据

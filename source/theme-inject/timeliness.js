@@ -11,7 +11,7 @@
     if (interval > 3600*24*30*1000){
       var days = parseInt(interval / 86400000)
       posts[0].insertAdjacentHTML('afterbegin', '<div class="note note-warning" style="font-size:0.9rem"><p>' +
-      '<div class="h6">Article Timeliness Reminder</div><p>This is an article published ' + days + ' days ago, some information may have changed, please pay attention to identify.' +
+      '<div class="h6">Article Timeliness Reminder</div><p>It has been ' + days + ' days since the last update, the content may be outdated.' +
       '</p></p></div>');
     }
   })();
