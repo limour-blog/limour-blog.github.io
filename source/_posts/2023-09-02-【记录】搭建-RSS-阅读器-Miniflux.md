@@ -30,6 +30,9 @@ networks:
     external: true
     name: ngpm
 ```
+
+![](https://img.limour.top/2023/09/03/64f401cfa6a53.webp)
+
 ## 开启 Fever API
 + 设置 - 集成 - Fever 里开启
 + FeedMe 登录方式和用  [TTRSS](/-ji-lu-TTRSS-shi-yong-Supabase-zuo-shu-ju-ku) 一样
