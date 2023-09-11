@@ -1,9 +1,12 @@
 ---
 title: 【记录】在 Slurm 平台的GPU集群上使用 Pytorch
-urlname: 2023-09-06-【记录】在 Slurm 平台的GPU集群上使用 Pytorch
+urlname: -ji-lu--zai--Slurm--ping-tai-de-GPU-ji-qun-shang-shi-yong--Pytorch
 date: 2023-09-06 20:24:43
-tags: ['slurm', 'nvidia', torch']
+tags: ['slurm', 'nvidia', 'torch']
 ---
+{% note info %}
+更新：不用编译了，直接装最新版就行，cuda 是可以[兼容](https://docs.nvidia.com/deploy/cuda-compatibility/#use-the-right-compat-package)低版本驱动的，cuda-compat 似乎可以不装。之前运行检测失败是因为 HPC 上的环境变量没有指定驱动的 bin 和 lib 的路径。
+{% endnote %}
 先说结论，没有 root 权限的 HPC，千万不要想着用最新版本的 pytorch。自己编译也不行，因为已经不支持 cuda11.7 以下的版本了，而没有 root 权限，既改不了驱动，也装不了 cuda-compat，不要折腾了。 
 ## 更换 conda
 + 安装 [conda](/-ji-lu--an-zhuang-conda-bing-geng-huan-qing-hua-yuan)
@@ -119,6 +122,7 @@ cat /proc/driver/nvidia/version
 
 ### 程序的执行命令
 source ~/.bashrc
+source activate gcc
 conda create -y -n gpu pytorch-cuda=11.8 -c pytorch -c nvidia
 conda install -y -n gpu pytorch -c pytorch -c nvidia
 conda install -y -n gpu torchvision torchaudio -c pytorch -c nvidia
@@ -305,4 +309,99 @@ export PATH=$DRIVER_HOME/bin:$PATH # 重要
 export LD_LIBRARY_PATH=$DRIVER_HOME/lib:$LD_LIBRARY_PATH # 重要
 
 python ./test.py
+```
+
+## 附加: 安装 ComfyUI
+### 安装 xformers
+```bash
+#!/bin/bash
+
+### 设置该作业的作业名
+#SBATCH --job-name=install-nvidia-xformers
+
+### 指定该作业的运行分区，sinfo 获取分区列表
+#SBATCH --partition=body
+
+### 指定申请的节点
+#SBATCH --nodelist=gpu4
+
+### 排除指定的节点；
+#SBATCH --exclude=gpu1
+
+### 指定该作业需要1个节点数
+#SBATCH --nodes=1
+
+### 该作业需要1个CPU
+#SBATCH --ntasks=1
+
+### 申请1块GPU卡
+#SBATCH --gres=gpu:1
+
+### 指定从哪个项目扣费。如果没有这条参数，则从个人账户扣费
+#SBATCH --comment public_cluster
+
+### 程序的执行命令
+source ~/.bashrc
+source activate gpu
+cd ~
+GCC_HOME=~/miniconda3/envs/gcc
+export CC=$GCC_HOME/bin/gcc
+export CXX=$GCC_HOME/bin/g++
+DRIVER_HOME=/opt/app/nvidia/460.91.03
+export PATH=$DRIVER_HOME/bin:$PATH # 重要
+export LD_LIBRARY_PATH=$DRIVER_HOME/lib:$LD_LIBRARY_PATH # 重要
+
+wget https://github.com/comfyanonymous/ComfyUI/archive/refs/heads/master.zip -O comfyUI.zip
+unzip comfyUI.zip 
+cd ComfyUI-master
+pip install xformers
+pip install -r requirements.txt
+```
+
+### 启动 comfyUI
++ [安装内网穿透](/-ji-lu--an-zhuang-npsfrp-fu-wu-duan-yu-ke-hu-duan)
+```bash
+#!/bin/bash
+
+### 设置该作业的作业名
+#SBATCH --job-name=run-nvidia
+
+### 指定该作业的运行分区，sinfo 获取分区列表
+#SBATCH --partition=body
+
+### 指定申请的节点
+#SBATCH --nodelist=gpu4
+
+### 排除指定的节点；
+#SBATCH --exclude=gpu1
+
+### 指定该作业需要1个节点数
+#SBATCH --nodes=1
+
+### 该作业需要4个CPU
+#SBATCH --ntasks=4
+
+### 申请1块GPU卡
+#SBATCH --gres=gpu:1
+
+### 指定从哪个项目扣费。如果没有这条参数，则从个人账户扣费
+#SBATCH --comment public_cluster
+
+### 程序的执行命令
+source ~/.bashrc
+source activate gpu
+cd ~
+GCC_HOME=~/miniconda3/envs/gcc
+export CC=$GCC_HOME/bin/gcc
+export CXX=$GCC_HOME/bin/g++
+DRIVER_HOME=/opt/app/nvidia/460.91.03
+export PATH=$DRIVER_HOME/bin:$PATH # 重要
+export LD_LIBRARY_PATH=$DRIVER_HOME/lib:$LD_LIBRARY_PATH # 重要
+
+~/github/npc -server=<ip>:8024 -vkey=<vkey> -type=tcp > ~/log/npc.log 2>&1 &
+
+cd ~/ComfyUI-master
+## 更多参数在 comfy/cli_args.py 中
+echo 'running ComfyUI'
+python main.py --listen 0.0.0.0 --port 10239 > ~/log/comfyui.log 2>&1
 ```
