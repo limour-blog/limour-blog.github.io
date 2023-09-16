@@ -72,7 +72,9 @@ git init && git branch -m main
 git remote add origin https://oauth2:ghp_xxxxx@xxx.limour.top/xxx/https://github.com/limour-blog/limour-blog.github.io.git
 git add . && git commit -m 'backup' && git push -u origin +main
 ```
+
 ## 演示地址
++ https://limour-blog.github.io
 + https://hexo.limour.top
 
 ## 附加 Waline 换 MongoDB
@@ -98,4 +100,27 @@ links:
   exclude:
     - "limour.top"
     - "*.limour.top" #1.0.4及以上版本支持
+```
+
+## 附加 部署到本地服务器
+```bash
+cd ~/base/NGPM/data
+git clone --depth=1 -b gh-pages --single-branch https://github.com/limour-blog/limour-blog.github.io.git
+```
+![NGPM 配置示例](https://img.limour.top/2023/09/16/6505b0cb518fd.webp)
+```nginx
+location / {
+    if (!-e $request_filename){
+        rewrite ^(.*)$ /$1.html last;
+        break;
+    }
+    root /data/limour-blog.github.io;
+    index index.html index.htm;
+    error_page 404 /404.html;
+}
+```
++ 后续更新
+```bash
+cd ~/base/NGPM/data/limour-blog.github.io
+git fetch --depth=1 -f && git reset --hard origin/gh-pages
 ```
