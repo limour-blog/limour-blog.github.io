@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 4254985 */
+  src: url('/theme-inject/font/iconfont.woff2?t=1') format('woff2'),
+       url('/theme-inject/font/iconfont.woff?t=1') format('woff'),
+       url('/theme-inject/font/iconfont.ttf?t=1') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 24px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-onedrive:before {
+  content: "\e671";
+}
+
+.icon-orcid:before {
+  content: "\e71f";
+}
+

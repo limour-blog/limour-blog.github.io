@@ -235,7 +235,9 @@ custom_js:
 
 # 指定自定义 .css 文件路径，用法和 custom_js 相同
 # The usage is the same as custom_js
-custom_css: /theme-inject/custom.css
+custom_css:
+  - /theme-inject/custom.css
+  - /theme-inject/iconfont.css
 
 # 网页访问统计
 # Analysis of website visitors
@@ -341,8 +343,11 @@ navbar:
   # 导航栏菜单，可自行增减，key 用来关联 languages/*.yml，如不存在关联则显示 key 本身的值；icon 是 css class，可以省略；增加 name 可以强制显示指定名称
   # Navigation bar menu. `key` is used to associate languages/*.yml. If there is no association, the value of `key` itself will be displayed; if `icon` is a css class, it can be omitted; adding `name` can force the display of the specified name
   menu:
-    - { key: "home", link: "/", icon: "iconfont icon-home-fill" }
-    - { key: "archive", link: "/archives/", icon: "iconfont icon-archive-fill" }
+    - { key: "Home", link: "/", icon: "iconfont icon-home-fill" }
+    - { key: "Archive", link: "/archives/", icon: "iconfont icon-archive-fill" }
+    - { key: "Links", link: "/links/", icon: "iconfont icon-link-fill" }
+    - { key: "Orcid", link: "https://orcid.org/0000-0001-8897-1685", icon: "iconfont icon-orcid" }
+    - { key: "Alist", link: "https://od.limour.top/", icon: "iconfont icon-onedrive" }
 
 # 搜索功能，基于 hexo-generator-search 插件，若已安装其他搜索插件请关闭此功能，以避免生成多余的索引文件
 # Search feature, based on hexo-generator-search. If you have installed other search plugins, please disable this feature to avoid generating redundant index files
@@ -1023,6 +1028,18 @@ links:
       link: "https://github.com/fluid-dev/hexo-theme-fluid",
       avatar: "/img/favicon.png"
     }
+    - {
+      title: "浅秋枫影",
+      intro: "记录生活，记录代码，给自己的网络生涯留下一笔精神财富！",
+      link: "https://cuojue.org",
+      avatar: "https://cuojue.org/avatar/b81741f1a25b57a016e223fe13f905b4"
+    }
+    - {
+      title: "zzxのブログ",
+      intro: "烟花易逝，人情长存",
+      link: "https://blog.xzzzx.xyz",
+      avatar: "https://blog.xzzzx.xyz/wp-content/uploads/2022/01/touxiang.jpg"
+    }
 
   # 当成员头像加载失败时，替换为指定图片
   # When the member avatar fails to load, replace the specified image
@@ -1031,17 +1048,17 @@ links:
   # 友链下方自定义区域，支持 HTML，可插入例如申请友链的文字
   # Custom content at the bottom of the links
   custom:
-    enable: false
-    content: '<hr><p>在下方留言申请加入我的友链，按如下格式提供信息：</p><ul><li>博客名：Fluid</li><li>简介：Fluid 主题官方博客</li><li>链接：https://hexo.fluid-dev.com</li><li>图片：https://hexo.fluid-dev.com/img/favicon.png</li></ul>'
+    enable: true
+    content: "<hr><p>在下方留言申请加入我的友链，按如下格式提供信息：</p><ul><li>博客名：Limour's Blog</li><li>简介：互联网の自留地</li><li>链接：https://hexo.limour.top</li><li>图片：https://img.limour.top/2023/08/29/64ee0818afef0.webp</li></ul>"
 
   # 评论插件
   # Comment plugin
   comments:
-    enable: false
+    enable: true
     # 指定的插件，需要同时设置对应插件的必要参数
     # The specified plugin needs to set the necessary parameters at the same time
     # Options: utterances | disqus | gitalk | valine | waline | changyan | livere | remark42 | twikoo | cusdis | giscus | discuss
-    type: disqus
+    type: waline
 
 
 #---------------------------
