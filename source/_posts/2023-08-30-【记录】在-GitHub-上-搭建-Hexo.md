@@ -84,3 +84,18 @@ git add . && git commit -m 'backup' && git push -u origin +main
 6. Vercel 里删除 LEAN 相关的环境变量，按 [说明](https://waline.js.org/guide/database.html#mongodb) 添加 MongoDB 的连接信息
 7. Vercel/Deployments 里选择合适的分支，点旁边的三个点，选择 Redeploy
 8. 进入 Waline 管理后台，重新注册后，导入数据
+
+## 附加 外链转内链
++ 项目地址: [Github](https://github.com/naicfeng/hexo-filter-links); [说明](https://cuojue.org/read/hexo-filter-links.html)
+```bash
+npm i hexo-filter-links --save
+```
++ 去 `_config.yml` 添加配置
+```yml
+links:
+  enable: true
+  field: "post"
+  exclude:
+    - "limour.top"
+    - "*.limour.top" #1.0.4及以上版本支持
+```

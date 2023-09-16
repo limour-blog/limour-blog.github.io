@@ -130,3 +130,10 @@ sitemap:
   path: sitemap.xml
 baidusitemap:
   path: baidusitemap.xml
+
+links:
+  enable: true
+  field: "post"
+  exclude:
+    - "limour.top"
+    - "*.limour.top"
