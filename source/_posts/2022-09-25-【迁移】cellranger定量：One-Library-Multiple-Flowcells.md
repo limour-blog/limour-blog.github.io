@@ -5,6 +5,7 @@ date: 2022-09-25 19:42:28
 tags: ['cellranger', 'scVelo']
 ---
 ## 重命名R1、R2
++ [原始数据质控](/shi-yong-GATK-zhao-SNP#fastp一键质控)
 ### 重命名前
 
 ├── SRR12391722  
