@@ -14,7 +14,7 @@ tags: ['one-api', 'Azure', 'OpenAI']
 mkdir -p ~/app/one-api && cd ~/app/one-api && nano docker-compose.yml
 sudo docker-compose up -d
 ```
-```bash
+```yml
 version: '3'
 services:
   one-api:
@@ -40,3 +40,27 @@ networks:
 + 在 日志 里可以看到对不同渠道进行了负载均衡
 
 ![](https://img.limour.top/2023/10/03/651c07ce6f9d2.webp)
+
+## 附加 部署Next-Web
+```bash
+mkdir -p ~/app/next-web && cd ~/app/next-web && nano docker-compose.yml
+sudo docker-compose up -d
+```
+```yml
+version: '3'
+services:
+  next-web:
+    image: yidadaa/chatgpt-next-web:latest
+    environment:
+      - TZ=Asia/Shanghai
+      - OPENAI_API_KEY=<one-api添加的令牌>
+      - BASE_URL=<one-api的反代地址>
+      - HIDE_USER_API_KEY=1
+      - DISABLE_GPT4=1
+    restart: unless-stopped
+networks:
+  default:
+    external: true
+    name: ngpm
+```
+![](https://img.limour.top/2023/10/03/651c368465000.webp)
