@@ -86,7 +86,7 @@ version: "3"
  
 services:
   shop:
-    image: stilleshan/dujiaoka:
+    image: ghcr.io/apocalypsor/dujiaoka:latest
     environment:
       - TZ=Asia/Shanghai
       # - INSTALL=false
