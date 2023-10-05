@@ -33,6 +33,7 @@ networks:
 ## 客户端
 + [ChatGPT-Next-Web](https://github.com/Yidadaa/ChatGPT-Next-Web)
 + [沉浸式翻译](https://github.com/immersive-translate/immersive-translate)
++ [Jupyter-ai](https://github.com/jupyterlab/jupyter-ai)
 + 在 令牌 中新建一个令牌，端点填反代的地址
 ## 新建渠道
 + Azure 需要确保部署模型的名称是 `gpt-35-turbo`
