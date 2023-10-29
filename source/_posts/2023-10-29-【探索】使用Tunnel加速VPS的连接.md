@@ -36,7 +36,7 @@ services:
     image: teddysun/shadowsocks-libev
 ```
 ## 配置Tunnel
-+ 项目地址: [Github](https://github.com/zzzgydi/clash-verge); [Wiki](https://wiki.metacubex.one/config/)
++ 项目地址: [Github](https://github.com/zzzgydi/clash-verge); [Wiki](https://wiki.metacubex.one/config/); [Android](https://github.com/MetaCubeX/ClashMetaForAndroid)
 + 新建规则-类型选`Local`-编辑文件，内容如下
 ```yml
 mixed-port: 7890
