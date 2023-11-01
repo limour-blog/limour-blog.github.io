@@ -90,3 +90,23 @@ rules:
 ## 测试加速
 + [DNS测试](https://ipleak.net)
 + [UDP测试](https://browserleaks.com/webrtc)
+
+## 附加 格式转换
++ [前端](https://acl4ssr-sub.github.io/); [后端](https://github.com/tindy2013/subconverter)
++ 因为 converter 时不时出现RCE漏洞，因此 `/token` 需要保密
+```bash
+mkdir -p ~/app/converter && cd ~/app/converter && nano docker-compose.yml
+sudo docker-compose up -d # 反代地址 converter:25500, 将 /sub 反代到 /token，末尾没有 /
+```
+```yml
+version: '3'
+services:
+  converter:
+    image: tindy2013/subconverter:latest
+    restart: always
+  
+networks:
+  default:
+    external: true
+    name: ngpm
+```
