@@ -94,3 +94,30 @@ if(isset($_SERVER['HTTP_X_REAL_IP'])) {
     define('FORCE_SSL_ADMIN', true);
 }
 ```
+## 附加 代理文本文件
+```nginx
+location /hello.txt {
+  alias /data/hello.txt;
+}
+location = /baidu_verify_codeva.html {
+    return 200 abcde;
+}
+```
+## 附加 代理 web-ui
+```nginx
+location / {
+    gzip on;
+    gzip_min_length 256;
+    gzip_comp_level 2;
+    gzip_types text/plain application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png application/vnd.ms-fontobject font/ttf font/opentype font/x-woff image/svg+xml;
+    gzip_vary on;
+    gzip_buffers 32 4k;
+    if (!-e $request_filename){
+        rewrite ^(.*)$ /$1.html last;
+        break;
+    }
+    root /data/web-ui;
+    index index.html index.htm;
+    error_page 404 /404.html;
+}
+```
