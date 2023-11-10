@@ -47,7 +47,7 @@ networks:
 }
 ```
 
-![](https://img.limour.top/2023/11/09/654cc58f6ea33.webp)
+![反代 proxynt:18888](https://img.limour.top/2023/11/09/654cc58f6ea33.webp)
 ## 客户端
 ```bash
 mkdir -p ~/app/proxynt && cd ~/app/proxynt
@@ -84,3 +84,29 @@ WantedBy=multi-user.target
 ```
 + 访问 `https://limour.top:443/websocket_path/admin`
 + 看到客户端上线后，新建配置即可
+
+## 附加 WebSSH
+和上面的内网穿透配合，连接时host填`proxynt`,可以保证内网ssh不暴露公网的同时，又能通过公网进行ssh连接。
+```bash
+mkdir -p ~/app/webssh && cd ~/app/webssh && nano docker-compose.yml
+sudo docker-compose up -d
+```
+```yml
+version: '3.3'
+services:
+  webssh:
+    restart: unless-stopped
+    environment:
+      - GIN_MODE=release
+      - savePass=true
+    volumes:
+      - '/etc/localtime:/etc/localtime:ro'
+    image: jrohy/webssh:latest
+ 
+networks:
+  default:
+    external: true
+    name: ngpm
+```
+
+![反代 webssh:5032](https://img.limour.top/2023/11/10/654d918353361.webp)
