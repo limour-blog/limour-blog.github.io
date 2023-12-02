@@ -130,3 +130,12 @@ location / {
 cd ~/base/NGPM/data/limour-blog.github.io
 git fetch --depth=1 -f && git reset --hard origin/gh-pages
 ```
+## 附加 添加本地搜索功能
++ [为Hexo博客Yilia主题添加本地站内搜索功能](https://web.archive.org/web/20230328121149/https://gaomf.cn/2016/10/10/为Hexo博客Yilia主题添加本地站内搜索功能/) by [码农半亩地](https://gaomf.cn/index.html)
++ 修改`node_modules/hexo-theme-fluid/scripts/generators/local-search.js`文件
+```js
+  env.addFilter('noControlChars', function(str) {
+    // eslint-disable-next-line no-control-regex
+    return str && str.replace(/[\x00-\x1F\x7F]/g, '').replace(/<figure class="highlight.*?<\/figure>/ig, '').replace(/(<([^>]+)>)/ig, '').replace(/(https?:\/\/[^\s]+)/ig, '');
+  });
+```
