@@ -2,6 +2,7 @@
 title: 【记录】使用one-api聚合Azure和OpenAI的API
 urlname: Aggregating-Azure-and-OpenAI-APIs-with-OneAPI
 date: 2023-10-03 20:04:29
+index_img: https://api.limour.top/randomImg?d=2023-10-03 20:04:29
 tags: ['one-api', 'Azure', 'OpenAI']
 ---
 [One-api](https://github.com/songquanpeng/one-api) 是 OpenAI 接口管理 & 分发系统，支持Azure、Anthropic Claude、Google PaLM 2、智谱 ChatGLM、百度文心一言、讯飞星火认知、阿里通义千问、360 智脑以及腾讯混元，可用于二次分发管理 key。

@@ -2,6 +2,7 @@
 title: 【探索】基于WebSocket的内网穿透工具
 urlname: WebSocket-based-intranet-penetration-tool
 date: 2023-11-09 19:38:50
+index_img: https://api.limour.top/randomImg?d=2023-11-09 19:38:50
 tags: ["ws", "proxynt"]
 excerpt: 国内的服务器备案麻烦，所以很多内网服务需要使用内网穿透工具。之前尝试使用QUIC来伪装，但不稳定。现在找到了一个特征少的内网穿透工具ProxyNT，可以通过NAT和防火墙将本地服务器暴露到公网上。使用Docker部署服务端和客户端，配置相应的参数后即可使用。
 ---

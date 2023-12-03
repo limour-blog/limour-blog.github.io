@@ -108,8 +108,8 @@ location = /baidu_verify_codeva.html {
 location / {
     gzip on;
     gzip_min_length 256;
-    gzip_comp_level 2;
-    gzip_types text/plain application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png application/vnd.ms-fontobject font/ttf font/opentype font/x-woff image/svg+xml;
+    gzip_comp_level 6;
+    gzip_types text/plain text/xml application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png application/vnd.ms-fontobject font/ttf font/opentype font/x-woff image/svg+xml;
     gzip_vary on;
     gzip_buffers 32 4k;
     if (!-e $request_filename){
@@ -119,5 +119,33 @@ location / {
     root /data/web-ui;
     index index.html index.htm;
     error_page 404 /404.html;
+}
+```
+## 附加 随机图片
+```lua
+location = /randomImg {
+	content_by_lua_block {
+		local randomNumber = string.format("%02d", math.random(1, 10))
+		local randomUrl = "https://img.limour.top/randImg/" .. randomNumber .. ".webp"
+		ngx.status = 302
+		ngx.header["Location"] = randomUrl
+		ngx.exit(ngx.HTTP_MOVED_TEMPORARILY)
+	}
+}
+```
+```lua
+location = /randomImg {
+	content_by_lua_block {
+		local redirectList = {
+			"http://a.com",
+			"http://b.com",
+			"http://c.com"
+		}
+		local randomIndex = math.random(1, #redirectList)
+		local randomUrl = redirectList[randomIndex]
+		ngx.status = 302
+		ngx.header["Location"] = randomUrl
+		ngx.exit(ngx.HTTP_MOVED_TEMPORARILY)
+	}
 }
 ```
