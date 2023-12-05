@@ -113,9 +113,8 @@ location / {
     gzip_vary on;
     gzip_buffers 32 4k;
     root /data/web-ui;
-    index index.html index.htm;
+    try_files $uri $uri.html $uri/index.html =404;
     error_page 404 /404.html;
-    try_files $uri $uri.html =404;
 }
 ```
 ## 附加 随机图片

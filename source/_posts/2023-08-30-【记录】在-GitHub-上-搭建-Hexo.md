@@ -112,16 +112,12 @@ git clone --depth=1 -b gh-pages --single-branch https://github.com/limour-blog/l
 location / {
     gzip on;
     gzip_min_length 256;
-    gzip_comp_level 2;
-    gzip_types text/plain application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png application/vnd.ms-fontobject font/ttf font/opentype font/x-woff image/svg+xml;
+    gzip_comp_level 6;
+    gzip_types text/plain text/xml application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png application/vnd.ms-fontobject font/ttf font/opentype font/x-woff image/svg+xml;
     gzip_vary on;
     gzip_buffers 32 4k;
-    if (!-e $request_filename){
-        rewrite ^(.*)$ /$1.html last;
-        break;
-    }
     root /data/limour-blog.github.io;
-    index index.html index.htm;
+    try_files $uri $uri.html $uri/index.html =404;
     error_page 404 /404.html;
 }
 ```
