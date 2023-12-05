@@ -112,13 +112,10 @@ location / {
     gzip_types text/plain text/xml application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png application/vnd.ms-fontobject font/ttf font/opentype font/x-woff image/svg+xml;
     gzip_vary on;
     gzip_buffers 32 4k;
-    if (!-e $request_filename){
-        rewrite ^(.*)$ /$1.html last;
-        break;
-    }
     root /data/web-ui;
     index index.html index.htm;
     error_page 404 /404.html;
+    try_files $uri $uri.html =404;
 }
 ```
 ## 附加 随机图片
@@ -148,4 +145,12 @@ location = /randomImg {
 		ngx.exit(ngx.HTTP_MOVED_TEMPORARILY)
 	}
 }
+```
+## 附加 端口转发
+```bash
+sudo apt install rinetd
+sudo nano /etc/rinetd.conf
+# 格式 [source_address] [source_port] [destination_address] [destination_port]
+sudo rinetd
+sudo systemctl status rinetd.service 
 ```
