@@ -423,7 +423,7 @@ footer:
   # 页脚第一行文字的 HTML，建议保留 Fluid 的链接，用于向更多人推广本主题
   # HTML of the first line of the footer, it is recommended to keep the Fluid link to promote this theme to more people
   content: '
-    <a target="_blank" rel="nofollow noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43130202000203"><img src="https://img.limour.top/2023/08/27/64eadeb81d6a0.webp">湘公网安备 43130202000203号  </a>
+    <a target="_blank" rel="nofollow noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43130202000203"><img src="https://img.limour.top/2023/08/27/64eadeb81d6a0.webp">湘公网安备43130202000203号  </a>
     <a target="_blank" rel="nofollow noopener" href="https://beian.miit.gov.cn/">湘ICP备20008299号 </a>
     <a target="_blank" rel="nofollow noopener" href="https://icp.gov.moe/?keyword=20210128">萌ICP备20210128号</a>
     <br>
