@@ -245,7 +245,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          103 words
+          190 words
         
       </span>
     
@@ -256,7 +256,7 @@
         
         
         
-          1 mins
+          2 mins
         
       </span>
     
@@ -298,7 +298,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on October 27, 2023 pm
+                    Last updated on December 10, 2023 pm
                   
                 
               </p>
@@ -344,6 +344,12 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda create -n something_fuck -c conda-forge mamba<br>conda activate something_fuck<br>mamba install -c bioconda bcftools<br></code></pre></td></tr></table></figure>
 <h2 id="构建包">构建包</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">mamba create -n build -c conda-forge conda-build<br><span class="hljs-built_in">source</span> activate build<br>conda config --<span class="hljs-built_in">set</span> anaconda_upload <span class="hljs-built_in">yes</span><br></code></pre></td></tr></table></figure>
+<h2 id="附加-win平台">附加 win平台</h2>
+<ul>
+<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL3NrZWV0by93NjRkZXZraXQvcmVsZWFzZXM=" rel="noopener external nofollow noreferrer">w64devkit-fortran</a>: 不支持nvcc</li>
+<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly92aXN1YWxzdHVkaW8ubWljcm9zb2Z0LmNvbS96aC1oYW5zL3Zpc3VhbC1jcHAtYnVpbGQtdG9vbHM=" rel="noopener external nofollow noreferrer">VS BuildTools</a>: 生成工具、CMake; CRT、ATL、MFC的SDK</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs powershell">conda create <span class="hljs-literal">-n</span> llama libcublas cuda<span class="hljs-literal">-toolkit</span> git <span class="hljs-literal">-c</span> nvidia <span class="hljs-literal">-c</span> conda<span class="hljs-literal">-forge</span><br>conda activate llama<br><span class="hljs-built_in">cd</span> D:\llama<br>git clone <span class="hljs-literal">--depth</span>=<span class="hljs-number">1</span> <span class="hljs-literal">-b</span> master <span class="hljs-literal">--single-branch</span> https://github.com/ggerganov/llama.cpp.git<br><span class="hljs-comment"># 修改 Makefile，添加 -I$(CONDA_PREFIX)/include 和 -L$(CONDA_PREFIX)/lib</span><br><span class="hljs-comment"># git add . &amp;&amp; git commit -m &#x27;add conda Path&#x27;</span><br>&amp; <span class="hljs-string">&quot;C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\Common7\Tools\LaunchDevCmd.bat&quot;</span><br>%windir%\System32\WindowsPowerShell\v1.<span class="hljs-number">0</span>\powershell.exe <span class="hljs-literal">-ExecutionPolicy</span> ByPass <span class="hljs-literal">-NoExit</span> <span class="hljs-literal">-Command</span> <span class="hljs-string">&quot;&amp; &#x27;C:\Users\11248\miniconda3\shell\condabin\conda-hook.ps1&#x27; ; conda activate &#x27;C:\Users\11248\miniconda3&#x27; &quot;</span><br><span class="hljs-comment"># git checkout . &amp;&amp; git clean -xdf</span><br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -386,7 +392,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>October 27, 2023</div>
+          <div>December 10, 2023</div>
         </div>
       
       
