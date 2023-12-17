@@ -245,7 +245,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          58 words
+          117 words
         
       </span>
     
@@ -298,7 +298,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on August 30, 2023 pm
+                    Last updated on December 17, 2023 pm
                   
                 
               </p>
@@ -355,7 +355,13 @@
 <p><img src="https://img.limour.top/2023/08/30/64ef37e438a8d.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
 <h2 id="第五步-图床添加-R2-储存桶">第五步 图床添加 R2 储存桶</h2>
 <p><img src="https://img.limour.top/2023/08/30/64ef37f072cfd.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
-
+<h2 id="附加-图床备份">附加 图床备份</h2>
+<ul>
+<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9kZXZlbG9wZXJzLmNsb3VkZmxhcmUuY29tL3IyL2V4YW1wbGVzL3JjbG9uZS8=" rel="noopener external nofollow noreferrer">获取拥有读取和列表权限的令牌</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo -v ; curl https://rclone.org/install.sh | sudo bash -s beta<br>nano ~/.config/rclone/rclone.conf <br></code></pre></td></tr></table></figure>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[img]</span><br><span class="hljs-attr">type</span> = s3<br><span class="hljs-attr">provider</span> = Cloudflare<br><span class="hljs-attr">access_key_id</span> = xxx<br><span class="hljs-attr">secret_access_key</span> = xxxxxx<br><span class="hljs-attr">endpoint</span> = https://&lt;accountid&gt;.r2.cloudflarestorage.com<br><span class="hljs-attr">acl</span> = private<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">rclone lsd img:limour-img<br>git <span class="hljs-built_in">clone</span> https://oauth2:ghp_xxx@github.com/limour-blog/img-bed.git<br>rclone copy --ignore-existing --progress --ignore-errors img:limour-img ~/img-bed<br><span class="hljs-built_in">cd</span> ~/img-bed<br>git add . &amp;&amp; git commit -m <span class="hljs-string">&#x27;backup&#x27;</span> &amp;&amp; git push -u origin main<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -402,7 +408,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>August 30, 2023</div>
+          <div>December 17, 2023</div>
         </div>
       
       
@@ -588,7 +594,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a target="_blank" rel="nofollow noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43130202000203"><img src="https://img.limour.top/2023/08/27/64eadeb81d6a0.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload>湘公网安备43130202000203号  </a> <a target="_blank" rel="nofollow noopener" href="https://beian.miit.gov.cn/">湘ICP备20008299号 </a> <a target="_blank" rel="nofollow noopener" href="https://icp.gov.moe/?keyword=20210128">萌ICP备20210128号</a> <br> <a href="https://www.foreverblog.cn/" target="_blank"> <img src="https://img.foreverblog.cn/logo_en_default.png" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt="" style="width:auto;height:24px"> </a> <br> <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/limour-blog/limour-blog.github.io" target="_blank" rel="nofollow noopener"><span>SRC</span></a> 
+       <a target="_blank" rel="nofollow noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43130202000203"><img src="https://img.limour.top/2023/08/27/64eadeb81d6a0.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload>湘公网安备43130202000203号  </a> <a target="_blank" rel="nofollow noopener" href="https://beian.miit.gov.cn/">湘ICP备20008299号 </a> <a target="_blank" rel="nofollow noopener" href="https://icp.gov.moe/?keyword=20210128">萌ICP备20210128号</a> <br> <a href="https://www.foreverblog.cn/" target="_blank"> <img src="https://img.foreverblog.cn/logo_en_default.png" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt="" style="width:auto;height:24px"> </a> <br> <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/limour-blog/limour-blog.github.io" target="_blank" rel="nofollow noopener"><span>SRC</span></a> <i class="iconfont icon-love"></i> <a href="https://web.archive.org/web/20231130095837/https://effectiveacceleration.tech/" target="_blank" rel="nofollow noopener"><span>e/Acc</span></a> 
     </div>
   
   

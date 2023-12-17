@@ -534,7 +534,7 @@
     <link href="/-bai-piao--shi-yong-CloudFlare-R2-da-jian-ge-ren-tu-chuang.html"/>
     <url>/-bai-piao--shi-yong-CloudFlare-R2-da-jian-ge-ren-tu-chuang.html</url>
     
-    <content type="html"><![CDATA[优点介绍免费额度足够个人使用无需额外配置 CDN自定义域名比较优雅FreePaid - Rates存储10 GB / month$0.015 / GB-monthA 类操作1 million requests / month$4.50 / million requestsB 类操作10 million requests / month$0.36 / million requests第一步 创建 R2 存储桶第二步 绑定域名第三步 创建 S3 令牌第四步 安装 lsky 图床安装反代服务webp 截图第五步 图床添加 R2 储存桶]]></content>
+    <content type="html"><![CDATA[优点介绍免费额度足够个人使用无需额外配置 CDN自定义域名比较优雅FreePaid - Rates存储10 GB / month$0.015 / GB-monthA 类操作1 million requests / month$4.50 / million requestsB 类操作10 million requests / month$0.36 / million requests第一步 创建 R2 存储桶第二步 绑定域名第三步 创建 S3 令牌第四步 安装 lsky 图床安装反代服务webp 截图第五步 图床添加 R2 储存桶附加 图床备份获取拥有读取和列表权限的令牌]]></content>
     
     
     
