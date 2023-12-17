@@ -46,3 +46,25 @@ networks:
 ![](https://img.limour.top/2023/08/30/64ef37e438a8d.webp)
 ## 第五步 图床添加 R2 储存桶
 ![](https://img.limour.top/2023/08/30/64ef37f072cfd.webp)
+## 附加 图床备份
++ [获取拥有读取和列表权限的令牌](https://developers.cloudflare.com/r2/examples/rclone/)
+```bash
+sudo -v ; curl https://rclone.org/install.sh | sudo bash -s beta
+nano ~/.config/rclone/rclone.conf 
+```
+```ini
+[img]
+type = s3
+provider = Cloudflare
+access_key_id = xxx
+secret_access_key = xxxxxx
+endpoint = https://<accountid>.r2.cloudflarestorage.com
+acl = private
+```
+```bash
+rclone lsd img:limour-img
+git clone https://oauth2:ghp_xxx@github.com/limour-blog/img-bed.git
+rclone copy --ignore-existing --progress --ignore-errors img:limour-img ~/img-bed
+cd ~/img-bed
+git add . && git commit -m 'backup' && git push -u origin main
+```
