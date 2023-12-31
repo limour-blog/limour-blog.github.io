@@ -18,11 +18,11 @@
   <meta name="author" content="Limour">
   <meta name="keywords" content="">
   
-    <meta name="description" content="MLC-LLM 是一种大模型高性能通用部署解决方案，可以通过预编译加速使用本机API原生部署任何大型语言模型。该项目的使命是利用ML编译技术，使每个人都能在其设备上本地开发、优化和部署AI模型。 Qwen-1.8B 是阿里云研发的通义千问大模型系列的18亿参数规模的模型。在Qwen-1.8B的基础上，使用对齐机制打造了基于大语言模型的AI助手 Qwen-1.8B-Chat。 配置环境  安装con">
+    <meta name="description" content="Flare 是一款轻量、快速、美观的个人导航页面，适用于 HomeLab 或其他注重私密的场景。  反向代理服务 访问 https://flare.limour.top/editor 进行书签编辑  123mkdir -p ~/app/flare &amp;amp;&amp;amp; cd ~/app/flare &amp;amp;&amp;amp; nano docker-compose.ymlsudo docker-comp">
   
   
   
-  <title>【记录】Win上使用MLC-LLM编译Qwen-1.8B-Chat - Limour&#39;s Blog</title>
+  <title>【记录】轻量个人导航页面Flare - Limour&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://jscdn.limour.top/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
 
@@ -217,7 +217,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">【记录】Win上使用MLC-LLM编译Qwen-1.8B-Chat</span>
+            <span id="subtitle">【记录】轻量个人导航页面Flare</span>
           
         </div>
 
@@ -233,8 +233,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-09 12:24" pubdate>
-          December 9, 2023 pm
+        <time datetime="2024-01-01 01:18" pubdate>
+          January 1, 2024 am
         </time>
       </span>
     
@@ -245,7 +245,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          221 words
+          71 words
         
       </span>
     
@@ -256,7 +256,7 @@
         
         
         
-          2 mins
+          1 mins
         
       </span>
     
@@ -293,12 +293,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">【记录】Win上使用MLC-LLM编译Qwen-1.8B-Chat</h1>
+            <h1 id="seo-header">【记录】轻量个人导航页面Flare</h1>
             
               <p class="note note-info">
                 
                   
-                    Last updated on December 9, 2023 pm
+                    Last updated on January 1, 2024 am
                   
                 
               </p>
@@ -306,23 +306,13 @@
             
               <div class="markdown-body">
                 
-                <p><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL21sYy1haS9tbGMtbGxt" rel="noopener external nofollow noreferrer">MLC-LLM</a> 是一种大模型高性能通用部署解决方案，可以通过预编译加速使用本机API原生部署任何大型语言模型。该项目的使命是利用ML编译技术，使每个人都能在其设备上本地开发、优化和部署AI模型。<br>
-<a href="https://hexo.limour.top/go/#aHR0cHM6Ly9odWdnaW5nZmFjZS5jby9Rd2VuL1F3ZW4tMV84Qg==" rel="noopener external nofollow noreferrer">Qwen-1.8B</a> 是阿里云研发的通义千问大模型系列的18亿参数规模的模型。在Qwen-1.8B的基础上，使用对齐机制打造了基于大语言模型的AI助手 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9odWdnaW5nZmFjZS5jby9Rd2VuL1F3ZW4tMV84Qi1DaGF0" rel="noopener external nofollow noreferrer">Qwen-1.8B-Chat</a>。</p>
-<h2 id="配置环境">配置环境</h2>
+                <p><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL3NvdWx0ZWFyeS9kb2NrZXItZmxhcmU=" rel="noopener external nofollow noreferrer">Flare</a> 是一款轻量、快速、美观的个人导航页面，适用于 HomeLab 或其他注重私密的场景。</p>
 <ul>
-<li><a href="/-ji-lu--an-zhuang-conda-bing-geng-huan-qing-hua-yuan">安装conda</a></li>
-<li><a href="/Use-Tunnel-to-speed-up-the-connection-of-VPS">Tun模式</a>(管理员权限)</li>
-<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9sbG0ubWxjLmFpL2RvY3MvaW5zdGFsbC90dm0uaHRtbCNpbnN0YWxsLXR2bS11bml0eQ==" rel="noopener external nofollow noreferrer">详细流程</a></li>
+<li><a href="/Docker-bu-shu-Nginx-Proxy-Manager">反向代理服务</a></li>
+<li>访问 <code>https://flare.limour.top/editor</code> 进行书签编辑</li>
 </ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs powershell">conda create <span class="hljs-literal">-n</span> mlc_llm python numpy pytorch transformers scipy timm git <span class="hljs-literal">-c</span> pytorch <span class="hljs-literal">-c</span> conda<span class="hljs-literal">-forge</span><br>conda activate mlc_llm<br>python <span class="hljs-literal">-m</span> pip install <span class="hljs-literal">--pre</span> <span class="hljs-literal">-U</span> <span class="hljs-operator">-f</span> https://mlc.ai/wheels mlc<span class="hljs-literal">-ai-nightly</span><br>python <span class="hljs-literal">-c</span> <span class="hljs-string">&quot;import tvm; print(&#x27;\n&#x27;.join(f&#x27;&#123;k&#125;: &#123;v&#125;&#x27; for k, v in tvm.support.libinfo().items()))&quot;</span><br>python <span class="hljs-literal">-c</span> <span class="hljs-string">&quot;import tvm; print(tvm.vulkan().exist)&quot;</span><br><span class="hljs-built_in">cd</span> D:\mlc<span class="hljs-literal">-llm</span><br>git clone <span class="hljs-literal">--depth</span>=<span class="hljs-number">1</span> <span class="hljs-literal">-b</span> main <span class="hljs-literal">--single-branch</span> https://github.com/mlc<span class="hljs-literal">-ai</span>/mlc<span class="hljs-literal">-llm</span>.git<br><span class="hljs-built_in">cd</span> .\mlc<span class="hljs-literal">-llm</span>\<br>git submodule sync<br>git submodule update <span class="hljs-literal">--init</span> <span class="hljs-literal">--recursive</span> <span class="hljs-literal">--depth</span>=<span class="hljs-number">1</span><br>pip install .<br>python <span class="hljs-literal">-m</span> mlc_llm.build <span class="hljs-literal">--help</span><br></code></pre></td></tr></table></figure>
-<h2 id="准备模型">准备模型</h2>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs powershell">python <span class="hljs-literal">-c</span> <span class="hljs-string">&quot;from huggingface_hub import snapshot_download; snapshot_download(repo_id=&#x27;Qwen/Qwen-1_8B-Chat&#x27;, local_dir=&#x27;D:\mlc-llm\qwen&#x27;, ignore_patterns=[&#x27;*.h5&#x27;, &#x27;*.ot&#x27;, &#x27;*.msgpack&#x27;, &#x27;*.safetensors&#x27;])&quot;</span><br><span class="hljs-built_in">cd</span> D:\mlc<span class="hljs-literal">-llm</span>\qwen<br>D:\aria2\aria2c.exe <span class="hljs-literal">--all-proxy</span>=<span class="hljs-string">&#x27;http://127.0.0.1:7890&#x27;</span> <span class="hljs-literal">-o</span> <span class="hljs-string">&#x27;model-00001-of-00002.safetensors&#x27;</span> <span class="hljs-string">&quot;https://huggingface.co/Qwen/Qwen-1_8B-Chat/resolve/main/model-00001-of-00002.safetensors?download=true&quot;</span><br>D:\aria2\aria2c.exe <span class="hljs-literal">--all-proxy</span>=<span class="hljs-string">&#x27;http://127.0.0.1:7890&#x27;</span> <span class="hljs-literal">-o</span> <span class="hljs-string">&#x27;model-00002-of-00002.safetensors&#x27;</span> <span class="hljs-string">&quot;https://huggingface.co/Qwen/Qwen-1_8B-Chat/resolve/main/model-00002-of-00002.safetensors?download=true&quot;</span><br></code></pre></td></tr></table></figure>
-<h2 id="编译模型">编译模型</h2>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">cd</span> D:\mlc<span class="hljs-literal">-llm</span>\dist<br>python <span class="hljs-literal">-m</span> mlc_llm.build <span class="hljs-literal">--model</span> <span class="hljs-string">&quot;D:\mlc-llm\qwen&quot;</span> <span class="hljs-literal">--target</span> vulkan <span class="hljs-literal">--quantization</span> q0f16 <span class="hljs-literal">--use-safetensors</span><br></code></pre></td></tr></table></figure>
-<ul>
-<li>等待模型支持：<a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL21sYy1haS9tbGMtbGxtL2lzc3Vlcy8xMzcz" rel="noopener external nofollow noreferrer">Model type qwen not supported</a></li>
-</ul>
-
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/app/flare &amp;&amp; <span class="hljs-built_in">cd</span> ~/app/flare &amp;&amp; nano docker-compose.yml<br>sudo docker-compose up -d <span class="hljs-comment"># flare:5005</span><br>sudo docker-compose logs <span class="hljs-comment"># 获取登录密码</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.6&#x27;</span><br> <br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">flare:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">soulteary/flare</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-comment"># 默认无需添加任何参数，如有特殊需求</span><br>    <span class="hljs-comment"># 可阅读文档 https://github.com/soulteary/docker-flare/blob/main/docs/advanced-startup.md</span><br>    <span class="hljs-comment"># 启用账号登录模式</span><br>    <span class="hljs-attr">command:</span> <span class="hljs-string">flare</span> <span class="hljs-string">--disable_login=0</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-comment"># 如需开启用户登录模式，需要先设置 `nologin` 启动参数为 `0`</span><br>      <span class="hljs-comment"># 如开启 `nologin`，未设置 FLARE_USER，则默认用户为 `flare`</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">FLARE_USER=LimourFlare</span><br>      <span class="hljs-comment"># 指定你自己的账号密码，默认生成的密码强度堪忧</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">FLARE_PASS=your_password</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">FLARE_OFFLINE=1</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">FLARE_MINI_REQUEST=1</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./app:/app</span><br> <br><span class="hljs-attr">networks:</span><br>  <span class="hljs-attr">default:</span><br>    <span class="hljs-attr">external:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">ngpm</span><br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -334,9 +324,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/MLC-LLM/" class="print-no-link">#MLC-LLM</a>
-      
-        <a href="/tags/Qwen/" class="print-no-link">#Qwen</a>
+        <a href="/tags/docker/" class="print-no-link">#docker</a>
       
     </div>
   
@@ -348,8 +336,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【记录】Win上使用MLC-LLM编译Qwen-1.8B-Chat</div>
-      <div>https://hexo.limour.top/Compile-Qwen-1.8B-Chat-using-MLC-LLM-on-Win</div>
+      <div>【记录】轻量个人导航页面Flare</div>
+      <div>https://hexo.limour.top/Lightweight-personal-navigation-page-Flare</div>
     </div>
     <div class="license-meta">
       
@@ -361,13 +349,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>December 9, 2023</div>
+          <div>January 1, 2024</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>December 9, 2023</div>
+          <div>January 1, 2024</div>
         </div>
       
       
@@ -410,18 +398,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/Lightweight-personal-navigation-page-Flare" title="【记录】轻量个人导航页面Flare">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【记录】轻量个人导航页面Flare</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/Equivalent-operations-in-surgical-knot-tying" title="【探索】外科打结法中的等价操作">
-                        <span class="hidden-mobile">【探索】外科打结法中的等价操作</span>
+                      <a href="/Compile-Qwen-1.8B-Chat-using-MLC-LLM-on-Win" title="【记录】Win上使用MLC-LLM编译Qwen-1.8B-Chat">
+                        <span class="hidden-mobile">【记录】Win上使用MLC-LLM编译Qwen-1.8B-Chat</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

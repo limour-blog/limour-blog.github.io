@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>【记录】轻量个人导航页面Flare</title>
+    <link href="/Lightweight-personal-navigation-page-Flare.html"/>
+    <url>/Lightweight-personal-navigation-page-Flare.html</url>
+    
+    <content type="html"><![CDATA[Flare 是一款轻量、快速、美观的个人导航页面，适用于 HomeLab 或其他注重私密的场景。反向代理服务访问  进行书签编辑]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>docker</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【记录】Win上使用MLC-LLM编译Qwen-1.8B-Chat</title>
     <link href="/Compile-Qwen-1.8B-Chat-using-MLC-LLM-on-Win.html"/>
     <url>/Compile-Qwen-1.8B-Chat-using-MLC-LLM-on-Win.html</url>
