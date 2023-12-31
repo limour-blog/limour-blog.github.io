@@ -2,7 +2,7 @@
 title: 【记录】Go 实现 OpenAI API HTTP 代理
 urlname: -ji-lu-Go-shi-xian-OpenAI-API-HTTP-dai-li
 date: 2023-06-28 19:48:47
-tags: ['golang', 'openai']
+tags: ['golang', 'openai', 'docker', 'ngpm']
 excerpt: 这段代码是基于GO-OPENAI-PROXY的参考代码，并通过GPT-3.5进行修改。它具有以下优点：支持多个密钥轮询，且对前端透明；可以自定义修改消息；不受网络环境影响；可以编译反代程序。代码中包含了处理HTTP请求和响应的函数，以及一些辅助函数和变量。
 ---
 代码参考自 [GO-OPENAI-PROXY](https://github.com/geekr-dev/openai-proxy)，由 GPT-3.5 辅助修改。

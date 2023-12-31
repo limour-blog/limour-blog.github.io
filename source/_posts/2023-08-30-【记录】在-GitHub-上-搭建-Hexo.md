@@ -2,7 +2,7 @@
 title: 【记录】在 GitHub 上 搭建 Hexo
 urlname: -ji-lu--zai-GitHub-shang-da-jian-Hexo
 date: 2023-08-30 21:07:42
-tags: ['Github', 'hexo', 'butterfly']
+tags: ['Github', 'hexo']
 excerpt: 这段文本是关于在安装Hexo博客框架的过程中所需的一些配置和操作。首先需要安装Node环境，然后使用conda命令激活Node环境。接下来使用npm命令安装全局的Hexo命令行工具，并进行版本检查和初始化操作。然后安装hexo-deployer-git插件，并配置相关信息。建立仓库并创建gh-pages分支，修改设置文件，配置GitHub文件加速和获取token。编辑_config.yml文件，配置部署信息和主题。搭建jsDelivr反代服务器并编辑CDN.js文件。最后生成网页并推送到GitHub仓库，进行国内反代加速和备份博客。
 ---
 ## 安装 Hexo

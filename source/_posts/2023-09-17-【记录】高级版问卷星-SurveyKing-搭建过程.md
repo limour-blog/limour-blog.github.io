@@ -2,7 +2,7 @@
 title: 【记录】高级版问卷星 SurveyKing 搭建过程
 urlname: gao-ji-ban-wen-juan-xing--SurveyKing--da-jian-guo-cheng
 date: 2023-09-17 16:43:11
-tags: ['SurveyKing', '卷王', '问卷星']
+tags: [docker, ngpm]
 ---
 问卷星的计算公式需要企业版，而开源的卷王也可以做到这一点，因此搭建卷王来替换掉问卷星。
 > [SurveyKing](https://gitee.com/surveyking/surveyking): 功能最强大&搭建最简单&界面更美观的在线考试/调查问卷/公开查询/题库刷题/360度评估/投票系统，支持一键部署。

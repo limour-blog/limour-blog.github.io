@@ -3,7 +3,7 @@ title: 【记录】Win上使用MLC-LLM编译Qwen-1.8B-Chat
 urlname: Compile-Qwen-1.8B-Chat-using-MLC-LLM-on-Win
 index_img: https://api.limour.top/randomImg?d=2023-12-09 04:24:07
 date: 2023-12-09 12:24:07
-tags: [MLC-LLM, Qwen]
+tags: llama
 ---
 [MLC-LLM](https://github.com/mlc-ai/mlc-llm) 是一种大模型高性能通用部署解决方案，可以通过预编译加速使用本机API原生部署任何大型语言模型。该项目的使命是利用ML编译技术，使每个人都能在其设备上本地开发、优化和部署AI模型。
 [Qwen-1.8B](https://huggingface.co/Qwen/Qwen-1_8B) 是阿里云研发的通义千问大模型系列的18亿参数规模的模型。在Qwen-1.8B的基础上，使用对齐机制打造了基于大语言模型的AI助手 [Qwen-1.8B-Chat](https://huggingface.co/Qwen/Qwen-1_8B-Chat)。

@@ -3,7 +3,7 @@ title: 【探索】使用Tunnel加速VPS的连接
 urlname: Use-Tunnel-to-speed-up-the-connection-of-VPS
 date: 2023-10-29 04:36:52
 index_img: https://api.limour.top/randomImg?d=2023-10-29 04:36:52
-tags: [clash, ss, Tunnel]
+tags: [clash, ss, Tunnel, '探索']
 hide: true
 ---
 ## 准备依赖

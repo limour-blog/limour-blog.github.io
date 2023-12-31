@@ -2,7 +2,7 @@
 title: 【复刻】在 replit 上搭建 WebProxy
 urlname: -fu-ke--zai-replit-shang-da-jian-WebProxy
 date: 2023-08-27 20:39:24
-tags: ['docker', 'replite', 'webproxy', 'uptime']
+tags: ['docker', 'webproxy', 'uptime']
 excerpt: moeyy 分享了在replit上搭建WebProxy的方法。首先需要fork项目hideipnetwork-web，然后修改认证。接下来运行并添加自定义域名。然后进行Uptime的部署和安装反代服务。最后是保持Uptime的活动状态。
 ---
 [@moeyy](https://moeyy.xlog.app/) 分享了 Ta 在 [replit](https://replit.com/) 上搭建 [WebProxy](https://xlog.moeyy.cn/ben-zhan-yi-jing-wan-quan-tuo-guan-yu-PaaS-ping-tai-md) 的方法，这里记录一下相关的操作。

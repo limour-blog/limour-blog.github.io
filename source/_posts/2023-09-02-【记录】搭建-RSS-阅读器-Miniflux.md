@@ -2,7 +2,7 @@
 title: 【记录】搭建 RSS 阅读器 Miniflux
 urlname: -ji-lu--da-jian-RSS-yue-du-qi-Miniflux
 date: 2023-09-02 20:53:18
-tags: ['rss', 'Miniflux']
+tags: [docker, ngpm, rss]
 excerpt: 基于php的TTRSS速度较慢，因此换成了使用Go编写的RSS阅读器Miniflux，数据库仍然使用Supabase。搭建Miniflux和反代服务器，并开启Fever API。FeedMe的登录方式与TTRSS相同。
 ---
 基于 php 的 TTRSS 虽然好用，但是确实太缓慢了。因此更换使用 Go 写的 RSS 阅读器 Miniflux。数据库依然用 [Supabase](/-ji-lu-TTRSS-shi-yong-Supabase-zuo-shu-ju-ku)。

@@ -2,7 +2,7 @@
 title: 【分享】WEBP截图工具：ShareX + imagemagick
 urlname: WEBP-jie-tu-gong-ju-ShareX--imagemagick
 date: 2023-05-12 19:25:28
-tags: ['webp', 'sharex', 'imagemagick']
+tags: webp
 ---
 WebP可为 Web 上的图像提供卓越的无损和有损压缩。使用 WebP，网站管理员和 Web 开发人员可以创建更小、更丰富的图像，从而使 Web 更快。与 PNG 相比，WebP 无损图像的大小要小 26% 。在同等 SSIM质量指数下， WebP 有损图像比可比较的 JPEG 图像小 25-34%
 

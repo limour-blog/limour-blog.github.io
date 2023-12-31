@@ -2,7 +2,7 @@
 title: 【翻译】Nature’s 150th Anniversary Essay Competition
 urlname: -fan-yi-Natures-150th-Anniversary-Essay-Competitio
 date: 2023-09-19 23:02:23
-tags: ['Nature', 'Anniversary', 'Essay Competition']
+tags: 翻译
 ---
 2019 年 5 月，Nature杂志邀请了年龄在 18 至 25 岁之间的读者参加[一场青年科学家论文竞赛](https://www.nature.com/articles/d41586-019-03357-y)。主题是用不超过 1000 字的篇幅告诉我们，他们在有生之年最希望看到的科学进展是什么，以及为什么对他们来说很重要。以下是获胜的三篇文章。
 ## 贝多芬的梦想

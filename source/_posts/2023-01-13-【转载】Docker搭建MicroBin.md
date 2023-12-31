@@ -2,7 +2,7 @@
 title: 【转载】Docker搭建MicroBin
 urlname: Docker-da-jian-MicroBin
 date: 2023-01-13 23:05:18
-tags: ['docker', 'microbin']
+tags: ['docker', 'ngpm']
 ---
 ```bash
 mkdir -p ~/app/MicroBin && cd ~/app/MicroBin && nano docker-compose.yml
