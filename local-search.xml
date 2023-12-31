@@ -4,7 +4,7 @@
   
   
   <entry>
-    <title>【记录】轻量个人导航页面Flare</title>
+    <title>【记录】轻量个人导航页面 Flare</title>
     <link href="/Lightweight-personal-navigation-page-Flare.html"/>
     <url>/Lightweight-personal-navigation-page-Flare.html</url>
     
@@ -15,6 +15,10 @@
     <tags>
       
       <tag>docker</tag>
+      
+      <tag>ngpm</tag>
+      
+      <tag>homepage</tag>
       
     </tags>
     
@@ -33,9 +37,7 @@
     
     <tags>
       
-      <tag>MLC-LLM</tag>
-      
-      <tag>Qwen</tag>
+      <tag>llama</tag>
       
     </tags>
     
@@ -54,9 +56,7 @@
     
     <tags>
       
-      <tag>外科结</tag>
-      
-      <tag>三叶结</tag>
+      <tag>探索</tag>
       
     </tags>
     
@@ -115,9 +115,17 @@
     
     <tags>
       
+      <tag>docker</tag>
+      
+      <tag>ngpm</tag>
+      
+      <tag>ssh</tag>
+      
       <tag>ws</tag>
       
-      <tag>proxynt</tag>
+      <tag>内网穿透</tag>
+      
+      <tag>探索</tag>
       
     </tags>
     
@@ -136,9 +144,11 @@
     
     <tags>
       
-      <tag>DoH</tag>
+      <tag>docker</tag>
       
-      <tag>adguard</tag>
+      <tag>ngpm</tag>
+      
+      <tag>DoH</tag>
       
     </tags>
     
@@ -157,9 +167,13 @@
     
     <tags>
       
-      <tag>quic</tag>
+      <tag>docker</tag>
       
-      <tag>nps</tag>
+      <tag>ngpm</tag>
+      
+      <tag>内网穿透</tag>
+      
+      <tag>探索</tag>
       
     </tags>
     
@@ -199,11 +213,13 @@
     
     <tags>
       
-      <tag>OpenAI</tag>
+      <tag>docker</tag>
       
-      <tag>one-api</tag>
+      <tag>ngpm</tag>
       
-      <tag>Azure</tag>
+      <tag>openai</tag>
+      
+      <tag>llama</tag>
       
     </tags>
     
@@ -227,6 +243,8 @@
       <tag>文明</tag>
       
       <tag>无政府主义</tag>
+      
+      <tag>探索</tag>
       
     </tags>
     
@@ -293,11 +311,7 @@
     
     <tags>
       
-      <tag>Nature</tag>
-      
-      <tag>Anniversary</tag>
-      
-      <tag>Essay Competition</tag>
+      <tag>翻译</tag>
       
     </tags>
     
@@ -316,11 +330,9 @@
     
     <tags>
       
-      <tag>SurveyKing</tag>
+      <tag>docker</tag>
       
-      <tag>卷王</tag>
-      
-      <tag>问卷星</tag>
+      <tag>ngpm</tag>
       
     </tags>
     
@@ -362,9 +374,11 @@
     
     <tags>
       
-      <tag>rss</tag>
+      <tag>docker</tag>
       
-      <tag>Miniflux</tag>
+      <tag>ngpm</tag>
+      
+      <tag>rss</tag>
       
     </tags>
     
@@ -383,7 +397,7 @@
     
     <tags>
       
-      <tag>qpdf</tag>
+      <tag>pdf</tag>
       
     </tags>
     
@@ -404,7 +418,7 @@
       
       <tag>docker</tag>
       
-      <tag>edge</tag>
+      <tag>ngpm</tag>
       
     </tags>
     
@@ -448,8 +462,6 @@
       
       <tag>hexo</tag>
       
-      <tag>butterfly</tag>
-      
     </tags>
     
   </entry>
@@ -469,11 +481,11 @@
       
       <tag>docker</tag>
       
-      <tag>ttrss</tag>
-      
-      <tag>feedme</tag>
+      <tag>ngpm</tag>
       
       <tag>supabase</tag>
+      
+      <tag>rss</tag>
       
     </tags>
     
@@ -492,9 +504,7 @@
     
     <tags>
       
-      <tag>koyeb</tag>
-      
-      <tag>RSSHub</tag>
+      <tag>rss</tag>
       
     </tags>
     
@@ -515,8 +525,6 @@
       
       <tag>alist</tag>
       
-      <tag>fly.io</tag>
-      
     </tags>
     
   </entry>
@@ -535,8 +543,6 @@
     <tags>
       
       <tag>docker</tag>
-      
-      <tag>replite</tag>
       
       <tag>webproxy</tag>
       
@@ -561,9 +567,9 @@
       
       <tag>docker</tag>
       
-      <tag>r2</tag>
+      <tag>ngpm</tag>
       
-      <tag>lsky</tag>
+      <tag>r2</tag>
       
     </tags>
     
@@ -664,7 +670,7 @@
   
   
   <entry>
-    <title>【尝试】Claude2 写永生者的日记</title>
+    <title>【探索】Claude2 写永生者的日记</title>
     <link href="/-chang-shi-Claude2-xie-yong-sheng-zhe-de-ri-ji.html"/>
     <url>/-chang-shi-Claude2-xie-yong-sheng-zhe-de-ri-ji.html</url>
     
@@ -676,9 +682,13 @@
       
       <tag>科幻</tag>
       
+      <tag>设定</tag>
+      
       <tag>claude</tag>
       
       <tag>日记</tag>
+      
+      <tag>探索</tag>
       
     </tags>
     
@@ -687,7 +697,7 @@
   
   
   <entry>
-    <title>【呼吸】动脉血气&amp;肺功能报告简单判读</title>
+    <title>【探索】动脉血气&amp;肺功能报告简单判读</title>
     <link href="/-hu-xi--dong-mai-xue-qi--fei-gong-neng-bao-gao-jian-dan-pan-du.html"/>
     <url>/-hu-xi--dong-mai-xue-qi--fei-gong-neng-bao-gao-jian-dan-pan-du.html</url>
     
@@ -697,11 +707,7 @@
     
     <tags>
       
-      <tag>呼吸</tag>
-      
-      <tag>血气</tag>
-      
-      <tag>肺功能</tag>
+      <tag>探索</tag>
       
     </tags>
     
@@ -747,11 +753,7 @@
     
     <tags>
       
-      <tag>nps</tag>
-      
-      <tag>frp</tag>
-      
-      <tag>severstatus</tag>
+      <tag>内网穿透</tag>
       
     </tags>
     
@@ -813,6 +815,10 @@
     
     
     <tags>
+      
+      <tag>docker</tag>
+      
+      <tag>ngpm</tag>
       
       <tag>golang</tag>
       
@@ -921,10 +927,6 @@
       
       <tag>webp</tag>
       
-      <tag>sharex</tag>
-      
-      <tag>imagemagick</tag>
-      
     </tags>
     
   </entry>
@@ -984,7 +986,7 @@
       
       <tag>docker</tag>
       
-      <tag>vicuna</tag>
+      <tag>llama</tag>
       
     </tags>
     
@@ -1409,7 +1411,7 @@
       
       <tag>docker</tag>
       
-      <tag>microbin</tag>
+      <tag>ngpm</tag>
       
     </tags>
     

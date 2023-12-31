@@ -9,11 +9,11 @@
     <atom:link href="https://hexo.limour.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sun, 31 Dec 2023 17:24:19 GMT</pubDate>
+    <pubDate>Sun, 31 Dec 2023 17:41:27 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
-      <title>【记录】轻量个人导航页面Flare</title>
+      <title>【记录】轻量个人导航页面 Flare</title>
       <link>https://hexo.limour.top/Lightweight-personal-navigation-page-Flare</link>
       <guid>https://hexo.limour.top/Lightweight-personal-navigation-page-Flare</guid>
       <pubDate>Sun, 31 Dec 2023 17:18:28 GMT</pubDate>
@@ -30,6 +30,10 @@
       
       
       <category domain="https://hexo.limour.top/tags/docker/">docker</category>
+      
+      <category domain="https://hexo.limour.top/tags/ngpm/">ngpm</category>
+      
+      <category domain="https://hexo.limour.top/tags/homepage/">homepage</category>
       
       
       <comments>https://hexo.limour.top/Lightweight-personal-navigation-page-Flare#disqus_thread</comments>
@@ -53,9 +57,7 @@
       
       
       
-      <category domain="https://hexo.limour.top/tags/MLC-LLM/">MLC-LLM</category>
-      
-      <category domain="https://hexo.limour.top/tags/Qwen/">Qwen</category>
+      <category domain="https://hexo.limour.top/tags/llama/">llama</category>
       
       
       <comments>https://hexo.limour.top/Compile-Qwen-1.8B-Chat-using-MLC-LLM-on-Win#disqus_thread</comments>
@@ -80,9 +82,7 @@
       
       
       
-      <category domain="https://hexo.limour.top/tags/%E5%A4%96%E7%A7%91%E7%BB%93/">外科结</category>
-      
-      <category domain="https://hexo.limour.top/tags/%E4%B8%89%E5%8F%B6%E7%BB%93/">三叶结</category>
+      <category domain="https://hexo.limour.top/tags/%E6%8E%A2%E7%B4%A2/">探索</category>
       
       
       <comments>https://hexo.limour.top/Equivalent-operations-in-surgical-knot-tying#disqus_thread</comments>
@@ -155,9 +155,17 @@
       
       
       
+      <category domain="https://hexo.limour.top/tags/docker/">docker</category>
+      
+      <category domain="https://hexo.limour.top/tags/ngpm/">ngpm</category>
+      
+      <category domain="https://hexo.limour.top/tags/ssh/">ssh</category>
+      
       <category domain="https://hexo.limour.top/tags/ws/">ws</category>
       
-      <category domain="https://hexo.limour.top/tags/proxynt/">proxynt</category>
+      <category domain="https://hexo.limour.top/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透</category>
+      
+      <category domain="https://hexo.limour.top/tags/%E6%8E%A2%E7%B4%A2/">探索</category>
       
       
       <comments>https://hexo.limour.top/WebSocket-based-intranet-penetration-tool#disqus_thread</comments>
@@ -185,9 +193,11 @@
       
       
       
-      <category domain="https://hexo.limour.top/tags/DoH/">DoH</category>
+      <category domain="https://hexo.limour.top/tags/docker/">docker</category>
       
-      <category domain="https://hexo.limour.top/tags/adguard/">adguard</category>
+      <category domain="https://hexo.limour.top/tags/ngpm/">ngpm</category>
+      
+      <category domain="https://hexo.limour.top/tags/DoH/">DoH</category>
       
       
       <comments>https://hexo.limour.top/Self-built-ad-blocking-DoH-server#disqus_thread</comments>
@@ -214,9 +224,13 @@
       
       
       
-      <category domain="https://hexo.limour.top/tags/quic/">quic</category>
+      <category domain="https://hexo.limour.top/tags/docker/">docker</category>
       
-      <category domain="https://hexo.limour.top/tags/nps/">nps</category>
+      <category domain="https://hexo.limour.top/tags/ngpm/">ngpm</category>
+      
+      <category domain="https://hexo.limour.top/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透</category>
+      
+      <category domain="https://hexo.limour.top/tags/%E6%8E%A2%E7%B4%A2/">探索</category>
       
       
       <comments>https://hexo.limour.top/Protocol-for-intranet-penetration-based-on-QUIC#disqus_thread</comments>
@@ -267,11 +281,13 @@
       
       
       
-      <category domain="https://hexo.limour.top/tags/OpenAI/">OpenAI</category>
+      <category domain="https://hexo.limour.top/tags/docker/">docker</category>
       
-      <category domain="https://hexo.limour.top/tags/one-api/">one-api</category>
+      <category domain="https://hexo.limour.top/tags/ngpm/">ngpm</category>
       
-      <category domain="https://hexo.limour.top/tags/Azure/">Azure</category>
+      <category domain="https://hexo.limour.top/tags/openai/">openai</category>
+      
+      <category domain="https://hexo.limour.top/tags/llama/">llama</category>
       
       
       <comments>https://hexo.limour.top/Aggregating-Azure-and-OpenAI-APIs-with-OneAPI#disqus_thread</comments>
@@ -297,6 +313,8 @@
       <category domain="https://hexo.limour.top/tags/%E6%96%87%E6%98%8E/">文明</category>
       
       <category domain="https://hexo.limour.top/tags/%E6%97%A0%E6%94%BF%E5%BA%9C%E4%B8%BB%E4%B9%89/">无政府主义</category>
+      
+      <category domain="https://hexo.limour.top/tags/%E6%8E%A2%E7%B4%A2/">探索</category>
       
       
       <comments>https://hexo.limour.top/The-Academy-System-Civilization-From-Hundreds-of-Millions-of-Years-Ago#disqus_thread</comments>
@@ -384,11 +402,7 @@
       
       
       
-      <category domain="https://hexo.limour.top/tags/Nature/">Nature</category>
-      
-      <category domain="https://hexo.limour.top/tags/Anniversary/">Anniversary</category>
-      
-      <category domain="https://hexo.limour.top/tags/Essay-Competition/">Essay Competition</category>
+      <category domain="https://hexo.limour.top/tags/%E7%BF%BB%E8%AF%91/">翻译</category>
       
       
       <comments>https://hexo.limour.top/-fan-yi-Natures-150th-Anniversary-Essay-Competitio#disqus_thread</comments>
@@ -414,11 +428,9 @@
       
       
       
-      <category domain="https://hexo.limour.top/tags/SurveyKing/">SurveyKing</category>
+      <category domain="https://hexo.limour.top/tags/docker/">docker</category>
       
-      <category domain="https://hexo.limour.top/tags/%E5%8D%B7%E7%8E%8B/">卷王</category>
-      
-      <category domain="https://hexo.limour.top/tags/%E9%97%AE%E5%8D%B7%E6%98%9F/">问卷星</category>
+      <category domain="https://hexo.limour.top/tags/ngpm/">ngpm</category>
       
       
       <comments>https://hexo.limour.top/gao-ji-ban-wen-juan-xing--SurveyKing--da-jian-guo-cheng#disqus_thread</comments>
@@ -468,9 +480,11 @@
       
       
       
-      <category domain="https://hexo.limour.top/tags/rss/">rss</category>
+      <category domain="https://hexo.limour.top/tags/docker/">docker</category>
       
-      <category domain="https://hexo.limour.top/tags/Miniflux/">Miniflux</category>
+      <category domain="https://hexo.limour.top/tags/ngpm/">ngpm</category>
+      
+      <category domain="https://hexo.limour.top/tags/rss/">rss</category>
       
       
       <comments>https://hexo.limour.top/-ji-lu--da-jian-RSS-yue-du-qi-Miniflux#disqus_thread</comments>
@@ -495,7 +509,7 @@
       
       
       
-      <category domain="https://hexo.limour.top/tags/qpdf/">qpdf</category>
+      <category domain="https://hexo.limour.top/tags/pdf/">pdf</category>
       
       
       <comments>https://hexo.limour.top/-ji-lu--QPDF-chang-yong-ming-ling#disqus_thread</comments>
@@ -518,7 +532,7 @@
       
       <category domain="https://hexo.limour.top/tags/docker/">docker</category>
       
-      <category domain="https://hexo.limour.top/tags/edge/">edge</category>
+      <category domain="https://hexo.limour.top/tags/ngpm/">ngpm</category>
       
       
       <comments>https://hexo.limour.top/-ji-lu--da-jian-yuan-cheng-edge-liu-lan-qi#disqus_thread</comments>
