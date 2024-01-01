@@ -1,5 +1,5 @@
 ---
-title: 【记录】Win上使用MLC-LLM编译Qwen-1.8B-Chat
+title: 【记录】Win10平台使用MLC-LLM编译Qwen-1.8B-Chat
 urlname: Compile-Qwen-1.8B-Chat-using-MLC-LLM-on-Win
 index_img: https://api.limour.top/randomImg?d=2023-12-09 04:24:07
 date: 2023-12-09 12:24:07
