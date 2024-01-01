@@ -18,11 +18,11 @@
   <meta name="author" content="Limour">
   <meta name="keywords" content="">
   
-    <meta name="description" content="MLC-LLM 是一种大模型高性能通用部署解决方案，可以通过预编译加速使用本机API原生部署任何大型语言模型。该项目的使命是利用ML编译技术，使每个人都能在其设备上本地开发、优化和部署AI模型。 Qwen-1.8B 是阿里云研发的通义千问大模型系列的18亿参数规模的模型。在Qwen-1.8B的基础上，使用对齐机制打造了基于大语言模型的AI助手 Qwen-1.8B-Chat。 配置环境  安装con">
+    <meta name="description" content="Llama.cpp 能 CPU &amp;amp; GPU 环境混合推理，这里记录一下在 windows10 平台上运行 Qwen-1.8B 的过程，显卡是 1660Ti 。 准备模型  安装conda Tun模式(管理员权限)  1234567conda create -n llamaConvert python=3.10 git -c conda-forgeconda activate llamaCo">
   
   
   
-  <title>【记录】Win10平台使用MLC-LLM编译Qwen-1.8B-Chat - Limour&#39;s Blog</title>
+  <title>【记录】win10平台6G显存运行Qwen-1.8B - Limour&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://jscdn.limour.top/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
 
@@ -217,7 +217,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">【记录】Win10平台使用MLC-LLM编译Qwen-1.8B-Chat</span>
+            <span id="subtitle">【记录】win10平台6G显存运行Qwen-1.8B</span>
           
         </div>
 
@@ -233,8 +233,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-09 12:24" pubdate>
-          December 9, 2023 pm
+        <time datetime="2024-01-01 11:11" pubdate>
+          January 1, 2024 am
         </time>
       </span>
     
@@ -245,7 +245,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          221 words
+          214 words
         
       </span>
     
@@ -293,7 +293,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">【记录】Win10平台使用MLC-LLM编译Qwen-1.8B-Chat</h1>
+            <h1 id="seo-header">【记录】win10平台6G显存运行Qwen-1.8B</h1>
             
               <p class="note note-info">
                 
@@ -306,21 +306,28 @@
             
               <div class="markdown-body">
                 
-                <p><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL21sYy1haS9tbGMtbGxt" rel="noopener external nofollow noreferrer">MLC-LLM</a> 是一种大模型高性能通用部署解决方案，可以通过预编译加速使用本机API原生部署任何大型语言模型。该项目的使命是利用ML编译技术，使每个人都能在其设备上本地开发、优化和部署AI模型。<br>
-<a href="https://hexo.limour.top/go/#aHR0cHM6Ly9odWdnaW5nZmFjZS5jby9Rd2VuL1F3ZW4tMV84Qg==" rel="noopener external nofollow noreferrer">Qwen-1.8B</a> 是阿里云研发的通义千问大模型系列的18亿参数规模的模型。在Qwen-1.8B的基础上，使用对齐机制打造了基于大语言模型的AI助手 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9odWdnaW5nZmFjZS5jby9Rd2VuL1F3ZW4tMV84Qi1DaGF0" rel="noopener external nofollow noreferrer">Qwen-1.8B-Chat</a>。</p>
-<h2 id="配置环境">配置环境</h2>
+                <p><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL2dnZXJnYW5vdi9sbGFtYS5jcHA=" rel="noopener external nofollow noreferrer">Llama.cpp</a> 能 CPU &amp; GPU 环境混合推理，这里记录一下在 windows10 平台上运行 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9odWdnaW5nZmFjZS5jby9Rd2VuL1F3ZW4tMV84Qg==" rel="noopener external nofollow noreferrer">Qwen-1.8B</a> 的过程，显卡是 1660Ti 。</p>
+<h2 id="准备模型">准备模型</h2>
 <ul>
 <li><a href="/-ji-lu--an-zhuang-conda-bing-geng-huan-qing-hua-yuan">安装conda</a></li>
 <li><a href="/Use-Tunnel-to-speed-up-the-connection-of-VPS">Tun模式</a>(管理员权限)</li>
-<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9sbG0ubWxjLmFpL2RvY3MvaW5zdGFsbC90dm0uaHRtbCNpbnN0YWxsLXR2bS11bml0eQ==" rel="noopener external nofollow noreferrer">详细流程</a></li>
 </ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs powershell">conda create <span class="hljs-literal">-n</span> mlc_llm python numpy pytorch transformers scipy timm git <span class="hljs-literal">-c</span> pytorch <span class="hljs-literal">-c</span> conda<span class="hljs-literal">-forge</span><br>conda activate mlc_llm<br>python <span class="hljs-literal">-m</span> pip install <span class="hljs-literal">--pre</span> <span class="hljs-literal">-U</span> <span class="hljs-operator">-f</span> https://mlc.ai/wheels mlc<span class="hljs-literal">-ai-nightly</span><br>python <span class="hljs-literal">-c</span> <span class="hljs-string">&quot;import tvm; print(&#x27;\n&#x27;.join(f&#x27;&#123;k&#125;: &#123;v&#125;&#x27; for k, v in tvm.support.libinfo().items()))&quot;</span><br>python <span class="hljs-literal">-c</span> <span class="hljs-string">&quot;import tvm; print(tvm.vulkan().exist)&quot;</span><br><span class="hljs-built_in">cd</span> D:\mlc<span class="hljs-literal">-llm</span><br>git clone <span class="hljs-literal">--depth</span>=<span class="hljs-number">1</span> <span class="hljs-literal">-b</span> main <span class="hljs-literal">--single-branch</span> https://github.com/mlc<span class="hljs-literal">-ai</span>/mlc<span class="hljs-literal">-llm</span>.git<br><span class="hljs-built_in">cd</span> .\mlc<span class="hljs-literal">-llm</span>\<br>git submodule sync<br>git submodule update <span class="hljs-literal">--init</span> <span class="hljs-literal">--recursive</span> <span class="hljs-literal">--depth</span>=<span class="hljs-number">1</span><br>pip install .<br>python <span class="hljs-literal">-m</span> mlc_llm.build <span class="hljs-literal">--help</span><br></code></pre></td></tr></table></figure>
-<h2 id="准备模型">准备模型</h2>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs powershell">python <span class="hljs-literal">-c</span> <span class="hljs-string">&quot;from huggingface_hub import snapshot_download; snapshot_download(repo_id=&#x27;Qwen/Qwen-1_8B-Chat&#x27;, local_dir=&#x27;D:\mlc-llm\qwen&#x27;, ignore_patterns=[&#x27;*.h5&#x27;, &#x27;*.ot&#x27;, &#x27;*.msgpack&#x27;, &#x27;*.safetensors&#x27;])&quot;</span><br><span class="hljs-built_in">cd</span> D:\mlc<span class="hljs-literal">-llm</span>\qwen<br>D:\aria2\aria2c.exe <span class="hljs-literal">--all-proxy</span>=<span class="hljs-string">&#x27;http://127.0.0.1:7890&#x27;</span> <span class="hljs-literal">-o</span> <span class="hljs-string">&#x27;model-00001-of-00002.safetensors&#x27;</span> <span class="hljs-string">&quot;https://huggingface.co/Qwen/Qwen-1_8B-Chat/resolve/main/model-00001-of-00002.safetensors?download=true&quot;</span><br>D:\aria2\aria2c.exe <span class="hljs-literal">--all-proxy</span>=<span class="hljs-string">&#x27;http://127.0.0.1:7890&#x27;</span> <span class="hljs-literal">-o</span> <span class="hljs-string">&#x27;model-00002-of-00002.safetensors&#x27;</span> <span class="hljs-string">&quot;https://huggingface.co/Qwen/Qwen-1_8B-Chat/resolve/main/model-00002-of-00002.safetensors?download=true&quot;</span><br></code></pre></td></tr></table></figure>
-<h2 id="编译模型">编译模型</h2>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">cd</span> D:\mlc<span class="hljs-literal">-llm</span>\dist<br>python <span class="hljs-literal">-m</span> mlc_llm.build <span class="hljs-literal">--model</span> <span class="hljs-string">&quot;D:\mlc-llm\qwen&quot;</span> <span class="hljs-literal">--target</span> vulkan <span class="hljs-literal">--quantization</span> q0f16 <span class="hljs-literal">--use-safetensors</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs powershell">conda create <span class="hljs-literal">-n</span> llamaConvert python=<span class="hljs-number">3.10</span> git <span class="hljs-literal">-c</span> conda<span class="hljs-literal">-forge</span><br>conda activate llamaConvert<br><span class="hljs-built_in">cd</span> D:\llama<br>git clone <span class="hljs-literal">--depth</span>=<span class="hljs-number">1</span> https://github.com/ggerganov/llama.cpp.git<br><span class="hljs-built_in">cd</span> llama.cpp<br>python <span class="hljs-literal">-m</span> pip install <span class="hljs-literal">-r</span> requirements.txt<br>pip install tiktoken<br></code></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs powershell">python <span class="hljs-literal">-c</span> <span class="hljs-string">&quot;from huggingface_hub import snapshot_download; snapshot_download(repo_id=&#x27;Qwen/Qwen-1_8B-Chat&#x27;, local_dir=&#x27;D:\qwen&#x27;, ignore_patterns=[&#x27;*.h5&#x27;, &#x27;*.ot&#x27;, &#x27;*.msgpack&#x27;, &#x27;*.safetensors&#x27;])&quot;</span><br><span class="hljs-built_in">cd</span> D:\qwen<br>D:\aria2\aria2c.exe <span class="hljs-literal">--all-proxy</span>=<span class="hljs-string">&#x27;http://127.0.0.1:7890&#x27;</span> <span class="hljs-literal">-o</span> <span class="hljs-string">&#x27;model-00001-of-00002.safetensors&#x27;</span> <span class="hljs-string">&quot;https://huggingface.co/Qwen/Qwen-1_8B-Chat/resolve/main/model-00001-of-00002.safetensors?download=true&quot;</span><br>D:\aria2\aria2c.exe <span class="hljs-literal">--all-proxy</span>=<span class="hljs-string">&#x27;http://127.0.0.1:7890&#x27;</span> <span class="hljs-literal">-o</span> <span class="hljs-string">&#x27;model-00002-of-00002.safetensors&#x27;</span> <span class="hljs-string">&quot;https://huggingface.co/Qwen/Qwen-1_8B-Chat/resolve/main/model-00002-of-00002.safetensors?download=true&quot;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">cd</span> D:\llama\llama.cpp<br>python <span class="hljs-built_in">convert-hf</span><span class="hljs-literal">-to-gguf</span>.py D:\qwen<br><span class="hljs-comment"># Model successfully exported to &#x27;D:\qwen\ggml-model-f16.gguf&#x27;</span><br></code></pre></td></tr></table></figure>
+<h2 id="运行模型">运行模型</h2>
 <ul>
-<li>等待模型支持：<a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL21sYy1haS9tbGMtbGxtL2lzc3Vlcy8xMzcz" rel="noopener external nofollow noreferrer">Model type qwen not supported</a></li>
+<li>下载 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL2dnZXJnYW5vdi9sbGFtYS5jcHAvcmVsZWFzZXM=" rel="noopener external nofollow noreferrer">llama-b1732-bin-win-cublas-cu12.2.0-x64.zip</a></li>
+<li>提取文件到 <code>D:\llama</code></li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs powershell">conda create <span class="hljs-literal">-n</span> llamaCpp libcublas cuda<span class="hljs-literal">-toolkit</span> git <span class="hljs-literal">-c</span> nvidia <span class="hljs-literal">-c</span> conda<span class="hljs-literal">-forge</span><br>conda activate llamaCpp<br><span class="hljs-built_in">cd</span> D:\llama | .\main.exe <span class="hljs-comment">## 检查能否正确运行</span><br><span class="hljs-built_in">cd</span> D:\llama | .\quantize.exe <span class="hljs-literal">--help</span> <span class="hljs-comment">## 自己决定量化方式</span><br>.\quantize.exe D:\qwen\ggml<span class="hljs-literal">-model-f16</span>.gguf .\qwen<span class="hljs-literal">-1_8-f16</span>.gguf <span class="hljs-built_in">COPY</span><br>.\server.exe <span class="hljs-literal">-m</span> .\qwen<span class="hljs-literal">-1_8-f16</span>.gguf <span class="hljs-literal">-c</span> <span class="hljs-number">4096</span> <span class="hljs-literal">--n-gpu-layers</span> <span class="hljs-number">50</span> <span class="hljs-comment">## 调节 n-gpu-layers 平衡 CPU &amp; GPU</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>访问 <code>http://127.0.0.1:8080</code> 选择 <code>Completion</code> 进行测试</li>
+</ul>
+<h2 id="微调模型">微调模型</h2>
+<ul>
+<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9odWdnaW5nZmFjZS5jby9kYXRhc2V0cy9hNjg2ZDM4MC9oLWNvcnB1cy0yMDIz" rel="noopener external nofollow noreferrer">h-corpus数据集</a></li>
+<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL1F3ZW5MTS9Rd2VuL2Jsb2IvbWFpbi9SRUFETUVfQ04ubWQjJUU1JUJFJUFFJUU4JUIwJTgz" rel="noopener external nofollow noreferrer">官方微调教程</a></li>
 </ul>
 
                 
@@ -346,8 +353,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【记录】Win10平台使用MLC-LLM编译Qwen-1.8B-Chat</div>
-      <div>https://hexo.limour.top/Compile-Qwen-1.8B-Chat-using-MLC-LLM-on-Win</div>
+      <div>【记录】win10平台6G显存运行Qwen-1.8B</div>
+      <div>https://hexo.limour.top/Running-Qwen-on-the-Win10-platform-with-6GB-of-video-memory</div>
     </div>
     <div class="license-meta">
       
@@ -359,7 +366,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>December 9, 2023</div>
+          <div>January 1, 2024</div>
         </div>
       
       
@@ -408,18 +415,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/Lightweight-personal-navigation-page-Flare" title="【记录】轻量个人导航页面 Flare">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【记录】轻量个人导航页面 Flare</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/Equivalent-operations-in-surgical-knot-tying" title="【探索】外科打结法中的等价操作">
-                        <span class="hidden-mobile">【探索】外科打结法中的等价操作</span>
+                      <a href="/Lightweight-personal-navigation-page-Flare" title="【记录】轻量个人导航页面 Flare">
+                        <span class="hidden-mobile">【记录】轻量个人导航页面 Flare</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

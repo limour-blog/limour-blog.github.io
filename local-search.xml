@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>【记录】win10平台6G显存运行Qwen-1.8B</title>
+    <link href="/Running-Qwen-on-the-Win10-platform-with-6GB-of-video-memory.html"/>
+    <url>/Running-Qwen-on-the-Win10-platform-with-6GB-of-video-memory.html</url>
+    
+    <content type="html"><![CDATA[Llama.cpp 能 CPU &amp; GPU 环境混合推理，这里记录一下在 windows10 平台上运行 Qwen-1.8B 的过程，显卡是 1660Ti 。准备模型安装condaTun模式(管理员权限)运行模型下载 llama-b1732-bin-win-cublas-cu12.2.0-x64.zip提取文件到 D:\llama访问  选择 Completion 进行测试微调模型h-corpus数据集官方微调教程]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>llama</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【记录】轻量个人导航页面 Flare</title>
     <link href="/Lightweight-personal-navigation-page-Flare.html"/>
     <url>/Lightweight-personal-navigation-page-Flare.html</url>
@@ -27,7 +46,7 @@
   
   
   <entry>
-    <title>【记录】Win上使用MLC-LLM编译Qwen-1.8B-Chat</title>
+    <title>【记录】Win10平台使用MLC-LLM编译Qwen-1.8B-Chat</title>
     <link href="/Compile-Qwen-1.8B-Chat-using-MLC-LLM-on-Win.html"/>
     <url>/Compile-Qwen-1.8B-Chat-using-MLC-LLM-on-Win.html</url>
     
