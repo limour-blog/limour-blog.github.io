@@ -8,7 +8,7 @@
     <link href="/Running-Qwen-on-the-Win10-platform-with-6GB-of-video-memory.html"/>
     <url>/Running-Qwen-on-the-Win10-platform-with-6GB-of-video-memory.html</url>
     
-    <content type="html"><![CDATA[Llama.cpp 能 CPU &amp; GPU 环境混合推理，这里记录一下在 windows10 平台上运行 Qwen-1.8B 的过程，显卡是 1660Ti 。准备模型安装condaTun模式(管理员权限)运行模型下载 llama-b1732-bin-win-cublas-cu12.2.0-x64.zip提取文件到 D:\llama访问  选择 Completion 进行测试微调模型h-corpus数据集官方微调教程]]></content>
+    <content type="html"><![CDATA[Llama.cpp 能 CPU &amp; GPU 环境混合推理，这里记录一下在 windows10 平台上运行 Qwen-1.8B 的过程，显卡是 1660Ti 。准备模型安装condaTun模式(管理员权限)运行模型下载 llama-b1732-bin-win-cublas-cu12.2.0-x64.zip提取文件到 D:\llama访问  选择 Completion 进行测试微调模型h-corpus数据集官方微调教程附加 Yi-6B-ChatYi-6B是零一万物开源的双语语言模型，经过3T多语种语料库的训练，在语言理解、常识推理、阅读理解等方面有一定潜力。]]></content>
     
     
     

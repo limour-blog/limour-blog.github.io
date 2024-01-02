@@ -245,7 +245,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          214 words
+          416 words
         
       </span>
     
@@ -256,7 +256,7 @@
         
         
         
-          2 mins
+          4 mins
         
       </span>
     
@@ -298,7 +298,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on January 1, 2024 am
+                    Last updated on January 2, 2024 am
                   
                 
               </p>
@@ -313,14 +313,14 @@
 <li><a href="/Use-Tunnel-to-speed-up-the-connection-of-VPS">Tun模式</a>(管理员权限)</li>
 </ul>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs powershell">conda create <span class="hljs-literal">-n</span> llamaConvert python=<span class="hljs-number">3.10</span> git <span class="hljs-literal">-c</span> conda<span class="hljs-literal">-forge</span><br>conda activate llamaConvert<br><span class="hljs-built_in">cd</span> D:\llama<br>git clone <span class="hljs-literal">--depth</span>=<span class="hljs-number">1</span> https://github.com/ggerganov/llama.cpp.git<br><span class="hljs-built_in">cd</span> llama.cpp<br>python <span class="hljs-literal">-m</span> pip install <span class="hljs-literal">-r</span> requirements.txt<br>pip install tiktoken<br></code></pre></td></tr></table></figure>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs powershell">python <span class="hljs-literal">-c</span> <span class="hljs-string">&quot;from huggingface_hub import snapshot_download; snapshot_download(repo_id=&#x27;Qwen/Qwen-1_8B-Chat&#x27;, local_dir=&#x27;D:\qwen&#x27;, ignore_patterns=[&#x27;*.h5&#x27;, &#x27;*.ot&#x27;, &#x27;*.msgpack&#x27;, &#x27;*.safetensors&#x27;])&quot;</span><br><span class="hljs-built_in">cd</span> D:\qwen<br>D:\aria2\aria2c.exe <span class="hljs-literal">--all-proxy</span>=<span class="hljs-string">&#x27;http://127.0.0.1:7890&#x27;</span> <span class="hljs-literal">-o</span> <span class="hljs-string">&#x27;model-00001-of-00002.safetensors&#x27;</span> <span class="hljs-string">&quot;https://huggingface.co/Qwen/Qwen-1_8B-Chat/resolve/main/model-00001-of-00002.safetensors?download=true&quot;</span><br>D:\aria2\aria2c.exe <span class="hljs-literal">--all-proxy</span>=<span class="hljs-string">&#x27;http://127.0.0.1:7890&#x27;</span> <span class="hljs-literal">-o</span> <span class="hljs-string">&#x27;model-00002-of-00002.safetensors&#x27;</span> <span class="hljs-string">&quot;https://huggingface.co/Qwen/Qwen-1_8B-Chat/resolve/main/model-00002-of-00002.safetensors?download=true&quot;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs powershell">python <span class="hljs-literal">-c</span> <span class="hljs-string">&quot;from huggingface_hub import snapshot_download; snapshot_download(repo_id=&#x27;Qwen/Qwen-1_8B-Chat&#x27;, local_dir=r&#x27;D:\qwen&#x27;, ignore_patterns=[&#x27;*.h5&#x27;, &#x27;*.ot&#x27;, &#x27;*.msgpack&#x27;, &#x27;*.safetensors&#x27;])&quot;</span><br><span class="hljs-built_in">cd</span> D:\qwen<br>D:\aria2\aria2c.exe <span class="hljs-literal">--all-proxy</span>=<span class="hljs-string">&#x27;http://127.0.0.1:7890&#x27;</span> <span class="hljs-literal">-o</span> <span class="hljs-string">&#x27;model-00001-of-00002.safetensors&#x27;</span> <span class="hljs-string">&quot;https://huggingface.co/Qwen/Qwen-1_8B-Chat/resolve/main/model-00001-of-00002.safetensors?download=true&quot;</span><br>D:\aria2\aria2c.exe <span class="hljs-literal">--all-proxy</span>=<span class="hljs-string">&#x27;http://127.0.0.1:7890&#x27;</span> <span class="hljs-literal">-o</span> <span class="hljs-string">&#x27;model-00002-of-00002.safetensors&#x27;</span> <span class="hljs-string">&quot;https://huggingface.co/Qwen/Qwen-1_8B-Chat/resolve/main/model-00002-of-00002.safetensors?download=true&quot;</span><br></code></pre></td></tr></table></figure>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">cd</span> D:\llama\llama.cpp<br>python <span class="hljs-built_in">convert-hf</span><span class="hljs-literal">-to-gguf</span>.py D:\qwen<br><span class="hljs-comment"># Model successfully exported to &#x27;D:\qwen\ggml-model-f16.gguf&#x27;</span><br></code></pre></td></tr></table></figure>
 <h2 id="运行模型">运行模型</h2>
 <ul>
 <li>下载 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL2dnZXJnYW5vdi9sbGFtYS5jcHAvcmVsZWFzZXM=" rel="noopener external nofollow noreferrer">llama-b1732-bin-win-cublas-cu12.2.0-x64.zip</a></li>
 <li>提取文件到 <code>D:\llama</code></li>
 </ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs powershell">conda create <span class="hljs-literal">-n</span> llamaCpp libcublas cuda<span class="hljs-literal">-toolkit</span> git <span class="hljs-literal">-c</span> nvidia <span class="hljs-literal">-c</span> conda<span class="hljs-literal">-forge</span><br>conda activate llamaCpp<br><span class="hljs-built_in">cd</span> D:\llama | .\main.exe <span class="hljs-comment">## 检查能否正确运行</span><br><span class="hljs-built_in">cd</span> D:\llama | .\quantize.exe <span class="hljs-literal">--help</span> <span class="hljs-comment">## 自己决定量化方式</span><br>.\quantize.exe D:\qwen\ggml<span class="hljs-literal">-model-f16</span>.gguf .\qwen<span class="hljs-literal">-1_8-f16</span>.gguf <span class="hljs-built_in">COPY</span><br>.\server.exe <span class="hljs-literal">-m</span> .\qwen<span class="hljs-literal">-1_8-f16</span>.gguf <span class="hljs-literal">-c</span> <span class="hljs-number">4096</span> <span class="hljs-literal">--n-gpu-layers</span> <span class="hljs-number">50</span> <span class="hljs-comment">## 调节 n-gpu-layers 平衡 CPU &amp; GPU</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs powershell">conda create <span class="hljs-literal">-n</span> llamaCpp libcublas cuda<span class="hljs-literal">-toolkit</span> git <span class="hljs-literal">-c</span> nvidia <span class="hljs-literal">-c</span> conda<span class="hljs-literal">-forge</span><br>conda activate llamaCpp<br><span class="hljs-built_in">cd</span> D:\llama ; .\main.exe <span class="hljs-comment">## 检查能否正确运行</span><br><span class="hljs-built_in">cd</span> D:\llama ; .\quantize.exe <span class="hljs-literal">--help</span> <span class="hljs-comment">## 自己决定量化方式</span><br>.\quantize.exe D:\qwen\ggml<span class="hljs-literal">-model-f16</span>.gguf .\qwen<span class="hljs-literal">-1_8-f16</span>.gguf <span class="hljs-built_in">COPY</span><br>.\server.exe <span class="hljs-literal">-m</span> .\qwen<span class="hljs-literal">-1_8-f16</span>.gguf <span class="hljs-literal">-c</span> <span class="hljs-number">4096</span> <span class="hljs-literal">--n-gpu-layers</span> <span class="hljs-number">50</span> <span class="hljs-comment">## 调节 n-gpu-layers 平衡 CPU &amp; GPU</span><br></code></pre></td></tr></table></figure>
 <ul>
 <li>访问 <code>http://127.0.0.1:8080</code> 选择 <code>Completion</code> 进行测试</li>
 </ul>
@@ -329,7 +329,10 @@
 <li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9odWdnaW5nZmFjZS5jby9kYXRhc2V0cy9hNjg2ZDM4MC9oLWNvcnB1cy0yMDIz" rel="noopener external nofollow noreferrer">h-corpus数据集</a></li>
 <li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL1F3ZW5MTS9Rd2VuL2Jsb2IvbWFpbi9SRUFETUVfQ04ubWQjJUU1JUJFJUFFJUU4JUIwJTgz" rel="noopener external nofollow noreferrer">官方微调教程</a></li>
 </ul>
-
+<h2 id="附加-Yi-6B-Chat">附加 Yi-6B-Chat</h2>
+<p><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9odWdnaW5nZmFjZS5jby8wMS1haS9ZaS02Qi1DaGF0" rel="noopener external nofollow noreferrer">Yi-6B</a>是零一万物开源的双语语言模型，经过3T多语种语料库的训练，在语言理解、常识推理、阅读理解等方面有一定潜力。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">cd</span> D:\models\<span class="hljs-number">01</span>yi<br>D:\aria2\aria2c.exe <span class="hljs-literal">--all-proxy</span>=<span class="hljs-string">&#x27;http://127.0.0.1:7890&#x27;</span> <span class="hljs-literal">-o</span> <span class="hljs-string">&#x27;model-00001-of-00003.safetensors&#x27;</span> <span class="hljs-string">&quot;https://huggingface.co/01-ai/Yi-6B-Chat/resolve/main/model-00001-of-00003.safetensors?download=true&quot;</span><br>D:\aria2\aria2c.exe <span class="hljs-literal">--all-proxy</span>=<span class="hljs-string">&#x27;http://127.0.0.1:7890&#x27;</span> <span class="hljs-literal">-o</span> <span class="hljs-string">&#x27;model-00002-of-00003.safetensors&#x27;</span> <span class="hljs-string">&quot;https://huggingface.co/01-ai/Yi-6B-Chat/resolve/main/model-00002-of-00003.safetensors?download=true&quot;</span><br>D:\aria2\aria2c.exe <span class="hljs-literal">--all-proxy</span>=<span class="hljs-string">&#x27;http://127.0.0.1:7890&#x27;</span> <span class="hljs-literal">-o</span> <span class="hljs-string">&#x27;model-00003-of-00003.safetensors&#x27;</span>  https://huggingface.co/<span class="hljs-number">01</span><span class="hljs-literal">-ai</span>/Yi<span class="hljs-literal">-6B-Chat</span>/resolve/main/model<span class="hljs-literal">-00003-of-00003</span>.safetensors?download=true<br>conda activate llamaConvert<br>python <span class="hljs-literal">-c</span> <span class="hljs-string">&quot;from huggingface_hub import snapshot_download; snapshot_download(repo_id=&#x27;01-ai/Yi-6B-Chat&#x27;, local_dir=r&#x27;D:\models\01yi&#x27;, ignore_patterns=[&#x27;*.h5&#x27;, &#x27;*.ot&#x27;, &#x27;*.msgpack&#x27;, &#x27;*.safetensors&#x27;])&quot;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs powershell">conda activate llamaConvert<br><span class="hljs-built_in">cd</span> D:\llama\llama.cpp<br>python3 convert.py D:\models\<span class="hljs-number">01</span>yi<br><span class="hljs-comment"># Wrote D:\models\01yi\ggml-model-f16.gguf</span><br>conda activate llamaCpp<br><span class="hljs-built_in">cd</span> D:\llama ; .\quantize.exe <span class="hljs-literal">--help</span><br>.\quantize.exe D:\models\<span class="hljs-number">01</span>yi\ggml<span class="hljs-literal">-model-f16</span>.gguf .\<span class="hljs-number">01</span>yi<span class="hljs-literal">-6b-Q4_K_M</span>.gguf Q4_K_M<br>.\server.exe <span class="hljs-literal">-m</span> .\<span class="hljs-number">01</span>yi<span class="hljs-literal">-6b-Q4_K_M</span>.gguf <span class="hljs-literal">-c</span> <span class="hljs-number">4096</span> <span class="hljs-literal">--n-gpu-layers</span> <span class="hljs-number">50</span><br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -372,7 +375,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>January 1, 2024</div>
+          <div>January 2, 2024</div>
         </div>
       
       
