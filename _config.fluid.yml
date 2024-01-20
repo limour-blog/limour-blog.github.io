@@ -343,13 +343,14 @@ navbar:
   # 导航栏菜单，可自行增减，key 用来关联 languages/*.yml，如不存在关联则显示 key 本身的值；icon 是 css class，可以省略；增加 name 可以强制显示指定名称
   # Navigation bar menu. `key` is used to associate languages/*.yml. If there is no association, the value of `key` itself will be displayed; if `icon` is a css class, it can be omitted; adding `name` can force the display of the specified name
   menu:
-    - { key: "Home", link: "/", icon: "iconfont icon-home-fill" }
+    - { key: "Home", link: "https://hexo.limour.top/", icon: "iconfont icon-home-fill" }
     - { key: "Archive1", link: "/archives/", icon: "iconfont icon-archive-fill" }
     - { key: "Archive2", link: "https://occdn.limour.top/archives/", icon: "iconfont icon-archive-fill" }
     - { key: "Archive3", link: "https://b.limour.top/archives/", icon: "iconfont icon-archive-fill" }
     - { key: "Alist", link: "https://od.limour.top/", icon: "iconfont icon-onedrive" }
     - { key: "Orcid", link: "https://orcid.org/0000-0001-8897-1685", icon: "iconfont icon-orcid" }
     - { key: "Links", link: "/links/", icon: "iconfont icon-link-fill" }
+    - { key: "RSS", link: "/atom.xml", icon: "iconfont icon-rss" }
 
 # 搜索功能，基于 hexo-generator-search 插件，若已安装其他搜索插件请关闭此功能，以避免生成多余的索引文件
 # Search feature, based on hexo-generator-search. If you have installed other search plugins, please disable this feature to avoid generating redundant index files
