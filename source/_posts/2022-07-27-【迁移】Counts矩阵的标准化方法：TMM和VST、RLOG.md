@@ -2,6 +2,7 @@
 title: 【迁移】Counts矩阵的标准化方法：TMM和VST、RLOG
 urlname: Counts-ju-zhen-de-biao-zhun-hua-fang-fa--TMM-he-VST-RLOG
 date: 2022-07-27 20:10:38
+index_img: https://api.limour.top/randomImg?d=2022-07-27 20:10:38
 tags: ['TMM', 'VST', 'RLOG']
 ---
 *   [TMM](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2010-11-3-r25)：The Trimmed Mean of M value by edgeR

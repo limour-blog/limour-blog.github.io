@@ -26,10 +26,10 @@ fs.readdirSync(postsFolder).forEach(file => {
             content = content.replace(metadata, updatedMetadata);
 
             // console.log(updatedMetadata);
-            console.log(content);
+            // console.log(content);
     
             // 将更新后的内容保存回原文件
-            // fs.writeFileSync(filePath, content, 'utf8');
+            fs.writeFileSync(filePath, content, 'utf8');
     
             console.log(`File updated: ${filePath}`);
         } else {

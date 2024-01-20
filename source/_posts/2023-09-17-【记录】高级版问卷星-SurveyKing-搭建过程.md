@@ -2,6 +2,7 @@
 title: 【记录】高级版问卷星 SurveyKing 搭建过程
 urlname: gao-ji-ban-wen-juan-xing--SurveyKing--da-jian-guo-cheng
 date: 2023-09-17 16:43:11
+index_img: https://api.limour.top/randomImg?d=2023-09-17 16:43:11
 tags: [docker, ngpm]
 ---
 问卷星的计算公式需要企业版，而开源的卷王也可以做到这一点，因此搭建卷王来替换掉问卷星。

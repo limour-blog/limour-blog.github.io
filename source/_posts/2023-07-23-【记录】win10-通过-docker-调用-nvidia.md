@@ -2,6 +2,7 @@
 title: 【记录】win10 通过 docker 调用 nvidia
 urlname: -ji-lu-win10-tong-guo-docker-diao-yong-nvidia
 date: 2023-07-23 20:25:19
+index_img: https://api.limour.top/randomImg?d=2023-07-23 20:25:19
 tags: ['win10', 'docker', 'nvidia', 'jupyter', 'torch']
 excerpt: 这段文字主要介绍了如何在Windows系统上安装和配置新版WSL（Windows Subsystem for Linux），以及安装Docker和使用GPU加速等内容。具体步骤包括访问商店获取WSL，安装Docker，关闭Hyper-V，开启虚拟化平台，启用Hyper-V和WSL等。然后介绍了如何安装WSL2、下载Docker Desktop、配置Docker镜像源等。最后还介绍了如何测试网络访问、安装和配置conda环境、启动Jupyter Notebook等操作。
 ---

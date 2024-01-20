@@ -2,6 +2,7 @@
 title: 【迁移】oligo：GEO/ArrayExpress芯片数据处理
 urlname: oligo-GEO-ArrayExpress-xin-pian-shu-ju-chu-li
 date: 2022-07-29 19:00:11
+index_img: https://api.limour.top/randomImg?d=2022-07-29 19:00:11
 tags: ['oligo', 'GEO', 'ArrayExpress']
 ---
 ## 安装依赖

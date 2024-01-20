@@ -2,6 +2,7 @@
 title: 【迁移】Docker部署Matrix-Dendrite
 urlname: Docker-bu-shu-Matrix-Dendrite
 date: 2022-12-06 23:30:12
+index_img: https://api.limour.top/randomImg?d=2022-12-06 23:30:12
 tags: ['docker', 'matrix', 'dendrite']
 ---
 # To generate keys

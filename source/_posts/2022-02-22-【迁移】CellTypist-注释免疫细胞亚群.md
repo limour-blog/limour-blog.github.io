@@ -2,6 +2,7 @@
 title: 【迁移】CellTypist 注释免疫细胞亚群
 urlname: -qian-yi-CellTypist-zhu-shi-mian-yi-xi-bao-ya-qun
 date: 2022-02-22 13:35:24
+index_img: https://api.limour.top/randomImg?d=2022-02-22 13:35:24
 tags: ['celltypist', '生信', '分群', '注释']
 excerpt: 安装CellTypist并配置环境，加载所需的包，加载数据，将Seurat对象转换为scanpy对象，对每个细胞进行观察，对基因矩阵进行注释，组装AnnData对象，进行预测，并将预测结果添加到Seurat对象中。
 ---

@@ -2,6 +2,7 @@
 title: 【迁移】Whisper搭配VoiceMeeter记录网课内容
 urlname: -Whisper-da-pei-VoiceMeeter-ji-lu-wang-ke-nei-rong
 date: 2023-03-16 21:02:17
+index_img: https://api.limour.top/randomImg?d=2023-03-16 21:02:17
 tags: ['Whisper', 'VoiceMeeter']
 ---
 由于网络环境、语音清晰度等问题，有时候我们可能会错过老师讲的重点内容。为了解决这个问题，我们可以使用OpenAI开源的自动语音识别系统Whisper，并结合虚拟声卡程序VoiceMeeter，来记录网课内容。这样一来，我们不仅可以随时回看老师的讲解，还可以对于不太清晰的语音进行识别，提高学习效率。

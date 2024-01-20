@@ -2,6 +2,7 @@
 title: 【迁移】Docker搭建vicuna
 urlname: -qian-yi--Docker-da-jian-vicuna
 date: 2023-05-07 19:50:52
+index_img: https://api.limour.top/randomImg?d=2023-05-07 19:50:52
 tags: ['docker', 'llama']
 ---
 + 项目地址：[llama-cpp-python](https://github.com/abetlen/llama-cpp-python/pkgs/container/llama-cpp-python)

@@ -2,6 +2,7 @@
 title: 【迁移】使用Bootstrap法计算自举置信区间
 urlname: shi-yong-Bootstrap-fa-ji-suan-zi-ju-zhi-xin-qu-jian
 date: 2022-09-27 19:25:08
+index_img: https://api.limour.top/randomImg?d=2022-09-27 19:25:08
 tags: Bootstrap
 ---
 

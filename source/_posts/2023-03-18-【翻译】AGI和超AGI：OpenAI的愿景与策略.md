@@ -2,6 +2,7 @@
 title: 【翻译】AGI和超AGI：OpenAI的愿景与策略
 urlname: -Planning-for-AGI-and-beyond
 date: 2023-03-18 20:51:59
+index_img: https://api.limour.top/randomImg?d=2023-03-18 20:51:59
 tags: ['OpenAI', 'translation']
 ---
 Our mission is to ensure that artificial general intelligence—AI systems that are generally smarter than humans—benefits all of humanity. 

@@ -2,6 +2,7 @@
 title: 【迁移】基于PaddleOCR的PDF转WORD
 urlname: -ji-yu-PaddleOCR-de-PDF-zhuan-WORD
 date: 2023-04-11 20:14:18
+index_img: https://api.limour.top/randomImg?d=2023-04-11 20:14:18
 tags: ['PaddleOCR', 'PDF', 'WORD']
 ---
 [PP-Structure](https://github.com/PaddlePaddle/PaddleOCR)是PaddleOCR团队自研的智能文档分析系统，旨在帮助开发者更好的完成版面分析、表格识别等文档理解相关任务。

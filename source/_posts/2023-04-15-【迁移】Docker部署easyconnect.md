@@ -2,6 +2,7 @@
 title: 【迁移】Docker部署easyconnect
 urlname: -Docker-bu-shu-easyconnect
 date: 2023-04-15 20:10:52
+index_img: https://api.limour.top/randomImg?d=2023-04-15 20:10:52
 tags: ['docker', 'easyconnect']
 ---
 深信服开发的非自由的 EasyConnect 代理软件就是依托答辩，想把它运行在 docker 中，并开放 Socks5 供宿主机连接以使用代理，保证不污染环境。使用的项目是 [Hagb/docker-easyconnect](https://github.com/Hagb/docker-easyconnect)

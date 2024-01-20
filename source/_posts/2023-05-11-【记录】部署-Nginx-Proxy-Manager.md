@@ -2,6 +2,7 @@
 title: 【记录】部署 Nginx Proxy Manager
 urlname: Docker-bu-shu-Nginx-Proxy-Manager
 date: 2023-05-11 19:08:03
+index_img: https://api.limour.top/randomImg?d=2023-05-11 19:08:03
 tags: ['docker', 'ngpm']
 ---
 [Nginx Proxy Manager](https://nginxproxymanager.com/guide)是一个预构建的Docker镜像，可以轻松地将您在家中或其他地方运行的网站转发到外部，并提供免费的SSL证书，无需了解太多关于Nginx或Letsencrypt的知识。在互联网日益普及的今天，使用本项目可以帮助您更加方便地管理和部署网站，同时也提高了您的网站的安全性。无论您是初学者还是有经验的开发人员，本项目都将为您提供便捷的使用体验。

@@ -2,6 +2,7 @@
 title: 【从零开始配置VPS】04：WordPress
 urlname: cong-ling-kai-shi-pei-zhi-VPS-WordPress
 date: 2023-01-04 23:13:52
+index_img: https://api.limour.top/randomImg?d=2023-01-04 23:13:52
 tags: 从零开始配置VPS
 ---
 ## MariaDB

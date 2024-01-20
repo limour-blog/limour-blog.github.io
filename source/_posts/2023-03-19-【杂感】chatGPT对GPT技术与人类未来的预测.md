@@ -2,6 +2,7 @@
 title: 【杂感】chatGPT对GPT技术与人类未来的预测
 urlname: -chatGPT-dui-GPT-ji-shu-yu-ren-lei-wei-lai-de-yu-ce
 date: 2023-03-19 20:38:39
+index_img: https://api.limour.top/randomImg?d=2023-03-19 20:38:39
 tags: 杂感
 ---
 {% note info %}

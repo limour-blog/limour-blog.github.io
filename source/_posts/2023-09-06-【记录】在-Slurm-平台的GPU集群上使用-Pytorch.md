@@ -2,6 +2,7 @@
 title: 【记录】在 Slurm 平台的GPU集群上使用 Pytorch
 urlname: -ji-lu--zai--Slurm--ping-tai-de-GPU-ji-qun-shang-shi-yong--Pytorch
 date: 2023-09-06 20:24:43
+index_img: https://api.limour.top/randomImg?d=2023-09-06 20:24:43
 tags: ['slurm', 'nvidia', 'torch']
 ---
 {% note info %}

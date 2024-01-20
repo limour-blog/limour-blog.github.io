@@ -2,6 +2,7 @@
 title: 【白嫖】使用 CloudFlare R2 搭建个人图床
 urlname: -bai-piao--shi-yong-CloudFlare-R2-da-jian-ge-ren-tu-chuang
 date: 2023-08-27 20:32:03
+index_img: https://api.limour.top/randomImg?d=2023-08-27 20:32:03
 tags: ['docker', 'ngpm', 'r2']
 excerpt: 这篇文章介绍了一个免费的云存储服务，它提供足够的存储空间和请求次数。用户可以自定义域名，并且无需额外配置CDN。文章还提供了创建存储桶、绑定域名、创建S3令牌、安装图床等步骤的详细说明。
 ---

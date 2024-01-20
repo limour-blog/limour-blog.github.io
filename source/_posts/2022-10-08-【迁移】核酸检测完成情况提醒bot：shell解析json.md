@@ -2,6 +2,7 @@
 title: 【迁移】核酸检测完成情况提醒bot：shell解析json
 urlname: -shell-jie-xi-json
 date: 2022-10-08 15:03:57
+index_img: https://api.limour.top/randomImg?d=2022-10-08 15:03:57
 tags: ['shell', 'json']
 ---
 

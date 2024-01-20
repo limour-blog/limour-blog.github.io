@@ -2,6 +2,7 @@
 title: 【复刻】在 replit 上搭建 WebProxy
 urlname: -fu-ke--zai-replit-shang-da-jian-WebProxy
 date: 2023-08-27 20:39:24
+index_img: https://api.limour.top/randomImg?d=2023-08-27 20:39:24
 tags: ['docker', 'webproxy', 'uptime']
 excerpt: moeyy 分享了在replit上搭建WebProxy的方法。首先需要fork项目hideipnetwork-web，然后修改认证。接下来运行并添加自定义域名。然后进行Uptime的部署和安装反代服务。最后是保持Uptime的活动状态。
 ---

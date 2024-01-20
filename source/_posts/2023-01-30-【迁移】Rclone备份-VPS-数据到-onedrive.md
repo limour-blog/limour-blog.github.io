@@ -2,6 +2,7 @@
 title: 【迁移】Rclone备份 VPS 数据到 onedrive
 urlname: Rclone-bei-fen-VPS-shu-ju-dao-onedrive
 date: 2023-01-30 23:00:16
+index_img: https://api.limour.top/randomImg?d=2023-01-30 23:00:16
 tags: ['rclone', 'onedrive']
 ---
 ## Rclone 挂载 onedrive

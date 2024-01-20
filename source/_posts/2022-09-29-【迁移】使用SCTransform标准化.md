@@ -2,6 +2,7 @@
 title: 【迁移】使用SCTransform标准化
 urlname: shi-yong-SCTransform-biao-zhun-hua
 date: 2022-09-29 17:32:00
+index_img: https://api.limour.top/randomImg?d=2022-09-29 17:32:00
 tags: SCTransform
 ---
 

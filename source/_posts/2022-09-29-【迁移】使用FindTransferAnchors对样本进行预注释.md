@@ -2,6 +2,7 @@
 title: 【迁移】使用FindTransferAnchors对样本进行预注释
 urlname: shi-yong-FindTransferAnchors-dui-yang-ben-jin-hang-yu-zhu-shi
 date: 2022-09-29 17:58:50
+index_img: https://api.limour.top/randomImg?d=2022-09-29 17:58:50
 tags: FindTransferAnchors
 ---
 

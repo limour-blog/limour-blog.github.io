@@ -2,6 +2,7 @@
 title: 【转载】Docker搭建MicroBin
 urlname: Docker-da-jian-MicroBin
 date: 2023-01-13 23:05:18
+index_img: https://api.limour.top/randomImg?d=2023-01-13 23:05:18
 tags: ['docker', 'ngpm']
 ---
 ```bash

@@ -2,6 +2,7 @@
 title: 【记录】使用 tdl 下载 Telegram 中的视频
 urlname: -ji-lu--shi-yong-tdl-xia-zai-Telegram-zhong-de-shi-pin
 date: 2023-07-19 20:16:50
+index_img: https://api.limour.top/randomImg?d=2023-07-19 20:16:50
 tags: ['tdl', 'telegram', '下载器']
 excerpt: iyear/tdl是一个Telegram下载器，具有单文件启动、低资源占用、吃满带宽、比官方客户端更快、支持从受保护的会话中下载文件和支持上传文件至Telegram等特点。安装时需要使用一键脚本，并且需要安装并登录Telegram客户端。登录后可以通过复制消息链接来下载文件，还可以使用命令恢复下载或重新下载。
 ---

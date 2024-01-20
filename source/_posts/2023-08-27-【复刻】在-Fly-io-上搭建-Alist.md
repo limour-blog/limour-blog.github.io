@@ -2,6 +2,7 @@
 title: 【复刻】在 Fly.io 上搭建 Alist
 urlname: -fu-ke--zai-Flyio-shang-da-jian-Alist
 date: 2023-08-27 20:46:29
+index_img: https://api.limour.top/randomImg?d=2023-08-27 20:46:29
 tags: alist
 excerpt: 在moeyy的教程《使用Fly.io部署Alist》完成后，还有一些优化体验的小细节需要注意。首先，需要获取管理员账号，可以使用命令"flyctl ssh console"来获取。接下来，需要更改静态资源地址，可以使用Cloudflare反代jsDelivr来实现。然后，需要新建一个Worker并替换其中的内容。最后，需要在AList管理页面中将所有的cdn.jsdelivr.net修改为自己反代的地址，并在Vercel上部署Waline来添加评论系统。
 ---
