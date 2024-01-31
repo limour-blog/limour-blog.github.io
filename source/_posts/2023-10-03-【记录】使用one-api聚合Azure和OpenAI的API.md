@@ -43,7 +43,36 @@ networks:
 
 ![](https://img.limour.top/2023/10/03/651c07ce6f9d2.webp)
 
-## 附加 部署Next-Web
+## 推荐 部署 SillyTavern
+```bash
+mkdir -p ~/app/sillytavern && cd ~/app/sillytavern && nano docker-compose.yml
+sudo docker-compose up -d
+sudo docker-compose logs
+nano config/config.yaml 
+# listen: true
+# whitelist:
+#   - 172.*.*.*
+sudo docker-compose restart
+sudo docker-compose logs
+# 反代 sillytavern:8080
+# Custom Endpoint (Base URL) 设置 http://one-api:3000/v1
+```
+```yml
+version: "3"
+services:
+  sillytavern:
+    image: ghcr.io/sillytavern/sillytavern:latest
+    volumes:
+      - "./config:/home/node/app/config"
+      - "./user:/home/node/app/public/user"
+    restart: unless-stopped
+ 
+networks:
+  default:
+    external: true
+    name: ngpm
+```
+## 附加 部署 Next-Web
 ```bash
 mkdir -p ~/app/next-web && cd ~/app/next-web && nano docker-compose.yml
 sudo docker-compose up -d
