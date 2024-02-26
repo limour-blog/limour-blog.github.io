@@ -69,3 +69,13 @@ rclone copy --ignore-existing --progress --ignore-errors img:limour-img ~/img-be
 cd ~/img-bed
 git add . && git commit -m 'backup' && git push -u origin main
 ```
+## 附加 图片预处理
++ [imagemagick](/WEBP-jie-tu-gong-ju-ShareX--imagemagick)
+```powershell
+D:\ImageMagick-7.1.1-Q16\magick.exe convert -resize 512x512^ -gravity North -extent 512x512 -quality 50 -define WebP:lossless=false F:\temp\randImg\*.jpg 26.wenbp
+# 顶部 -gravity North
+# 底部 -gravity South
+# 中间 -gravity center
+# 右侧 -gravity East
+# 左侧 -gravity West
+```
