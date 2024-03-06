@@ -37,7 +37,8 @@ services:
     image: teddysun/shadowsocks-libev
 ```
 ## 配置Tunnel
-+ 项目地址: [Github](https://github.com/zzzgydi/clash-verge); [Wiki](https://wiki.metacubex.one/config/); [Android](https://github.com/MetaCubeX/ClashMetaForAndroid)
++ 项目地址: [Github](https://github.com/clash-verge-rev/clash-verge-rev); [Wiki](https://wiki.metacubex.one/config/); [Android](https://github.com/MetaCubeX/ClashMetaForAndroid)
++ [GitHub 文件加速](/-fu-ke-GitHub-wen-jian-jia-su)
 + 新建规则-类型选`Local`-编辑文件，内容如下
 ```yml
 mixed-port: 7890
@@ -46,6 +47,18 @@ bind-address: '*'
 mode: rule
 log-level: info
 external-controller: :9090
+geodata-mode: true
+geox-url:
+  geoip: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat"
+  geosite: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+  mmdb: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb"
+geo-auto-update: true
+geo-update-interval: 120
+profile:
+  store-selected: true
+  store-fake-ip: true
+tcp-concurrent: true
+global-client-fingerprint: iOS
 dns:
   enable: true
   ipv6: false
@@ -80,10 +93,13 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 300
 proxy-groups:
-  - { name: PROXY, type: select, proxies: ["手动选择", "自建节点", "自动选择", DIRECT] }
-  - { name: "手动选择", type: select, use: [provider1, provider2], proxies: ["自动选择"] }
-  - { name: "自动选择", type: url-test, use: [provider1, provider2], url: 'https://www.gstatic.com/generate_204', interval: 3600 }
+  - { name: PROXY, type: select, proxies: ["手动选择", "自建节点", DIRECT] }
+  - { name: "手动选择", type: select, proxies: ["provider1", "provider2"] }
+  - { name: "provider1", type: select, use: [provider1] }
+  - { name: "provider2", type: select, use: [provider2] }
 rules:
+  - GEOSITE,CN,DIRECT
+  - GEOSITE,geolocation-!cn,PROXY
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
   - MATCH,PROXY
