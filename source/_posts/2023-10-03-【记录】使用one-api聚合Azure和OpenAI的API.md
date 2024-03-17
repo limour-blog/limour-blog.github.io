@@ -43,6 +43,10 @@ networks:
 
 ![](https://img.limour.top/2023/10/03/651c07ce6f9d2.webp)
 
+## 附加 关闭 Azure 筛选
++ 安装[油猴插件](https://greasyfork.org/zh-CN/scripts/489948-azure-openai-modified-filters-隐藏选项开放)
++ 去控制台新建一个筛选器，将筛选关闭，并开启异步筛选注释
++ 设置模型部署中模型的高级选项，切换筛选器为刚刚创建的筛选器
 ## 推荐 部署 SillyTavern
 ```bash
 mkdir -p ~/app/sillytavern && cd ~/app/sillytavern && nano docker-compose.yml
@@ -85,9 +89,9 @@ services:
     environment:
       - TZ=Asia/Shanghai
       - OPENAI_API_KEY=<one-api添加的令牌>
-      - BASE_URL=<one-api的反代地址>
+      - BASE_URL=http://one-api:3000/
       - HIDE_USER_API_KEY=1
-      - DISABLE_GPT4=1
+      - CUSTOM_MODELS=-all,+gpt-3.5-turbo,+gpt-4-turbo,+gpt-4-vision,+claude-3-sonnet,+claude-3-opus,+my-gemini-pro,+my-gemini-pro-vision,gpt-4-g,pplx-online
     restart: unless-stopped
 networks:
   default:
