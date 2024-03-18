@@ -72,10 +72,34 @@ git add . && git commit -m 'backup' && git push -u origin main
 ## 附加 图片预处理
 + [imagemagick](/WEBP-jie-tu-gong-ju-ShareX--imagemagick)
 ```powershell
-D:\ImageMagick-7.1.1-Q16\magick.exe convert -resize 512x512^ -gravity North -extent 512x512 -quality 50 -define WebP:lossless=false F:\temp\randImg\*.jpg 26.wenbp
+D:\ImageMagick-7.1.1-Q16\magick.exe convert -resize 512x512^ -gravity North -extent 512x512 -quality 50 -define WebP:lossless=false F:\temp\randImg\*.jpg 26.webp
 # 顶部 -gravity North
 # 底部 -gravity South
 # 中间 -gravity center
 # 右侧 -gravity East
 # 左侧 -gravity West
+```
+## 附加 旧图片归档
+```bash
+mkdir ~/img-bed
+apt install imagemagick
+convert -version
+# 6.9.11
+# 将 ~/app/Lsky/lsky-pro-data/storage/app/uploads 目录及其所有的子目录的 png 后缀的图片转换成 webp
+# 在保持目录结构不变的前提下，保存到 ~/img-bed 目录下
+# 非 png 的文件则直接复制
+find ~/app/Lsky/lsky-pro-data/storage/app/uploads -type f -name "*.png" -exec sh -c 'mkdir -p ~/img-bed/$(dirname {}); convert {} -quality 30 -define webp:lossless=false ~/img-bed/$(dirname {})/$(basename {} .png).webp' \;
+find ~/app/Lsky/lsky-pro-data/storage/app/uploads -type f ! -name "*.png" -exec sh -c 'mkdir -p ~/img-bed/$(dirname {}); cp {} ~/img-bed/$(dirname {})/$(basename {})' \;
+mv ~/img-bed/root/app/Lsky/lsky-pro-data/storage/app/* ~/img-bed & rm -rf ~/img-bed/root & mv ~/img-bed/uploads ~/img-bed/archives_2023
+```
++ [获取拥有读写权限的令牌](https://developers.cloudflare.com/r2/examples/rclone/)
+```bash
+rclone lsd img:limour-img
+rclone copy --ignore-existing --progress --ignore-errors ~/img-bed img:limour-img
+```
++ 修改原文章图片地址 `_posts` 目录
+```bash
+sed -i 's|https://img-cdn.limour.top/i/|https://img.limour.top/archives_2023/|g' *.md
+sed -i 's|https://img-cdn.limour.top/|https://img.limour.top/archives_2023/|g' *.md
+sed -i 's#https://img.limour.top/archives_2023/\(.*\)\.png#https://img.limour.top/archives_2023/\1.webp#g' *.md
 ```
