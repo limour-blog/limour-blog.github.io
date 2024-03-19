@@ -88,9 +88,7 @@ services:
     image: yidadaa/chatgpt-next-web:latest
     environment:
       - TZ=Asia/Shanghai
-      - OPENAI_API_KEY=<one-api添加的令牌>
       - BASE_URL=http://one-api:3000/
-      - HIDE_USER_API_KEY=1
       - CUSTOM_MODELS=-all,+gpt-3.5-turbo,+gpt-4-turbo,+gpt-4-vision,+claude-3-sonnet,+claude-3-opus,+my-gemini-pro,+my-gemini-pro-vision,gpt-4-g,pplx-online
     restart: unless-stopped
 networks:
@@ -99,7 +97,22 @@ networks:
     name: ngpm
 ```
 ![](https://img.limour.top/2023/10/03/651c368465000.webp)
-
++ [添加基本身份验证](/Docker-bu-shu-Nginx-Proxy-Manager.html#添加基本身份验证)
++ 修改 `/api/openai` 接口的 `header`
+```nginx
+chunked_transfer_encoding off;
+proxy_buffering off;
+proxy_cache off;
+set $next_header $http_authorization;
+if ($http_authorization = "Basic <用户1>"){
+set $next_header "Bearer <用户1的key>";
+}
+if ($http_authorization = "Basic <用户2>"){
+set $next_header "Bearer <用户2的key>";
+}
+proxy_set_header Authorization $next_header;
+```
+![](https://img.limour.top/2024/03/19/65f94b188381b.webp)
 ## 附加 搭建独角数卡
 + [反向代理](/Docker-bu-shu-Nginx-Proxy-Manager)
 + 账号：`admin`
