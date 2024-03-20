@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@traptitech/markdown-it-katex": "^3.6.0",
-    "hexo": "^7.0.0",
+    "hexo": "^7.1.1",
     "hexo-deployer-git": "^4.0.0",
     "hexo-filter-links": "^1.0.7",
     "hexo-generator-archive": "^2.0.0",
@@ -24,10 +24,10 @@
     "hexo-generator-sitemap": "^3.0.1",
     "hexo-generator-tag": "^2.0.0",
     "hexo-renderer-ejs": "^2.0.0",
-    "hexo-renderer-markdown-it": "^7.1.0",
+    "hexo-renderer-markdown-it": "^7.1.1",
     "hexo-renderer-pug": "^3.0.0",
-    "hexo-renderer-stylus": "^3.0.0",
+    "hexo-renderer-stylus": "^3.0.1",
     "hexo-server": "^3.0.0",
-    "hexo-theme-fluid": "^1.9.6"
+    "hexo-theme-fluid": "^1.9.7"
   }
 }
