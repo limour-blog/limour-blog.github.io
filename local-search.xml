@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>【记录】Linux 设置个人热点</title>
+    <link href="/Linux-Setting-AP.html"/>
+    <url>/Linux-Setting-AP.html</url>
+    
+    <content type="html"><![CDATA[实在受不了虚拟机的性能损失了，再加上 Win11 上跑虚拟机对 SSD 的损耗过大，因此还是将系统换成了 ubuntu，只要注意选无网络安装，不要去更新，基本还是很好换系统的。另外清华源不错！换系统后，需要重新折腾一下 AP 设置，因此记录一下折腾过程。无线网卡是垃圾的 mediatek mt7921e更新内核因为网卡垃圾，不得不更新到最新的内核才支持 AP 设置解决 53 端口占用安装 create_ap测试 create_ap启用 create_ap增加稳定性踩坑花絮lnxrouter 虽然在 create_ap 上进行了更新，但是实际体验在所有信道上都报错，折腾了半天，放弃搜到一些老旧的教程，自己去折腾 hostapd，然后自己去配置网桥的时候把服务器弄断网好几次，不得不到处找显示器和键盘收获教训：没事别碰 /etc/netplan/00-installer-config.yaml，特别是没显示器和键盘的时候获取网卡型号和驱动型号，查看支持的信道另外新内核似乎不需要 haveged 来增加熵了]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>ubuntu</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【探索】暴力计算临床研究的样本量</title>
     <link href="/Sample-size-calculation-for-survival-analysis-in-clinical-research.html"/>
     <url>/Sample-size-calculation-for-survival-analysis-in-clinical-research.html</url>

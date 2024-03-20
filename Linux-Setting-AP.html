@@ -18,11 +18,11 @@
   <meta name="author" content="Limour">
   <meta name="keywords" content="">
   
-    <meta name="description" content="123456&amp;lt;IfModule mod_substitute.c&amp;gt;  &amp;lt;Location /&amp;gt;    AddOutputFilterByType SUBSTITUTE text/html    Substitute s/jscdn.limour.top/jscdn.limour.top/ni  &amp;lt;/Location&amp;gt;&amp;lt;/IfModule&amp;gt; 12345">
+    <meta name="description" content="实在受不了虚拟机的性能损失了，再加上 Win11 上跑虚拟机对 SSD 的损耗过大，因此还是将系统换成了 ubuntu，只要注意选无网络安装，不要去更新，基本还是很好换系统的。另外清华源不错！ 换系统后，需要重新折腾一下 AP 设置，因此记录一下折腾过程。 无线网卡是垃圾的 mediatek mt7921e 更新内核 因为网卡垃圾，不得不更新到最新的内核才支持 AP 设置 1234567proxy">
   
   
   
-  <title>【从零开始配置VPS】09：替换网站页面中的关键词 - Limour&#39;s Blog</title>
+  <title>【记录】Linux 设置个人热点 - Limour&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://jscdn.limour.top/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
 
@@ -229,7 +229,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">【从零开始配置VPS】09：替换网站页面中的关键词</span>
+            <span id="subtitle">【记录】Linux 设置个人热点</span>
           
         </div>
 
@@ -245,8 +245,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-01-30 22:56" pubdate>
-          January 30, 2023 pm
+        <time datetime="2024-03-20 19:52" pubdate>
+          March 20, 2024 pm
         </time>
       </span>
     
@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          55 words
+          479 words
         
       </span>
     
@@ -268,7 +268,7 @@
         
         
         
-          1 mins
+          4 mins
         
       </span>
     
@@ -305,12 +305,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">【从零开始配置VPS】09：替换网站页面中的关键词</h1>
+            <h1 id="seo-header">【记录】Linux 设置个人热点</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on March 19, 2024 pm
+                    Last updated on March 20, 2024 pm
                   
                 
               </p>
@@ -318,8 +318,40 @@
             
               <div class="markdown-body">
                 
-                <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs apache2">&lt;IfModule mod_substitute.c&gt;<br>  &lt;Location /&gt;<br>    AddOutputFilterByType SUBSTITUTE text/html<br>    Substitute s/jscdn.limour.top/jscdn.limour.top/ni<br>  &lt;/Location&gt;<br>&lt;/IfModule&gt;<br></code></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> ~/app/WordPress<br>nano jscdn.conf<br>sudo docker <span class="hljs-built_in">cp</span> ./jscdn.conf \<br> wordpress-wordpress-1:/etc/apache2/conf-enabled/jscdn.conf<br> <br>sudo docker <span class="hljs-built_in">exec</span> -it wordpress-wordpress-1 \<br><span class="hljs-built_in">cp</span> /etc/apache2/mods-available/substitute.load \<br>/etc/apache2/mods-enabled/substitute.load <br> <br>sudo docker-compose restart<br></code></pre></td></tr></table></figure>
+                <p>实在受不了虚拟机的性能损失了，再加上 Win11 上跑虚拟机对 SSD 的损耗过大，因此还是将系统换成了 ubuntu，只要注意选无网络安装，不要去更新，基本还是很好换系统的。另外清华源不错！</p>
+<p>换系统后，需要<a href="/Win11-she-zhi-kai-ji-qi-dong-yi-dong-re-dian">重新折腾一下 AP 设置</a>，因此记录一下折腾过程。</p>
+<p>无线网卡是垃圾的 <code>mediatek mt7921e</code></p>
+<h2 id="更新内核">更新内核</h2>
+<p>因为网卡垃圾，不得不更新到最新的内核才支持 AP 设置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">proxychains wget https://raw.githubusercontent.com/pimlie/ubuntu-mainline-kernel.sh/master/ubuntu-mainline-kernel.sh<br><span class="hljs-built_in">chmod</span> +x ubuntu-mainline-kernel.sh<br>sudo gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv 17C622B0  <span class="hljs-comment"># 网络错误，需要绕过某个东西</span><br>sudo proxychains ./ubuntu-mainline-kernel.sh -i<br>sudo reboot<br><span class="hljs-built_in">uname</span> -r<br>sudo apt --fix-broken install<br></code></pre></td></tr></table></figure>
+<h2 id="解决-53-端口占用">解决 53 端口占用</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo systemctl stop systemd-resolved<br>sudo nano /etc/systemd/resolved.conf<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs conf">[Resolve]<br>DNS=8.8.8.8         #取消注释，增加dns<br>DNSStubListener=no    #取消注释，把yes改为no<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">ln</span> -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf<br></code></pre></td></tr></table></figure>
+<h2 id="安装-create-ap">安装 create_ap</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /dev/shm/<br>proxychains git <span class="hljs-built_in">clone</span> https://github.com/oblique/create_ap<br><span class="hljs-built_in">cd</span> create_ap<br>sudo make install<br>sudo apt-get install util-linux procps hostapd iproute2 iw haveged dnsmasq<br></code></pre></td></tr></table></figure>
+<h2 id="测试-create-ap">测试 create_ap</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo create_ap wlp2s0 enp1s0 ser5 &lt;密码&gt; --country CN -c 157 --freq-band 5 --no-virt<br></code></pre></td></tr></table></figure>
+<h2 id="启用-create-ap">启用 create_ap</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">nano create_ap.service<br>sudo <span class="hljs-built_in">mv</span> create_ap.service /etc/systemd/system/create_ap.service<br>sudo systemctl <span class="hljs-built_in">enable</span> create_ap<br>sudo systemctl start create_ap<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs conf">[Unit]<br>Description=create_ap<br>After=network.target docker.service<br>[Service]<br>ExecStart=/usr/bin/create_ap wlp2s0 enp1s0 ser5 &lt;密码&gt; --country CN -c 157 --freq-band 5 --no-virt<br>ExecReload=/bin/kill -HUP $MAINPID<br>Restart=on-failure<br>[Install]<br>WantedBy=multi-user.target<br></code></pre></td></tr></table></figure>
+<h2 id="增加稳定性">增加稳定性</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo crontab -e<br><span class="hljs-comment"># 5 4 * * * /usr/bin/systemctl restart create_ap</span><br></code></pre></td></tr></table></figure>
+<h2 id="踩坑花絮">踩坑花絮</h2>
+<ul>
+<li><code>lnxrouter</code> 虽然在 <code>create_ap</code> 上进行了更新，但是实际体验在所有信道上都报错，折腾了半天，放弃</li>
+<li>搜到一些老旧的教程，自己去折腾 <code>hostapd</code>，然后自己去配置网桥的时候把服务器弄断网好几次，不得不到处找显示器和键盘</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo su<br><span class="hljs-built_in">cat</span> &lt;&lt; <span class="hljs-string">EOF &gt; /etc/hostapd/hostapd.conf</span><br><span class="hljs-string">interface=wlp2s0</span><br><span class="hljs-string">bridge=br-ap</span><br><span class="hljs-string">driver=nl80211</span><br><span class="hljs-string">ssid=ser5</span><br><span class="hljs-string">hw_mode=a</span><br><span class="hljs-string">channel=165</span><br><span class="hljs-string">country_code=CN</span><br><span class="hljs-string">macaddr_acl=0</span><br><span class="hljs-string">auth_algs=3</span><br><span class="hljs-string">wpa=2</span><br><span class="hljs-string">wpa_passphrase=&lt;密码&gt;</span><br><span class="hljs-string">wpa_key_mgmt=WPA-PSK</span><br><span class="hljs-string">wpa_pairwise=TKIP CCMP</span><br><span class="hljs-string">rsn_pairwise=TKIP CCMP</span><br><span class="hljs-string">EOF</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>收获教训：没事别碰 <code>/etc/netplan/00-installer-config.yaml</code>，特别是没显示器和键盘的时候</li>
+<li>获取网卡型号和驱动型号，查看支持的信道</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo ethtool -i wlp2s0<br>sudo lspci -nn | grep <span class="hljs-string">&quot;Network&quot;</span><br>iwlist wlp2s0 channel<br></code></pre></td></tr></table></figure>
+<ul>
+<li>另外新内核似乎不需要 <code>haveged</code> 来增加熵了</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> /proc/sys/kernel/random/entropy_avail<br>systemctl status haveged <br>apt install haveged<br>systemctl <span class="hljs-built_in">enable</span> haveged<br>systemctl start haveged<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -331,7 +363,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%85%8D%E7%BD%AEVPS/" class="print-no-link">#从零开始配置VPS</a>
+        <a href="/tags/ubuntu/" class="print-no-link">#ubuntu</a>
       
     </div>
   
@@ -343,8 +375,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【从零开始配置VPS】09：替换网站页面中的关键词</div>
-      <div>https://hexo.limour.top/ti-huan-wang-zhan-ye-mian-zhong-de-guan-jian-ci</div>
+      <div>【记录】Linux 设置个人热点</div>
+      <div>https://hexo.limour.top/Linux-Setting-AP</div>
     </div>
     <div class="license-meta">
       
@@ -356,13 +388,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>January 30, 2023</div>
+          <div>March 20, 2024</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>March 19, 2024</div>
+          <div>March 20, 2024</div>
         </div>
       
       
@@ -405,18 +437,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/Rclone-bei-fen-VPS-shu-ju-dao-onedrive" title="【迁移】Rclone备份 VPS 数据到 onedrive">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【迁移】Rclone备份 VPS 数据到 onedrive</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/Docker-da-jian-MicroBin" title="【转载】Docker搭建MicroBin">
-                        <span class="hidden-mobile">【转载】Docker搭建MicroBin</span>
+                      <a href="/Sample-size-calculation-for-survival-analysis-in-clinical-research" title="【探索】暴力计算临床研究的样本量">
+                        <span class="hidden-mobile">【探索】暴力计算临床研究的样本量</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
