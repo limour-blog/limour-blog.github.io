@@ -47,6 +47,51 @@ networks:
 + 安装[油猴插件](https://greasyfork.org/zh-CN/scripts/489948-azure-openai-modified-filters-隐藏选项开放)
 + 去控制台新建一个筛选器，将筛选关闭，并开启异步筛选注释
 + 设置模型部署中模型的高级选项，切换筛选器为刚刚创建的筛选器
+
+## 附加 Amazon Bedrock
++ [申请模型访问权限](https://us-west-2.console.aws.amazon.com/bedrock/home)
++ [添加 Access key](https://us-east-1.console.aws.amazon.com/iam/home)
++ [litellm 文档](https://docs.litellm.ai/docs/providers/bedrock)
+```bash
+mkdir -p ~/app/litellm && cd ~/app/litellm && nano docker-compose.yml
+```
+```yml
+version: "3.9"
+services:
+  litellm:
+    image: ghcr.io/berriai/litellm:main-latest
+    volumes:
+      - ./proxy_server_config.yaml:/app/proxy_server_config.yaml # mount your litellm config.yaml
+    environment:
+      - AWS_ACCESS_KEY_ID=<ACCESS_KEY>
+      - AWS_SECRET_ACCESS_KEY=<SECRET_ACCESS_KEY>
+      - AWS_REGION_NAME=us-west-2
+    restart: unless-stopped
+      
+networks:
+  default:
+    external: true
+    name: ngpm
+```
+```bash
+wget https://github.com/BerriAI/litellm/raw/main/proxy_server_config.yaml
+# 修改 master_key 和 model_list
+```
+```yml
+model_list:
+  - model_name: bedrock-claude-haiku
+    litellm_params:
+      model: bedrock/anthropic.claude-3-haiku-20240307-v1:0
+	  
+general_settings: 
+  master_key: sk-1234
+```
+```bash
+sudo docker-compose up -d
+```
++ `one-api` 添加渠道
+![](https://img.limour.top/2024/03/20/65fafdb83df04.webp)
+
 ## 推荐 部署 SillyTavern
 ```bash
 mkdir -p ~/app/sillytavern && cd ~/app/sillytavern && nano docker-compose.yml
