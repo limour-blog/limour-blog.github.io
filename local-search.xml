@@ -346,7 +346,7 @@
     <link href="/Aggregating-Azure-and-OpenAI-APIs-with-OneAPI.html"/>
     <url>/Aggregating-Azure-and-OpenAI-APIs-with-OneAPI.html</url>
     
-    <content type="html"><![CDATA[One-api 是 OpenAI 接口管理 &amp; 分发系统，支持Azure、Anthropic Claude、Google PaLM 2、智谱 ChatGLM、百度文心一言、讯飞星火认知、阿里通义千问、360 智脑以及腾讯混元，可用于二次分发管理 key。在负载均衡的同时，有效避免了key的泄露风险部署 One-api反向代理账号：root密码：123456客户端ChatGPT-Next-Web沉浸式翻译Jupyter-ai在 令牌 中新建一个令牌，端点填反代的地址新建渠道Azure 需要确保部署模型的名称是 gpt-35-turbo可以将 one-api 本身当一个渠道进行套娃在 日志 里可以看到对不同渠道进行了负载均衡附加 关闭 Azure 筛选安装油猴插件去控制台新建一个筛选器，将筛选关闭，并开启异步筛选注释设置模型部署中模型的高级选项，切换筛选器为刚刚创建的筛选器推荐 部署 SillyTavern附加 部署 Next-Web添加基本身份验证修改 /api/openai 接口的 header附加 搭建独角数卡反向代理账号：admin密码：admin数据库地址填 shop-dbRedis地址 填 shop-redis]]></content>
+    <content type="html"><![CDATA[One-api 是 OpenAI 接口管理 &amp; 分发系统，支持Azure、Anthropic Claude、Google PaLM 2、智谱 ChatGLM、百度文心一言、讯飞星火认知、阿里通义千问、360 智脑以及腾讯混元，可用于二次分发管理 key。在负载均衡的同时，有效避免了key的泄露风险部署 One-api反向代理账号：root密码：123456客户端ChatGPT-Next-Web沉浸式翻译Jupyter-ai在 令牌 中新建一个令牌，端点填反代的地址新建渠道Azure 需要确保部署模型的名称是 gpt-35-turbo可以将 one-api 本身当一个渠道进行套娃在 日志 里可以看到对不同渠道进行了负载均衡附加 关闭 Azure 筛选安装油猴插件去控制台新建一个筛选器，将筛选关闭，并开启异步筛选注释设置模型部署中模型的高级选项，切换筛选器为刚刚创建的筛选器附加 Amazon Bedrock申请模型访问权限添加 Access keylitellm 文档one-api 添加渠道推荐 部署 SillyTavern附加 部署 Next-Web添加基本身份验证修改 /api/openai 接口的 header附加 搭建独角数卡反向代理账号：admin密码：admin数据库地址填 shop-dbRedis地址 填 shop-redis]]></content>
     
     
     

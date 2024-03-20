@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          839 words
+          939 words
         
       </span>
     
@@ -268,7 +268,7 @@
         
         
         
-          7 mins
+          8 mins
         
       </span>
     
@@ -310,7 +310,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on March 19, 2024 pm
+                    Last updated on March 20, 2024 pm
                   
                 
               </p>
@@ -350,6 +350,21 @@
 <li>安装<a href="https://hexo.limour.top/go/#aHR0cHM6Ly9ncmVhc3lmb3JrLm9yZy96aC1DTi9zY3JpcHRzLzQ4OTk0OC1henVyZS1vcGVuYWktbW9kaWZpZWQtZmlsdGVycy0lRTklOUElOTAlRTglOTclOEYlRTklODAlODklRTklQTElQjklRTUlQkMlODAlRTYlOTQlQkU=" rel="noopener external nofollow noreferrer">油猴插件</a></li>
 <li>去控制台新建一个筛选器，将筛选关闭，并开启异步筛选注释</li>
 <li>设置模型部署中模型的高级选项，切换筛选器为刚刚创建的筛选器</li>
+</ul>
+<h2 id="附加-Amazon-Bedrock">附加 Amazon Bedrock</h2>
+<ul>
+<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly91cy13ZXN0LTIuY29uc29sZS5hd3MuYW1hem9uLmNvbS9iZWRyb2NrL2hvbWU=" rel="noopener external nofollow noreferrer">申请模型访问权限</a></li>
+<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly91cy1lYXN0LTEuY29uc29sZS5hd3MuYW1hem9uLmNvbS9pYW0vaG9tZQ==" rel="noopener external nofollow noreferrer">添加 Access key</a></li>
+<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9kb2NzLmxpdGVsbG0uYWkvZG9jcy9wcm92aWRlcnMvYmVkcm9jaw==" rel="noopener external nofollow noreferrer">litellm 文档</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/app/litellm &amp;&amp; <span class="hljs-built_in">cd</span> ~/app/litellm &amp;&amp; nano docker-compose.yml<br></code></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&quot;3.9&quot;</span><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">litellm:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">ghcr.io/berriai/litellm:main-latest</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./proxy_server_config.yaml:/app/proxy_server_config.yaml</span> <span class="hljs-comment"># mount your litellm config.yaml</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">AWS_ACCESS_KEY_ID=&lt;ACCESS_KEY&gt;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">AWS_SECRET_ACCESS_KEY=&lt;SECRET_ACCESS_KEY&gt;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">AWS_REGION_NAME=us-west-2</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">unless-stopped</span><br>      <br><span class="hljs-attr">networks:</span><br>  <span class="hljs-attr">default:</span><br>    <span class="hljs-attr">external:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">ngpm</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget https://github.com/BerriAI/litellm/raw/main/proxy_server_config.yaml<br><span class="hljs-comment"># 修改 master_key 和 model_list</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">model_list:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-attr">model_name:</span> <span class="hljs-string">bedrock-claude-haiku</span><br>    <span class="hljs-attr">litellm_params:</span><br>      <span class="hljs-attr">model:</span> <span class="hljs-string">bedrock/anthropic.claude-3-haiku-20240307-v1:0</span><br>	  <br><span class="hljs-attr">general_settings:</span> <br>  <span class="hljs-attr">master_key:</span> <span class="hljs-string">sk-1234</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo docker-compose up -d<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>one-api</code> 添加渠道<br>
+<img src="https://img.limour.top/2024/03/20/65fafdb83df04.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></li>
 </ul>
 <h2 id="推荐-部署-SillyTavern">推荐 部署 SillyTavern</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/app/sillytavern &amp;&amp; <span class="hljs-built_in">cd</span> ~/app/sillytavern &amp;&amp; nano docker-compose.yml<br>sudo docker-compose up -d<br>sudo docker-compose logs<br>nano config/config.yaml <br><span class="hljs-comment"># listen: true</span><br><span class="hljs-comment"># whitelist:</span><br><span class="hljs-comment">#   - 172.*.*.*</span><br>sudo docker-compose restart<br>sudo docker-compose logs<br><span class="hljs-comment"># 反代 sillytavern:8080</span><br><span class="hljs-comment"># Custom Endpoint (Base URL) 设置 http://one-api:3000/v1</span><br></code></pre></td></tr></table></figure>
@@ -425,7 +440,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>March 19, 2024</div>
+          <div>March 20, 2024</div>
         </div>
       
       
