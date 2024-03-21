@@ -45,6 +45,18 @@ sudo docker-compose up -d
 ![](https://img.limour.top/2023/08/30/64ef2428d820f.webp)
 1. 添加证书时选择 DNS验证，填入记录下的dns_cloudflare_api_token
 ![](https://img.limour.top/2023/08/30/64ef24437ea60.webp)
+## 开启 Gzip 压缩
+```bash
+cd ~/base/NGPM && mkdir -p data/nginx/custom
+cat << EOF > data/nginx/custom/server_proxy.conf
+gzip on;
+gzip_min_length 256;
+gzip_comp_level 9;
+gzip_types *;
+gzip_vary on;
+gzip_buffers 32 4k;
+EOF
+```
 ## 添加基本身份验证
 1. 添加 Access List
 ![](https://img.limour.top/2023/08/30/64ef246139917.webp)
