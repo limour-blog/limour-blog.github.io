@@ -136,3 +136,12 @@ git fetch --depth=1 -f && git reset --hard origin/gh-pages
     return str && str.replace(/[\x00-\x1F\x7F]/g, '').replace(/<figure class="highlight.*?<\/figure>/ig, '').replace(/(<([^>]+)>)/ig, '').replace(/(https?:\/\/[^\s]+)/ig, '');
   });
 ```
+```js
+  env.addFilter('urlJoin', function(str) {
+    const base = str[0];
+    const relative = str[1].replace(/\.html$/g, '');
+    return relative
+      ? base.replace(/\/+$/, '') + '/' + relative.replace(/^\/+/, '')
+      : base;
+  });
+```
