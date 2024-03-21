@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          684 words
+          711 words
         
       </span>
     
@@ -310,7 +310,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on March 19, 2024 pm
+                    Last updated on March 22, 2024 am
                   
                 
               </p>
@@ -336,6 +336,8 @@
 <li>添加证书时选择 DNS验证，填入记录下的dns_cloudflare_api_token<br>
 <img src="https://img.limour.top/2023/08/30/64ef24437ea60.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></li>
 </ol>
+<h2 id="开启-Gzip-压缩">开启 Gzip 压缩</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> ~/base/NGPM &amp;&amp; <span class="hljs-built_in">mkdir</span> -p data/nginx/custom<br><span class="hljs-built_in">cat</span> &lt;&lt; <span class="hljs-string">EOF &gt; data/nginx/custom/server_proxy.conf</span><br><span class="hljs-string">gzip on;</span><br><span class="hljs-string">gzip_min_length 256;</span><br><span class="hljs-string">gzip_comp_level 9;</span><br><span class="hljs-string">gzip_types *;</span><br><span class="hljs-string">gzip_vary on;</span><br><span class="hljs-string">gzip_buffers 32 4k;</span><br><span class="hljs-string">EOF</span><br></code></pre></td></tr></table></figure>
 <h2 id="添加基本身份验证">添加基本身份验证</h2>
 <ol>
 <li>添加 Access List<br>
@@ -412,7 +414,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>March 19, 2024</div>
+          <div>March 22, 2024</div>
         </div>
       
       

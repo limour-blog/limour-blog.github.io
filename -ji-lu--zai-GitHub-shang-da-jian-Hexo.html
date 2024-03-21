@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          662 words
+          694 words
         
       </span>
     
@@ -310,7 +310,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on March 19, 2024 pm
+                    Last updated on March 22, 2024 am
                   
                 
               </p>
@@ -404,6 +404,7 @@
 <li>修改<code>node_modules/hexo-theme-fluid/scripts/generators/local-search.js</code>文件</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">env.<span class="hljs-title function_">addFilter</span>(<span class="hljs-string">&#x27;noControlChars&#x27;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params">str</span>) &#123;<br>  <span class="hljs-comment">// eslint-disable-next-line no-control-regex</span><br>  <span class="hljs-keyword">return</span> str &amp;&amp; str.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/[\x00-\x1F\x7F]/g</span>, <span class="hljs-string">&#x27;&#x27;</span>).<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/&lt;figure class=&quot;highlight.*?&lt;\/figure&gt;/ig</span>, <span class="hljs-string">&#x27;&#x27;</span>).<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/(&lt;([^&gt;]+)&gt;)/ig</span>, <span class="hljs-string">&#x27;&#x27;</span>).<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/(https?:\/\/[^\s]+)/ig</span>, <span class="hljs-string">&#x27;&#x27;</span>);<br>&#125;);<br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js">env.<span class="hljs-title function_">addFilter</span>(<span class="hljs-string">&#x27;urlJoin&#x27;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params">str</span>) &#123;<br>  <span class="hljs-keyword">const</span> base = str[<span class="hljs-number">0</span>];<br>  <span class="hljs-keyword">const</span> relative = str[<span class="hljs-number">1</span>].<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/\.html$/g</span>, <span class="hljs-string">&#x27;&#x27;</span>);<br>  <span class="hljs-keyword">return</span> relative<br>    ? base.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/\/+$/</span>, <span class="hljs-string">&#x27;&#x27;</span>) + <span class="hljs-string">&#x27;/&#x27;</span> + relative.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/^\/+/</span>, <span class="hljs-string">&#x27;&#x27;</span>)<br>    : base;<br>&#125;);<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -448,7 +449,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>March 19, 2024</div>
+          <div>March 22, 2024</div>
         </div>
       
       
