@@ -886,7 +886,7 @@
     <link href="/-ji-lu--an-zhuang-npsfrp-fu-wu-duan-yu-ke-hu-duan"/>
     <url>/-ji-lu--an-zhuang-npsfrp-fu-wu-duan-yu-ke-hu-duan</url>
     
-    <content type="html"><![CDATA[安装nps服务端安装 Nginx Proxy Manager项目地址 yisier/nps客户端临时客户端安装 frp服务端客户端安装 ServerStatus服务端客户端]]></content>
+    <content type="html"><![CDATA[安装nps服务端安装 Nginx Proxy Manager项目地址 yisier/nps安全组放行 8025 端口客户端临时客户端安装 frp (过时)服务端客户端安装 ServerStatus服务端客户端]]></content>
     
     
     
