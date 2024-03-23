@@ -507,7 +507,7 @@
     <link href="/-ji-lu--da-jian-RSS-yue-du-qi-Miniflux"/>
     <url>/-ji-lu--da-jian-RSS-yue-du-qi-Miniflux</url>
     
-    <content type="html"><![CDATA[基于 php 的 TTRSS 虽然好用，但是确实太缓慢了。因此更换使用 Go 写的 RSS 阅读器 Miniflux。数据库依然用 Supabase。搭建 Miniflux搭建反代服务器开启 Fever API设置 - 集成 - Fever 里开启FeedMe 登录方式和用  TTRSS 一样]]></content>
+    <content type="html"><![CDATA[基于 php 的 TTRSS 虽然好用，但是确实太缓慢了。因此更换使用 Go 写的 RSS 阅读器 Miniflux。搭建 Miniflux搭建反代服务器附加 Rss-TranslationRss-Translation 可以翻译订阅源]]></content>
     
     
     
@@ -612,7 +612,7 @@
     <link href="/-ji-lu-TTRSS-shi-yong-Supabase-zuo-shu-ju-ku"/>
     <url>/-ji-lu-TTRSS-shi-yong-Supabase-zuo-shu-ju-ku</url>
     
-    <content type="html"><![CDATA[Supabase 是BaaS 的平台之一，可以提供 PostgresSQL 数据库；TTRSS 是一款基于 PHP 的免费开源 RSS 聚合阅读器，可以搭建在小鸡上。使用 Supabase 做 TTRSS 的数据库，既能减轻小鸡的压力，也能避免小鸡跑路后数据火葬场。创建数据库地区选离自己小鸡近的，比如圣何塞的免费龟壳就选美西进项目的设置页面，记录下数据库的连接信息搭建 TTRSS搭建反代服务使用 FeedMeFeedMe 是一个用于 RSS 服务的安卓端阅读器。TTRSS 偏好设置里启用API登录方式选 Fever 而非 TTRSSAPI 端点是  没有 .localFeedMe 设置里开启墨水屏优化，查看里设置布局为卡片，效果如下附加项搭建 RSSHub本地部署 PostgresSQL 数据库创建新数据库]]></content>
+    <content type="html"><![CDATA[Supabase 是BaaS 的平台之一，可以提供 PostgresSQL 数据库；TTRSS 是一款基于 PHP 的免费开源 RSS 聚合阅读器，可以搭建在小鸡上。使用 Supabase 做 TTRSS 的数据库，既能减轻小鸡的压力，也能避免小鸡跑路后数据火葬场。创建数据库地区选离自己小鸡近的，比如圣何塞的免费龟壳就选美西进项目的设置页面，记录下数据库的连接信息连接信息获取方式有更新 postgresql://xxxx/postgres搭建 TTRSS搭建反代服务使用 FeedMeFeedMe 是一个用于 RSS 服务的安卓端阅读器。TTRSS 偏好设置里启用API登录方式选 Fever 而非 TTRSSAPI 端点是  没有 .localFeedMe 设置里开启墨水屏优化，查看里设置布局为卡片，效果如下附加项搭建 RSSHub本地部署 PostgresSQL 数据库创建新数据库]]></content>
     
     
     

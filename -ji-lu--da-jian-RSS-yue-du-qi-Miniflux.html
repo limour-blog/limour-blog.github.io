@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          163 words
+          164 words
         
       </span>
     
@@ -310,7 +310,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on March 19, 2024 pm
+                    Last updated on March 23, 2024 pm
                   
                 
               </p>
@@ -318,18 +318,17 @@
             
               <div class="markdown-body">
                 
-                <p>基于 php 的 TTRSS 虽然好用，但是确实太缓慢了。因此更换使用 Go 写的 RSS 阅读器 Miniflux。数据库依然用 <a href="/-ji-lu-TTRSS-shi-yong-Supabase-zuo-shu-ju-ku">Supabase</a>。</p>
+                <p>基于 php 的 TTRSS 虽然好用，但是确实太缓慢了。因此更换使用 Go 写的 RSS 阅读器 Miniflux。</p>
 <h2 id="搭建-Miniflux">搭建 Miniflux</h2>
 <ul>
 <li><a href="/Docker-bu-shu-Nginx-Proxy-Manager">搭建反代服务器</a></li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/app/miniflux &amp;&amp; <span class="hljs-built_in">cd</span> ~/app/miniflux &amp;&amp; nano docker-compose.yml<br>sudo docker-compose up -d<br></code></pre></td></tr></table></figure>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3&#x27;</span><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">miniflux:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">miniflux/miniflux:latest</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">DATABASE_URL=postgresql://postgres:secret@db.xxx.supabase.co/postgres</span> <span class="hljs-comment">#数据库url</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">RUN_MIGRATIONS=1</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">POLLING_FREQUENCY=60</span>   <span class="hljs-comment">#抓取feed的时间间隔（单位为分钟）</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">CREATE_ADMIN=1</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">ADMIN_USERNAME=admin</span>   <span class="hljs-comment">#管理员帐号用户名</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">ADMIN_PASSWORD=test123</span>   <span class="hljs-comment">#管理员帐号密码，用户名与密码之后可以在网页中进行修改</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">unless-stopped</span><br><span class="hljs-attr">networks:</span><br>  <span class="hljs-attr">default:</span><br>    <span class="hljs-attr">external:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">ngpm</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3&#x27;</span><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">miniflux:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">miniflux/miniflux:latest</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">DATABASE_URL=postgres://miniflux:secret@db/miniflux?sslmode=disable</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">RUN_MIGRATIONS=1</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">POLLING_FREQUENCY=60</span>   <span class="hljs-comment">#抓取feed的时间间隔（单位为分钟）</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">CREATE_ADMIN=1</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">ADMIN_USERNAME=admin</span>   <span class="hljs-comment">#管理员帐号用户名</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">ADMIN_PASSWORD=test123</span>   <span class="hljs-comment">#管理员帐号密码，用户名与密码之后可以在网页中进行修改</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">unless-stopped</span><br>  <span class="hljs-attr">db:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">postgres:16.2-alpine3.19</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">shm_size:</span> <span class="hljs-string">128mb</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">POSTGRES_USER=miniflux</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">POSTGRES_PASSWORD=secret</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">POSTGRES_DB=miniflux</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./miniflux-db:/var/lib/postgresql/data</span><br><span class="hljs-attr">networks:</span><br>  <span class="hljs-attr">default:</span><br>    <span class="hljs-attr">external:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">ngpm</span><br></code></pre></td></tr></table></figure>
 <p><img src="https://img.limour.top/2023/09/03/64f401cfa6a53.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
-<h2 id="开启-Fever-API">开启 Fever API</h2>
+<h2 id="附加-Rss-Translation">附加 Rss-Translation</h2>
 <ul>
-<li>设置 - 集成 - Fever 里开启</li>
-<li>FeedMe 登录方式和用  <a href="/-ji-lu-TTRSS-shi-yong-Supabase-zuo-shu-ju-ku">TTRSS</a> 一样</li>
+<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL3JjeTEzMTQvUnNzLVRyYW5zbGF0aW9u" rel="noopener external nofollow noreferrer">Rss-Translation</a> 可以翻译订阅源</li>
 </ul>
 
                 
@@ -378,7 +377,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>March 19, 2024</div>
+          <div>March 23, 2024</div>
         </div>
       
       
