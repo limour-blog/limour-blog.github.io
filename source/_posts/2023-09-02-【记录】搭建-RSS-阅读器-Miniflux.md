@@ -43,3 +43,6 @@ networks:
 ```
 
 ![](https://img.limour.top/2023/09/03/64f401cfa6a53.webp)
+
+## 附加 Rss-Translation
++ [Rss-Translation](https://github.com/rcy1314/Rss-Translation) 可以翻译订阅源
