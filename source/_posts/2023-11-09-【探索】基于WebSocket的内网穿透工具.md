@@ -17,7 +17,8 @@ sudo docker-compose up -d
 ```
 ```Dockerfile
 FROM python:3.9-alpine
-RUN pip install -U proxynt
+RUN pip install -U python-snappy
+RUN pip install -U https://github.com/sazima/proxynt/archive/refs/heads/snappy.zip
 ENTRYPOINT ["nt_server", "-c", "/opt/config.json"]
 ```
 ```yml
@@ -50,12 +51,19 @@ networks:
 
 ![反代 proxynt:18888](https://img.limour.top/2023/11/09/654cc58f6ea33.webp)
 ## 客户端
++ [GitHub 文件加速](/-fu-ke-GitHub-wen-jian-jia-su)
 ```bash
 mkdir -p ~/app/proxynt && cd ~/app/proxynt
-pip install -U proxynt -i https://pypi.tuna.tsinghua.edu.cn/simple
+# pip install --upgrade pip -i https://pypi.tuna.tsinghua.edu.cn/simple
+# pip install --use-pep517 python-snappy -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install -U python-snappy -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install -U  https://xxx.limour.top/token/https://github.com/sazima/proxynt/archive/refs/heads/snappy.zip
 whereis nt_client
+```
+```bash
 nano config.json
 nt_client -c config.json # 测试
+nano proxynt.sh && chmod +x proxynt.sh
 nano proxynt.service
 sudo mv proxynt.service /etc/systemd/system/proxynt.service
 sudo systemctl enable proxynt
@@ -66,18 +74,24 @@ sudo systemctl status proxynt
 {
   "server": {
     "url": "wss://limour.top:443/websocket_path",
-    "password": "helloworld"
+    "password": "helloworld",
+    "compress": true
   },
   "client_name": "home_pc",
   "log_file": "/home/limour/app/proxynt/nt.log"
 }
+```
+```bash
+#!/bin/sh
+export PYTHONPATH=/home/limour/.local/lib/python3.10/site-packages
+/home/limour/.local/bin/nt_client -c /home/limour/app/proxynt/config.json
 ```
 ```ini
 [Unit]
 Description=proxynt
 After=network.target
 [Service]
-ExecStart=/home/limour/miniconda3/bin/nt_client -c /home/limour/app/proxynt/config.json
+ExecStart=/home/limour/app/proxynt/proxynt.sh
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-failure
 [Install]
