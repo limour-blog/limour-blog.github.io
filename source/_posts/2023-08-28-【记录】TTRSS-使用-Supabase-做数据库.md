@@ -12,6 +12,8 @@ excerpt: Supabase是一种BaaS平台，提供PostgreSQL数据库。TTRSS是一�
 ![](https://img.limour.top/2023/08/30/64ef3e6315540.webp)
 + 进项目的设置页面，记录下数据库的连接信息
 ![](https://img.limour.top/2023/08/30/64ef3e744ba6c.webp)
++ 连接信息获取方式有更新 `postgresql://xxxx/postgres`
+![](https://img.limour.top/2024/03/23/65fead7923d77.webp)
 ## 搭建 TTRSS
 + [搭建反代服务](/Docker-bu-shu-Nginx-Proxy-Manager)
 ```bash
