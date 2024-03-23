@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          164 words
+          270 words
         
       </span>
     
@@ -268,7 +268,7 @@
         
         
         
-          2 mins
+          3 mins
         
       </span>
     
@@ -310,7 +310,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on March 23, 2024 pm
+                    Last updated on March 24, 2024 am
                   
                 
               </p>
@@ -329,6 +329,16 @@
 <h2 id="附加-Rss-Translation">附加 Rss-Translation</h2>
 <ul>
 <li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL3JjeTEzMTQvUnNzLVRyYW5zbGF0aW9u" rel="noopener external nofollow noreferrer">Rss-Translation</a> 可以翻译订阅源</li>
+<li><a href="/-fu-ke--zai-Koyeb-shang-da-jian-RSSHub">自建 RSSHub</a></li>
+</ul>
+<h2 id="附加-RSS-Translator">附加 RSS-Translator</h2>
+<ul>
+<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL3Jzcy10cmFuc2xhdG9yL1JTUy1UcmFuc2xhdG9y" rel="noopener external nofollow noreferrer">Rss-Translator</a> 可以翻译订阅源</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/app/RssTranslator &amp;&amp; <span class="hljs-built_in">cd</span> ~/app/RssTranslator &amp;&amp; nano docker-compose.yml<br>sudo docker-compose up -d<br><span class="hljs-comment"># 反代 rsstranslator:8000</span><br><span class="hljs-comment"># 默认账户：admin 密码：rsstranslator</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3&#x27;</span><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">rsstranslator:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">rsstranslator/rsstranslator</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">PYTHONUNBUFFERED=0</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">PYTHONDONTWRITEBYTECODE=1</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">DEBUG=0</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">DEMO=0</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">USER_MANAGEMENT=0</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">LOG_LEVEL=ERROR</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">HUEY_WORKERS=10</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">CSRF_TRUSTED_ORIGINS=https://xxx.limour.top</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">default_update_frequency=30</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">default_max_posts=20</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./data:/home/rsstranslator/data</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">command:</span> <span class="hljs-string">bash</span> <span class="hljs-string">-c</span> <span class="hljs-string">&quot;python manage.py init_server &amp;&amp; python manage.py run_huey &amp; uvicorn config.asgi:application --host 0.0.0.0&quot;</span><br> <br><span class="hljs-attr">networks:</span><br>  <span class="hljs-attr">default:</span><br>    <span class="hljs-attr">external:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">ngpm</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li><a href="/Aggregating-Azure-and-OpenAI-APIs-with-OneAPI">各家api转通用格式</a></li>
 </ul>
 
                 
@@ -377,7 +387,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>March 23, 2024</div>
+          <div>March 24, 2024</div>
         </div>
       
       

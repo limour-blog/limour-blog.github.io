@@ -507,7 +507,7 @@
     <link href="/-ji-lu--da-jian-RSS-yue-du-qi-Miniflux"/>
     <url>/-ji-lu--da-jian-RSS-yue-du-qi-Miniflux</url>
     
-    <content type="html"><![CDATA[基于 php 的 TTRSS 虽然好用，但是确实太缓慢了。因此更换使用 Go 写的 RSS 阅读器 Miniflux。搭建 Miniflux搭建反代服务器附加 Rss-TranslationRss-Translation 可以翻译订阅源]]></content>
+    <content type="html"><![CDATA[基于 php 的 TTRSS 虽然好用，但是确实太缓慢了。因此更换使用 Go 写的 RSS 阅读器 Miniflux。搭建 Miniflux搭建反代服务器附加 Rss-TranslationRss-Translation 可以翻译订阅源自建 RSSHub附加 RSS-TranslatorRss-Translator 可以翻译订阅源各家api转通用格式]]></content>
     
     
     
