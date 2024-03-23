@@ -46,3 +46,40 @@ networks:
 
 ## 附加 Rss-Translation
 + [Rss-Translation](https://github.com/rcy1314/Rss-Translation) 可以翻译订阅源
++ [自建 RSSHub](/-fu-ke--zai-Koyeb-shang-da-jian-RSSHub)
+
+## 附加 RSS-Translator
++ [Rss-Translator](https://github.com/rss-translator/RSS-Translator) 可以翻译订阅源
+```bash
+mkdir -p ~/app/RssTranslator && cd ~/app/RssTranslator && nano docker-compose.yml
+sudo docker-compose up -d
+# 反代 rsstranslator:8000
+# 默认账户：admin 密码：rsstranslator
+```
+```yml
+version: '3'
+services:
+  rsstranslator:
+    image: rsstranslator/rsstranslator
+    environment:
+      - PYTHONUNBUFFERED=0
+      - PYTHONDONTWRITEBYTECODE=1
+      - DEBUG=0
+      - DEMO=0
+      - USER_MANAGEMENT=0
+      - LOG_LEVEL=ERROR
+      - HUEY_WORKERS=10
+      - CSRF_TRUSTED_ORIGINS=https://xxx.limour.top
+      - default_update_frequency=30
+      - default_max_posts=20
+    volumes:
+      - ./data:/home/rsstranslator/data
+    restart: always
+    command: bash -c "python manage.py init_server && python manage.py run_huey & uvicorn config.asgi:application --host 0.0.0.0"
+ 
+networks:
+  default:
+    external: true
+    name: ngpm
+```
++ [各家api转通用格式](/Aggregating-Azure-and-OpenAI-APIs-with-OneAPI)
