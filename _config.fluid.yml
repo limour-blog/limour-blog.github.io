@@ -1022,18 +1022,6 @@ links:
       avatar: "/img/favicon.png"
     }
     - {
-      title: "Fluid Docs",
-      intro: "主题使用指南",
-      link: "https://hexo.fluid-dev.com/docs/",
-      avatar: "/img/favicon.png"
-    }
-    - {
-      title: "Fluid Repo",
-      intro: "主题 GitHub 仓库",
-      link: "https://github.com/fluid-dev/hexo-theme-fluid",
-      avatar: "/img/favicon.png"
-    }
-    - {
       title: "生信技能树",
       intro: "曾老师的生信论坛",
       link: "https://web.archive.org/web/20230605205823/http://www.biotrainee.com/",
@@ -1050,6 +1038,12 @@ links:
       intro: "烟花易逝，人情长存",
       link: "https://blog.xzzzx.xyz",
       avatar: "https://blog.xzzzx.xyz/wp-content/uploads/2022/01/touxiang.jpg"
+    }
+    - {
+      title: "博友圈",
+      intro: "博客人的朋友圈，博客收录与文章 RSS 聚合网站",
+      link: "https://www.boyouquan.com/home",
+      avatar: "https://www.boyouquan.com/assets/images/sites/logo/logo-small.png"
     }
 
   # 当成员头像加载失败时，替换为指定图片
