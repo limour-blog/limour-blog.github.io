@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>【记录】搭建流量统计工具 Shynet</title>
+    <link href="/Building-a-traffic-statistics-tool-Shynet"/>
+    <url>/Building-a-traffic-statistics-tool-Shynet</url>
+    
+    <content type="html"><![CDATA[Shynet 是一款用 python 编写的现代、隐私友好、无需Cookie或JS即可工作的网络流量统计工具。相比 Umami, Shynet 支持通过 1 pixel 的图像进行统计，而不依赖 JS， 并且 Shynet 统计的信息更加详细。搭建 Shynet反向代理服务配置环境变量配置管理账号配置混淆配置 Hexo搭建 Hexo编辑 scripts/custom.js, 内容如下]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>hexo</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【记录】Linux 设置个人热点</title>
     <link href="/Linux-Setting-AP"/>
     <url>/Linux-Setting-AP</url>
