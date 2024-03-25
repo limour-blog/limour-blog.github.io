@@ -5,7 +5,7 @@ hexo.extend.injector.register('body_end', `
   <script defer src="/theme-inject/timeliness.js"></script>
 `);
 
-// Umami 统计
+// shynet 统计
 hexo.extend.injector.register('head_begin', `
-  <script async src="https://analytics.umami.is/script.js" data-website-id="e59ec28a-c9a7-4104-9e62-a9f7eb3fac0b"></script>
+<script defer src="https://api.limour.top/vue/0d2f95c1-755d-436b-adf8-eee12a80ed32/script.js"></script>
 `);
