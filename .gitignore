@@ -2,8 +2,9 @@
 Thumbs.db
 db.json
 *.log
-node_modules/
+node_modules/*
 !node_modules/hexo-theme-fluid/scripts/generators/local-search.js
+!node_modules/hexo-theme-fluid/layout/_partials/head.ejs
 public/
 .deploy*/
 _multiconfig.yml

@@ -145,3 +145,21 @@ git fetch --depth=1 -f && git reset --hard origin/gh-pages
       : base;
   });
 ```
+## 附加 首选网页
++ 编辑 `scripts/custom.js`, 内容如下
+```js
+// 首选网页 canonical
+hexo.extend.helper.register('autoCanonical', function (config, page) {
+  var base_url = config.url;
+  if (config.url.charAt(config.url.length - 1) !== '/') base_url += '/';
+  base_url += page.canonical_path
+
+  return '<link rel="canonical" href="' + base_url.replace('/index.html', '/').replace(/\.html$/g, '') + '"/>';
+});
+```
++ 编辑 `node_modules/hexo-theme-fluid/layout/_partials/head.ejs`, 内容如下
+```js
+// ....
+<%- autoCanonical(config, page) %>
+</head>
+```
