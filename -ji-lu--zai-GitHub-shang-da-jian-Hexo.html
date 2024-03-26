@@ -76,7 +76,8 @@
 
 
   
-<meta name="generator" content="Hexo 7.0.0"><link rel="alternate" href="/atom.xml" title="Limour's Blog" type="application/atom+xml">
+  <link rel="canonical" href="https://hexo.limour.top/-ji-lu--zai-GitHub-shang-da-jian-Hexo"/>
+<meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="Limour's Blog" type="application/atom+xml">
 <link rel="alternate" href="/rss2.xml" title="Limour's Blog" type="application/rss+xml">
 </head>
 
@@ -257,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          694 words
+          794 words
         
       </span>
     
@@ -268,7 +269,7 @@
         
         
         
-          6 mins
+          7 mins
         
       </span>
     
@@ -310,7 +311,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on March 22, 2024 am
+                    Last updated on March 26, 2024 am
                   
                 
               </p>
@@ -405,6 +406,15 @@
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">env.<span class="hljs-title function_">addFilter</span>(<span class="hljs-string">&#x27;noControlChars&#x27;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params">str</span>) &#123;<br>  <span class="hljs-comment">// eslint-disable-next-line no-control-regex</span><br>  <span class="hljs-keyword">return</span> str &amp;&amp; str.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/[\x00-\x1F\x7F]/g</span>, <span class="hljs-string">&#x27;&#x27;</span>).<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/&lt;figure class=&quot;highlight.*?&lt;\/figure&gt;/ig</span>, <span class="hljs-string">&#x27;&#x27;</span>).<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/(&lt;([^&gt;]+)&gt;)/ig</span>, <span class="hljs-string">&#x27;&#x27;</span>).<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/(https?:\/\/[^\s]+)/ig</span>, <span class="hljs-string">&#x27;&#x27;</span>);<br>&#125;);<br></code></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js">env.<span class="hljs-title function_">addFilter</span>(<span class="hljs-string">&#x27;urlJoin&#x27;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params">str</span>) &#123;<br>  <span class="hljs-keyword">const</span> base = str[<span class="hljs-number">0</span>];<br>  <span class="hljs-keyword">const</span> relative = str[<span class="hljs-number">1</span>].<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/\.html$/g</span>, <span class="hljs-string">&#x27;&#x27;</span>);<br>  <span class="hljs-keyword">return</span> relative<br>    ? base.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/\/+$/</span>, <span class="hljs-string">&#x27;&#x27;</span>) + <span class="hljs-string">&#x27;/&#x27;</span> + relative.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/^\/+/</span>, <span class="hljs-string">&#x27;&#x27;</span>)<br>    : base;<br>&#125;);<br></code></pre></td></tr></table></figure>
+<h2 id="附加-首选网页">附加 首选网页</h2>
+<ul>
+<li>编辑 <code>scripts/custom.js</code>, 内容如下</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 首选网页 canonical</span><br>hexo.<span class="hljs-property">extend</span>.<span class="hljs-property">helper</span>.<span class="hljs-title function_">register</span>(<span class="hljs-string">&#x27;autoCanonical&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">config, page</span>) &#123;<br>  <span class="hljs-keyword">var</span> base_url = config.<span class="hljs-property">url</span>;<br>  <span class="hljs-keyword">if</span> (config.<span class="hljs-property">url</span>.<span class="hljs-title function_">charAt</span>(config.<span class="hljs-property">url</span>.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>) !== <span class="hljs-string">&#x27;/&#x27;</span>) base_url += <span class="hljs-string">&#x27;/&#x27;</span>;<br>  base_url += page.<span class="hljs-property">canonical_path</span><br><br>  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&lt;link rel=&quot;canonical&quot; href=&quot;&#x27;</span> + base_url.<span class="hljs-title function_">replace</span>(<span class="hljs-string">&#x27;/index.html&#x27;</span>, <span class="hljs-string">&#x27;/&#x27;</span>).<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/\.html$/g</span>, <span class="hljs-string">&#x27;&#x27;</span>) + <span class="hljs-string">&#x27;&quot;/&gt;&#x27;</span>;<br>&#125;);<br></code></pre></td></tr></table></figure>
+<ul>
+<li>编辑 <code>node_modules/hexo-theme-fluid/layout/_partials/head.ejs</code>, 内容如下</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// ....</span><br>&lt;%- <span class="hljs-title function_">autoCanonical</span>(config, page) %&gt;<br>&lt;/head&gt;<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -449,7 +459,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>March 22, 2024</div>
+          <div>March 26, 2024</div>
         </div>
       
       
