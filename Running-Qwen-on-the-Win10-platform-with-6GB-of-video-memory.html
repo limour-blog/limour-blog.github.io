@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k words
+          1.2k words
         
       </span>
     
@@ -311,7 +311,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on March 27, 2024 pm
+                    Last updated on March 29, 2024 am
                   
                 
               </p>
@@ -356,17 +356,21 @@
           </div>
 <h2 id="附加-在-Colab-上量化">附加 在 Colab 上量化</h2>
 <ul>
-<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzE3M25LeTBwWVR0elMteHcwOXFCZE81bEJFSGx3RWhEUT91c3A9c2hhcmluZw==" rel="noopener external nofollow noreferrer">llm2gguf.ipynb</a></li>
-<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9odWdnaW5nZmFjZS5jby9kYXRhc2V0cy9MaW1vdXIvQ2F1c2FsTE0tN0ItR0dVRg==" rel="noopener external nofollow noreferrer">量化后的结果</a></li>
+<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzFKVDNYRmpEN0NUUkI5N3B1M1FwZUd1eldBMXlZRUFNNz91c3A9c2hhcmluZw==" rel="noopener external nofollow noreferrer">llm2gguf.ipynb</a></li>
+<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9odWdnaW5nZmFjZS5jby9MaW1vdXIvQ2F1c2FsTE0tMTRCLUdHVUY=" rel="noopener external nofollow noreferrer">量化后的结果</a></li>
 </ul>
 <h3 id="安装-llama-cpp">安装 llama.cpp</h3>
-<figure class="highlight ipython"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ipython">!git clone --depth=<span class="hljs-number">1</span> https://github.com/ggerganov/llama.cpp.git<br>%cd llama.cpp<br>!python -m pip install -r requirements.txt<br>!pip install tiktoken<br></code></pre></td></tr></table></figure>
-<h3 id="转换模型">转换模型</h3>
-<figure class="highlight ipython"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs ipython"><span class="hljs-keyword">from</span> huggingface_hub <span class="hljs-keyword">import</span> snapshot_download<br><span class="hljs-keyword">from</span> huggingface_hub <span class="hljs-keyword">import</span> login, CommitScheduler<br><span class="hljs-keyword">from</span> google.colab <span class="hljs-keyword">import</span> userdata<br><span class="hljs-comment"># login(token=os.environ.get(&quot;HF_TOKEN&quot;), write_permission=True)</span><br>login(token=userdata.get(<span class="hljs-string">&#x27;HF_TOKEN&#x27;</span>), write_permission=<span class="hljs-literal">True</span>)<br>!mkdir -p ~/CausalLM<br>snapshot_download(repo_id=<span class="hljs-string">&#x27;CausalLM/7B&#x27;</span>, local_dir=<span class="hljs-string">r&#x27;/content/CausalLM&#x27;</span>, ignore_patterns=[<span class="hljs-string">&#x27;*.h5&#x27;</span>, <span class="hljs-string">&#x27;*.ot&#x27;</span>, <span class="hljs-string">&#x27;*.msgpack&#x27;</span>, <span class="hljs-string">&#x27;*.safetensors&#x27;</span>])<br>!python convert.py --vocab-<span class="hljs-built_in">type</span> bpe --pad-vocab --outtype f16 /content/CausalLM <br></code></pre></td></tr></table></figure>
+<figure class="highlight ipython"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ipython">!git clone --depth=<span class="hljs-number">1</span> https://github.com/ggerganov/llama.cpp.git<br>%cd /content/llama.cpp<br>!LLAMA_CUDA=<span class="hljs-number">1</span> make -j<br></code></pre></td></tr></table></figure>
+<h3 id="计算-imatrix">计算 imatrix</h3>
+<figure class="highlight ipython"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ipython">%cd /content<br>!wget -O transient.txt.gz https://huggingface.co/datasets/Limour/b-corpus/resolve/main/<span class="hljs-number">00</span>-preview/<span class="hljs-number">00</span>-transient.txt.gz?download=true<br>!gunzip transient.txt.gz<br>!mkdir -p /content/CausalLM-14B-GGUF<br>!wget -O /content/CausalLM-14B-GGUF/causallm_14b.Q8_0.gguf  https://huggingface.co/TheBloke/CausalLM-14B-GGUF/resolve/main/causallm_14b.Q8_0.gguf?download=true<br>!/content/llama.cpp/imatrix -m /content/CausalLM-14B-GGUF/causallm_14b.Q8_0.gguf -f /content/transient.txt -ngl <span class="hljs-number">36</span><br></code></pre></td></tr></table></figure>
+<h3 id="登录拥抱脸">登录拥抱脸</h3>
+<figure class="highlight ipython"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ipython"><span class="hljs-keyword">from</span> google.colab <span class="hljs-keyword">import</span> userdata<br><span class="hljs-keyword">from</span> huggingface_hub <span class="hljs-keyword">import</span> login<br><span class="hljs-comment"># login(token=os.environ.get(&quot;HF_TOKEN&quot;), write_permission=True)</span><br>login(token=userdata.get(<span class="hljs-string">&#x27;HF_TOKEN&#x27;</span>), write_permission=<span class="hljs-literal">True</span>)<br><span class="hljs-comment"># from huggingface_hub import notebook_login</span><br><span class="hljs-comment"># notebook_login()</span><br></code></pre></td></tr></table></figure>
+<h3 id="跳过-转换模型">(跳过) 转换模型</h3>
+<figure class="highlight ipython"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ipython">%cd llama.cpp<br>!python -m pip install -r requirements.txt<br>!pip install tiktoken<br><span class="hljs-keyword">from</span> huggingface_hub <span class="hljs-keyword">import</span> snapshot_download<br>!mkdir -p ~/CausalLM<br>snapshot_download(repo_id=<span class="hljs-string">&#x27;CausalLM/7B&#x27;</span>, local_dir=<span class="hljs-string">r&#x27;/content/CausalLM&#x27;</span>, ignore_patterns=[<span class="hljs-string">&#x27;*.h5&#x27;</span>, <span class="hljs-string">&#x27;*.ot&#x27;</span>, <span class="hljs-string">&#x27;*.msgpack&#x27;</span>, <span class="hljs-string">&#x27;*.safetensors&#x27;</span>])<br>!python convert.py --vocab-<span class="hljs-built_in">type</span> bpe --pad-vocab --outtype f16 /content/CausalLM <br></code></pre></td></tr></table></figure>
 <h3 id="量化模型">量化模型</h3>
-<figure class="highlight ipython"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs ipython">!mkdir build<br>%cd build<br>!apt install cmake<br>!cmake ..<br>!cmake --build . --config Release<br>!/content/llama.cpp/build/<span class="hljs-built_in">bin</span>/quantize --<span class="hljs-built_in">help</span><br>!mkdir -p /content/CausalLM-7B-GGUF<br>!/content/llama.cpp/build/<span class="hljs-built_in">bin</span>/quantize /content/CausalLM/ggml-model-f16.gguf /content/CausalLM-7B-GGUF/causallm_7b.IQ4_NL.gguf IQ4_NL<br></code></pre></td></tr></table></figure>
+<figure class="highlight ipython"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ipython">!/content/llama.cpp/quantize --allow-requantize --imatrix /content/imatrix.dat /content/CausalLM-14B-GGUF/causallm_14b.Q8_0.gguf /content/CausalLM-14B-GGUF/causallm_14b.IQ3_XS.gguf IQ3_XS<br></code></pre></td></tr></table></figure>
 <h3 id="上传模型">上传模型</h3>
-<figure class="highlight ipython"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ipython">CommitScheduler(repo_id=<span class="hljs-string">&#x27;Limour/CausalLM-7B-GGUF&#x27;</span>, repo_type=<span class="hljs-string">&#x27;dataset&#x27;</span>, folder_path=<span class="hljs-string">&#x27;/content/CausalLM-7B-GGUF&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight ipython"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ipython"><span class="hljs-keyword">from</span> huggingface_hub <span class="hljs-keyword">import</span> HfApi<br>api = HfApi()<br>api.upload_file(<br>    path_or_fileobj=<span class="hljs-string">&quot;/content/CausalLM-14B-GGUF/causallm_14b.IQ3_XS.gguf&quot;</span>,<br>    path_in_repo=<span class="hljs-string">&quot;causallm_14b.IQ3_XS.gguf&quot;</span>,<br>    repo_id=<span class="hljs-string">&quot;Limour/CausalLM-14B-GGUF&quot;</span><br>)<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -409,7 +413,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>March 27, 2024</div>
+          <div>March 29, 2024</div>
         </div>
       
       
