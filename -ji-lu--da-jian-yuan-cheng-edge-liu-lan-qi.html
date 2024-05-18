@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          152 words
+          158 words
         
       </span>
     
@@ -311,7 +311,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on March 19, 2024 pm
+                    Last updated on May 18, 2024 pm
                   
                 
               </p>
@@ -325,7 +325,7 @@
 <li><a href="/Docker-bu-shu-Nginx-Proxy-Manager">搭建反代服务</a></li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/app/edge &amp;&amp; <span class="hljs-built_in">cd</span> ~/app/edge &amp;&amp; nano docker-compose.yml<br>sudo docker-compose up -d<br><span class="hljs-comment"># 默认账户：kasm_user</span><br><span class="hljs-comment"># proxy_set_header Authorization &quot;Basic a2FzbV91c2VyOnBhc3N3b3Jk&quot;;</span><br></code></pre></td></tr></table></figure>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.3&#x27;</span><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">kasmweb-edge:</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">unless-stopped</span><br>    <span class="hljs-attr">shm_size:</span> <span class="hljs-string">&quot;512m&quot;</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">VNC_PW=password</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">APP_ARGS=--start-maximized</span> <span class="hljs-string">--no-sandbox</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">kasmweb/edge:1.14.0</span><br><br><span class="hljs-attr">networks:</span><br>  <span class="hljs-attr">default:</span><br>    <span class="hljs-attr">external:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">ngpm</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.3&#x27;</span><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">kasmweb-edge:</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">unless-stopped</span><br>    <span class="hljs-attr">shm_size:</span> <span class="hljs-string">&quot;512m&quot;</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">VNC_PW=password</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">LAUNCH_URL=http://wlrz.fudan.edu.cn</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">APP_ARGS=--start-maximized</span> <span class="hljs-string">--no-sandbox</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">kasmweb/edge:1.14.0</span><br><br><span class="hljs-attr">networks:</span><br>  <span class="hljs-attr">default:</span><br>    <span class="hljs-attr">external:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">ngpm</span><br></code></pre></td></tr></table></figure>
 <h2 id="反代-edge">反代 edge</h2>
 <p>Nginx Proxy Manager 向后传递 Authorization 有问题，需要自己到浏览器中截获相应的认证，加到 Header 中，之后重新到 Nginx Proxy Manager 中设一个新的认证<br>
 <img src="https://img.limour.top/2023/08/31/64f0a55200107.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
@@ -374,7 +374,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>March 19, 2024</div>
+          <div>May 18, 2024</div>
         </div>
       
       
