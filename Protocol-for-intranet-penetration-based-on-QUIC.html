@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          623 words
+          676 words
         
       </span>
     
@@ -311,7 +311,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on March 22, 2024 am
+                    Last updated on June 29, 2024 am
                   
                 
               </p>
@@ -331,6 +331,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">nano Port-Hopping.sh &amp;&amp; <span class="hljs-built_in">chmod</span> +x Port-Hopping.sh<br>nano /etc/systemd/system/Port-Hopping.service<br>systemctl <span class="hljs-built_in">enable</span> Port-Hopping &amp;&amp; systemctl start Port-Hopping &amp;&amp; systemctl status Port-Hopping &amp;&amp; iptables -t nat -L<br></code></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br><span class="hljs-comment"># IPv4</span><br>/usr/sbin/iptables  -t nat -A PREROUTING -i eth0 -p udp --dport 32768:61000 -j DNAT --to-destination :3234<br><span class="hljs-comment"># IPv6</span><br>/usr/sbin/ip6tables -t nat -A PREROUTING -i eth0 -p udp --dport 32768:61000 -j DNAT --to-destination :3234<br></code></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs service">[Unit]<br>Description=Port-Hopping<br>After=network.target docker.service<br>[Service]<br>ExecStart=/root/Port-Hopping.sh<br>Restart=on-failure<br>[Install]<br>WantedBy=multi-user.target<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">iptables -t nat -A DOCKER -p udp --dport 32768:61000 -j DNAT --to-destination `iptables -t nat -L| grep <span class="hljs-string">&quot;udp dpt:3234&quot;</span> | grep -oP <span class="hljs-string">&#x27;to:\K[^ ]+&#x27;</span>` <span class="hljs-comment"># 添加</span><br>iptables -t nat -D DOCKER -p udp --dport 32768:61000 -j DNAT --to-destination `iptables -t nat -L| grep <span class="hljs-string">&quot;udp dpts:32768:61000&quot;</span>| <span class="hljs-built_in">tail</span> -n 1 | grep -oP <span class="hljs-string">&#x27;to:\K[^ ]+&#x27;</span>` <span class="hljs-comment"># 删除</span><br></code></pre></td></tr></table></figure>
 <h2 id="配置quic">配置quic</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo docker network create sswitch<br><span class="hljs-built_in">mkdir</span> -p ~/app/quic &amp;&amp; <span class="hljs-built_in">cd</span> ~/app/quic &amp;&amp; nano docker-compose.yml<br>nano hysteria.yaml<br>sudo docker-compose up -d &amp;&amp; sudo docker-compose logs<br></code></pre></td></tr></table></figure>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.9&#x27;</span><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">hysteria:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">tobyxdd/hysteria</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">extra_hosts:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;host.docker.internal:host-gateway&#x27;</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;3234:3234/udp&#x27;</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./hysteria.yaml:/etc/hysteria.yaml</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">/root/base/NGPM/letsencrypt:/home/ubuntu/letsencrypt</span><br>    <span class="hljs-attr">command:</span> [<span class="hljs-string">&quot;server&quot;</span>, <span class="hljs-string">&quot;-c&quot;</span>, <span class="hljs-string">&quot;/etc/hysteria.yaml&quot;</span>]<br> <br><span class="hljs-attr">networks:</span><br>  <span class="hljs-attr">default:</span><br>    <span class="hljs-attr">external:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">sswitch</span><br></code></pre></td></tr></table></figure>
@@ -394,7 +395,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>March 22, 2024</div>
+          <div>June 29, 2024</div>
         </div>
       
       

@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>【记录】使用acme.sh签发泛域名证书</title>
+    <link href="/use-acme.sh-to-issue-certificates"/>
+    <url>/use-acme.sh-to-issue-certificates</url>
+    
+    <content type="html"><![CDATA[.top 域名的 KSK 密钥轮替，不知道为什么把 Let's Encrypt 的 DNSSEC 验证流量阻断了，导致 Nginx Proxy Manager 现在无法续签证书，因此用 acme.sh 来申请其他家的证书暂时替代一下了。（DNSSEC: DNSKEY Missing）准备工作安装 acme.sh：curl  | sh -s email=limour@limour.top获取 CF_Token：我的个人资料 - API 令牌 - 创建令牌 - 编辑区域 DNS 模板获取 CF_Zone_ID： 域名页 - 概览 - 右侧下滑 - API - 区域 ID申请证书不能只写 -d *.limour.top, 需要再加一个 -d limour.top记录下 .key 的路径和 fullchain.cer 的路径传递证书SSH免密传递脚本计划任务]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>acme</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【记录】搭建流量统计工具 Shynet</title>
     <link href="/Building-a-traffic-statistics-tool-Shynet"/>
     <url>/Building-a-traffic-statistics-tool-Shynet</url>
