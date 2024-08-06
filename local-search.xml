@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>【探索】Windows配置QoS保证重要应用的网络通畅</title>
+    <link href="/Windows-configuration-QoS-ensures-smooth-network-connectivity-for-important-applications"/>
+    <url>/Windows-configuration-QoS-ensures-smooth-network-connectivity-for-important-applications</url>
+    
+    <content type="html"><![CDATA[开启组策略运行下面的 .bat 脚本开启 QoSwin+r 运行 gpedit.msc计算机配置 -&gt; 管理模板 -&gt; 网络 -&gt; QoS数据包计划程序 -&gt; 限制可保留带宽配置优先级win+r 运行 gpedit.msc计算机配置 -&gt; Windows 设置 -&gt; 基于策略的 QoS在树形图“基于策略的 QoS”上右键，点选“新建策略”，在“新建策略”窗口中输入策略名称在“新建策略”窗口中，DSCP 值即为程序优先级（0-63），高于32则提升优先级，低于32则降低优先级。如果选中“指定出站调节率”，可对出站流量启用中止功能，然后指定一个大于 1 的值。设置完成之后，点击下一步。]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Windows</tag>
+      
+      <tag>QoS</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【转载】跨越半世纪的思念</title>
     <link href="/Longing-Across-the-Span-of-Half-a-Century"/>
     <url>/Longing-Across-the-Span-of-Half-a-Century</url>
