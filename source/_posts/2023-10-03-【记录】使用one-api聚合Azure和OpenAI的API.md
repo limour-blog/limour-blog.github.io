@@ -48,6 +48,27 @@ networks:
 + 去控制台新建一个筛选器，将筛选关闭，并开启异步筛选注释
 + 设置模型部署中模型的高级选项，切换筛选器为刚刚创建的筛选器
 
+## 附加 Google Vertex
+### 注册 GCP 账户
++ 访问 https://cloud.google.com/vertex-ai 并注册GCP账户。
++ 激活账户获得所有模型的访问权限
+### 启用 Vertex AI API
++ 访问 https://console.cloud.google.com/marketplace/product/google/aiplatform.googleapis.com 为你的项目启用 Vertex AI API。
++ 访问 https://console.cloud.google.com/vertex-ai/publishers/anthropic/model-garden/claude-3-5-sonnet 申请 Claude 模型。
++ 访问 https://console.cloud.google.com/apis/library/iamcredentials.googleapis.com 激活 IAM Service Account Credentials API
+### 创建服务账户
++ 访问 https://console.cloud.google.com/projectselector/iam-admin/serviceaccounts/create?walkthrough_id=iam--create-service-account#step_index=1
++ 选择你之前创建的项目ID。
++ 确保为服务账户授予 `Vertex AI Service Agent`, `Service Account Token Creator` 和 `Vertex AI User` 的角色。
++ 在你刚创建的服务账户页面，转到"密钥"标签，点击"添加密钥"。
++ 选择"创建新密钥"并选择"JSON"作为密钥类型。
++ 密钥文件将自动下载。该文件包含worker所需的变量，如project_id、private_key和client_email。
+### 添加到 one-api 渠道
++ 区域 Region 写 `us-east5`
++ Vertex AI Project ID 在 json 文件里
++ Google Cloud Application Default Credentials JSON 为下载的 json 文件的内容
++ [详细内容点此](https://github.com/songquanpeng/one-api/pull/1621)
+
 ## 附加 Amazon Bedrock
 + [申请模型访问权限](https://us-west-2.console.aws.amazon.com/bedrock/home)
 + [添加 Access key](https://us-east-1.console.aws.amazon.com/iam/home)
@@ -134,7 +155,8 @@ services:
     environment:
       - TZ=Asia/Shanghai
       - BASE_URL=http://one-api:3000/
-      - CUSTOM_MODELS=-all,+gpt-3.5-turbo,+gpt-4-turbo,+gpt-4-vision,+claude-3-sonnet,+claude-3-opus,+my-gemini-pro,+my-gemini-pro-vision,gpt-4-g,pplx-online
+      - CUSTOM_MODELS=-all,+gpt-3.5-turbo@openai,+gpt-4-turbo@openai,+gpt-4o@openai,+claude-3-haiku@openai,+claude-3.5-sonnet@openai
+      - ENABLE_BALANCE_QUERY=1
     restart: unless-stopped
 networks:
   default:
