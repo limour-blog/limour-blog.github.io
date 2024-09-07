@@ -25,6 +25,8 @@ services:
       - CREATE_ADMIN=1
       - ADMIN_USERNAME=admin   #管理员帐号用户名
       - ADMIN_PASSWORD=test123   #管理员帐号密码，用户名与密码之后可以在网页中进行修改
+      - POLLING_PARSING_ERROR_LIMIT=0
+      - POLLING_SCHEDULER=entry_frequency
     restart: unless-stopped
   db:
     image: postgres:16.2-alpine3.19
