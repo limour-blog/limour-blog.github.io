@@ -15,3 +15,8 @@
       '</p></p></div>');
     }
   })();
+
+if (window.location.hostname !== "hexo.limour.top"  && window.location.hostname !== "localhost") {
+  var newUrl = "https://hexo.limour.top" + window.location.pathname + window.location.search + window.location.hash;
+  window.location.href = newUrl;
+}
