@@ -16,7 +16,8 @@
     }
   })();
 
-if (window.location.hostname !== "hexo.limour.top"  && window.location.hostname !== "localhost") {
-  var newUrl = "https://hexo.limour.top" + window.location.pathname + window.location.search + window.location.hash;
+var oldHost = "HEXO.".toLowerCase() + 'ruomil'.split('').reverse().join('') + '.' + "top"
+if (window.location.hostname !== oldHost && window.location.hostname !== "localhost") {
+  var newUrl = "https://" + oldHost + window.location.pathname + window.location.search + window.location.hash;
   window.location.href = newUrl;
 }
