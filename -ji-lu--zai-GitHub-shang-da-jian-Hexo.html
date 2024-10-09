@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          794 words
+          847 words
         
       </span>
     
@@ -269,7 +269,7 @@
         
         
         
-          7 mins
+          8 mins
         
       </span>
     
@@ -311,7 +311,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on March 26, 2024 am
+                    Last updated on October 9, 2024 pm
                   
                 
               </p>
@@ -415,6 +415,14 @@
 <li>编辑 <code>node_modules/hexo-theme-fluid/layout/_partials/head.ejs</code>, 内容如下</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// ....</span><br>&lt;%- <span class="hljs-title function_">autoCanonical</span>(config, page) %&gt;<br>&lt;/head&gt;<br></code></pre></td></tr></table></figure>
+<h2 id="附加-memos">附加 memos</h2>
+<ul>
+<li><a href="/Docker-bu-shu-Nginx-Proxy-Manager">反向代理服务</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/app/memos &amp;&amp; <span class="hljs-built_in">cd</span> ~/app/memos &amp;&amp; <span class="hljs-built_in">touch</span> .<span class="hljs-built_in">env</span> &amp;&amp; nano docker-compose.yml<br>sudo docker-compose up -d<br></code></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.6&#x27;</span><br> <br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">memos:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">neosmemo/memos:stable</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">env_file:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">.env</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./memos:/var/opt/memos</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">/etc/localtime:/etc/localtime:ro</span><br> <br><span class="hljs-attr">networks:</span><br>  <span class="hljs-attr">default:</span><br>    <span class="hljs-attr">external:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">ngpm</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://img.limour.top/2024/10/09/6706780631241.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+
                 
               </div>
             
@@ -459,7 +467,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>March 26, 2024</div>
+          <div>October 9, 2024</div>
         </div>
       
       
