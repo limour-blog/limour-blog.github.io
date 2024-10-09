@@ -163,3 +163,29 @@ hexo.extend.helper.register('autoCanonical', function (config, page) {
 <%- autoCanonical(config, page) %>
 </head>
 ```
+
+## 附加 memos
++ [反向代理服务](/Docker-bu-shu-Nginx-Proxy-Manager)
+```bash
+mkdir -p ~/app/memos && cd ~/app/memos && touch .env && nano docker-compose.yml
+sudo docker-compose up -d
+```
+```yml
+version: '3.6'
+ 
+services:
+  memos:
+    image: neosmemo/memos:stable
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./memos:/var/opt/memos
+      - /etc/localtime:/etc/localtime:ro
+ 
+networks:
+  default:
+    external: true
+    name: ngpm
+```
+![](https://img.limour.top/2024/10/09/6706780631241.webp)
