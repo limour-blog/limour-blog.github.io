@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          335 words
+          439 words
         
       </span>
     
@@ -269,7 +269,7 @@
         
         
         
-          3 mins
+          4 mins
         
       </span>
     
@@ -311,7 +311,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on March 19, 2024 pm
+                    Last updated on October 18, 2024 pm
                   
                 
               </p>
@@ -338,6 +338,8 @@
 <li><code>nano .condarc</code> 附加下面的配置项</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs config">envs_dirs:<br>  - /home/jovyan/upload/envs<br></code></pre></td></tr></table></figure>
+<h2 id="附加-打包环境">附加 打包环境</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 注意！打包的虚拟环境记录的是源环境的</span><br><span class="hljs-comment"># 需要先在新系统上新建一个和源环境anaconda安装路径一样的空目录</span><br><span class="hljs-comment"># 即 envs_dirs 是相同的，然后 ./tmp/mice 按实际修改为 envs_dirs/mice</span><br><span class="hljs-built_in">source</span> activate mamba<br>conda create -n mice conda-forge::r-tidyverse conda-forge::r-irkernel conda-forge::r-mice conda-forge::r-vim<br>conda install conda-forge::conda-pack<br>conda <span class="hljs-built_in">env</span> list<br>conda pack -n mice -o mice.tar.gz --ignore-editable-packages<br><span class="hljs-built_in">mkdir</span> -p ./tmp/mice &amp;&amp; tar -xzf mice.tar.gz -C ./tmp/mice<br><span class="hljs-built_in">source</span> activate ./tmp/mice<br></code></pre></td></tr></table></figure>
 <h2 id="常用命令示例">常用命令示例</h2>
 <ul>
 <li>创建环境：<code>conda create -n llama -c conda-forge python -y</code></li>
@@ -410,7 +412,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>March 19, 2024</div>
+          <div>October 18, 2024</div>
         </div>
       
       
