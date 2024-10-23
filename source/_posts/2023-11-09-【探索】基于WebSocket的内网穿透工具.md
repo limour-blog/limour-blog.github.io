@@ -18,7 +18,7 @@ sudo docker-compose up -d
 ```Dockerfile
 FROM python:3.9-alpine
 RUN pip install -U python-snappy
-RUN pip install -U https://github.com/sazima/proxynt/archive/refs/heads/snappy.zip
+RUN pip install -U https://github.com/sazima/proxynt/archive/refs/heads/master.zip
 ENTRYPOINT ["nt_server", "-c", "/opt/config.json"]
 ```
 ```yml
@@ -57,7 +57,7 @@ mkdir -p ~/app/proxynt && cd ~/app/proxynt
 # pip install --upgrade pip -i https://pypi.tuna.tsinghua.edu.cn/simple
 # pip install --use-pep517 python-snappy -i https://pypi.tuna.tsinghua.edu.cn/simple
 pip install -U python-snappy -i https://pypi.tuna.tsinghua.edu.cn/simple
-pip install -U  https://xxx.limour.top/token/https://github.com/sazima/proxynt/archive/refs/heads/snappy.zip
+pip install -U https://xxx.limour.top/token/https://github.com/sazima/proxynt/archive/refs/heads/master.zip
 whereis nt_client
 ```
 ```bash
@@ -125,3 +125,26 @@ networks:
 ```
 
 ![反代 webssh:5032](https://img.limour.top/2023/11/10/654d918353361.webp)
+
+## 附加 Nexterm
+```bash
+mkdir -p ~/app/nexterm && cd ~/app/nexterm && nano docker-compose.yml
+sudo docker-compose up -d
+```
+```yml
+version: '3.3'
+services:
+  nexterm:
+    restart: unless-stopped    # no,always,on-failure,unless-stopped
+    volumes:
+      - ./nexterm:/app/data
+    image: germannewsmaker/nexterm:latest
+ 
+networks:
+  default:
+    external: true
+    name: ngpm
+```
+![](https://img.limour.top/2024/10/23/67191046cf2b5.webp)
++ 第一次访问自动注册管理账号
++ 切记手动开启 2FA
