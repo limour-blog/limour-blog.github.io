@@ -18,11 +18,11 @@
   <meta name="author" content="Limour">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Enclosed，一个极简的网络应用程序，旨在发送私人和安全的消息。所有消息都是端到端加密的，确保服务器和存储对内容没有任何了解。用户可以设置密码，定义过期时间（TTL），并选择在阅读后让消息自毁。 Snapdrop，一个开源的在线文件传输工具，可以在 Windows、Mac、Linux、iOS、Android 任何平台使用，只要我们的设备有浏览器就能用他来传输文件。 搭建 Enclosed  反">
+    <meta name="description" content="最近实习轮转到预防了，需要在社区实习4周，而社区医生有一堆需要重复填报的数据，因此写了下面的脚本来自动化填写。而问题是社区的电脑禁用了U盘等设备的使用，因此想将这个脚本传递到其他电脑上只能手打一次。。。 于是想到的吃灰已久的树莓派zero w，给它刷上了 P4wnP1 ALOA 来模拟键盘输入，这样就不用手打了。    准备工作  P4wnP1_aloa 的镜像，解压为 .img SD卡烧写工具">
   
   
   
-  <title>【记录】搭建端到端加密的Enclosed和局域网传输数据的SnapDrop - Limour&#39;s Blog</title>
+  <title>【记录】内网使用P4wnP1传递文件 - Limour&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://jscdn.limour.top/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
 
@@ -76,7 +76,7 @@
 
 
   
-  <link rel="canonical" href="https://hexo.limour.top/Building-an-end-to-end-encrypted-enclosure-and-SnapDrop-for-LAN-data-transmission"/>
+  <link rel="canonical" href="https://hexo.limour.top/internal-network-uses-p4wnp1-to-transfer-file"/>
 <meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="Limour's Blog" type="application/atom+xml">
 <link rel="alternate" href="/rss2.xml" title="Limour's Blog" type="application/rss+xml">
 </head>
@@ -230,7 +230,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">【记录】搭建端到端加密的Enclosed和局域网传输数据的SnapDrop</span>
+            <span id="subtitle">【记录】内网使用P4wnP1传递文件</span>
           
         </div>
 
@@ -246,8 +246,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-10-09 14:19" pubdate>
-          October 9, 2024 pm
+        <time datetime="2024-10-27 15:05" pubdate>
+          October 27, 2024 pm
         </time>
       </span>
     
@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          227 words
+          585 words
         
       </span>
     
@@ -269,7 +269,7 @@
         
         
         
-          2 mins
+          5 mins
         
       </span>
     
@@ -306,12 +306,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">【记录】搭建端到端加密的Enclosed和局域网传输数据的SnapDrop</h1>
+            <h1 id="seo-header">【记录】内网使用P4wnP1传递文件</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on October 9, 2024 pm
+                    Last updated on October 27, 2024 pm
                   
                 
               </p>
@@ -319,19 +319,46 @@
             
               <div class="markdown-body">
                 
-                <p>Enclosed，一个极简的网络应用程序，旨在发送私人和安全的消息。所有消息都是端到端加密的，确保服务器和存储对内容没有任何了解。用户可以设置密码，定义过期时间（TTL），并选择在阅读后让消息自毁。</p>
-<p>Snapdrop，一个开源的在线文件传输工具，可以在 Windows、Mac、Linux、iOS、Android 任何平台使用，只要我们的设备有浏览器就能用他来传输文件。</p>
-<h2 id="搭建-Enclosed">搭建 Enclosed</h2>
+                <p>最近实习轮转到预防了，需要在社区实习4周，而社区医生有一堆需要重复填报的数据，因此写了下面的脚本来自动化填写。而问题是社区的电脑禁用了U盘等设备的使用，因此想将这个脚本传递到其他电脑上只能手打一次。。。<br>
+于是想到的吃灰已久的<code>树莓派zero w</code>，给它刷上了 <code>P4wnP1 ALOA</code> 来模拟键盘输入，这样就不用手打了。<br>
+<img src="https://img.limour.top/2024/10/27/671de6fd478d1.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""><br>
+<img src="https://img.limour.top/2024/10/27/671de729d6936.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""><br>
+<img src="https://img.limour.top/2024/10/27/671de7533730a.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<h2 id="准备工作">准备工作</h2>
 <ul>
-<li><a href="/Docker-bu-shu-Nginx-Proxy-Manager">反向代理服务</a></li>
+<li><code>P4wnP1_aloa</code> 的<a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL1JvZ2FuRGF3ZXMvUDR3blAxX2Fsb2EvcmVsZWFzZXMvdGFnL3YwLjEuMS1iZXRh" rel="noopener external nofollow noreferrer">镜像</a>，解压为 <code>.img</code></li>
+<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9odWdnaW5nZmFjZS5jby9kYXRhc2V0cy9MaW1vdXIvYXJjaHZpZS9ibG9iL21haW4vU0QlRTUlOEQlQTElRTclODMlQTclRTUlODYlOTklRTUlQjclQTUlRTUlODUlQjcuN3o=" rel="noopener external nofollow noreferrer">SD卡烧写工具</a></li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/app/enclosed &amp;&amp; <span class="hljs-built_in">cd</span> ~/app/enclosed &amp;&amp; <span class="hljs-built_in">touch</span> .<span class="hljs-built_in">env</span> &amp;&amp; nano docker-compose.yml<br>sudo docker compose up -d<br></code></pre></td></tr></table></figure>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.6&#x27;</span><br> <br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">enclosed:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">docker.limour.top/corentinth/enclosed:latest</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">env_file:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">.env</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./enclosed-data:/app/.data</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">/etc/localtime:/etc/localtime:ro</span><br> <br><span class="hljs-attr">networks:</span><br>  <span class="hljs-attr">default:</span><br>    <span class="hljs-attr">external:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">ngpm</span><br></code></pre></td></tr></table></figure>
-<p><img src="https://img.limour.top/2024/10/09/67062314c51e1.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
-<h2 id="搭建-SnapDrop">搭建 SnapDrop</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/app/snapdrop &amp;&amp; <span class="hljs-built_in">cd</span> ~/app/snapdrop &amp;&amp; <span class="hljs-built_in">touch</span> .<span class="hljs-built_in">env</span> &amp;&amp; nano docker-compose.yml<br>sudo docker compose up -d<br></code></pre></td></tr></table></figure>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.6&#x27;</span><br> <br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">snapdrop:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">docker.limour.top/linuxserver/snapdrop:latest</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">env_file:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">.env</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">/etc/localtime:/etc/localtime:ro</span><br> <br><span class="hljs-attr">networks:</span><br>  <span class="hljs-attr">default:</span><br>    <span class="hljs-attr">external:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">ngpm</span><br></code></pre></td></tr></table></figure>
-<p><img src="https://img.limour.top/2024/10/09/67062351e1a9e.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<p>写入镜像的教程很多，就不赘述了，先格式化SD卡，然后写入<code>.img</code>文件就行</p>
+<h2 id="连接树莓派">连接树莓派</h2>
+<ul>
+<li>将 <code>树莓派zero w</code> 的带 <code>USB</code> 标志的口通过手机数据线连接到靶机上，<code>PWR</code>口不用管</li>
+<li>等待一个 <code>P4WNp1</code> 的 WIFI，连接它，密码是 <code>MaMe82-P4wnP1</code>，此时IP为 <code>172.24.0.1</code></li>
+<li>或者也可以搜索一个<code>P4wnP1</code>的蓝牙，连接它，默认PIN是 <code>1337</code>，然后加入蓝牙个人区域网，此时IP为 <code>172.26.0.1</code></li>
+<li>然后可以ssh连接对应的IP，默认用户名<code>root</code>，密码<code>toor</code></li>
+</ul>
+<p><img src="https://img.limour.top/2024/10/27/671df3c9042f0.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<h2 id="配置-USB">配置 USB</h2>
+<ul>
+<li>访问 <code>http://172.24.0.1:8000/</code> (蓝牙就算了，太慢了打不开)</li>
+<li>此时靶机会有一个驱动错误的提示，我们需要将 <code>USB Gadget Settings</code> 中的 <code>CDC ECM</code> 和 <code>RNDIS</code> 两项关闭</li>
+<li>只保留 <code>Keyboard</code> 和 <code>Mouse</code> 两项，然后点击 <code>STORE</code> 和 <code>DEPLOY STORED</code> 后等一会，驱动错误提示就会消失了</li>
+</ul>
+<p><img src="https://img.limour.top/2024/10/27/671df3e21fc9b.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""><br>
+<img src="https://img.limour.top/2024/10/27/671df5156410b.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<h2 id="测试-HIDScrip">测试 HIDScrip</h2>
+<ul>
+<li>从 <code>USB SETTINGS</code> 转到 <code>HIDScrip</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">layout</span>(<span class="hljs-string">&#x27;us&#x27;</span>);			<span class="hljs-comment">// 键盘布局</span><br><span class="hljs-title function_">typingSpeed</span>(<span class="hljs-number">50</span>,<span class="hljs-number">100</span>);	<span class="hljs-comment">// 敲击按键的时候等待的间隔100毫秒加上0-150毫秒之间的随机值</span><br> <br><span class="hljs-title function_">press</span>(<span class="hljs-string">&quot;GUI r&quot;</span>);         <span class="hljs-comment">//类似按下某个键位然后再抬起来，具体可以看官方文档，和上面的机制相识</span><br><span class="hljs-title function_">delay</span>(<span class="hljs-number">500</span>);             <span class="hljs-comment">//暂停时间</span><br><span class="hljs-title function_">type</span>(<span class="hljs-string">&quot;notepad\n&quot;</span>);      <span class="hljs-comment">//输入字符串，模拟键盘按键</span><br><span class="hljs-title function_">delay</span>(<span class="hljs-number">1500</span>);            <span class="hljs-comment">//暂停时间</span><br><span class="hljs-comment">// moveStepped(x,y);    //鼠标移动，相当于模拟正常运动</span><br><span class="hljs-comment">// moveTo(x,y);         //鼠标移动到设置的坐标点，x和y分别是横纵坐标</span><br><span class="hljs-title function_">type</span>(<span class="hljs-string">&quot;Hello from P4wnP1\n&quot;</span>);<br><br><span class="hljs-title function_">typingSpeed</span>(<span class="hljs-number">10</span>,<span class="hljs-number">20</span>);<br><span class="hljs-keyword">var</span> base64 = <span class="hljs-string">&#x27;SGVsbG8gZnJvbSBQNHduUDE=&#x27;</span> <span class="hljs-comment">// btoa(&#x27;Hello from P4wnP1&#x27;);</span><br><span class="hljs-title function_">type</span>(<span class="hljs-string">&quot;atob(&#x27;&quot;</span> + base64 + <span class="hljs-string">&quot;&#x27;);&quot;</span>);<br></code></pre></td></tr></table></figure>
+<p><img src="https://img.limour.top/2024/10/27/671df52854a41.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<h2 id="关闭树莓派">关闭树莓派</h2>
+<ul>
+<li>不要直接拔电源，不然下次无法开机</li>
+<li>ssh连接后输入 <code>shutdown -h now</code></li>
+<li>等待 LED 灯闪烁熄灭，先别急，再等一会，会再次闪烁后熄灭</li>
+<li>此时可以安全拔掉数据线了</li>
+</ul>
 
                 
               </div>
@@ -344,9 +371,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/docker/" class="print-no-link">#docker</a>
-      
-        <a href="/tags/ngpm/" class="print-no-link">#ngpm</a>
+        <a href="/tags/raspberrypi/" class="print-no-link">#raspberrypi</a>
       
     </div>
   
@@ -358,8 +383,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【记录】搭建端到端加密的Enclosed和局域网传输数据的SnapDrop</div>
-      <div>https://hexo.limour.top/Building-an-end-to-end-encrypted-enclosure-and-SnapDrop-for-LAN-data-transmission</div>
+      <div>【记录】内网使用P4wnP1传递文件</div>
+      <div>https://hexo.limour.top/internal-network-uses-p4wnp1-to-transfer-file</div>
     </div>
     <div class="license-meta">
       
@@ -371,13 +396,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>October 9, 2024</div>
+          <div>October 27, 2024</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>October 9, 2024</div>
+          <div>October 27, 2024</div>
         </div>
       
       
@@ -420,18 +445,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/internal-network-uses-p4wnp1-to-transfer-file" title="【记录】内网使用P4wnP1传递文件">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【记录】内网使用P4wnP1传递文件</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/Using-Chinese-New-Interpretation-to-Test-Model-Authenticity" title="【记录】使用汉语新解测试模型真假">
-                        <span class="hidden-mobile">【记录】使用汉语新解测试模型真假</span>
+                      <a href="/Building-an-end-to-end-encrypted-enclosure-and-SnapDrop-for-LAN-data-transmission" title="【记录】搭建端到端加密的Enclosed和局域网传输数据的SnapDrop">
+                        <span class="hidden-mobile">【记录】搭建端到端加密的Enclosed和局域网传输数据的SnapDrop</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

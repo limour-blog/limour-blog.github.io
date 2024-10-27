@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>【记录】内网使用P4wnP1传递文件</title>
+    <link href="/internal-network-uses-p4wnp1-to-transfer-file"/>
+    <url>/internal-network-uses-p4wnp1-to-transfer-file</url>
+    
+    <content type="html"><![CDATA[最近实习轮转到预防了，需要在社区实习4周，而社区医生有一堆需要重复填报的数据，因此写了下面的脚本来自动化填写。而问题是社区的电脑禁用了U盘等设备的使用，因此想将这个脚本传递到其他电脑上只能手打一次。。。于是想到的吃灰已久的树莓派zero w，给它刷上了 P4wnP1 ALOA 来模拟键盘输入，这样就不用手打了。准备工作P4wnP1_aloa 的镜像，解压为 .imgSD卡烧写工具写入镜像的教程很多，就不赘述了，先格式化SD卡，然后写入.img文件就行连接树莓派将 树莓派zero w 的带 USB 标志的口通过手机数据线连接到靶机上，PWR口不用管等待一个 P4WNp1 的 WIFI，连接它，密码是 MaMe82-P4wnP1，此时IP为 172.24.0.1或者也可以搜索一个P4wnP1的蓝牙，连接它，默认PIN是 1337，然后加入蓝牙个人区域网，此时IP为 172.26.0.1然后可以ssh连接对应的IP，默认用户名root，密码toor配置 USB访问  (蓝牙就算了，太慢了打不开)此时靶机会有一个驱动错误的提示，我们需要将 USB Gadget Settings 中的 CDC ECM 和 RNDIS 两项关闭只保留 Keyboard 和 Mouse 两项，然后点击 STORE 和 DEPLOY STORED 后等一会，驱动错误提示就会消失了测试 HIDScrip从 USB SETTINGS 转到 HIDScrip关闭树莓派不要直接拔电源，不然下次无法开机ssh连接后输入 shutdown -h now等待 LED 灯闪烁熄灭，先别急，再等一会，会再次闪烁后熄灭此时可以安全拔掉数据线了]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>raspberrypi</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【记录】搭建端到端加密的Enclosed和局域网传输数据的SnapDrop</title>
     <link href="/Building-an-end-to-end-encrypted-enclosure-and-SnapDrop-for-LAN-data-transmission"/>
     <url>/Building-an-end-to-end-encrypted-enclosure-and-SnapDrop-for-LAN-data-transmission</url>
@@ -2506,6 +2525,27 @@
     <tags>
       
       <tag>探索</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【迁移】树莓派开启蓝牙个人区域网</title>
+    <link href="/ssh-by-bluetooth-in-raspberrypi"/>
+    <url>/ssh-by-bluetooth-in-raspberrypi</url>
+    
+    <content type="html"><![CDATA[开启 SSH 连接boot 目录下新建 ssh 的空文件boot 目录下新建 wpa_supplicant.conf蓝牙局域网设置连接蓝牙局域网win11 上右键蓝牙加入个人区域网树莓派上 ifconfig 可以看到多了一个 bnep0 的网络win11 上 ipconfig.exe 可以看到多了一个以太网适配器 蓝牙网络连接其默认网关为 172.20.1.1此时 win11 上 ssh 连接 172.20.1.1 即可连接到树莓派]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>raspberrypi</tag>
+      
+      <tag>ssh</tag>
       
     </tags>
     

@@ -18,11 +18,11 @@
   <meta name="author" content="Limour">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Enclosed，一个极简的网络应用程序，旨在发送私人和安全的消息。所有消息都是端到端加密的，确保服务器和存储对内容没有任何了解。用户可以设置密码，定义过期时间（TTL），并选择在阅读后让消息自毁。 Snapdrop，一个开源的在线文件传输工具，可以在 Windows、Mac、Linux、iOS、Android 任何平台使用，只要我们的设备有浏览器就能用他来传输文件。 搭建 Enclosed  反">
+    <meta name="description" content="开启 SSH 连接  boot 目录下新建 ssh 的空文件 boot 目录下新建 wpa_supplicant.conf  1234567891011121314151617country=CNctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdevupdate_config=1 network=&amp;#123;ssid=&amp;quot;Limour">
   
   
   
-  <title>【记录】搭建端到端加密的Enclosed和局域网传输数据的SnapDrop - Limour&#39;s Blog</title>
+  <title>【迁移】树莓派开启蓝牙个人区域网 - Limour&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://jscdn.limour.top/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
 
@@ -76,7 +76,7 @@
 
 
   
-  <link rel="canonical" href="https://hexo.limour.top/Building-an-end-to-end-encrypted-enclosure-and-SnapDrop-for-LAN-data-transmission"/>
+  <link rel="canonical" href="https://hexo.limour.top/ssh-by-bluetooth-in-raspberrypi"/>
 <meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="Limour's Blog" type="application/atom+xml">
 <link rel="alternate" href="/rss2.xml" title="Limour's Blog" type="application/rss+xml">
 </head>
@@ -230,7 +230,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">【记录】搭建端到端加密的Enclosed和局域网传输数据的SnapDrop</span>
+            <span id="subtitle">【迁移】树莓派开启蓝牙个人区域网</span>
           
         </div>
 
@@ -246,8 +246,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-10-09 14:19" pubdate>
-          October 9, 2024 pm
+        <time datetime="2020-03-31 13:47" pubdate>
+          March 31, 2020 pm
         </time>
       </span>
     
@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          227 words
+          306 words
         
       </span>
     
@@ -269,7 +269,7 @@
         
         
         
-          2 mins
+          3 mins
         
       </span>
     
@@ -306,12 +306,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">【记录】搭建端到端加密的Enclosed和局域网传输数据的SnapDrop</h1>
+            <h1 id="seo-header">【迁移】树莓派开启蓝牙个人区域网</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on October 9, 2024 pm
+                    Last updated on October 27, 2024 pm
                   
                 
               </p>
@@ -319,19 +319,24 @@
             
               <div class="markdown-body">
                 
-                <p>Enclosed，一个极简的网络应用程序，旨在发送私人和安全的消息。所有消息都是端到端加密的，确保服务器和存储对内容没有任何了解。用户可以设置密码，定义过期时间（TTL），并选择在阅读后让消息自毁。</p>
-<p>Snapdrop，一个开源的在线文件传输工具，可以在 Windows、Mac、Linux、iOS、Android 任何平台使用，只要我们的设备有浏览器就能用他来传输文件。</p>
-<h2 id="搭建-Enclosed">搭建 Enclosed</h2>
+                <h2 id="开启-SSH-连接">开启 SSH 连接</h2>
 <ul>
-<li><a href="/Docker-bu-shu-Nginx-Proxy-Manager">反向代理服务</a></li>
+<li><code>boot</code> 目录下新建 <code>ssh</code> 的空文件</li>
+<li><code>boot</code> 目录下新建 <code>wpa_supplicant.conf</code></li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/app/enclosed &amp;&amp; <span class="hljs-built_in">cd</span> ~/app/enclosed &amp;&amp; <span class="hljs-built_in">touch</span> .<span class="hljs-built_in">env</span> &amp;&amp; nano docker-compose.yml<br>sudo docker compose up -d<br></code></pre></td></tr></table></figure>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.6&#x27;</span><br> <br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">enclosed:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">docker.limour.top/corentinth/enclosed:latest</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">env_file:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">.env</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./enclosed-data:/app/.data</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">/etc/localtime:/etc/localtime:ro</span><br> <br><span class="hljs-attr">networks:</span><br>  <span class="hljs-attr">default:</span><br>    <span class="hljs-attr">external:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">ngpm</span><br></code></pre></td></tr></table></figure>
-<p><img src="https://img.limour.top/2024/10/09/67062314c51e1.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
-<h2 id="搭建-SnapDrop">搭建 SnapDrop</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/app/snapdrop &amp;&amp; <span class="hljs-built_in">cd</span> ~/app/snapdrop &amp;&amp; <span class="hljs-built_in">touch</span> .<span class="hljs-built_in">env</span> &amp;&amp; nano docker-compose.yml<br>sudo docker compose up -d<br></code></pre></td></tr></table></figure>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.6&#x27;</span><br> <br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">snapdrop:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">docker.limour.top/linuxserver/snapdrop:latest</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">env_file:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">.env</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">/etc/localtime:/etc/localtime:ro</span><br> <br><span class="hljs-attr">networks:</span><br>  <span class="hljs-attr">default:</span><br>    <span class="hljs-attr">external:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">ngpm</span><br></code></pre></td></tr></table></figure>
-<p><img src="https://img.limour.top/2024/10/09/67062351e1a9e.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs conf">country=CN<br>ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev<br>update_config=1<br> <br>network=&#123;<br>ssid=&quot;Limour123&quot;<br>psk=&quot;123456&quot;<br>key_mgmt=WPA-PSK<br>priority=5<br>&#125;<br> <br>network=&#123;<br>ssid=&quot;Redmi_719_2.4G&quot;<br>psk=&quot;123456&quot;<br>key_mgmt=WPA-PSK<br>priority=1<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://img.limour.top/archives_2023/blog_wp/2020/11/image-7.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<h2 id="蓝牙局域网设置">蓝牙局域网设置</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install bridge-utils bluez python-dbus python-gobject bluez-tools<br>sudo ufw <span class="hljs-built_in">disable</span> <span class="hljs-comment"># 关闭防火墙</span><br>sudo service bluetooth start <span class="hljs-comment"># 开启蓝牙服务并设置为开机自启</span><br>sudo update-rc.d bluetooth <span class="hljs-built_in">enable</span><br><br>sudo nano /etc/systemd/network/pan0.netdev<br><span class="hljs-comment"># 输入:</span><br>[NetDev]<br>Name=pan0<br>Kind=bridge<br><br>sudo nano /etc/systemd/network/pan0.network<br><span class="hljs-comment"># 输入:</span><br>[Match]<br>Name=pan0<br><br>[Network]<br>Address=172.20.1.1/24<br>DHCPServer=<span class="hljs-built_in">yes</span><br><br>sudo nano /etc/systemd/system/bt-agent.service<br><span class="hljs-comment"># 输入:</span><br>[Unit]<br>Description=Bluetooth Auth Agent<br><br>[Service]<br>ExecStart=/usr/bin/bt-agent -c NoInputNoOutput<br>Type=simple<br><br>[Install]<br>WantedBy=multi-user.target<br><br>sudo nano /etc/systemd/system/bt-network.service<br><span class="hljs-comment"># 输入:</span><br>[Unit]<br>Description=Bluetooth NEP PAN<br>After=pan0.network<br><br>[Service]<br>ExecStart=/usr/bin/bt-network -s nap pan0<br>Type=simple<br><br>[Install]<br>WantedBy=multi-user.target<br><br>sudo systemctl <span class="hljs-built_in">enable</span> systemd-networkd<br>sudo systemctl <span class="hljs-built_in">enable</span> bt-agent<br>sudo systemctl <span class="hljs-built_in">enable</span> bt-network<br>sudo systemctl start systemd-networkd<br>sudo systemctl start bt-agent<br>sudo systemctl start bt-network<br></code></pre></td></tr></table></figure>
+<h2 id="连接蓝牙局域网">连接蓝牙局域网</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">bluetoothctl <span class="hljs-comment"># 启动蓝牙命令行工具</span><br>agent on <span class="hljs-comment"># 开启代理</span><br>scan on <span class="hljs-comment"># 扫描设备</span><br>pair 9C:19:C2:4D:88:DC <span class="hljs-comment"># 树莓派与蓝牙设备进行配对</span><br>connect 9C:19:C2:4D:88:DC  <span class="hljs-comment"># 连接设备</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>win11</code> 上右键蓝牙加入个人区域网</li>
+<li>树莓派上 <code>ifconfig</code> 可以看到多了一个 <code>bnep0</code> 的网络</li>
+<li><code>win11</code> 上 <code>ipconfig.exe</code> 可以看到多了一个<code>以太网适配器 蓝牙网络连接</code></li>
+<li>其默认网关为 <code>172.20.1.1</code></li>
+<li>此时 <code>win11</code> 上 <code>ssh</code> 连接 <code>172.20.1.1</code> 即可连接到树莓派</li>
+</ul>
 
                 
               </div>
@@ -344,9 +349,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/docker/" class="print-no-link">#docker</a>
+        <a href="/tags/raspberrypi/" class="print-no-link">#raspberrypi</a>
       
-        <a href="/tags/ngpm/" class="print-no-link">#ngpm</a>
+        <a href="/tags/ssh/" class="print-no-link">#ssh</a>
       
     </div>
   
@@ -358,8 +363,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【记录】搭建端到端加密的Enclosed和局域网传输数据的SnapDrop</div>
-      <div>https://hexo.limour.top/Building-an-end-to-end-encrypted-enclosure-and-SnapDrop-for-LAN-data-transmission</div>
+      <div>【迁移】树莓派开启蓝牙个人区域网</div>
+      <div>https://hexo.limour.top/ssh-by-bluetooth-in-raspberrypi</div>
     </div>
     <div class="license-meta">
       
@@ -371,13 +376,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>October 9, 2024</div>
+          <div>March 31, 2020</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>October 9, 2024</div>
+          <div>October 27, 2024</div>
         </div>
       
       
@@ -420,21 +425,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/internal-network-uses-p4wnp1-to-transfer-file" title="【记录】内网使用P4wnP1传递文件">
+                      <a href="/Solving-equations-using-postfix-notation" title="【探索】利用后缀表达式解方程">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【记录】内网使用P4wnP1传递文件</span>
+                        <span class="hidden-mobile">【探索】利用后缀表达式解方程</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
-                    
-                      <a href="/Using-Chinese-New-Interpretation-to-Test-Model-Authenticity" title="【记录】使用汉语新解测试模型真假">
-                        <span class="hidden-mobile">【记录】使用汉语新解测试模型真假</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
                     
                   </article>
                 </div>
