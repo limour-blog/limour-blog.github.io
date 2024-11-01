@@ -8,7 +8,7 @@
     <link href="/Mount-OSS-as-a-WebMAV"/>
     <url>/Mount-OSS-as-a-WebMAV</url>
     
-    <content type="html"><![CDATA[OSS（对象存储服务）是一种分布式存储服务，它提供了简单的Web服务接口，使得用户可以在任何地方、任何时间存储和检索数据。而WebDAV（基于Web的分布式创作和版本控制）则是一个基于HTTP的协议，它允许用户通过网络对文件进行编辑和管理。将OSS转换成WebDAV可以方便使用Zotero这类文献管理软件进行同步。Zotero支持通过WebDAV协议同步附件，这样用户可以在不同的设备和平台上访问和管理自己的文献资料，提高了工作和研究的效率。因此，使用WebDAV对接OSS可以为Zotero用户带来极大的便利。新建 OSS 桶新建一个储存桶，记录下桶名称新建一个RAM角色记录下 AccessKey ID 和 AccessKey Secret授予访问权限记录下内网 EndPoint转 WebDAV反向代理服务配置反代]]></content>
+    <content type="html"><![CDATA[OSS（对象存储服务）是一种分布式存储服务，它提供了简单的Web服务接口，使得用户可以在任何地方、任何时间存储和检索数据。而WebDAV（基于Web的分布式创作和版本控制）则是一个基于HTTP的协议，它允许用户通过网络对文件进行编辑和管理。将OSS转换成WebDAV可以方便使用Zotero这类文献管理软件进行同步。Zotero支持通过WebDAV协议同步附件，这样用户可以在不同的设备和平台上访问和管理自己的文献资料，提高了工作和研究的效率。因此，使用WebDAV对接OSS可以为Zotero用户带来极大的便利。新建 OSS 桶新建一个储存桶，记录下桶名称新建一个RAM角色记录下 AccessKey ID 和 AccessKey Secret授予访问权限，用 http 而非 https，因为 ossfs-webdav 很老了记录下内网 EndPoint转 WebDAV反向代理服务配置反代]]></content>
     
     
     
