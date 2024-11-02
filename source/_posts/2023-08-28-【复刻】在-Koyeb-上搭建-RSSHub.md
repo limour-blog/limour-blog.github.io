@@ -33,3 +33,27 @@ HTTP_BASIC_AUTH_PASS: 自定义HTTP密码
 ## 使用方式
 + 认证方式1：`https://rss.limour.top/foreverblog/feeds?key=自定义ACCESS密钥`
 + 认证方式2：`https://limour:自定义HTTP密码@rss.limour.top/foreverblog/feeds`
+
+## 附加 Wallabag
+```bash
+mkdir -p ~/app/wallabag && cd ~/app/wallabag && nano docker-compose.yml
+sudo docker compose up -d
+```
+```yml
+version: '3'
+services:
+  wallabag:
+    image: wallabag/wallabag
+    environment:
+      - SYMFONY__ENV__FROM_EMAIL=limour@limour.top   # 修改成你自己的邮箱
+      - SYMFONY__ENV__DOMAIN_NAME=https://wallabag.limour.top  # 修改成稍后要反向代理的域名
+      - SYMFONY__ENV__SERVER_NAME="Limour's Wallabag"
+    ports:
+      - 12080:80   # 12080可以修改成其他的自己想用的端口
+    volumes:
+      - ./images:/var/www/wallabag/web/assets/images  # 将图片映射挂载到本地，这样docker停止了，数据不会丢失
+      - ./data:/var/www/wallabag/data
+    restart: unless-stopped
+```
++ 默认登录是 `wallabag:wallabag`
++ 浏览器插件：[Wallabagger](https://github.com/wallabag/wallabagger)
