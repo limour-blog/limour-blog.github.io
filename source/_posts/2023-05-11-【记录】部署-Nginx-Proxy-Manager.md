@@ -58,12 +58,25 @@ gzip_buffers 32 4k;
 EOF
 ```
 ## 添加基本身份验证
-1. 添加 Access List
++ 添加 Access List
+
 ![](https://img.limour.top/2023/08/30/64ef246139917.webp)
-1. 配置账号密码
++ 配置账号密码
+
 ![](https://img.limour.top/2023/08/30/64ef247e9c0f7.webp)
-1. 配置基本身份验证
++ 配置基本身份验证（弃用）
+
 ![](https://img.limour.top/2023/08/30/64ef249365db5.webp)
+
++ 因为持续多年的 [issues 383](https://github.com/NginxProxyManager/nginx-proxy-manager/issues/383)，直接配置不行，请在 ` Advanced` 里配置
+```nginx
+# Authorization
+auth_basic            "Authorization required";
+auth_basic_user_file  /data/access/2;
+```
+
+![](https://img.limour.top/2024/11/02/6725d515b5d9a.webp)
+
 ## 示例：反代 WordPress
 ```yaml
 version: '3.1'
