@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          132 words
+          260 words
         
       </span>
     
@@ -269,7 +269,7 @@
         
         
         
-          2 mins
+          3 mins
         
       </span>
     
@@ -311,7 +311,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on March 19, 2024 pm
+                    Last updated on November 2, 2024 pm
                   
                 
               </p>
@@ -348,6 +348,13 @@
 <ul>
 <li>认证方式1：<code>https://rss.limour.top/foreverblog/feeds?key=自定义ACCESS密钥</code></li>
 <li>认证方式2：<code>https://limour:自定义HTTP密码@rss.limour.top/foreverblog/feeds</code></li>
+</ul>
+<h2 id="附加-Wallabag">附加 Wallabag</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/app/wallabag &amp;&amp; <span class="hljs-built_in">cd</span> ~/app/wallabag &amp;&amp; nano docker-compose.yml<br>sudo docker compose up -d<br></code></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3&#x27;</span><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">wallabag:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">wallabag/wallabag</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">SYMFONY__ENV__FROM_EMAIL=limour@limour.top</span>   <span class="hljs-comment"># 修改成你自己的邮箱</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">SYMFONY__ENV__DOMAIN_NAME=https://wallabag.limour.top</span>  <span class="hljs-comment"># 修改成稍后要反向代理的域名</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">SYMFONY__ENV__SERVER_NAME=&quot;Limour&#x27;s</span> <span class="hljs-string">Wallabag&quot;</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-number">12080</span><span class="hljs-string">:80</span>   <span class="hljs-comment"># 12080可以修改成其他的自己想用的端口</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./images:/var/www/wallabag/web/assets/images</span>  <span class="hljs-comment"># 将图片映射挂载到本地，这样docker停止了，数据不会丢失</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./data:/var/www/wallabag/data</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">unless-stopped</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>默认登录是 <code>wallabag:wallabag</code></li>
+<li>浏览器插件：<a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL3dhbGxhYmFnL3dhbGxhYmFnZ2Vy" rel="noopener external nofollow noreferrer">Wallabagger</a></li>
 </ul>
 
                 
@@ -392,7 +399,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>March 19, 2024</div>
+          <div>November 2, 2024</div>
         </div>
       
       

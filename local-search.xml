@@ -795,7 +795,7 @@
     <link href="/-fu-ke--zai-Koyeb-shang-da-jian-RSSHub"/>
     <url>/-fu-ke--zai-Koyeb-shang-da-jian-RSSHub</url>
     
-    <content type="html"><![CDATA[验证信用卡后，Koyeb 每月提供 $5.5 的免费额度，可以部署两个 nano services。新建一个项目Image 填 docker.io/diygod/rsshubTag 填 chromium-bundled配置环境变量service type 选 WebPort 改成 1200添加以下环境变量自定义域名添加完 DNS 的 CNAME 后等一会儿更新项目点这个 Redeploy 就行使用方式认证方式1：]]></content>
+    <content type="html"><![CDATA[验证信用卡后，Koyeb 每月提供 $5.5 的免费额度，可以部署两个 nano services。新建一个项目Image 填 docker.io/diygod/rsshubTag 填 chromium-bundled配置环境变量service type 选 WebPort 改成 1200添加以下环境变量自定义域名添加完 DNS 的 CNAME 后等一会儿更新项目点这个 Redeploy 就行使用方式认证方式1： Wallabag默认登录是 wallabag:wallabag浏览器插件：Wallabagger]]></content>
     
     
     
