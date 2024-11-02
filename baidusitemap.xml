@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://hexo.limour.top/Docker-bu-shu-Nginx-Proxy-Manager.html</loc>
+    <lastmod>2024-11-02</lastmod>
+  </url>
+  <url>
     <loc>https://hexo.limour.top/Mount-OSS-as-a-WebMAV.html</loc>
     <lastmod>2024-11-01</lastmod>
   </url>
@@ -94,10 +98,6 @@
   </url>
   <url>
     <loc>https://hexo.limour.top/-ji-lu--an-zhuang-npsfrp-fu-wu-duan-yu-ke-hu-duan.html</loc>
-    <lastmod>2024-03-21</lastmod>
-  </url>
-  <url>
-    <loc>https://hexo.limour.top/Docker-bu-shu-Nginx-Proxy-Manager.html</loc>
     <lastmod>2024-03-21</lastmod>
   </url>
   <url>

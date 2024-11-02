@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          711 words
+          741 words
         
       </span>
     
@@ -269,7 +269,7 @@
         
         
         
-          6 mins
+          7 mins
         
       </span>
     
@@ -311,7 +311,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on March 22, 2024 am
+                    Last updated on November 2, 2024 pm
                   
                 
               </p>
@@ -340,14 +340,23 @@
 <h2 id="开启-Gzip-压缩">开启 Gzip 压缩</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> ~/base/NGPM &amp;&amp; <span class="hljs-built_in">mkdir</span> -p data/nginx/custom<br><span class="hljs-built_in">cat</span> &lt;&lt; <span class="hljs-string">EOF &gt; data/nginx/custom/server_proxy.conf</span><br><span class="hljs-string">gzip on;</span><br><span class="hljs-string">gzip_min_length 256;</span><br><span class="hljs-string">gzip_comp_level 9;</span><br><span class="hljs-string">gzip_types *;</span><br><span class="hljs-string">gzip_vary on;</span><br><span class="hljs-string">gzip_buffers 32 4k;</span><br><span class="hljs-string">EOF</span><br></code></pre></td></tr></table></figure>
 <h2 id="添加基本身份验证">添加基本身份验证</h2>
-<ol>
-<li>添加 Access List<br>
-<img src="https://img.limour.top/2023/08/30/64ef246139917.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></li>
-<li>配置账号密码<br>
-<img src="https://img.limour.top/2023/08/30/64ef247e9c0f7.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></li>
-<li>配置基本身份验证<br>
-<img src="https://img.limour.top/2023/08/30/64ef249365db5.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></li>
-</ol>
+<ul>
+<li>添加 Access List</li>
+</ul>
+<p><img src="https://img.limour.top/2023/08/30/64ef246139917.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<ul>
+<li>配置账号密码</li>
+</ul>
+<p><img src="https://img.limour.top/2023/08/30/64ef247e9c0f7.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<ul>
+<li>配置基本身份验证（弃用）</li>
+</ul>
+<p><img src="https://img.limour.top/2023/08/30/64ef249365db5.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<ul>
+<li>因为持续多年的 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL05naW54UHJveHlNYW5hZ2VyL25naW54LXByb3h5LW1hbmFnZXIvaXNzdWVzLzM4Mw==" rel="noopener external nofollow noreferrer">issues 383</a>，直接配置不行，请在 <code> Advanced</code> 里配置</li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment"># Authorization</span><br><span class="hljs-attribute">auth_basic</span>            <span class="hljs-string">&quot;Authorization required&quot;</span>;<br><span class="hljs-attribute">auth_basic_user_file</span>  /data/access/<span class="hljs-number">2</span>;<br></code></pre></td></tr></table></figure>
+<p><img src="https://img.limour.top/2024/11/02/6725d515b5d9a.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
 <h2 id="示例：反代-WordPress">示例：反代 WordPress</h2>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.1&#x27;</span><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">wordpress:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">wordpress</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./www:/var/www/html</span><br> <br><span class="hljs-attr">networks:</span><br>  <span class="hljs-attr">default:</span><br>    <span class="hljs-attr">external:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">ngpm</span><br></code></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/app/WordPress &amp;&amp; <span class="hljs-built_in">cd</span> ~/app/WordPress &amp;&amp; nano docker-compose.yml<br>sudo docker-compose up -d<br><span class="hljs-comment"># 反代写法如下 serviceName:port</span><br></code></pre></td></tr></table></figure>
@@ -415,7 +424,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>March 22, 2024</div>
+          <div>November 2, 2024</div>
         </div>
       
       

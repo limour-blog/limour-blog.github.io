@@ -1235,7 +1235,7 @@
     <link href="/Docker-bu-shu-Nginx-Proxy-Manager"/>
     <url>/Docker-bu-shu-Nginx-Proxy-Manager</url>
     
-    <content type="html"><![CDATA[Nginx Proxy Manager是一个预构建的Docker镜像，可以轻松地将您在家中或其他地方运行的网站转发到外部，并提供免费的SSL证书，无需了解太多关于Nginx或Letsencrypt的知识。在互联网日益普及的今天，使用本项目可以帮助您更加方便地管理和部署网站，同时也提高了您的网站的安全性。无论您是初学者还是有经验的开发人员，本项目都将为您提供便捷的使用体验。搭建环境安装好 docker部署Nginx Proxy Manager申请泛域名证书获取 cloudflare API 令牌API 令牌模板选择【编辑区域 DNS】记录下 dns_cloudflare_api_token进入NGPM管理页面，添加证书添加证书时选择 DNS验证，填入记录下的dns_cloudflare_api_token开启 Gzip 压缩添加基本身份验证添加 Access List配置账号密码配置基本身份验证示例：反代 WordPress进入 wp-content 目录下载 db.php (来自项目 wp-sqlite-db)重命名 wp-config-sample.php 为 wp-config.phpnano ~/app/WordPress/www/wp-config.php访问 salt 修改对应的salt按添加下面的代码，修改数据库位置访问网站完成安装附加 代理文本文件附加 代理 web-ui附加 随机图片附加 端口转发]]></content>
+    <content type="html"><![CDATA[Nginx Proxy Manager是一个预构建的Docker镜像，可以轻松地将您在家中或其他地方运行的网站转发到外部，并提供免费的SSL证书，无需了解太多关于Nginx或Letsencrypt的知识。在互联网日益普及的今天，使用本项目可以帮助您更加方便地管理和部署网站，同时也提高了您的网站的安全性。无论您是初学者还是有经验的开发人员，本项目都将为您提供便捷的使用体验。搭建环境安装好 docker部署Nginx Proxy Manager申请泛域名证书获取 cloudflare API 令牌API 令牌模板选择【编辑区域 DNS】记录下 dns_cloudflare_api_token进入NGPM管理页面，添加证书添加证书时选择 DNS验证，填入记录下的dns_cloudflare_api_token开启 Gzip 压缩添加基本身份验证添加 Access List配置账号密码配置基本身份验证（弃用）因为持续多年的 issues 383，直接配置不行，请在  Advanced 里配置示例：反代 WordPress进入 wp-content 目录下载 db.php (来自项目 wp-sqlite-db)重命名 wp-config-sample.php 为 wp-config.phpnano ~/app/WordPress/www/wp-config.php访问 salt 修改对应的salt按添加下面的代码，修改数据库位置访问网站完成安装附加 代理文本文件附加 代理 web-ui附加 随机图片附加 端口转发]]></content>
     
     
     
