@@ -154,10 +154,13 @@ services:
     image: yidadaa/chatgpt-next-web:latest
     environment:
       - TZ=Asia/Shanghai
-      - BASE_URL=http://one-api:3000/
-      - CUSTOM_MODELS=-all,+gpt-3.5-turbo@openai,+gpt-4-turbo@openai,+gpt-4o@openai,+claude-3-haiku@openai,+claude-3.5-sonnet@openai
+      - BASE_URL=https://cdn.limour.top/one-api
+      - CUSTOM_MODELS=-all,+gpt-4o-mini@Deepbricks,+gpt-3.5-turbo@openai,+gpt-4-turbo@openai,+gpt-4o@openai,+o1-mini@openai,+gpt-claude-3.5-haiku@OpenRouter,+gpt-claude-3.5-sonnet@OpenRouter
       - ENABLE_BALANCE_QUERY=1
+      - HOSTNAME=0.0.0.0
+      - DEFAULT_MODEL=gpt-4o
     restart: unless-stopped
+ 
 networks:
   default:
     external: true
@@ -166,6 +169,7 @@ networks:
 ![](https://img.limour.top/2023/10/03/651c368465000.webp)
 + [添加基本身份验证](/Docker-bu-shu-Nginx-Proxy-Manager.html#添加基本身份验证)
 + 修改 `/api/openai` 接口的 `header`
++ 设置里的 `对话摘要模型` 改为 `gpt-4o-mini`, 否则会默认使用最贵的模型来生成标题
 ```nginx
 chunked_transfer_encoding off;
 proxy_buffering off;
