@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>【记录】使用 circacompare 分析生物节律</title>
+    <link href="/shi-yong-circacompare-fen-xi-sheng-wu-jie-lv"/>
+    <url>/shi-yong-circacompare-fen-xi-sheng-wu-jie-lv</url>
+    
+    <content type="html"><![CDATA[circacompare 是一个专为分析生物节律数据而设计的 R 包。它的主要功能是比较不同条件下的节律参数，例如振幅、周期和相位。circacompare 使用非线性混合效应模型来拟合节律数据，这使得它在处理具有重复测量和复杂实验设计的数据时表现出色。与 circacompare 相比，MetaCycle 是另一个流行的 R 包，用于生物节律分析。MetaCycle 提供了多种算法（如 ARSER、JTK_CYCLE 和 Lomb-Scargle）来检测时间序列数据中的周期性信号。它的优势在于能够处理大规模数据集，并且适用于各种不同的实验条件。conda安装包导入包和数据两组比较单组绘图周期和衰减参数]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>节律</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【记录】将OSS挂载为WebDAV</title>
     <link href="/Mount-OSS-as-a-WebMAV"/>
     <url>/Mount-OSS-as-a-WebMAV</url>
