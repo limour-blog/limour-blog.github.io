@@ -114,7 +114,7 @@ mutate(group = factor(group))
 # 进行统计分析
 options(show.error.messages = F, warn = -1)
 result <- try({
-  circa_single(
+  circacompare(
     x = dt_s, col_time = "time", col_group = "group", col_outcome = "measure", period = 24, alpha_threshold = 1,
     timeout_n = 100000,
     control = list(
@@ -125,21 +125,6 @@ result <- try({
   )
 }, silent = TRUE)
 options(show.error.messages = T, warn = 1)
-# “k”表示中值，“alpha”表示振幅，“phi”表示相位。引入的额外参数是“tau”表示周期。
-
-# 进行统计分析
-result <- try({
-  circacompare(
-    x = dt_s, "time", "group", "measure", period = NA, alpha_threshold = 1,
-    timeout_n = 100000,
-    control = list(
-      main_params = c("k", "alpha", "phi", "tau"),
-      decay_params = c("alpha"),
-      grouped_params = c("alpha", "alpha_decay"),
-      period_min = 24, period_max = 24
-    )
-  )
-}, silent = TRUE)
 # “k”表示中值，“alpha”表示振幅，“phi”表示相位。引入的额外参数是“tau”表示周期。
 
 # 查看统计汇总
