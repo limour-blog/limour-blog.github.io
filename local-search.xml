@@ -8,7 +8,7 @@
     <link href="/using-qdrant-for-vector-retrieval"/>
     <url>/using-qdrant-for-vector-retrieval</url>
     
-    <content type="html"><![CDATA[Qdrant 是一个开源的向量数据库，专为高性能相似性搜索和机器学习应用而设计，比 Chroma 更轻量(约80MiB)更快。它支持基于余弦相似度、欧氏距离等多种相似性度量的向量检索，并提供了灵活的过滤和分组功能。Qdrant 使用 Rust 语言编写，具有高效的索引和存储机制，能够快速处理大规模向量数据，适用于推荐系统、语义搜索、图像相似性匹配等场景。它提供了简单易用的 API，支持 gRPC 和 REST 接口，并且可以轻松集成到各种编程语言和机器学习框架中，是构建向量相似性搜索应用的理想选择。部署反向代理服务访问  查看仪表盘嵌入服务下载 llama.cpp下载 cudart-llama-bin-win-cu11.7.1-x64下载对应后缀的 llama-b4061-bin-win-cuda-cu11.7.1-x64将两者解压到同一个目录从 MTEB 上找一个良好的嵌入模型下载 GGUF 格式的嵌入模型，比如 Dmeta-embedding-zh-small-GGUF根据文档配置参数启动嵌入服务测试嵌入模型客户端获取测试所用内容 test_rag_qdrant所得到的结果还不错~]]></content>
+    <content type="html"><![CDATA[Qdrant 是一个开源的向量数据库，专为高性能相似性搜索和机器学习应用而设计，比 Chroma 更轻量(约80MiB)更快。它支持基于余弦相似度、欧氏距离等多种相似性度量的向量检索，并提供了灵活的过滤和分组功能。Qdrant 使用 Rust 语言编写，具有高效的索引和存储机制，能够快速处理大规模向量数据，适用于推荐系统、语义搜索、图像相似性匹配等场景。它提供了简单易用的 API，支持 gRPC 和 REST 接口，并且可以轻松集成到各种编程语言和机器学习框架中，是构建向量相似性搜索应用的理想选择。部署反向代理服务访问  查看仪表盘嵌入下载 llama.cpp下载 cudart-llama-bin-win-cu11.7.1-x64下载对应后缀的 llama-b4061-bin-win-cuda-cu11.7.1-x64将两者解压到同一个目录从 MTEB 上找一个良好的嵌入模型下载 GGUF 格式的嵌入模型，比如 Dmeta-embedding-zh-small-GGUF根据文档配置参数启动嵌入服务测试嵌入模型重排为了在千万级数据上进行检索，返回的结果牺牲了一定的精确度，同时双端的 embedding 模型也不如单端的 rerank 模型精确，因此检索后的结果还需要进行一次重新排序。下载 GGUF 格式的重排模型，比如 bge-reranker-v2-m3-GGUF启动模型测试嵌入模型客户端获取测试所用内容 test_rag_qdrant所得到的结果还不错~TODO使用 NLTK || spaCy 等优化切分 chunks 时的精确度。]]></content>
     
     
     
