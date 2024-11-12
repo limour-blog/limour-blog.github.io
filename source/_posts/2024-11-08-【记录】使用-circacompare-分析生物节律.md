@@ -38,9 +38,6 @@ subset(symbol == s_symbol & organ == s_organ & project == s_project)  %>%
 mutate(group = factor(group))
 # 进行比较
 result <- circacompare(x = dt_s, col_time = "time", col_group = "group", col_outcome = "measure", alpha_threshold = 1)
-# 查看统计汇总
-result$summary
-circacompare:::extract_model_coefs(result$fit)
 
 # 查看绘图
 save_plot <- result$plot + 
@@ -48,12 +45,27 @@ theme_minimal() +
 ggtitle(paste(c(s_symbol, s_organ), collapse = '_')) +
 theme(plot.title = element_text(hjust = 0.5))
 
+# 查看统计汇总
+result$summary
+tmp <- circacompare:::extract_model_coefs(result$fit)
+tmp
+tmp['phi', c('estimate', 'std_error')] <- (tmp['phi', c('estimate', 'std_error')] / (2 * pi)) * save_plot$plot_env$V['tau']
+tmp['phi1', c('estimate', 'std_error')] <- (tmp['phi1', c('estimate', 'std_error')] / (2 * pi)) * save_plot$plot_env$V['tau']
+tmp
+
 save_plot
 
 # 保存图为 pdf
 {pdf(file = paste0('pdf/', paste(c(s_symbol, s_organ, s_project), collapse = '_'), '.pdf'), width = 6, height = 6)
  print(save_plot)
 dev.off()}
+```
+```R
+# 导出拟合的数据
+save_plot
+x <- seq(0, 24, by = 0.01)
+newdf <- data.frame(time = x, g1 = save_plot$plot_env$eq_1(x), g2 = save_plot$plot_env$eq_2(x))
+write.csv(newdf, paste0('csv/', paste(c(s_symbol, s_organ, s_project), collapse = '_'), '.csv'), row.names = F)
 ```
 
 ## 单组绘图
@@ -81,16 +93,19 @@ result <- try({
 options(show.error.messages = T, warn = 1)
 # “k”表示中值，“alpha”表示振幅，“phi”表示相位。引入的额外参数是“tau”表示周期。
 
-
-# 查看统计汇总
-result$summary
-circacompare:::extract_model_coefs(result$fit)
-
 # 查看绘图
 save_plot <- result$plot + 
 theme_minimal() +  
 ggtitle(paste(c(s_symbol, s_organ), collapse = '_')) +
 theme(plot.title = element_text(hjust = 0.5))
+
+# 查看统计汇总
+result$summary
+tmp <- circacompare:::extract_model_coefs(result$fit)
+tmp
+tmp['phi', c('estimate', 'std_error')] <- (tmp['phi', c('estimate', 'std_error')] / (2 * pi)) * save_plot$plot_env$V['tau']
+tmp['phi1', c('estimate', 'std_error')] <- (tmp['phi1', c('estimate', 'std_error')] / (2 * pi)) * save_plot$plot_env$V['tau']
+tmp
 
 save_plot
 
@@ -127,15 +142,19 @@ result <- try({
 options(show.error.messages = T, warn = 1)
 # “k”表示中值，“alpha”表示振幅，“phi”表示相位。引入的额外参数是“tau”表示周期。
 
-# 查看统计汇总
-result$summary
-circacompare:::extract_model_coefs(result$fit)
-
 # 查看绘图
 save_plot <- result$plot + 
 theme_minimal() +  
 ggtitle(paste(c(s_symbol, s_organ), collapse = '_')) +
 theme(plot.title = element_text(hjust = 0.5))
+
+# 查看统计汇总
+result$summary
+tmp <- circacompare:::extract_model_coefs(result$fit)
+tmp
+tmp['phi', c('estimate', 'std_error')] <- (tmp['phi', c('estimate', 'std_error')] / (2 * pi)) * save_plot$plot_env$V['tau']
+tmp['phi1', c('estimate', 'std_error')] <- (tmp['phi1', c('estimate', 'std_error')] / (2 * pi)) * save_plot$plot_env$V['tau']
+tmp
 
 save_plot
 
