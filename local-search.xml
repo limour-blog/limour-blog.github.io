@@ -4,6 +4,29 @@
   
   
   <entry>
+    <title>【探索】为Next-Web开发RAG插件</title>
+    <link href="/develop-rag-plugin-for-next-web"/>
+    <url>/develop-rag-plugin-for-next-web</url>
+    
+    <content type="html"><![CDATA[Dify、FastGPT、LangChain之类的用来做知识库都太过笨重，难以在1C1G的服务器上流畅运行。而 ChatGPT-Next-Web 可以在 Vercel 上免费部署，并且 NextChat-Awesome-Plugins 带来的插件功能支持 RESTful API 的调用。因此只要用 FastAPI 将嵌入、重排、Qdrant向量检索包装到一起，就可以为 Next-Web 提供一个 RAG 插件。准备工作已经提前导入了知识库的 Qdrant可以正常使用的 Next-Web一些相关的文件 Limour-dev/fastapiFastAPInano Dockerfile 编辑 Dockerfile，写入下面的文件docker build -t limour/fastapi . 构建镜像nano ./app/main.py 编辑 main.py，写入下面的文件nano docker-compose.yml 编辑 docker-compose.yml，写入下面的文件sudo docker compose up -d 测试是否正常反代 FastAPI， 访问可以看到 &quot;Hello&quot;: &quot;World&quot;包装API测试环境在测试环境编写好脚本后，再转移脚本到 app/Plugins 目录下编写脚本配置环境变量nano .env 编辑 .env，写入下面的文件依次配置好嵌入、重排和Qdrant数据库docker compose down &amp;&amp; docker compose up -d 重启测试脚本填入自己的信息后，运行 TestQdrant.py配置插件获取 openapi.json ，例如访问  json，填入 next-web 的插件中，并设置好 Authoritarian测试插件]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>docker</tag>
+      
+      <tag>openai</tag>
+      
+      <tag>rag</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【探索】使用 qdrant 进行向量检索</title>
     <link href="/using-qdrant-for-vector-retrieval"/>
     <url>/using-qdrant-for-vector-retrieval</url>
