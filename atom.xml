@@ -6,7 +6,7 @@
   <link href="https://hexo.limour.top/atom.xml" rel="self"/>
   
   <link href="https://hexo.limour.top/"/>
-  <updated>2024-11-16T07:42:35.342Z</updated>
+  <updated>2024-11-17T06:05:17.671Z</updated>
   <id>https://hexo.limour.top/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【想法】基于函数调用和 Agent 的分层 AI 系统构思</title>
+    <link href="https://hexo.limour.top/concept-of-hierarchical-ai-system-based-on-function-calling-and-agent"/>
+    <id>https://hexo.limour.top/concept-of-hierarchical-ai-system-based-on-function-calling-and-agent</id>
+    <published>2024-11-17T04:44:53.000Z</published>
+    <updated>2024-11-17T06:05:17.671Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近冲浪看到一篇<a href="https://hexo.limour.top/go/#aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzI0MDIuMTI4NzU=" rel="noopener external nofollow noreferrer">有限模型尺寸无限上下文可以实现图灵等价</a>的文章，结合 Openai 的 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL29wZW5haS9zd2FybQ==" rel="noopener external nofollow noreferrer">swarm</a> 使用  Function Calling 能高效优雅地实现多 Agents，以及 Function Calling 实现 <a href="develop-rag-plugin-for-next-web">RAG</a> 也非常简单，因此产生了这一想法。</p><p><img src="https://img.limour.top/2024/11/17/6739876cbe7a3.webp" alt=""></p><h2 id="需要的组件">需要的组件</h2><ol><li>一个超大尺寸有限上下文的模型，负责深入思考，记为 <code>M0(question, context)</code></li><li>一个中等尺寸较长上下文的模型，负责执行，记为 <code>M1(task, context)</code></li><li>一个较小尺寸超长上下文的模型，负责规划，记为 <code>M2(goal, context)</code></li><li>一个向量检索系统，具有召回、更新和睡眠三个方法，召回记为 <code>R(query)</code>，更新记为 <code>U(memory)</code>，睡眠记为 <code>S()</code></li><li>一个 Agent 框架，将以上四个系统串起来</li></ol><h2 id="向量检索系统">向量检索系统</h2><h3 id="更新方法">更新方法</h3><p><code>U(memory: str) -&gt; bool</code> 方法的描述为 <code>记住一段记忆</code>。</p><p><code>U(memory: str) -&gt; bool</code> 具有一个 <code>memory: str</code> 参数，其描述为 <code>一段需要记住的记忆，300词左右</code>，会返回一个 <code>ok</code>，表示记忆写入成功。</p><p>系统内部写入记忆时，会带上一个具有单向时间流动的时间标记 <code>time: int</code>；初始为写入的时间，同时有一个表示记忆强度的 <code>level: int</code>，初始为 <code>0</code>。</p><h3 id="召回方法">召回方法</h3><p><code>R(query：str) -&gt; List[str]</code> 方法的描述为 <code>回忆相关记忆</code>。</p><p><code>R(query：str) -&gt; List[str]</code> 具有一个 <code>query：str</code> 参数，其描述为 <code>需要在记忆中检索的句子</code>，返回一个相关记忆的列表，列表中的记忆均由 <code>U(memory)</code> 写入而来。</p><p>系统内部召回记忆时会做三件事情，第一是召回记忆，并对召回的记忆进行重排，取重排后的 <code>topn: int</code> 项，以 <code>List[str]</code> 的形式返回。</p><p>第二是对返回的 <code>List[str]</code> 中的记忆的 <code>time: int</code> 更新，值为成功召回的时间，同时判断时间差是否大于某个超参数，大于则 <code>level: int</code> 自增1，否则不变。<code>level: int</code> 为 <code>0</code> 时，必自增1。超参数相对于 <code>level: int</code> 以指数的形式增长，达到某上限后不再变化，同时记忆转为长期记忆，<code>level: int</code> 不再变化。</p><p>第三是对召回成功但未能在重排后进入 <code>List[str]</code> 的记忆，去掉其中属于长期记忆的部分，对余下的部分进行操作。判断 <code>time: int</code> 与当前时间差是否大于某个超参数，大于则 <code>level: int</code> 自减1。若 <code>level: int</code> 为 <code>-1</code>，从记忆中删去此记忆。</p><h3 id="睡眠方法">睡眠方法</h3><p><code>S() -&gt; str</code> 方法的描述为 <code>整理记忆、保持高效</code>。</p><p><code>S() -&gt; str</code> 没有参数，返回一个梦境。内部会随机选取 <code>n: int</code> 段记忆，判断每段记忆的 <code>time: int</code> 与当前时间差是否大于某个超参数，大于则 <code>level: int</code> 自减1。若 <code>level: int</code> 为 <code>-1</code>，从记忆中删去此记忆。被删除的记忆记为 <code>List[str]</code>，调用 <code>M1(task, context)</code>，其 <code>task</code> 为 <code>根据碎片的信息，生成一段梦境</code>，其 <code>context</code> 为被删除的记忆 <code>List[str]</code> 通过分割符连接而成的一段文字。</p><h2 id="M0模型">M0模型</h2><p><code>M0(question: str, context: str) -&gt; str</code> 方法的描述为 <code>针对具体问题进行深入思考</code>，<code>system prompt</code> 为 CoT 的模板。</p><p>其 <code>Function Calling</code> 仅连接了 <code>R(query)</code> 和 <code>U(memory)</code>。</p><p>其只返回最后的结果，以 <code>&lt;|thinking_start|&gt;...&lt;|thinking_end|&gt;</code> 包裹。</p><h2 id="M1模型">M1模型</h2><p><code>M1(task: str, context: str) -&gt; str</code> 方法的描述为 <code>执行具体明确的任务</code>，<code>system prompt</code> 为 <code>分解任务为具体问题，逐个解决问题</code>。</p><p>其 <code>Function Calling</code> 连接了 <code>R(query)</code>、 <code>U(memory)</code>、<code>M0(question, context)</code>，并动态连接其他必要的解决任务的工具。</p><p>其只返回最后的结果。</p><h2 id="M2模型">M2模型</h2><p><code>M2(goal: str, context: str) -&gt; str</code> 方法的描述为 <code>循环规划任务，在长期存活的前提下实现目标</code>，<code>system prompt</code> 为 <code>人生有梦、各自精彩，活下去、找到你的价值、实现你的目标</code>。</p><p>其 <code>Function Calling</code> 连接了 <code>R(query)</code>、<code>U(memory)</code>、<code>S()</code> 和 <code>M1(task, context)</code>。</p><p>其特别附加一个 <code>I(tip: str, timeout: int) -&gt; str</code>， 描述为 <code>请求用户输入</code>，<code>tip: str</code>的描述为 <code>输入提示信息</code>，<code>timeout: int</code>的描述为 <code>愿意等待用户的时间</code>，超时后将返回 <code>用户暂未回复</code>，否则返回用户输入的信息。</p><p>遇到 <code>&lt;|im_end|&gt;</code> 时循环会自动添加 <code>&lt;|im_start|&gt;</code>，继续进行循环，直到系统崩溃。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;最近冲浪看到一篇&lt;a href=&quot;https://hexo.limour.top/go/#aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzI0MDIuMTI4NzU=&quot; rel=&quot;noopener external nofollow noreferrer&quot;&gt;有限</summary>
+      
+    
+    
+    
+    
+    <category term="FC" scheme="https://hexo.limour.top/tags/fc/"/>
+    
+    <category term="agent" scheme="https://hexo.limour.top/tags/agent/"/>
+    
+  </entry>
   
   <entry>
     <title>【探索】为Next-Web开发RAG插件</title>
@@ -469,28 +493,6 @@
     <category term="ngpm" scheme="https://hexo.limour.top/tags/ngpm/"/>
     
     <category term="homepage" scheme="https://hexo.limour.top/tags/homepage/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【记录】Win10平台使用MLC-LLM编译Qwen-1.8B-Chat</title>
-    <link href="https://hexo.limour.top/Compile-Qwen-1.8B-Chat-using-MLC-LLM-on-Win"/>
-    <id>https://hexo.limour.top/Compile-Qwen-1.8B-Chat-using-MLC-LLM-on-Win</id>
-    <published>2023-12-09T04:24:07.000Z</published>
-    <updated>2024-03-19T08:07:10.319Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL21sYy1haS9tbGMtbGxt" rel="noopener external nofollow noreferrer">MLC-LLM</a> 是一种大模型高性能通用部署解决方案，可以通过预编译加速使用本机API原生部署任何大型语言模型。该项目的使命是利用ML编译技术，使每个人都能在其设备上本地开发、优化和部署AI模型。<br><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9odWdnaW5nZmFjZS5jby9Rd2VuL1F3ZW4tMV84Qg==" rel="noopener external nofollow noreferrer">Qwen-1.8B</a> 是阿里云研发的通义千问大模型系列的18亿参数规模的模型。在Qwen-1.8B的基础上，使用对齐机制打造了基于大语言模型的AI助手 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9odWdnaW5nZmFjZS5jby9Rd2VuL1F3ZW4tMV84Qi1DaGF0" rel="noopener external nofollow noreferrer">Qwen-1.8B-Chat</a>。</p><h2 id="配置环境">配置环境</h2><ul><li><a href="/-ji-lu--an-zhuang-conda-bing-geng-huan-qing-hua-yuan">安装conda</a></li><li><a href="/Use-Tunnel-to-speed-up-the-connection-of-VPS">Tun模式</a>(管理员权限)</li><li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9sbG0ubWxjLmFpL2RvY3MvaW5zdGFsbC90dm0uaHRtbCNpbnN0YWxsLXR2bS11bml0eQ==" rel="noopener external nofollow noreferrer">详细流程</a></li></ul><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs powershell">conda create <span class="hljs-literal">-n</span> mlc_llm python numpy pytorch transformers scipy timm git <span class="hljs-literal">-c</span> pytorch <span class="hljs-literal">-c</span> conda<span class="hljs-literal">-forge</span><br>conda activate mlc_llm<br>python <span class="hljs-literal">-m</span> pip install <span class="hljs-literal">--pre</span> <span class="hljs-literal">-U</span> <span class="hljs-operator">-f</span> https://mlc.ai/wheels mlc<span class="hljs-literal">-ai-nightly</span><br>python <span class="hljs-literal">-c</span> <span class="hljs-string">&quot;import tvm; print(&#x27;\n&#x27;.join(f&#x27;&#123;k&#125;: &#123;v&#125;&#x27; for k, v in tvm.support.libinfo().items()))&quot;</span><br>python <span class="hljs-literal">-c</span> <span class="hljs-string">&quot;import tvm; print(tvm.vulkan().exist)&quot;</span><br><span class="hljs-built_in">cd</span> D:\mlc<span class="hljs-literal">-llm</span><br>git clone <span class="hljs-literal">--depth</span>=<span class="hljs-number">1</span> <span class="hljs-literal">-b</span> main <span class="hljs-literal">--single-branch</span> https://github.com/mlc<span class="hljs-literal">-ai</span>/mlc<span class="hljs-literal">-llm</span>.git<br><span class="hljs-built_in">cd</span> .\mlc<span class="hljs-literal">-llm</span>\<br>git submodule sync<br>git submodule update <span class="hljs-literal">--init</span> <span class="hljs-literal">--recursive</span> <span class="hljs-literal">--depth</span>=<span class="hljs-number">1</span><br>pip install .<br>python <span class="hljs-literal">-m</span> mlc_llm.build <span class="hljs-literal">--help</span><br></code></pre></td></tr></table></figure><h2 id="准备模型">准备模型</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs powershell">python <span class="hljs-literal">-c</span> <span class="hljs-string">&quot;from huggingface_hub import snapshot_download; snapshot_download(repo_id=&#x27;Qwen/Qwen-1_8B-Chat&#x27;, local_dir=&#x27;D:\mlc-llm\qwen&#x27;, ignore_patterns=[&#x27;*.h5&#x27;, &#x27;*.ot&#x27;, &#x27;*.msgpack&#x27;, &#x27;*.safetensors&#x27;])&quot;</span><br><span class="hljs-built_in">cd</span> D:\mlc<span class="hljs-literal">-llm</span>\qwen<br>D:\aria2\aria2c.exe <span class="hljs-literal">--all-proxy</span>=<span class="hljs-string">&#x27;http://127.0.0.1:7890&#x27;</span> <span class="hljs-literal">-o</span> <span class="hljs-string">&#x27;model-00001-of-00002.safetensors&#x27;</span> <span class="hljs-string">&quot;https://huggingface.co/Qwen/Qwen-1_8B-Chat/resolve/main/model-00001-of-00002.safetensors?download=true&quot;</span><br>D:\aria2\aria2c.exe <span class="hljs-literal">--all-proxy</span>=<span class="hljs-string">&#x27;http://127.0.0.1:7890&#x27;</span> <span class="hljs-literal">-o</span> <span class="hljs-string">&#x27;model-00002-of-00002.safetensors&#x27;</span> <span class="hljs-string">&quot;https://huggingface.co/Qwen/Qwen-1_8B-Chat/resolve/main/model-00002-of-00002.safetensors?download=true&quot;</span><br></code></pre></td></tr></table></figure><h2 id="编译模型">编译模型</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">cd</span> D:\mlc<span class="hljs-literal">-llm</span>\dist<br>python <span class="hljs-literal">-m</span> mlc_llm.build <span class="hljs-literal">--model</span> <span class="hljs-string">&quot;D:\mlc-llm\qwen&quot;</span> <span class="hljs-literal">--target</span> vulkan <span class="hljs-literal">--quantization</span> q0f16 <span class="hljs-literal">--use-safetensors</span><br></code></pre></td></tr></table></figure><ul><li>等待模型支持：<a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL21sYy1haS9tbGMtbGxtL2lzc3Vlcy8xMzcz" rel="noopener external nofollow noreferrer">Model type qwen not supported</a></li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL21sYy1haS9tbGMtbGxt&quot; rel=&quot;noopener external nofollow noreferrer&quot;&gt;MLC-LLM&lt;/a</summary>
-      
-    
-    
-    
-    
-    <category term="llama" scheme="https://hexo.limour.top/tags/llama/"/>
     
   </entry>
   
