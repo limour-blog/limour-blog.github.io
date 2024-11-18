@@ -9,8 +9,35 @@
     <atom:link href="https://hexo.limour.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sun, 17 Nov 2024 06:05:17 GMT</pubDate>
+    <pubDate>Mon, 18 Nov 2024 15:05:56 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>【探索】基于 Nginx 的免流方案</title>
+      <link>https://hexo.limour.top/free-traffic-solution-based-on-nginx</link>
+      <guid>https://hexo.limour.top/free-traffic-solution-based-on-nginx</guid>
+      <pubDate>Mon, 18 Nov 2024 14:50:02 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;最近冲浪，看到了一种基于 Nginx 的免流方案，可以让 B 站的流量使用 QQ 的免流，这里测试一下是否真的可行。&lt;/p&gt;
+&lt;h2 id=&quot;配置-Nginx&quot;&gt;配置 Nginx&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/Docker-bu-shu-Nginx-Pro</description>
+        
+      
+      
+      
+      <content:encoded><![CDATA[<p>最近冲浪，看到了一种基于 Nginx 的免流方案，可以让 B 站的流量使用 QQ 的免流，这里测试一下是否真的可行。</p><h2 id="配置-Nginx">配置 Nginx</h2><ul><li><a href="/Docker-bu-shu-Nginx-Proxy-Manager">反向代理服务</a></li><li>新建一个服务，地址填入 <code>*.bilibili.com</code> 和 <code>im.qq.com</code></li></ul><p><img src="https://img.limour.top/2024/11/18/673b5504b772d.webp" alt=""></p><ul><li>在高级里写入下面的配置</li></ul><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> / &#123;<br>  <span class="hljs-attribute">if</span> (<span class="hljs-variable">$http_limour</span> != <span class="hljs-string">&quot;123456&quot;</span>)&#123;<br>    <span class="hljs-attribute">return</span> <span class="hljs-number">404</span>;<br>  &#125;<br>  <span class="hljs-attribute">if</span> (<span class="hljs-variable">$http_host</span> <span class="hljs-regexp">~* ^(.+).bilibili.com$)</span> &#123;<br>    <span class="hljs-attribute">proxy_pass</span> https://<span class="hljs-variable">$1</span>.bilibili.com;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p><img src="https://img.limour.top/2024/11/18/673b557a54805.webp" alt=""></p><h2 id="浏览器插件">浏览器插件</h2><ul><li>访问 <code>chrome://version</code> 记录下自己浏览器的位置</li><li>按装插件 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9jaHJvbWV3ZWJzdG9yZS5nb29nbGUuY29tL2RldGFpbC9tb2RoZWFkZXItbW9kaWZ5LWh0dHAtaGVhL2lkZ3BubW9ua25qbm9qZGRma3Bna2xqcGZubmZja2xq" rel="noopener external nofollow noreferrer">ModHeader</a></li><li>插件里给要免流的域名加上自己设置的鉴权头</li></ul><p><img src="https://img.limour.top/2024/11/18/673b56081f820.webp" alt=""></p><h2 id="参数启动">参数启动</h2><ul><li><code>114.514.191.981</code> 需要改成自己服务器的 IP</li><li>两种启动方式任选一种，启动前需要完全关闭浏览器</li></ul><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">&quot;C:\Program Files\Google\Chrome\Application\chrome.exe&quot; --host-rules=&quot;MAP *.bilibili.com im.qq.com,&quot; --host-resolver-rules=&quot;MAP im.qq.com <span class="hljs-number">114</span>.<span class="hljs-number">514</span>.<span class="hljs-number">191</span>.<span class="hljs-number">981</span>,&quot; --test-<span class="hljs-built_in">type</span> --ignore-certificate-errors<br></code></pre></td></tr></table></figure><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">Start-Process</span> <span class="hljs-literal">-FilePath</span> <span class="hljs-string">&quot;C:\Program Files\Google\Chrome\Application\chrome.exe&quot;</span> <span class="hljs-literal">-ArgumentList</span> <span class="hljs-selector-tag">@</span>(<br>    <span class="hljs-string">&quot;-host-rules=`&quot;MAP *.bilibili.com im.qq.com,`&quot;&quot;</span>,<br>    <span class="hljs-string">&quot;-host-resolver-rules=`&quot;MAP im.qq.com 114.514.191.981,`&quot;&quot;</span>,<br>    <span class="hljs-string">&quot;-test-type&quot;</span>,<br>    <span class="hljs-string">&quot;-ignore-certificate-errors&quot;</span><br>)<br></code></pre></td></tr></table></figure><h2 id="测试结果">测试结果</h2><ul><li>显然是成功了，就是要小心中间人攻击，不输入敏感信息。</li></ul><p><img src="https://img.limour.top/2024/11/18/673b56fc2d99e.webp" alt=""></p>]]></content:encoded>
+      
+      
+      
+      <category domain="https://hexo.limour.top/tags/nginx/">nginx</category>
+      
+      
+      <comments>https://hexo.limour.top/free-traffic-solution-based-on-nginx#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>【想法】基于函数调用和 Agent 的分层 AI 系统构思</title>
@@ -501,34 +528,6 @@
       
       
       <comments>https://hexo.limour.top/Running-Qwen-on-the-Win10-platform-with-6GB-of-video-memory#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>【记录】轻量个人导航页面 Flare</title>
-      <link>https://hexo.limour.top/Lightweight-personal-navigation-page-Flare</link>
-      <guid>https://hexo.limour.top/Lightweight-personal-navigation-page-Flare</guid>
-      <pubDate>Sun, 31 Dec 2023 17:18:28 GMT</pubDate>
-      
-        
-        
-      <description>&lt;p&gt;&lt;a href=&quot;https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL3NvdWx0ZWFyeS9kb2NrZXItZmxhcmU=&quot; rel=&quot;noopener external nofollow noreferrer</description>
-        
-      
-      
-      
-      <content:encoded><![CDATA[<p><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL3NvdWx0ZWFyeS9kb2NrZXItZmxhcmU=" rel="noopener external nofollow noreferrer">Flare</a> 是一款轻量、快速、美观的个人导航页面，适用于 HomeLab 或其他注重私密的场景。</p><ul><li><a href="/Docker-bu-shu-Nginx-Proxy-Manager">反向代理服务</a></li><li>访问 <code>https://flare.limour.top/editor</code> 进行书签编辑</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/app/flare &amp;&amp; <span class="hljs-built_in">cd</span> ~/app/flare &amp;&amp; nano docker-compose.yml<br>sudo docker-compose up -d <span class="hljs-comment"># flare:5005</span><br>sudo docker-compose logs <span class="hljs-comment"># 获取登录密码</span><br></code></pre></td></tr></table></figure><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.6&#x27;</span><br> <br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">flare:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">soulteary/flare</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-comment"># 默认无需添加任何参数，如有特殊需求</span><br>    <span class="hljs-comment"># 可阅读文档 https://github.com/soulteary/docker-flare/blob/main/docs/advanced-startup.md</span><br>    <span class="hljs-comment"># 启用账号登录模式</span><br>    <span class="hljs-attr">command:</span> <span class="hljs-string">flare</span> <span class="hljs-string">--disable_login=0</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-comment"># 如需开启用户登录模式，需要先设置 `nologin` 启动参数为 `0`</span><br>      <span class="hljs-comment"># 如开启 `nologin`，未设置 FLARE_USER，则默认用户为 `flare`</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">FLARE_USER=LimourFlare</span><br>      <span class="hljs-comment"># 指定你自己的账号密码，默认生成的密码强度堪忧</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">FLARE_PASS=your_password</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">FLARE_OFFLINE=1</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">FLARE_MINI_REQUEST=1</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./app:/app</span><br> <br><span class="hljs-attr">networks:</span><br>  <span class="hljs-attr">default:</span><br>    <span class="hljs-attr">external:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">ngpm</span><br></code></pre></td></tr></table></figure>]]></content:encoded>
-      
-      
-      
-      <category domain="https://hexo.limour.top/tags/docker/">docker</category>
-      
-      <category domain="https://hexo.limour.top/tags/ngpm/">ngpm</category>
-      
-      <category domain="https://hexo.limour.top/tags/homepage/">homepage</category>
-      
-      
-      <comments>https://hexo.limour.top/Lightweight-personal-navigation-page-Flare#disqus_thread</comments>
       
     </item>
     

@@ -18,11 +18,11 @@
   <meta name="author" content="Limour">
   <meta name="keywords" content="">
   
-    <meta name="description" content="最近冲浪看到一篇有限模型尺寸无限上下文可以实现图灵等价的文章，结合 Openai 的 swarm 使用  Function Calling 能高效优雅地实现多 Agents，以及 Function Calling 实现 RAG 也非常简单，因此产生了这一想法。  需要的组件  一个超大尺寸有限上下文的模型，负责深入思考，记为 M0(question, context) 一个中等尺寸较长上下文的模型">
+    <meta name="description" content="最近冲浪，看到了一种基于 Nginx 的免流方案，可以让 B 站的流量使用 QQ 的免流，这里测试一下是否真的可行。 配置 Nginx  反向代理服务 新建一个服务，地址填入 *.bilibili.com 和 im.qq.com    在高级里写入下面的配置  12345678location / &amp;#123;  if ($http_limour != &amp;quot;123456&amp;quot;)&amp;#1">
   
   
   
-  <title>【想法】基于函数调用和 Agent 的分层 AI 系统构思 - Limour&#39;s Blog</title>
+  <title>【探索】基于 Nginx 的免流方案 - Limour&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://jscdn.limour.top/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
 
@@ -76,7 +76,7 @@
 
 
   
-  <link rel="canonical" href="https://hexo.limour.top/concept-of-hierarchical-ai-system-based-on-function-calling-and-agent"/>
+  <link rel="canonical" href="https://hexo.limour.top/free-traffic-solution-based-on-nginx"/>
 <meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="Limour's Blog" type="application/atom+xml">
 <link rel="alternate" href="/rss2.xml" title="Limour's Blog" type="application/rss+xml">
 </head>
@@ -230,7 +230,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">【想法】基于函数调用和 Agent 的分层 AI 系统构思</span>
+            <span id="subtitle">【探索】基于 Nginx 的免流方案</span>
           
         </div>
 
@@ -246,8 +246,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-11-17 12:44" pubdate>
-          November 17, 2024 pm
+        <time datetime="2024-11-18 22:50" pubdate>
+          November 18, 2024 pm
         </time>
       </span>
     
@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k words
+          287 words
         
       </span>
     
@@ -269,7 +269,7 @@
         
         
         
-          10 mins
+          3 mins
         
       </span>
     
@@ -306,12 +306,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">【想法】基于函数调用和 Agent 的分层 AI 系统构思</h1>
+            <h1 id="seo-header">【探索】基于 Nginx 的免流方案</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on November 17, 2024 pm
+                    Last updated on November 18, 2024 pm
                   
                 
               </p>
@@ -319,43 +319,37 @@
             
               <div class="markdown-body">
                 
-                <p>最近冲浪看到一篇<a href="https://hexo.limour.top/go/#aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzI0MDIuMTI4NzU=" rel="noopener external nofollow noreferrer">有限模型尺寸无限上下文可以实现图灵等价</a>的文章，结合 Openai 的 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL29wZW5haS9zd2FybQ==" rel="noopener external nofollow noreferrer">swarm</a> 使用  Function Calling 能高效优雅地实现多 Agents，以及 Function Calling 实现 <a href="develop-rag-plugin-for-next-web">RAG</a> 也非常简单，因此产生了这一想法。</p>
-<p><img src="https://img.limour.top/2024/11/17/6739876cbe7a3.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
-<h2 id="需要的组件">需要的组件</h2>
-<ol>
-<li>一个超大尺寸有限上下文的模型，负责深入思考，记为 <code>M0(question, context)</code></li>
-<li>一个中等尺寸较长上下文的模型，负责执行，记为 <code>M1(task, context)</code></li>
-<li>一个较小尺寸超长上下文的模型，负责规划，记为 <code>M2(goal, context)</code></li>
-<li>一个向量检索系统，具有召回、更新和睡眠三个方法，召回记为 <code>R(query)</code>，更新记为 <code>U(memory)</code>，睡眠记为 <code>S()</code></li>
-<li>一个 Agent 框架，将以上四个系统串起来</li>
-</ol>
-<h2 id="向量检索系统">向量检索系统</h2>
-<h3 id="更新方法">更新方法</h3>
-<p><code>U(memory: str) -&gt; bool</code> 方法的描述为 <code>记住一段记忆</code>。</p>
-<p><code>U(memory: str) -&gt; bool</code> 具有一个 <code>memory: str</code> 参数，其描述为 <code>一段需要记住的记忆，300词左右</code>，会返回一个 <code>ok</code>，表示记忆写入成功。</p>
-<p>系统内部写入记忆时，会带上一个具有单向时间流动的时间标记 <code>time: int</code>；初始为写入的时间，同时有一个表示记忆强度的 <code>level: int</code>，初始为 <code>0</code>。</p>
-<h3 id="召回方法">召回方法</h3>
-<p><code>R(query：str) -&gt; List[str]</code> 方法的描述为 <code>回忆相关记忆</code>。</p>
-<p><code>R(query：str) -&gt; List[str]</code> 具有一个 <code>query：str</code> 参数，其描述为 <code>需要在记忆中检索的句子</code>，返回一个相关记忆的列表，列表中的记忆均由 <code>U(memory)</code> 写入而来。</p>
-<p>系统内部召回记忆时会做三件事情，第一是召回记忆，并对召回的记忆进行重排，取重排后的 <code>topn: int</code> 项，以 <code>List[str]</code> 的形式返回。</p>
-<p>第二是对返回的 <code>List[str]</code> 中的记忆的 <code>time: int</code> 更新，值为成功召回的时间，同时判断时间差是否大于某个超参数，大于则 <code>level: int</code> 自增1，否则不变。<code>level: int</code> 为 <code>0</code> 时，必自增1。超参数相对于 <code>level: int</code> 以指数的形式增长，达到某上限后不再变化，同时记忆转为长期记忆，<code>level: int</code> 不再变化。</p>
-<p>第三是对召回成功但未能在重排后进入 <code>List[str]</code> 的记忆，去掉其中属于长期记忆的部分，对余下的部分进行操作。判断 <code>time: int</code> 与当前时间差是否大于某个超参数，大于则 <code>level: int</code> 自减1。若 <code>level: int</code> 为 <code>-1</code>，从记忆中删去此记忆。</p>
-<h3 id="睡眠方法">睡眠方法</h3>
-<p><code>S() -&gt; str</code> 方法的描述为 <code>整理记忆、保持高效</code>。</p>
-<p><code>S() -&gt; str</code> 没有参数，返回一个梦境。内部会随机选取 <code>n: int</code> 段记忆，判断每段记忆的 <code>time: int</code> 与当前时间差是否大于某个超参数，大于则 <code>level: int</code> 自减1。若 <code>level: int</code> 为 <code>-1</code>，从记忆中删去此记忆。被删除的记忆记为 <code>List[str]</code>，调用 <code>M1(task, context)</code>，其 <code>task</code> 为 <code>根据碎片的信息，生成一段梦境</code>，其 <code>context</code> 为被删除的记忆 <code>List[str]</code> 通过分割符连接而成的一段文字。</p>
-<h2 id="M0模型">M0模型</h2>
-<p><code>M0(question: str, context: str) -&gt; str</code> 方法的描述为 <code>针对具体问题进行深入思考</code>，<code>system prompt</code> 为 CoT 的模板。</p>
-<p>其 <code>Function Calling</code> 仅连接了 <code>R(query)</code> 和 <code>U(memory)</code>。</p>
-<p>其只返回最后的结果，以 <code>&lt;|thinking_start|&gt;...&lt;|thinking_end|&gt;</code> 包裹。</p>
-<h2 id="M1模型">M1模型</h2>
-<p><code>M1(task: str, context: str) -&gt; str</code> 方法的描述为 <code>执行具体明确的任务</code>，<code>system prompt</code> 为 <code>分解任务为具体问题，逐个解决问题</code>。</p>
-<p>其 <code>Function Calling</code> 连接了 <code>R(query)</code>、 <code>U(memory)</code>、<code>M0(question, context)</code>，并动态连接其他必要的解决任务的工具。</p>
-<p>其只返回最后的结果。</p>
-<h2 id="M2模型">M2模型</h2>
-<p><code>M2(goal: str, context: str) -&gt; str</code> 方法的描述为 <code>循环规划任务，在长期存活的前提下实现目标</code>，<code>system prompt</code> 为 <code>人生有梦、各自精彩，活下去、找到你的价值、实现你的目标</code>。</p>
-<p>其 <code>Function Calling</code> 连接了 <code>R(query)</code>、<code>U(memory)</code>、<code>S()</code> 和 <code>M1(task, context)</code>。</p>
-<p>其特别附加一个 <code>I(tip: str, timeout: int) -&gt; str</code>， 描述为 <code>请求用户输入</code>，<code>tip: str</code>的描述为 <code>输入提示信息</code>，<code>timeout: int</code>的描述为 <code>愿意等待用户的时间</code>，超时后将返回 <code>用户暂未回复</code>，否则返回用户输入的信息。</p>
-<p>遇到 <code>&lt;|im_end|&gt;</code> 时循环会自动添加 <code>&lt;|im_start|&gt;</code>，继续进行循环，直到系统崩溃。</p>
+                <p>最近冲浪，看到了一种基于 Nginx 的免流方案，可以让 B 站的流量使用 QQ 的免流，这里测试一下是否真的可行。</p>
+<h2 id="配置-Nginx">配置 Nginx</h2>
+<ul>
+<li><a href="/Docker-bu-shu-Nginx-Proxy-Manager">反向代理服务</a></li>
+<li>新建一个服务，地址填入 <code>*.bilibili.com</code> 和 <code>im.qq.com</code></li>
+</ul>
+<p><img src="https://img.limour.top/2024/11/18/673b5504b772d.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<ul>
+<li>在高级里写入下面的配置</li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> / &#123;<br>  <span class="hljs-attribute">if</span> (<span class="hljs-variable">$http_limour</span> != <span class="hljs-string">&quot;123456&quot;</span>)&#123;<br>    <span class="hljs-attribute">return</span> <span class="hljs-number">404</span>;<br>  &#125;<br>  <span class="hljs-attribute">if</span> (<span class="hljs-variable">$http_host</span> <span class="hljs-regexp">~* ^(.+).bilibili.com$)</span> &#123;<br>    <span class="hljs-attribute">proxy_pass</span> https://<span class="hljs-variable">$1</span>.bilibili.com;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://img.limour.top/2024/11/18/673b557a54805.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<h2 id="浏览器插件">浏览器插件</h2>
+<ul>
+<li>访问 <code>chrome://version</code> 记录下自己浏览器的位置</li>
+<li>按装插件 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9jaHJvbWV3ZWJzdG9yZS5nb29nbGUuY29tL2RldGFpbC9tb2RoZWFkZXItbW9kaWZ5LWh0dHAtaGVhL2lkZ3BubW9ua25qbm9qZGRma3Bna2xqcGZubmZja2xq" rel="noopener external nofollow noreferrer">ModHeader</a></li>
+<li>插件里给要免流的域名加上自己设置的鉴权头</li>
+</ul>
+<p><img src="https://img.limour.top/2024/11/18/673b56081f820.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<h2 id="参数启动">参数启动</h2>
+<ul>
+<li><code>114.514.191.981</code> 需要改成自己服务器的 IP</li>
+<li>两种启动方式任选一种，启动前需要完全关闭浏览器</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">&quot;C:\Program Files\Google\Chrome\Application\chrome.exe&quot; --host-rules=&quot;MAP *.bilibili.com im.qq.com,&quot; --host-resolver-rules=&quot;MAP im.qq.com <span class="hljs-number">114</span>.<span class="hljs-number">514</span>.<span class="hljs-number">191</span>.<span class="hljs-number">981</span>,&quot; --test-<span class="hljs-built_in">type</span> --ignore-certificate-errors<br></code></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">Start-Process</span> <span class="hljs-literal">-FilePath</span> <span class="hljs-string">&quot;C:\Program Files\Google\Chrome\Application\chrome.exe&quot;</span> <span class="hljs-literal">-ArgumentList</span> <span class="hljs-selector-tag">@</span>(<br>    <span class="hljs-string">&quot;-host-rules=`&quot;MAP *.bilibili.com im.qq.com,`&quot;&quot;</span>,<br>    <span class="hljs-string">&quot;-host-resolver-rules=`&quot;MAP im.qq.com 114.514.191.981,`&quot;&quot;</span>,<br>    <span class="hljs-string">&quot;-test-type&quot;</span>,<br>    <span class="hljs-string">&quot;-ignore-certificate-errors&quot;</span><br>)<br></code></pre></td></tr></table></figure>
+<h2 id="测试结果">测试结果</h2>
+<ul>
+<li>显然是成功了，就是要小心中间人攻击，不输入敏感信息。</li>
+</ul>
+<p><img src="https://img.limour.top/2024/11/18/673b56fc2d99e.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
 
                 
               </div>
@@ -368,9 +362,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/fc/" class="print-no-link">#FC</a>
-      
-        <a href="/tags/agent/" class="print-no-link">#agent</a>
+        <a href="/tags/nginx/" class="print-no-link">#nginx</a>
       
     </div>
   
@@ -382,8 +374,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【想法】基于函数调用和 Agent 的分层 AI 系统构思</div>
-      <div>https://hexo.limour.top/concept-of-hierarchical-ai-system-based-on-function-calling-and-agent</div>
+      <div>【探索】基于 Nginx 的免流方案</div>
+      <div>https://hexo.limour.top/free-traffic-solution-based-on-nginx</div>
     </div>
     <div class="license-meta">
       
@@ -395,13 +387,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>November 17, 2024</div>
+          <div>November 18, 2024</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>November 17, 2024</div>
+          <div>November 18, 2024</div>
         </div>
       
       
@@ -444,18 +436,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/free-traffic-solution-based-on-nginx" title="【探索】基于 Nginx 的免流方案">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【探索】基于 Nginx 的免流方案</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/develop-rag-plugin-for-next-web" title="【探索】为Next-Web开发RAG插件">
-                        <span class="hidden-mobile">【探索】为Next-Web开发RAG插件</span>
+                      <a href="/concept-of-hierarchical-ai-system-based-on-function-calling-and-agent" title="【想法】基于函数调用和 Agent 的分层 AI 系统构思">
+                        <span class="hidden-mobile">【想法】基于函数调用和 Agent 的分层 AI 系统构思</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
