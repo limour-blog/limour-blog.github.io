@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k words
+          2k words
         
       </span>
     
@@ -269,7 +269,7 @@
         
         
         
-          16 mins
+          17 mins
         
       </span>
     
@@ -311,7 +311,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on October 29, 2024 pm
+                    Last updated on November 22, 2024 pm
                   
                 
               </p>
@@ -332,6 +332,17 @@
         </div>
       </div>
     </div>
+<h2 id="24-11-22-更新">24.11.22 更新</h2>
+<p><img src="https://img.limour.top/2024/11/22/67407ef4d2bcd.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<p>使用一段时间后，发现常用的还是往外传病历，因此使用 10 块钱的国产 <code>PICO</code> 板固化了一版专门用于写入 <code>client.html</code> 的固件</p>
+<ol>
+<li>按住 <code>boot</code> 键插入电脑，松开按钮 ，将 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL0xpbW91ci1kZXYvcXJqcy9yZWxlYXNlcw==" rel="noopener external nofollow noreferrer">pico-badusb.uf2</a> 拖入根目录</li>
+<li>自动重启后，将 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL0xpbW91ci1kZXYvcXJqcy90cmVlL21haW4vcGljby1iYWR1c2I=" rel="noopener external nofollow noreferrer">修改后</a> 的 <code>boot.py</code> 和 <code>main.py</code> 拖入根目录</li>
+<li>再次自动重启后，会发现不再挂载存储，此时按一下 <code>reset</code> 键</li>
+<li>第三次重启后，将 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL0xpbW91ci1kZXYvcXJqcy9ibG9iL21haW4vcGF5bG9hZC50eHQ=" rel="noopener external nofollow noreferrer">payload.txt</a> 拖入根目录</li>
+<li>右下角安全删除U盘硬件，<code>Bad USB</code> 就做好了。使用时直接插入靶机，等 6 秒就会开始执行。</li>
+<li>要更新 <code>payload.txt</code> 的话，只需要在 6 秒内，按下 <code>reset</code> 键重启，就会挂载为U盘了。</li>
+</ol>
 <h2 id="准备工作">准备工作</h2>
 <ul>
 <li><code>P4wnP1_aloa</code> 的<a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL1JvZ2FuRGF3ZXMvUDR3blAxX2Fsb2EvcmVsZWFzZXMvdGFnL3YwLjEuMS1iZXRh" rel="noopener external nofollow noreferrer">镜像</a>，解压为 <code>.img</code></li>
@@ -445,7 +456,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>October 29, 2024</div>
+          <div>November 22, 2024</div>
         </div>
       
       
