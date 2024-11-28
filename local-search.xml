@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>【记录】解决 win 笔记本 关机耗电问题</title>
+    <link href="/resolve-the-power-consumption-issue-of-windows-laptop-shutdown"/>
+    <url>/resolve-the-power-consumption-issue-of-windows-laptop-shutdown</url>
+    
+    <content type="html"><![CDATA[某鱼上淘的笔记本，因为恢复了出厂设置，因此一些修正异常耗电的设置都被还原了，一晚上能耗40%的电，这里记录一下搜集的各种解决措施，以免之后再次重置后忘了怎么操作。这些措施使用后现在确实不怎么耗电了。以上文件保存为 power.reg，并运行右键电池打开电源选项，进入高级选项将 &#123;方案名&#125;-待机状态下的网络连接性 改成禁用将 睡眠-允许使用唤醒定时器 改成禁用设备管理器里对网卡、鼠标等设置为允许计算机关闭此设备，并关闭唤醒功能BIOS 里关闭 USB供电]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>win</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【探索】基于 Nginx 的免流方案</title>
     <link href="/free-traffic-solution-based-on-nginx"/>
     <url>/free-traffic-solution-based-on-nginx</url>
