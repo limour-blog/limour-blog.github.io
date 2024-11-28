@@ -29,8 +29,8 @@ services:
   ss:
     restart: unless-stopped
     ports:
-      - '20077:9000'
-      - '20077:9000/udp'
+      - '2077:9000'
+      - '2077:9000/udp'
     volumes:
       - './config.json:/etc/shadowsocks-libev/config.json'
       - '/etc/localtime:/etc/localtime:ro'
@@ -67,10 +67,9 @@ dns:
   fake-ip-range: 198.18.0.1/16
   use-hosts: true
   nameserver: ['https://my.com/token']
+  proxy-server-nameserver: [223.5.5.5, 119.29.29.29]
 proxies:
-  - { name: '自建节点', type: ss, server: 127.0.0.1, port: 7777, cipher: aes-256-gcm, password: password0, udp: true }
-tunnels:
-  - { network: [tcp, udp], address: 127.0.0.1:7777, target: ssip:20077, proxy: "手动选择"}
+  - { name: "链式节点", type: ss, server: cdn.cdn.com, port: 2077, cipher: aes-256-gcm, password: password0, udp: true, dialer-proxy: "手动选择"}
 proxy-providers:
   provider1:
     type: http
@@ -86,14 +85,12 @@ proxy-providers:
     path: ./provider2.yaml
     url: Clash的订阅地址
     interval: 86400
-    filter: "(?i)AA-中继-HK|AA-中继-JP|AA-V2ray-HK|AA-V2ray-JP"
-    exclude-filter: "(?i)海外直连|打機神線"
     health-check:
       enable: false
       url: https://www.gstatic.com/generate_204
       interval: 300
 proxy-groups:
-  - { name: PROXY, type: select, proxies: ["手动选择", "自建节点", DIRECT] }
+  - { name: PROXY, type: select, proxies: ["手动选择", "链式节点", DIRECT] }
   - { name: "手动选择", type: select, proxies: ["provider1", "provider2"] }
   - { name: "provider1", type: select, use: [provider1] }
   - { name: "provider2", type: select, use: [provider2] }
