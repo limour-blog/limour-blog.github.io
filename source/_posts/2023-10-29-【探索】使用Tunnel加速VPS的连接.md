@@ -124,3 +124,13 @@ networks:
     external: true
     name: ngpm
 ```
+## 附加 Warp
++ [获取 warp 配置项](./-ji-lu-Warp-yu-Tor-gong-cun)
++ 访问 `https://www.cloudflare.com/cdn-cgi/trace` 确认是否 `warp=on`
++ 访问 `https://ping0.cc` 确认ip风险
+```yml
+proxies:
+  - { name: 'WARP', type: wireguard, server: engage.cloudflareclient.com, port: 2408, ip: 172.16.0.2, ipv6: ["config"]["interface"]["addresses"]["v6"], private-key: ["private_key"], public-key: ["config"]["peers"]["public_key"], reserved: [0, 0, 0], udp: true, dialer-proxy: "手动选择" }
+proxy-groups:
+  - { name: PROXY, type: select, proxies: ["手动选择", "链式节点", "WARP", DIRECT] }
+```
