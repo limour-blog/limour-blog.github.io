@@ -16,7 +16,7 @@ cat > ./config.json <<EOF
     "server_port":9000,
     "password":"password0",
     "timeout":300,
-    "method":"aes-256-gcm",
+    "method":"chacha20-ietf-poly1305",
     "fast_open":false,
     "nameserver":"8.8.8.8",
     "mode":"tcp_and_udp"
@@ -29,8 +29,8 @@ services:
   ss:
     restart: unless-stopped
     ports:
-      - '2077:9000'
-      - '2077:9000/udp'
+      - '80:9000'
+      - '80:9000/udp'
     volumes:
       - './config.json:/etc/shadowsocks-libev/config.json'
       - '/etc/localtime:/etc/localtime:ro'
@@ -69,7 +69,7 @@ dns:
   nameserver: ['https://my.com/token']
   proxy-server-nameserver: [223.5.5.5, 119.29.29.29]
 proxies:
-  - { name: "链式节点", type: ss, server: cdn.cdn.com, port: 2077, cipher: aes-256-gcm, password: password0, udp: true, dialer-proxy: "手动选择"}
+  - { name: "链式节点", type: ss, server: cdn.cdn.com, port: 80, cipher: chacha20-ietf-poly1305, password: password0, udp: true, dialer-proxy: "手动选择"}
 proxy-providers:
   provider1:
     type: http
