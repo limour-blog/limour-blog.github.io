@@ -1206,7 +1206,7 @@
     <link href="/-ji-lu-Warp-yu-Tor-gong-cun"/>
     <url>/-ji-lu-Warp-yu-Tor-gong-cun</url>
     
-    <content type="html"><![CDATA[注册 Zero Trust访问 CF Zero Trust,按网上教程注册开启 GitHub Authentication: Setting -  Authentication - Login methods - Add new添加 Device enrollment: Setting -  WARP Client - Device enrollment permissions - Manage - Add a ruleSelector 选 Emails; Value 填 GitHub 的邮箱访问 Warp-go, 按教程 WARP Teams 获取并用于 Linux 的方法 获取 warp-account.conf访问  审查元素也可获取 authtoken记录 warp-account.conf 文件中的 [“account”][“private_key”] 和 [“config”][“peers”][“public_key”]运行 bash api.sh -i -f ./warp-account.conf 获取 reserved部署 Tor安装好 docker部署 Warp测试 Warp 和 Tor]]></content>
+    <content type="html"><![CDATA[注册 Zero Trust访问 CF Zero Trust,按网上教程注册开启 GitHub Authentication: Setting -  Authentication - Login methods - Add new添加 Device enrollment: Setting -  WARP Client - Device enrollment permissions - Manage - Add a ruleSelector 选 Emails; Value 填 GitHub 的邮箱访问 Warp-go, 按教程 WARP Teams 获取并用于 Linux 的方法 获取 authtoken访问  审查元素也可获取 authtoken首先获取 api.sh, 使用 apt install xxd &amp;&amp; wget -N  warp-account.conf, 使用 bash api.sh -r -f -t &#123;获取的authtoken&#125;记录 warp-account.conf 文件中的 [“private_key”] 和 [“config”][“peers”][“public_key”]运行 bash api.sh -i -f ./warp-account.conf 获取 reserved忘了 &#123;your-team-name&#125; 的话，可以从 zero trust-settings-Custom Pages 里查看部署 Tor安装好 docker部署 Warp测试 Warp 和 Tor]]></content>
     
     
     

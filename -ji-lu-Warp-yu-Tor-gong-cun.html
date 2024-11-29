@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          640 words
+          695 words
         
       </span>
     
@@ -311,7 +311,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on March 19, 2024 pm
+                    Last updated on November 29, 2024 pm
                   
                 
               </p>
@@ -325,10 +325,13 @@
 <li>开启 GitHub Authentication: Setting -  Authentication - Login methods - Add new</li>
 <li>添加 Device enrollment: Setting -  WARP Client - Device enrollment permissions - Manage - Add a rule</li>
 <li>Selector 选 Emails; Value 填 GitHub 的邮箱</li>
-<li>访问 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL2ZzY2FybWVuL3dhcnA=" rel="noopener external nofollow noreferrer">Warp-go</a>, 按教程 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL2ZzY2FybWVuL3dhcnAvYmxvYi9tYWluL1JFQURNRS5tZCNXQVJQLVRlYW1zLSVFOCU4RSVCNyVFNSU4RiU5NiVFNSVCOSVCNiVFNyU5NCVBOCVFNCVCQSU4RS1MaW51eC0lRTclOUElODQlRTYlOTYlQjklRTYlQjMlOTU=" rel="noopener external nofollow noreferrer">WARP Teams 获取并用于 Linux 的方法</a> 获取 warp-account.conf</li>
-<li>访问 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly95b3VyLXRlYW0tbmFtZS5jbG91ZGZsYXJlYWNjZXNzLmNvbS93YXJw" rel="noopener external nofollow noreferrer">https://your-team-name.cloudflareaccess.com/warp</a> 审查元素也可获取 authtoken</li>
-<li>记录 warp-account.conf 文件中的 [“account”][“private_key”] 和 [“config”][“peers”][“public_key”]</li>
+<li>访问 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRsYWIuY29tL2ZzY2FybWVuL3dhcnA=" rel="noopener external nofollow noreferrer">Warp-go</a>, 按教程 <code>WARP Teams 获取并用于 Linux 的方法</code> 获取 authtoken</li>
+<li>访问 <code>https://your-team-name.cloudflareaccess.com/warp</code> 审查元素也可获取 authtoken</li>
+<li>首先获取 <code>api.sh</code>, 使用 <code>apt install xxd &amp;&amp; wget -N https://gitlab.com/fscarmen/warp/-/raw/main/api.sh</code></li>
+<li>然后获取 <code>warp-account.conf</code>, 使用 <code>bash api.sh -r -f -t &#123;获取的authtoken&#125;</code></li>
+<li>记录 warp-account.conf 文件中的 [“private_key”] 和 [“config”][“peers”][“public_key”]</li>
 <li>运行 <code>bash api.sh -i -f ./warp-account.conf</code> 获取 reserved</li>
+<li>忘了 <code>&#123;your-team-name&#125;</code> 的话，可以从 <code>zero trust-settings-Custom Pages</code> 里查看</li>
 </ol>
 <h2 id="部署-Tor">部署 Tor</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/app/tor &amp;&amp; <span class="hljs-built_in">cd</span> ~/app/tor &amp;&amp; nano Dockerfile &amp;&amp; nano docker-compose.yml<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;SocksPort 0.0.0.0:9050&#x27;</span> &gt; torrc<br>docker build -t limour/tor .<br>docker image <span class="hljs-built_in">ls</span> | grep limour/tor<br>sudo docker network create sswitch<br>sudo docker-compose up -d &amp;&amp; sudo docker-compose logs<br>docker run --<span class="hljs-built_in">rm</span> --net=sswitch alpine/curl --socks5-hostname <span class="hljs-string">&quot;tor:9050&quot;</span> <span class="hljs-string">&quot;https://check.torproject.org/api/ip&quot;</span><br></code></pre></td></tr></table></figure>
@@ -389,7 +392,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>March 19, 2024</div>
+          <div>November 29, 2024</div>
         </div>
       
       
