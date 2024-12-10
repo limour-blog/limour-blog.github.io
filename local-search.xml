@@ -2544,6 +2544,25 @@
   
   
   <entry>
+    <title>【迁移】有序分类Logistic回归</title>
+    <link href="/ordered-classification-logistic-regression"/>
+    <url>/ordered-classification-logistic-regression</url>
+    
+    <content type="html"><![CDATA[Logistic 回归的假设假设1：因变量唯一，且为有序多分类变量假设2：存在一个或多个自变量，可为连续、有序多分类或无序分类变量。假设3：自变量之间无多重共线性。假设4：模型满足“比例优势”假设。选择自变量单因素回归数据归一化方式1方式2Logistic 回归附加 线性回归多重共线性检测缺失值插补更多信息见 mice 包多因素回归用到再写绘制森林图f_forestplot]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>regression</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【迁移】树莓派：Rclone+aria2做Onedrive离线下载机</title>
     <link href="/Rclone-aria2-zuo-Onedrive-li-xian-xia-zai-ji"/>
     <url>/Rclone-aria2-zuo-Onedrive-li-xian-xia-zai-ji</url>
