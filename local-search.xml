@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>【记录】移除Windows中不受信任的证书</title>
+    <link href="/remove-untrusted-certificates-windows"/>
+    <url>/remove-untrusted-certificates-windows</url>
+    
+    <content type="html"><![CDATA[今天逛知乎，有人提到 EasyConnect 会给系统加上自己的 CA 证书。在自己系统里查了一下，发现是真的，因此这里记录一下删除这些恶意证书的过程。查找恶意证书下载 sigcheck下载 authrootstl.cab将 authrootstl.cab 放入 sigcheck 的根目录断网执行下面的命令得到了如下的结果删除恶意证书记录要删除证书的 Thumbprint将下面的文件保存成 rm-ca.ps1运行 .\rm-ca.ps1 -Thumbprint A9062C5C1721FF87EBCBD89DF03719755560E7A0 删除对应的证书再次 查找恶意证书 以确认成功]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>DoH</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【记录】解决 win 笔记本 关机耗电问题</title>
     <link href="/resolve-the-power-consumption-issue-of-windows-laptop-shutdown"/>
     <url>/resolve-the-power-consumption-issue-of-windows-laptop-shutdown</url>

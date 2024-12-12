@@ -18,11 +18,11 @@
   <meta name="author" content="Limour">
   <meta name="keywords" content="">
   
-    <meta name="description" content="某鱼上淘的笔记本，因为恢复了出厂设置，因此一些修正异常耗电的设置都被还原了，一晚上能耗40%的电，这里记录一下搜集的各种解决措施，以免之后再次重置后忘了怎么操作。这些措施使用后现在确实不怎么耗电了。 12345Windows Registry Editor Version 5.00[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\">
+    <meta name="description" content="今天逛知乎，有人提到 EasyConnect 会给系统加上自己的 CA 证书。在自己系统里查了一下，发现是真的，因此这里记录一下删除这些恶意证书的过程。 查找恶意证书  下载 sigcheck 下载 authrootstl.cab 将 authrootstl.cab 放入 sigcheck 的根目录 断网执行下面的命令  12sigcheck64.exe -tvsigcheck64.exe -tu">
   
   
   
-  <title>【记录】解决 win 笔记本 关机耗电问题 - Limour&#39;s Blog</title>
+  <title>【记录】移除Windows中不受信任的证书 - Limour&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://jscdn.limour.top/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
 
@@ -76,7 +76,7 @@
 
 
   
-  <link rel="canonical" href="https://hexo.limour.top/resolve-the-power-consumption-issue-of-windows-laptop-shutdown"/>
+  <link rel="canonical" href="https://hexo.limour.top/remove-untrusted-certificates-windows"/>
 <meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="Limour's Blog" type="application/atom+xml">
 <link rel="alternate" href="/rss2.xml" title="Limour's Blog" type="application/rss+xml">
 </head>
@@ -230,7 +230,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">【记录】解决 win 笔记本 关机耗电问题</span>
+            <span id="subtitle">【记录】移除Windows中不受信任的证书</span>
           
         </div>
 
@@ -246,8 +246,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-11-28 19:34" pubdate>
-          November 28, 2024 pm
+        <time datetime="2024-12-12 21:27" pubdate>
+          December 12, 2024 pm
         </time>
       </span>
     
@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          317 words
+          244 words
         
       </span>
     
@@ -306,12 +306,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">【记录】解决 win 笔记本 关机耗电问题</h1>
+            <h1 id="seo-header">【记录】移除Windows中不受信任的证书</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on November 28, 2024 pm
+                    Last updated on December 12, 2024 pm
                   
                 
               </p>
@@ -319,17 +319,30 @@
             
               <div class="markdown-body">
                 
-                <p>某鱼上淘的笔记本，因为恢复了出厂设置，因此一些修正异常耗电的设置都被还原了，一晚上能耗40%的电，这里记录一下搜集的各种解决措施，以免之后再次重置后忘了怎么操作。这些措施使用后现在确实不怎么耗电了。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs regedit">Windows Registry Editor Version 5.00<br>[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\F15576E8-98B7-4186-B944-EAFA664402D9]<br>&quot;Attributes&quot;=dword:00000002<br>[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\238C9FA8-0AAD-41ED-83F4-97BE242C8F20\BD3B718A-0680-4D9D-8AB2-E1D2B4AC806D]<br>&quot;Attributes&quot;=dword:00000002<br></code></pre></td></tr></table></figure>
+                <p>今天逛知乎，有人提到 EasyConnect 会给系统加上自己的 CA 证书。在自己系统里查了一下，发现是真的，因此这里记录一下删除这些恶意证书的过程。</p>
+<h2 id="查找恶意证书">查找恶意证书</h2>
+<ol>
+<li>下载 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9sZWFybi5taWNyb3NvZnQuY29tL3poLWNuL3N5c2ludGVybmFscy9kb3dubG9hZHMvc2lnY2hlY2s=" rel="noopener external nofollow noreferrer">sigcheck</a></li>
+<li>下载 <a href="https://hexo.limour.top/go/#aHR0cDovL2N0bGRsLndpbmRvd3N1cGRhdGUuY29tL21zZG93bmxvYWQvdXBkYXRlL3YzL3N0YXRpYy90cnVzdGVkci9lbi9hdXRocm9vdHN0bC5jYWI=" rel="noopener external nofollow noreferrer">authrootstl.cab</a></li>
+<li>将 <code>authrootstl.cab</code> 放入 <code>sigcheck</code> 的根目录</li>
+<li>断网执行下面的命令</li>
+</ol>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell">sigcheck64.exe <span class="hljs-literal">-tv</span><br>sigcheck64.exe <span class="hljs-literal">-tuv</span><br></code></pre></td></tr></table></figure>
 <ul>
-<li>以上文件保存为 <code>power.reg</code>，并运行</li>
-<li>右键电池打开电源选项，进入高级选项</li>
-<li>将 <code>&#123;方案名&#125;-待机状态下的网络连接性</code> 改成禁用</li>
-<li>将 <code>睡眠-允许使用唤醒定时器</code> 改成禁用</li>
-<li>设备管理器里对网卡、鼠标等设置为允许计算机关闭此设备，并关闭唤醒功能</li>
-<li>BIOS 里关闭 USB供电</li>
+<li>得到了如下的结果</li>
 </ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs powershell">powercfg <span class="hljs-literal">-devicequery</span> wake_programmable  <span class="hljs-comment"># 查看会唤醒笔记本的设备</span><br>powercfg <span class="hljs-literal">-devicequery</span> wake_armed  <span class="hljs-comment"># 查看会唤醒笔记本的设备</span><br>powercfg <span class="hljs-literal">-devicedisablewake</span> <span class="hljs-string">&quot;Intel(R) Wireless-AC 9560 160MHz&quot;</span>  <span class="hljs-comment"># 禁用掉对应的设备</span><br>powercfg <span class="hljs-literal">-lastwake</span>  <span class="hljs-comment"># 查看上一次睡眠唤醒的设备，进行针对性禁用</span><br> <br>powercfg <span class="hljs-literal">-h</span> off  <span class="hljs-comment"># 关闭休眠</span><br>powercfg /a<br><span class="hljs-comment"># 确认是 S0低电量待机 网络已断开连接</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs txt">Machine\ROOT:<br>   Sangfor Technologies Inc.<br>        Cert Status:    Valid<br>        Valid Usage:    All<br>        Cert Issuer:    Sangfor Technologies Inc.<br>        Serial Number:  00 DE A4 D5 FA 33 CF 9E 9E<br>        Thumbprint:     A9062C5C1721FF87EBCBD89DF03719755560E7A0<br>        Algorithm:      sha256RSA<br>        Valid from:     23:27 2017/4/27<br>        Valid to:       23:27 2117/4/3<br>Machine\TrustedPublisher:<br>   Sangfor Technologies Inc.<br>        Cert Status:    Valid<br>        Valid Usage:    All<br>        Cert Issuer:    Sangfor Technologies Inc.<br>        Serial Number:  00 DE A4 D5 FA 33 CF 9E 9E<br>        Thumbprint:     A9062C5C1721FF87EBCBD89DF03719755560E7A0<br>        Algorithm:      sha256RSA<br>        Valid from:     23:27 2017/4/27<br>        Valid to:       23:27 2117/4/3<br></code></pre></td></tr></table></figure>
+<h2 id="删除恶意证书">删除恶意证书</h2>
+<ul>
+<li>记录要删除证书的 <code>Thumbprint</code></li>
+<li>将下面的文件保存成 <code>rm-ca.ps1</code></li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-keyword">param</span>(<br>[<span class="hljs-built_in">string</span>]<span class="hljs-variable">$Thumbprint</span>=<span class="hljs-variable">$</span>(<span class="hljs-keyword">throw</span> <span class="hljs-string">&quot;Parameter missing: -Thumbprint Thumbprint&quot;</span>)<br>)<br><br><span class="hljs-variable">$CAStores</span>=<span class="hljs-string">&quot;cert:\currentuser\root&quot;</span>, <span class="hljs-string">&quot;cert:\currentuser\authroot&quot;</span>, <span class="hljs-string">&quot;cert:\localmachine\root&quot;</span>, <span class="hljs-string">&quot;cert:\localmachine\authroot&quot;</span><br><br><span class="hljs-variable">$exist</span> = <span class="hljs-number">0</span><br><span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$store</span> <span class="hljs-keyword">in</span> <span class="hljs-variable">$CAStores</span>) &#123;<br>    <span class="hljs-variable">$location</span> = <span class="hljs-variable">$store</span>+<span class="hljs-string">&quot;\&quot;</span>+<span class="hljs-variable">$Thumbprint</span><br>    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">Test-Path</span> <span class="hljs-literal">-Path</span> <span class="hljs-variable">$location</span>) &#123;<br>        <span class="hljs-variable">$exist</span> = <span class="hljs-number">1</span><br>        <span class="hljs-built_in">Remove-Item</span>  <span class="hljs-literal">-Path</span> <span class="hljs-variable">$location</span> <span class="hljs-literal">-Force</span><br>    &#125;    <br>&#125;<br><span class="hljs-keyword">if</span> (<span class="hljs-variable">$exist</span> <span class="hljs-operator">-eq</span> <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">&quot;Thumbprint does not exist.&quot;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>运行 <code>.\rm-ca.ps1 -Thumbprint A9062C5C1721FF87EBCBD89DF03719755560E7A0</code> 删除对应的证书</li>
+<li>再次 <code>查找恶意证书</code> 以确认成功</li>
+</ul>
+
                 
               </div>
             
@@ -341,7 +354,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/win/" class="print-no-link">#win</a>
+        <a href="/tags/doh/" class="print-no-link">#DoH</a>
       
     </div>
   
@@ -353,8 +366,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【记录】解决 win 笔记本 关机耗电问题</div>
-      <div>https://hexo.limour.top/resolve-the-power-consumption-issue-of-windows-laptop-shutdown</div>
+      <div>【记录】移除Windows中不受信任的证书</div>
+      <div>https://hexo.limour.top/remove-untrusted-certificates-windows</div>
     </div>
     <div class="license-meta">
       
@@ -366,13 +379,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>November 28, 2024</div>
+          <div>December 12, 2024</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>November 28, 2024</div>
+          <div>December 12, 2024</div>
         </div>
       
       
@@ -415,18 +428,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/remove-untrusted-certificates-windows" title="【记录】移除Windows中不受信任的证书">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【记录】移除Windows中不受信任的证书</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/free-traffic-solution-based-on-nginx" title="【探索】基于 Nginx 的免流方案">
-                        <span class="hidden-mobile">【探索】基于 Nginx 的免流方案</span>
+                      <a href="/resolve-the-power-consumption-issue-of-windows-laptop-shutdown" title="【记录】解决 win 笔记本 关机耗电问题">
+                        <span class="hidden-mobile">【记录】解决 win 笔记本 关机耗电问题</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
