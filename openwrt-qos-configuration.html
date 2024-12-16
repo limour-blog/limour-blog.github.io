@@ -18,11 +18,11 @@
   <meta name="author" content="Limour">
   <meta name="keywords" content="">
   
-    <meta name="description" content="锐捷雪豹BE50 的 游戏加速 QoS 做得不错，但是没有办法正常的 PPPoE 拨号，因此只能用来当二级路由接到 OpenWrt 上。上网设置里使用 静态IP，OpenWrt 的 网络-DHCP/DNS-静态地址分配 里给它分配了静态地址。但不知道为什么，锐捷的 DNS 解析总出错，因此这里记录一下解决的过程。 开启SmartDNS  OpenWrt 的 服务-SmartDNS-设置-常规设置">
+    <meta name="description" content="在宿舍环境下，QoS可以帮助优化带宽使用，确保关键应用（如视频通话、在线游戏等）获得足够的带宽支持，减少延迟和卡顿现象。其次，QoS还可以通过限制非关键应用的数据流，防止它们占用过多的带宽资源，从而保障其他重要服务的正常运行。此外，QoS还可以实现公平的带宽分配，避免单一用户过度占用资源，影响其他用户的网络体验。因此，尽管会损失硬件转发性能， OpenWrt 仍然是非常有必要开启 QoS 的。 更">
   
   
   
-  <title>【记录】OpenWrt配置DNS解析 - Limour&#39;s Blog</title>
+  <title>【记录】OpenWrt配置QoS规则 - Limour&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://jscdn.limour.top/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
 
@@ -76,7 +76,7 @@
 
 
   
-  <link rel="canonical" href="https://hexo.limour.top/openwrt-dns-configuration"/>
+  <link rel="canonical" href="https://hexo.limour.top/openwrt-qos-configuration"/>
 <meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="Limour's Blog" type="application/atom+xml">
 <link rel="alternate" href="/rss2.xml" title="Limour's Blog" type="application/rss+xml">
 </head>
@@ -230,7 +230,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">【记录】OpenWrt配置DNS解析</span>
+            <span id="subtitle">【记录】OpenWrt配置QoS规则</span>
           
         </div>
 
@@ -246,8 +246,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-12-15 14:29" pubdate>
-          December 15, 2024 pm
+        <time datetime="2024-12-16 21:26" pubdate>
+          December 16, 2024 pm
         </time>
       </span>
     
@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          508 words
+          626 words
         
       </span>
     
@@ -269,7 +269,7 @@
         
         
         
-          5 mins
+          6 mins
         
       </span>
     
@@ -306,12 +306,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">【记录】OpenWrt配置DNS解析</h1>
+            <h1 id="seo-header">【记录】OpenWrt配置QoS规则</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on December 15, 2024 pm
+                    Last updated on December 16, 2024 pm
                   
                 
               </p>
@@ -319,52 +319,40 @@
             
               <div class="markdown-body">
                 
-                <p><code>锐捷雪豹BE50</code> 的 <code>游戏加速 QoS</code> 做得不错，但是没有办法正常的 <code>PPPoE 拨号</code>，因此只能用来当二级路由接到 OpenWrt 上。上网设置里使用 <code>静态IP</code>，OpenWrt 的 <code>网络-DHCP/DNS-静态地址分配</code> 里给它分配了静态地址。但不知道为什么，锐捷的 DNS 解析总出错，因此这里记录一下解决的过程。</p>
-<h2 id="开启SmartDNS">开启SmartDNS</h2>
+                <p>在宿舍环境下，QoS可以帮助优化带宽使用，确保关键应用（如视频通话、在线游戏等）获得足够的带宽支持，减少延迟和卡顿现象。其次，QoS还可以通过限制非关键应用的数据流，防止它们占用过多的带宽资源，从而保障其他重要服务的正常运行。此外，QoS还可以实现公平的带宽分配，避免单一用户过度占用资源，影响其他用户的网络体验。因此，尽管会损失硬件转发性能， OpenWrt 仍然是非常有必要开启 QoS 的。</p>
+<h2 id="更新-kernel">更新 kernel</h2>
 <ul>
-<li>OpenWrt 的 <code>服务-SmartDNS-设置-常规设置</code> 的 <code>启用</code> 打勾</li>
-<li>OpenWrt 的 <code>服务-SmartDNS-设置-常规设置</code> 的 <code>自动设置Dnsmasq</code> 打勾</li>
-<li>OpenWrt 的 <code>服务-SmartDNS-上游服务器</code> 的添加合适的 DNS 服务器</li>
-<li>合适的 DNS 服务器可以看 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9pcHcuY24vZG9jL2Vsc2UvZG5zLmh0bWw=" rel="noopener external nofollow noreferrer">ipw.cn</a></li>
-<li>也可以在 <code>状态-概览-网络-IPv4 上游</code> 里看下发的 <code>DNS 1</code> 和 <code>DNS 2</code></li>
+<li>根据版本打开对应的包下载地址：<a href="https://hexo.limour.top/go/#aHR0cHM6Ly9kb3dubG9hZHMuaW1tb3J0YWx3cnQub3JnL3JlbGVhc2VzLzIzLjA1LVNOQVBTSE9UL3RhcmdldHMvaXBxODA3eC9nZW5lcmljL3BhY2thZ2VzLw==" rel="noopener external nofollow noreferrer">ImmortalWrt</a> 和 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9hcmNoaXZlLm9wZW53cnQub3JnL3JlbGVhc2VzLzIzLjA1LjAvdGFyZ2V0cy9pcHE4MDd4L2dlbmVyaWMvcGFja2FnZXMv" rel="noopener external nofollow noreferrer">OpenWrt</a></li>
+<li>找到对应的 kernel 更新包下载，比如 <code>kernel_5.15.171-1-dae069da9eaf18cbc98c1b58b15dc5c9_aarch64_cortex-a53.ipk</code></li>
+<li>OpenWrt 的 <code>系统-软件包-操作-上传软件包</code> 上传更新包并安装</li>
 </ul>
-<h2 id="配置SmartDNS">配置SmartDNS</h2>
+<h2 id="安装-QoS">安装 QoS</h2>
 <ul>
-<li>OpenWrt 的 <code>服务-SmartDNS-设置-高级设置</code> 的 <code>域名预加载</code> 打上勾</li>
-<li>OpenWrt 的 <code>服务-SmartDNS-设置-高级设置</code> 的 <code>缓存过期服务</code> 去掉勾</li>
-<li>OpenWrt 的 <code>服务-SmartDNS-设置-高级设置</code> 的 <code>持久化缓存</code> 去掉勾</li>
-<li>OpenWrt 的 <code>服务-SmartDNS-设置-高级设置</code> 的 <code>双栈IP优选</code> 和 <code>停用IPv6地址解析</code> 看自己情况</li>
-<li>OpenWrt 的 <code>服务-SmartDNS-设置-第二DNS服务器</code> 的 <code>启用</code> 去掉勾</li>
+<li>OpenWrt 的 <code>系统-软件包-筛选器</code> 搜索并安装 <code>luci-app-qos</code> 和 <code>luci-app-statistics</code></li>
 </ul>
-<h2 id="DNS重定向">DNS重定向</h2>
+<h2 id="关闭硬件加速">关闭硬件加速</h2>
 <ul>
-<li>OpenWrt 的 <code>网络-DHCP/DNS-常规设置</code> 的 <code>DNS 重定向</code> 打勾</li>
-<li>OpenWrt 的 <code>网络-DHCP/DNS-常规设置</code> 的 <code>DNS 转发</code> 设置为 <code>SmartDNS</code> 的端口，比如 <code>127.0.0.1#6353</code>，一般都自动设置了</li>
+<li>OpenWrt 的 <code>网络-防火墙-常用设置-路由/NAT 分载</code> 关闭 <code>软件流量分载</code> 和 <code>硬件流量分载</code></li>
+<li>OpenWrt 的 <code>网络-接口-全局网络选项</code> 开启 <code>数据包引导</code></li>
+<li>OpenWrt 的 <code>系统-重启</code> 执行重启</li>
 </ul>
-<h2 id="检查DNS配置">检查DNS配置</h2>
+<h2 id="初步配置">初步配置</h2>
 <ul>
-<li>CN上游测试 <code>nslookup github.com 202.96.209.133</code></li>
+<li>ssh 登录后台执行下面的命令</li>
+<li>其中 <code>85000</code> 和 <code>4000</code> 分别表示下行和上行带宽，一般写真实带宽的 85%</li>
 </ul>
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs txt">服务器:  ns-pd.online.sh.cn<br>Address:  202.96.209.133<br><br>非权威应答:<br>名称:    github.com<br>Address:  20.205.243.166<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> &gt; /etc/config/qos &lt;&lt;<span class="hljs-string">EOF</span><br><span class="hljs-string">config classgroup &#x27;Default&#x27;</span><br><span class="hljs-string">        option classes &#x27;Priority Express Normal Bulk&#x27;</span><br><span class="hljs-string">        option default &#x27;Normal&#x27;</span><br><span class="hljs-string"></span><br><span class="hljs-string">config class &#x27;Priority&#x27;</span><br><span class="hljs-string">        option packetsize &#x27;400&#x27;</span><br><span class="hljs-string">        option avgrate &#x27;10&#x27;</span><br><span class="hljs-string">        option priority &#x27;20&#x27;</span><br><span class="hljs-string"></span><br><span class="hljs-string">config class &#x27;Priority_down&#x27;</span><br><span class="hljs-string">        option packetsize &#x27;1000&#x27;</span><br><span class="hljs-string">        option avgrate &#x27;10&#x27;</span><br><span class="hljs-string"></span><br><span class="hljs-string">config class &#x27;Express&#x27;</span><br><span class="hljs-string">        option packetsize &#x27;1000&#x27;</span><br><span class="hljs-string">        option avgrate &#x27;50&#x27;</span><br><span class="hljs-string">        option priority &#x27;10&#x27;</span><br><span class="hljs-string"></span><br><span class="hljs-string">config class &#x27;Normal&#x27;</span><br><span class="hljs-string">        option packetsize &#x27;1500&#x27;</span><br><span class="hljs-string">        option packetdelay &#x27;100&#x27;</span><br><span class="hljs-string">        option avgrate &#x27;20&#x27;</span><br><span class="hljs-string">        option priority &#x27;5&#x27;</span><br><span class="hljs-string"></span><br><span class="hljs-string">config class &#x27;Normal_down&#x27;</span><br><span class="hljs-string">        option avgrate &#x27;20&#x27;</span><br><span class="hljs-string"></span><br><span class="hljs-string">config class &#x27;Bulk&#x27;</span><br><span class="hljs-string">        option avgrate &#x27;1&#x27;</span><br><span class="hljs-string">        option packetdelay &#x27;200&#x27;</span><br><span class="hljs-string"></span><br><span class="hljs-string">config interface &#x27;wan&#x27;                               </span><br><span class="hljs-string">        option classgroup &#x27;Default&#x27;                  </span><br><span class="hljs-string">        option enabled &#x27;1&#x27;                           </span><br><span class="hljs-string">        option upload &#x27;4000&#x27;                         </span><br><span class="hljs-string">        option download &#x27;85000&#x27; </span><br><span class="hljs-string"></span><br><span class="hljs-string">config interface &#x27;lan&#x27;</span><br><span class="hljs-string">        option enabled &#x27;1&#x27;</span><br><span class="hljs-string">        option classgroup &#x27;Default&#x27;</span><br><span class="hljs-string">        option download &#x27;4000&#x27;</span><br><span class="hljs-string">        option upload &#x27;85000&#x27;</span><br><span class="hljs-string"></span><br><span class="hljs-string">config reclassify</span><br><span class="hljs-string">        option target &#x27;Priority&#x27;</span><br><span class="hljs-string">        option proto &#x27;udp&#x27;</span><br><span class="hljs-string">        option ports &#x27;53&#x27;</span><br><span class="hljs-string">        option comment &#x27;DNS&#x27;</span><br><span class="hljs-string"></span><br><span class="hljs-string">config reclassify</span><br><span class="hljs-string">        option target &#x27;Priority&#x27;</span><br><span class="hljs-string">        option proto &#x27;icmp&#x27;</span><br><span class="hljs-string"></span><br><span class="hljs-string">config classify</span><br><span class="hljs-string">        option target &#x27;Express&#x27;</span><br><span class="hljs-string">        option pktsize &#x27;-500&#x27;</span><br><span class="hljs-string">        option comment &#x27;SDP&#x27;</span><br><span class="hljs-string">EOF</span><br></code></pre></td></tr></table></figure>
+<p><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9vbGR3aWtpLmFyY2hpdmUub3BlbndydC5vcmcvZG9jL3VjaS9xb3M=" rel="noopener external nofollow noreferrer">wiki</a>: Another biggie was the exact meaning of each type. Types are necessary for connection tracking. By default, Classify is not run on a connection that had already been assigned a traffic class, so it is the initial connection-tracked classification. Reclassify can override the traffic class per packet, without altering the connection tracking mark. Default is a fall-back for everything that has not been marked by Classify/Reclassify. Rules get processed by type first (Classify gets processed first, then Reclassify and finally Default) and then based on the order in the configuration file (top to bottom).</p>
+<h2 id="深入配置">深入配置</h2>
 <ul>
-<li>GW上游测试 <code>nslookup github.com 1.1.1.1</code></li>
+<li>OpenWrt 的 <code>状态-实时信息-连接</code> 里 <code>启用DNS查找</code> 后观察游戏所在的目标地址的特征</li>
+<li>OpenWrt 的 <code>网络-QoS-分类规则</code> 里根据特征添加更细节的规则</li>
 </ul>
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs txt">服务器:  one.one.one.one<br>Address:  1.1.1.1<br><br>非权威应答:<br>名称:    github.com<br>Address:  20.205.243.166<br></code></pre></td></tr></table></figure>
+<h2 id="观察配置">观察配置</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> /etc/config/qos <br>tc -s qdisc<br>/usr/lib/qos/generate.sh interface wan<br></code></pre></td></tr></table></figure>
+<h2 id="附加">附加</h2>
 <ul>
-<li>SmartDNS测试 <code>nslookup github.com 192.168.88.1</code></li>
-</ul>
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs txt">服务器:  ImmortalWrt.lan<br>Address:  192.168.88.1<br><br>非权威应答:<br>名称:    github.com<br>Address:  20.205.243.166<br></code></pre></td></tr></table></figure>
-<ul>
-<li>本地DNS测试 <code>nslookup github.com</code></li>
-</ul>
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs txt">服务器:  UnKnown<br>Address:  192.168.110.1<br><br>非权威应答:<br>名称:    github.com<br>Address:  20.205.243.166<br></code></pre></td></tr></table></figure>
-<ul>
-<li>关闭v6测试 <code>nslookup -type=AAAA github.com</code></li>
-</ul>
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs txt">服务器:  UnKnown<br>Address:  192.168.110.1<br><br>*** 没有 github.com 可以使用的 IPv6 address (AAAA)记录<br></code></pre></td></tr></table></figure>
-<h2 id="附加-DoH">附加 DoH</h2>
-<ul>
-<li><a href="./Self-built-ad-blocking-DoH-server">自建DoH服务器</a></li>
+<li>手动给应用打上 DSCP 标记：<a href="./Windows-configuration-QoS-ensures-smooth-network-connectivity-for-important-applications">Windows配置QoS</a></li>
 </ul>
 
                 
@@ -378,7 +366,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/doh/" class="print-no-link">#DoH</a>
+        <a href="/tags/qos/" class="print-no-link">#QoS</a>
       
     </div>
   
@@ -390,8 +378,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【记录】OpenWrt配置DNS解析</div>
-      <div>https://hexo.limour.top/openwrt-dns-configuration</div>
+      <div>【记录】OpenWrt配置QoS规则</div>
+      <div>https://hexo.limour.top/openwrt-qos-configuration</div>
     </div>
     <div class="license-meta">
       
@@ -403,13 +391,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>December 15, 2024</div>
+          <div>December 16, 2024</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>December 15, 2024</div>
+          <div>December 16, 2024</div>
         </div>
       
       
@@ -452,18 +440,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/openwrt-qos-configuration" title="【记录】OpenWrt配置QoS规则">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【记录】OpenWrt配置QoS规则</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/remove-untrusted-certificates-windows" title="【记录】移除Windows中不受信任的证书">
-                        <span class="hidden-mobile">【记录】移除Windows中不受信任的证书</span>
+                      <a href="/openwrt-dns-configuration" title="【记录】OpenWrt配置DNS解析">
+                        <span class="hidden-mobile">【记录】OpenWrt配置DNS解析</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

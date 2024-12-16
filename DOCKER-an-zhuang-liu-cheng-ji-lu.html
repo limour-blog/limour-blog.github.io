@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          647 words
+          687 words
         
       </span>
     
@@ -311,7 +311,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on October 9, 2024 pm
+                    Last updated on December 16, 2024 pm
                   
                 
               </p>
@@ -344,6 +344,11 @@
 <li>蜜罐：<a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL2ZmZmFyYXovZmFrZXNzaA==" rel="noopener external nofollow noreferrer">FakeSSH</a></li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -d --restart=always -p 22:22 --name fakessh fffaraz/fakessh<br>docker logs -f fakessh<br></code></pre></td></tr></table></figure>
+<h2 id="附加-修改-DNS">附加 修改 DNS</h2>
+<ul>
+<li>有效避免 docker 内各种莫名奇妙的 DNS 解析错误</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> -rf /etc/resolv.conf &amp;&amp; <span class="hljs-built_in">cat</span> &gt; /etc/resolv.conf &lt;&lt;<span class="hljs-string">EOF</span><br><span class="hljs-string">nameserver 8.8.8.8</span><br><span class="hljs-string">nameserver 1.1.1.1</span><br><span class="hljs-string">EOF</span><br></code></pre></td></tr></table></figure>
 <h2 id="第五步-安装docker">第五步 安装docker</h2>
 <ul>
 <li>新版docker自带compose命令，使用<code>docker compose</code>即可</li>
@@ -434,7 +439,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>October 9, 2024</div>
+          <div>December 16, 2024</div>
         </div>
       
       
