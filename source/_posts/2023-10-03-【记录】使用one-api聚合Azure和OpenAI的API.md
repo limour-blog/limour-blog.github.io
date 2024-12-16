@@ -151,11 +151,11 @@ sudo docker-compose up -d
 version: '3'
 services:
   next-web:
-    image: yidadaa/chatgpt-next-web:latest
+    image: tianzhentech/chatgpt-next-web:latest
     environment:
       - TZ=Asia/Shanghai
-      - BASE_URL=https://cdn.limour.top/one-api
-      - CUSTOM_MODELS=-all,+gpt-4o-mini@Deepbricks,+gpt-3.5-turbo@openai,+gpt-4-turbo@openai,+gpt-4o@openai,+o1-mini@openai,+gpt-claude-3.5-haiku@OpenRouter,+gpt-claude-3.5-sonnet@OpenRouter
+      - BASE_URL=https://rcdn.limour.top/one-api
+      - CUSTOM_MODELS=-all,+gpt-4o-mini@Deepbricks,+gpt-3.5-turbo@openai,+gpt-4-turbo@openai,+gpt-4o@openai,+o1-mini@openai,+gpt-claude-3.5-haiku@OpenRouter,+gpt-claude-3.5-sonnet@OpenRouter,+gpt-qwen-coder@HuggingFace,+gpt-gemini-1.5-pro@Vertex
       - ENABLE_BALANCE_QUERY=1
       - HOSTNAME=0.0.0.0
       - DEFAULT_MODEL=gpt-4o
