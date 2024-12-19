@@ -98,5 +98,37 @@ tc -s qdisc
 /usr/lib/qos/generate.sh interface wan
 ```
 
-## 附加
+## 附加 DSCP
 + 手动给应用打上 DSCP 标记：[Windows配置QoS](./Windows-configuration-QoS-ensures-smooth-network-connectivity-for-important-applications)
+
+## 附加 Wireshark
++ 下载 [Wireshark](https://www.wireshark.org/#downloadLink)
++ 安装时勾选上插件里的 `Sshdump`
++ OpenWrt 的 `系统-软件包-筛选器` 搜索并安装 `tcpdump`（会同时捕获 udp）
++ 打开 Wireshark，选择 `捕获—选项`：
+
+![](https://img.limour.top/2024/12/20/67646241bc3c8.webp)
+
++ 点击 `SSH remote capture` 标签的前的图标，对远程抓包的参数进行配置
+
+![](https://img.limour.top/2024/12/20/6764628b8bd6f.webp)
+
++ 输入路由器的ip地址和ssh端口号
+
+![](https://img.limour.top/2024/12/20/676463c5a6c69.webp)
+
++ 输入路由器用户名和密码
+
+![](https://img.limour.top/2024/12/20/676463fbc10a6.webp)
+
++ `tcpdump` 设置, `Remote capture filter` 写 `not (port 22)` 就好, 网卡写 `br-lan`
+
+![](https://img.limour.top/2024/12/20/67646455a1173.webp)
+
++ 选择 `SSH remote capture`，点击 `开始`
+
+![](https://img.limour.top/2024/12/20/6764621cb9cca.webp)
+
++ 捕获完成后点左上角的红色方块停止捕获
+
+![](https://img.limour.top/2024/12/20/676464cd7938b.webp)
