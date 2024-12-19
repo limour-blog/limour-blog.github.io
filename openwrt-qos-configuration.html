@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          626 words
+          752 words
         
       </span>
     
@@ -269,7 +269,7 @@
         
         
         
-          6 mins
+          7 mins
         
       </span>
     
@@ -311,7 +311,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on December 16, 2024 pm
+                    Last updated on December 20, 2024 am
                   
                 
               </p>
@@ -350,10 +350,42 @@
 </ul>
 <h2 id="观察配置">观察配置</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> /etc/config/qos <br>tc -s qdisc<br>/usr/lib/qos/generate.sh interface wan<br></code></pre></td></tr></table></figure>
-<h2 id="附加">附加</h2>
+<h2 id="附加-DSCP">附加 DSCP</h2>
 <ul>
 <li>手动给应用打上 DSCP 标记：<a href="./Windows-configuration-QoS-ensures-smooth-network-connectivity-for-important-applications">Windows配置QoS</a></li>
 </ul>
+<h2 id="附加-Wireshark">附加 Wireshark</h2>
+<ul>
+<li>下载 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly93d3cud2lyZXNoYXJrLm9yZy8jZG93bmxvYWRMaW5r" rel="noopener external nofollow noreferrer">Wireshark</a></li>
+<li>安装时勾选上插件里的 <code>Sshdump</code></li>
+<li>OpenWrt 的 <code>系统-软件包-筛选器</code> 搜索并安装 <code>tcpdump</code>（会同时捕获 udp）</li>
+<li>打开 Wireshark，选择 <code>捕获—选项</code>：</li>
+</ul>
+<p><img src="https://img.limour.top/2024/12/20/67646241bc3c8.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<ul>
+<li>点击 <code>SSH remote capture</code> 标签的前的图标，对远程抓包的参数进行配置</li>
+</ul>
+<p><img src="https://img.limour.top/2024/12/20/6764628b8bd6f.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<ul>
+<li>输入路由器的ip地址和ssh端口号</li>
+</ul>
+<p><img src="https://img.limour.top/2024/12/20/676463c5a6c69.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<ul>
+<li>输入路由器用户名和密码</li>
+</ul>
+<p><img src="https://img.limour.top/2024/12/20/676463fbc10a6.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<ul>
+<li><code>tcpdump</code> 设置, <code>Remote capture filter</code> 写 <code>not (port 22)</code> 就好, 网卡写 <code>br-lan</code></li>
+</ul>
+<p><img src="https://img.limour.top/2024/12/20/67646455a1173.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<ul>
+<li>选择 <code>SSH remote capture</code>，点击 <code>开始</code></li>
+</ul>
+<p><img src="https://img.limour.top/2024/12/20/6764621cb9cca.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<ul>
+<li>捕获完成后点左上角的红色方块停止捕获</li>
+</ul>
+<p><img src="https://img.limour.top/2024/12/20/676464cd7938b.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
 
                 
               </div>
@@ -397,7 +429,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>December 16, 2024</div>
+          <div>December 20, 2024</div>
         </div>
       
       
