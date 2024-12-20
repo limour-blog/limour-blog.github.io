@@ -26,18 +26,19 @@ services:
       - EC_VER=7.6.7
       - CLI_OPTS=-d 202.120.224.58:443 -u username -p password
       - TZ=Asia/Shanghai
+      - IPTABLES_LEGACY=1
+      - DISABLE_PKG_VERSION_XML=1
+      - VPN_TUN=tun0
     networks:
       - internal
  
   gost:
     restart: unless-stopped
     ports:
-      - '13442:13443'
-    image: ginuerzh/gost
-    volumes:
-      - ./ssl/fullchain.pem:/bin/cert.pem:ro
-      - ./ssl/privkey.key:/bin/key.pem:ro
-    command: -L="http+tls://limour:password@:13443?cert=cert.pem&key=key.pem&probe_resist=code:400&knock=www.library.fudan.edu.cn" -F="socks5://easyconnect:1080"
+      - '80:8338'
+      - '80:8338/udp'
+    image: gogost/gost
+    command: -L="ss://chacha20-ietf-poly1305:password@:8338" -L="ssu://chacha20-ietf-poly1305:password@:8338" -F="socks5://easyconnect:1080"
     networks:
       - internal
  
