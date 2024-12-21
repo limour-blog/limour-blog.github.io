@@ -18,7 +18,7 @@
   <meta name="author" content="Limour">
   <meta name="keywords" content="">
   
-    <meta name="description" content="深信服开发的非自由的 EasyConnect 代理软件就是依托答辩，想把它运行在 docker 中，并开放 Socks5 供宿主机连接以使用代理，保证不污染环境。使用的项目是 Hagb/docker-easyconnect 1234mkdir -p ~/app/easyconnect &amp;amp;&amp;amp; cd ~/app/easyconnect &amp;amp;&amp;amp; nano docker-co">
+    <meta name="description" content="深信服开发的非自由的 EasyConnect 代理软件就是依托答辩，想把它运行在 docker 中，并开放 Socks5 供宿主机连接以使用代理，保证不污染环境。使用的项目是 Hagb/docker-easyconnect 服务端  反向代理服务 建立目录  12345mkdir -p ~/app/easyconnect &amp;amp;&amp;amp; cd ~/app/easyconnectcat &amp;gt">
   
   
   
@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          176 words
+          251 words
         
       </span>
     
@@ -269,7 +269,7 @@
         
         
         
-          2 mins
+          3 mins
         
       </span>
     
@@ -311,7 +311,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on March 19, 2024 pm
+                    Last updated on December 22, 2024 am
                   
                 
               </p>
@@ -320,8 +320,34 @@
               <div class="markdown-body">
                 
                 <p>深信服开发的非自由的 EasyConnect 代理软件就是依托答辩，想把它运行在 docker 中，并开放 Socks5 供宿主机连接以使用代理，保证不污染环境。使用的项目是 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL0hhZ2IvZG9ja2VyLWVhc3ljb25uZWN0" rel="noopener external nofollow noreferrer">Hagb/docker-easyconnect</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/app/easyconnect &amp;&amp; <span class="hljs-built_in">cd</span> ~/app/easyconnect &amp;&amp; nano docker-compose.yml<br>ping stuvpn.fudan.edu.cn <span class="hljs-comment"># 202.120.224.58</span><br>sudo docker-compose up -d<br>sudo docker-compose logs<br></code></pre></td></tr></table></figure>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3&#x27;</span><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">easyconnect:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">hagb/docker-easyconnect:cli</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">unless-stopped</span><br>    <span class="hljs-attr">devices:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">/dev/net/tun</span><br>    <span class="hljs-attr">cap_add:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">NET_ADMIN</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">EC_VER=7.6.7</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">CLI_OPTS=-d</span> <span class="hljs-number">202.120</span><span class="hljs-number">.224</span><span class="hljs-number">.58</span><span class="hljs-string">:443</span> <span class="hljs-string">-u</span> <span class="hljs-string">username</span> <span class="hljs-string">-p</span> <span class="hljs-string">password</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">TZ=Asia/Shanghai</span><br>    <span class="hljs-attr">networks:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">internal</span><br> <br>  <span class="hljs-attr">gost:</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">unless-stopped</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;13442:13443&#x27;</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">ginuerzh/gost</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./ssl/fullchain.pem:/bin/cert.pem:ro</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./ssl/privkey.key:/bin/key.pem:ro</span><br>    <span class="hljs-attr">command:</span> <span class="hljs-string">-L=&quot;http+tls://limour:password@:13443?cert=cert.pem&amp;key=key.pem&amp;probe_resist=code:400&amp;knock=www.library.fudan.edu.cn&quot;</span> <span class="hljs-string">-F=&quot;socks5://easyconnect:1080&quot;</span><br>    <span class="hljs-attr">networks:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">internal</span><br> <br><span class="hljs-attr">networks:</span><br>  <span class="hljs-attr">internal:</span><br>    <span class="hljs-attr">attachable:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+<h2 id="服务端">服务端</h2>
+<ul>
+<li><a href="/Docker-bu-shu-Nginx-Proxy-Manager">反向代理服务</a></li>
+<li>建立目录</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/app/easyconnect &amp;&amp; <span class="hljs-built_in">cd</span> ~/app/easyconnect<br><span class="hljs-built_in">cat</span> &gt; resolv.conf &lt;&lt;<span class="hljs-string">EOF</span><br><span class="hljs-string">nameserver 127.0.0.63</span><br><span class="hljs-string">nameserver 127.0.0.11</span><br><span class="hljs-string">EOF</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>编辑配置 <code>nano docker-compose.yml</code></li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3&#x27;</span><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">easyconnect:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">hagb/docker-easyconnect:7.6.7</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">unless-stopped</span><br>    <span class="hljs-attr">devices:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">/dev/net/tun</span><br>    <span class="hljs-attr">cap_add:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">NET_ADMIN</span><br>    <span class="hljs-attr">sysctls:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">net.ipv4.conf.default.route_localnet=1</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">EC_VER=7.6.7</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">TZ=Asia/Shanghai</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">DISABLE_PKG_VERSION_XML=1</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">VPN_TUN=tun0</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">PASSWORD=novnc</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">USE_NOVNC=1</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">PING_ADDR=192.168.81.6</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">PING_INTERVAL=90</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./root:/root</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./resolv.conf:/etc/resolv.conf:ro</span><br> <br>  <span class="hljs-attr">gost:</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">unless-stopped</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;80:8338&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;80:8338/udp&#x27;</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">gogost/gost</span><br>    <span class="hljs-attr">command:</span> <span class="hljs-string">-L=&quot;ss://chacha20-ietf-poly1305:passwd@:8338&quot;</span> <span class="hljs-string">-L=&quot;ssu://chacha20-ietf-poly1305:passwd@:8338&quot;</span> <span class="hljs-string">-F=&quot;socks5://easyconnect:1080&quot;</span><br> <br><span class="hljs-attr">networks:</span><br>  <span class="hljs-attr">default:</span><br>    <span class="hljs-attr">external:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">ngpm</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>运行容器</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker compose up -d<br>docker compose logs<br></code></pre></td></tr></table></figure>
+<ul>
+<li>反代登录地址<br>
+<img src="https://img.limour.top/2024/12/22/67670b5c2a2ba.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></li>
+</ul>
+<h2 id="客户端">客户端</h2>
+<ul>
+<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL3NoYWRvd3NvY2tzL3NoYWRvd3NvY2tzLWFuZHJvaWQvcmVsZWFzZXM=" rel="noopener external nofollow noreferrer">Android</a></li>
+<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL3NoYWRvd3NvY2tzL3NoYWRvd3NvY2tzLXdpbmRvd3MvcmVsZWFzZXM=" rel="noopener external nofollow noreferrer">Windows</a></li>
+</ul>
+<h2 id="DNS">DNS</h2>
+<ul>
+<li>暂时无法解决</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker compose <span class="hljs-built_in">exec</span> -it easyconnect \<br><span class="hljs-built_in">cat</span> /usr/share/sangfor/EasyConnect/resources/logs/DNS.<span class="hljs-built_in">log</span><br><br>docker compose <span class="hljs-built_in">exec</span> -it easyconnect \<br>iptables -t nat -I OUTPUT -p udp ! --sport 7789 -d 127.0.0.63/32 --dport 53 -j DNAT --to-destination 127.0.0.1:5373<br><br>docker compose <span class="hljs-built_in">exec</span> -it easyconnect \<br>busybox nslookup zb.fudan.edu.cn <br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -366,7 +392,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>March 19, 2024</div>
+          <div>December 22, 2024</div>
         </div>
       
       
