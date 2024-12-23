@@ -19,21 +19,24 @@ EOF
 # 查看系统的特殊 DNS, 比如阿里云内网解析的 DNS
 cat /etc/resolv.conf
 
+# 分流 内网 DNS 解析
+cat > fd.list <<EOF
+cnki.net
+edu.cn
+EOF
+
 # 下面的 10.184.107.127 与 《三、解决内网 DNS》 有关
 cat > smartdns.conf <<EOF
 bind [::]:53 -no-speed-check
 bind-tcp [::]:53 -no-speed-check
 response-mode fastest-response
 force-AAAA-SOA yes
-audit-console yes
-log-console yes
-log-level info
 server 127.0.0.11 -bootstrap-dns
 proxy-server socks5://easyconnect:1080 -name socks5
 nameserver 223.5.5.5
-server-tcp 10.184.107.127:2053 -group fddns -proxy socks5
-nameserver /cnki.net/fddns
-nameserver /edu.cn/fddns
+server-tcp 10.184.107.127:2053 -group fddns -proxy socks5 -exclude-default-group
+domain-set -name fdsite -file /etc/smartdns/fd.list
+domain-rules /domain-set:fdsite/ -nameserver fddns
 EOF
 
 cat > docker-compose.yml <<EOF
@@ -48,8 +51,8 @@ services:
       - NET_ADMIN
     sysctls:
       - net.ipv4.conf.default.route_localnet=1
-    extra_hosts:
-      - 'host.docker.internal:host-gateway'
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
     environment:
       - EC_VER=7.6.7
       - TZ=Asia/Shanghai
@@ -63,13 +66,13 @@ services:
       - ./root:/root
       - ./resolv.conf:/etc/resolv.conf:ro
  
-  smartdns:
-    restart: unless-stopped
-    ports:
-      - '53:53/udp'
-    volumes:
+  smartdns:
+    restart: unless-stopped
+    ports:
+      - '53:53/udp'
+    volumes:
       - .:/etc/smartdns
-    image: pymumu/smartdns:latest
+    image: pymumu/smartdns:latest
  
   gost:
     restart: unless-stopped
@@ -120,16 +123,16 @@ EOF
 cat > docker-compose.yml <<EOF
 version: '3.8'
 services:
-  smartdns:
-    restart: unless-stopped
-    extra_hosts:
-      - 'host.docker.internal:host-gateway'
-    ports:
-      - '2053:53'
-      - '2053:53/udp'
-    volumes:
-      - ./smartdns.conf:/etc/smartdns/smartdns.conf
-    image: pymumu/smartdns:latest
+  smartdns:
+    restart: unless-stopped
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    ports:
+      - '2053:53'
+      - '2053:53/udp'
+    volumes:
+      - ./smartdns.conf:/etc/smartdns/smartdns.conf
+    image: pymumu/smartdns:latest
 EOF
 
 docker compose up -d
