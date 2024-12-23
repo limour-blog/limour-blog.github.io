@@ -1515,7 +1515,7 @@
     <link href="/-Docker-bu-shu-easyconnect"/>
     <url>/-Docker-bu-shu-easyconnect</url>
     
-    <content type="html"><![CDATA[深信服开发的非自由的 EasyConnect 代理软件就是依托答辩，想把它运行在 docker 中，并开放 Socks5 供宿主机连接以使用代理，保证不污染环境。使用的项目是 Hagb/docker-easyconnect一、搭建服务端反向代理服务反代登录地址，访问并登录 EasyConnect二、使用客户端Android，特别说明：远程 DNS 填 127.0.0.11Windows三、解决内网 DNS一台内网的服务器，假设 ip 是 10.184.107.127回到外网服务端四、进阶链式代理：使用Tunnel加速VPS的连接浏览器插件：ZeroOmega单独重启某个容器、查看其日志、执行命令]]></content>
+    <content type="html"><![CDATA[深信服开发的非自由的 EasyConnect 代理软件就是依托答辩，想把它运行在 docker 中，并开放 Socks5 供宿主机连接以使用代理，保证不污染环境。使用的项目是 Hagb/docker-easyconnect一、搭建服务端反向代理服务反代登录地址，访问并登录 EasyConnect二、使用客户端Android，特别说明：远程 DNS 填 127.0.0.11Windows三、解决内网 DNS一台内网的服务器，假设 ip 是 10.184.107.127回到外网服务端四、进阶移除 EasyConnect CA 证书链式代理：使用Tunnel加速VPS的连接浏览器插件：ZeroOmega单独重启某个容器、查看其日志、执行命令]]></content>
     
     
     
