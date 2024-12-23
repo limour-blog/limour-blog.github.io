@@ -16,15 +16,24 @@ nameserver 127.0.0.1
 nameserver 127.0.0.11
 EOF
 
+# 查看系统的特殊 DNS, 比如阿里云内网解析的 DNS
+cat /etc/resolv.conf
+
 # 下面的 10.184.107.127 与 《三、解决内网 DNS》 有关
 cat > smartdns.conf <<EOF
 bind [::]:53 -no-speed-check
 bind-tcp [::]:53 -no-speed-check
 response-mode fastest-response
 force-AAAA-SOA yes
-server 127.0.0.11
+audit-console yes
+log-console yes
+log-level info
+server 127.0.0.11 -bootstrap-dns
 proxy-server socks5://easyconnect:1080 -name socks5
-server-tcp 10.184.107.127:2053 -proxy socks5
+nameserver 223.5.5.5
+server-tcp 10.184.107.127:2053 -group fddns -proxy socks5
+nameserver /cnki.net/fddns
+nameserver /edu.cn/fddns
 EOF
 
 cat > docker-compose.yml <<EOF
@@ -59,7 +68,7 @@ services:
     ports:
       - '53:53/udp'
     volumes:
-      - ./smartdns.conf:/etc/smartdns/smartdns.conf
+      - .:/etc/smartdns
     image: pymumu/smartdns:latest
  
   gost:
@@ -76,22 +85,15 @@ networks:
     name: ngpm
 EOF
 
-# 查看系统的特殊 DNS, 比如阿里云内网解析的 DNS
-cat /etc/resolv.conf
-
 # 关闭系统的DNS，改用 smartdns
 systemctl stop systemd-resolved && systemctl disable systemd-resolved && \
 rm -rf /etc/resolv.conf && \
 cat > /etc/resolv.conf <<EOF
 nameserver 127.0.0.1
-nameserver 223.5.5.5
 EOF
 
 docker compose up -d
 docker compose logs
-
-# 确认 smartdns 解析【docker 服务】完好
-nslookup easyconnect 127.0.0.1
 ```
 + 反代登录地址，访问并登录 EasyConnect
 
@@ -110,6 +112,8 @@ bind [::]:53 -no-speed-check
 bind-tcp [::]:53 -no-speed-check
 response-mode fastest-response
 force-AAAA-SOA yes
+log-console yes
+log-level info
 server 127.0.0.11
 EOF
 
@@ -146,8 +150,9 @@ nslookup zb.fudan.edu.cn 127.0.0.1
 + 浏览器插件：[ZeroOmega](https://github.com/zero-peak/ZeroOmega)
 + 单独重启某个容器、查看其日志、执行命令
 ```
-docker compose down smartdns
+docker compose down smartdns && \
 docker compose up -d smartdns
+docker compose logs smartdns
 
 docker compose exec -it easyconnect \
 cat /etc/hosts
