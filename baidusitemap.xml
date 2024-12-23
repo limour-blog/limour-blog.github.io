@@ -2,7 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://hexo.limour.top/-Docker-bu-shu-easyconnect.html</loc>
-    <lastmod>2024-12-21</lastmod>
+    <lastmod>2024-12-23</lastmod>
+  </url>
+  <url>
+    <loc>https://hexo.limour.top/openwrt-dns-configuration.html</loc>
+    <lastmod>2024-12-23</lastmod>
   </url>
   <url>
     <loc>https://hexo.limour.top/DOCKER-an-zhuang-liu-cheng-ji-lu.html</loc>
@@ -15,10 +19,6 @@
   <url>
     <loc>https://hexo.limour.top/Aggregating-Azure-and-OpenAI-APIs-with-OneAPI.html</loc>
     <lastmod>2024-12-16</lastmod>
-  </url>
-  <url>
-    <loc>https://hexo.limour.top/openwrt-dns-configuration.html</loc>
-    <lastmod>2024-12-15</lastmod>
   </url>
   <url>
     <loc>https://hexo.limour.top/remove-untrusted-certificates-windows.html</loc>

@@ -27,7 +27,7 @@
     <link href="/openwrt-dns-configuration"/>
     <url>/openwrt-dns-configuration</url>
     
-    <content type="html"><![CDATA[锐捷雪豹BE50 的 游戏加速 QoS 做得不错，但是没有办法正常的 PPPoE 拨号，因此只能用来当二级路由接到 OpenWrt 上。上网设置里使用 静态IP，OpenWrt 的 网络-DHCP/DNS-静态地址分配 里给它分配了静态地址。但不知道为什么，锐捷的 DNS 解析总出错，因此这里记录一下解决的过程。开启SmartDNSOpenWrt 的 服务-SmartDNS-设置-常规设置 的 启用 打勾OpenWrt 的 服务-SmartDNS-设置-常规设置 的 自动设置Dnsmasq 打勾OpenWrt 的 服务-SmartDNS-上游服务器 的添加合适的 DNS 服务器合适的 DNS 服务器可以看 ipw.cn也可以在 状态-概览-网络-IPv4 上游 里看下发的 DNS 1 和 DNS 2配置SmartDNSOpenWrt 的 服务-SmartDNS-设置-高级设置 的 域名预加载 打上勾OpenWrt 的 服务-SmartDNS-设置-高级设置 的 缓存过期服务 去掉勾OpenWrt 的 服务-SmartDNS-设置-高级设置 的 持久化缓存 去掉勾OpenWrt 的 服务-SmartDNS-设置-高级设置 的 双栈IP优选 和 停用IPv6地址解析 看自己情况OpenWrt 的 服务-SmartDNS-设置-第二DNS服务器 的 启用 去掉勾DNS重定向OpenWrt 的 网络-DHCP/DNS-常规设置 的 DNS 重定向 打勾OpenWrt 的 网络-DHCP/DNS-常规设置 的 DNS 转发 设置为 SmartDNS 的端口，比如 127.0.0.1#6353，一般都自动设置了检查DNS配置CN上游测试 nslookup github.com 202.96.209.133GW上游测试 nslookup github.com 1.1.1.1SmartDNS测试 nslookup github.com 192.168.88.1本地DNS测试 nslookup github.com关闭v6测试 nslookup -type=AAAA github.com附加 DoH自建DoH服务器]]></content>
+    <content type="html"><![CDATA[锐捷雪豹BE50 的 游戏加速 QoS 做得不错，但是没有办法正常的 PPPoE 拨号，因此只能用来当二级路由接到 OpenWrt 上。上网设置里使用 静态IP，OpenWrt 的 网络-DHCP/DNS-静态地址分配 里给它分配了静态地址。但不知道为什么，锐捷的 DNS 解析总出错，因此这里记录一下解决的过程。开启SmartDNSOpenWrt 的 服务-SmartDNS-设置-常规设置 的 启用 打勾OpenWrt 的 服务-SmartDNS-设置-常规设置 的 自动设置Dnsmasq 打勾OpenWrt 的 服务-SmartDNS-上游服务器 的添加合适的 DNS 服务器合适的 DNS 服务器可以看 ipw.cn也可以在 状态-概览-网络-IPv4 上游 里看下发的 DNS 1 和 DNS 2配置SmartDNSOpenWrt 的 服务-SmartDNS-设置-高级设置 的 域名预加载 打上勾OpenWrt 的 服务-SmartDNS-设置-高级设置 的 缓存过期服务 去掉勾OpenWrt 的 服务-SmartDNS-设置-高级设置 的 持久化缓存 去掉勾OpenWrt 的 服务-SmartDNS-设置-高级设置 的 双栈IP优选 和 停用IPv6地址解析 看自己情况OpenWrt 的 服务-SmartDNS-设置-第二DNS服务器 的 启用 去掉勾DNS重定向OpenWrt 的 网络-DHCP/DNS-常规设置 的 DNS 重定向 打勾OpenWrt 的 网络-DHCP/DNS-常规设置 的 DNS 转发 设置为 SmartDNS 的端口，比如 127.0.0.1#6353，一般都自动设置了检查DNS配置CN上游测试 nslookup github.com 202.96.209.133GW上游测试 nslookup github.com 1.1.1.1SmartDNS测试 nslookup github.com 192.168.88.1本地DNS测试 nslookup github.com关闭v6测试 nslookup -type=AAAA github.com附加 DoH自建DoH服务器SmartDNS 的 TCP 模式简直是神仙SmartDNS 的配置项详解]]></content>
     
     
     
@@ -1515,7 +1515,7 @@
     <link href="/-Docker-bu-shu-easyconnect"/>
     <url>/-Docker-bu-shu-easyconnect</url>
     
-    <content type="html"><![CDATA[深信服开发的非自由的 EasyConnect 代理软件就是依托答辩，想把它运行在 docker 中，并开放 Socks5 供宿主机连接以使用代理，保证不污染环境。使用的项目是 Hagb/docker-easyconnect服务端反向代理服务建立目录编辑配置 nano docker-compose.yml运行容器反代登录地址客户端AndroidWindowsDNS暂时无法解决]]></content>
+    <content type="html"><![CDATA[深信服开发的非自由的 EasyConnect 代理软件就是依托答辩，想把它运行在 docker 中，并开放 Socks5 供宿主机连接以使用代理，保证不污染环境。使用的项目是 Hagb/docker-easyconnect一、搭建服务端反向代理服务反代登录地址，访问并登录 EasyConnect二、使用客户端Android，特别说明：远程 DNS 填 127.0.0.11Windows三、解决内网 DNS一台内网的服务器，假设 ip 是 10.184.107.127回到外网服务端四、进阶链式代理：使用Tunnel加速VPS的连接浏览器插件：ZeroOmega单独重启某个容器、查看其日志、执行命令]]></content>
     
     
     
