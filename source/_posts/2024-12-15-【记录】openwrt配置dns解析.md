@@ -67,3 +67,5 @@ Address:  192.168.110.1
 ```
 ## 附加 DoH
 + [自建DoH服务器](./Self-built-ad-blocking-DoH-server)
++ [SmartDNS 的 TCP 模式简直是神仙](./-Docker-bu-shu-easyconnect)
++ [SmartDNS 的配置项详解](https://pymumu.github.io/smartdns/configuration/)
