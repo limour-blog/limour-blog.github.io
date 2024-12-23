@@ -125,7 +125,7 @@ services:
       - '2053:53/udp'
     volumes:
       - ./smartdns.conf:/etc/smartdns/smartdns.conf
-    image: laoda.limour.top/pymumu/smartdns:latest
+    image: pymumu/smartdns:latest
 EOF
 
 docker compose up -d
@@ -141,6 +141,7 @@ nslookup zb.fudan.edu.cn 127.0.0.1
 ```
 
 ## 四、进阶
++ [移除 EasyConnect CA 证书](./remove-untrusted-certificates-windows)
 + 链式代理：[使用Tunnel加速VPS的连接](./Use-Tunnel-to-speed-up-the-connection-of-VPS)
 + 浏览器插件：[ZeroOmega](https://github.com/zero-peak/ZeroOmega)
 + 单独重启某个容器、查看其日志、执行命令
