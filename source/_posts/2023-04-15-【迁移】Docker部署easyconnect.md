@@ -33,7 +33,7 @@ response-mode fastest-response
 force-AAAA-SOA yes
 server 127.0.0.11 -bootstrap-dns
 proxy-server socks5://easyconnect:1080 -name socks5
-nameserver 223.5.5.5
+server 223.5.5.5 -group other
 server-tcp 10.184.107.127:2053 -group fddns -proxy socks5 -exclude-default-group
 domain-set -name fdsite -file /etc/smartdns/fd.list
 domain-rules /domain-set:fdsite/ -nameserver fddns
