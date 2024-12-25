@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://hexo.limour.top/convert-old-phone-to-cloud-phone.html</loc>
+    <lastmod>2024-12-25</lastmod>
+  </url>
+  <url>
+    <loc>https://hexo.limour.top/force-enable-adb-wireless-debugging.html</loc>
+    <lastmod>2024-12-25</lastmod>
+  </url>
+  <url>
+    <loc>https://hexo.limour.top/-ji-lu--shi-yong-Termux-zuo-wei-SSH-ke-hu-duan.html</loc>
+    <lastmod>2024-12-25</lastmod>
+  </url>
+  <url>
     <loc>https://hexo.limour.top/-fu-ke--zai-Flyio-shang-da-jian-Alist.html</loc>
     <lastmod>2024-12-23</lastmod>
   </url>
@@ -246,10 +258,6 @@
   </url>
   <url>
     <loc>https://hexo.limour.top/-bai-piao--shi-yong-CloudFlare-R2-da-jian-ge-ren-tu-chuang.html</loc>
-    <lastmod>2024-03-19</lastmod>
-  </url>
-  <url>
-    <loc>https://hexo.limour.top/-ji-lu--shi-yong-Termux-zuo-wei-SSH-ke-hu-duan.html</loc>
     <lastmod>2024-03-19</lastmod>
   </url>
   <url>

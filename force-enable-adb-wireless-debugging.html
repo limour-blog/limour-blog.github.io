@@ -18,11 +18,11 @@
   <meta name="author" content="Limour">
   <meta name="keywords" content="">
   
-    <meta name="description" content="在宿舍环境下，QoS可以帮助优化带宽使用，确保关键应用（如视频通话、在线游戏等）获得足够的带宽支持，减少延迟和卡顿现象。其次，QoS还可以通过限制非关键应用的数据流，防止它们占用过多的带宽资源，从而保障其他重要服务的正常运行。此外，QoS还可以实现公平的带宽分配，避免单一用户过度占用资源，影响其他用户的网络体验。因此，尽管会损失硬件转发性能， OpenWrt 仍然是非常有必要开启 QoS 的。 更">
+    <meta name="description" content="某无法 root 的X之光手机阉割了无线调试功能，因此只能曲线救国，尝试通过其他方法开启无线调试功能。 准备工作  下载 ADB 下载 Shizuku 下载 Termux 下载 PackageViewer  安装 Shizuku  开启 USB 调试，并允许仅充电时调试  1234567adb devices.\adb.exe install -t &amp;#x27;.\termux.apk&amp;#x27;">
   
   
   
-  <title>【记录】OpenWrt配置QoS规则 - Limour&#39;s Blog</title>
+  <title>【记录】强行开启 ADB 的无线调试功能 - Limour&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://jscdn.limour.top/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
 
@@ -76,7 +76,7 @@
 
 
   
-  <link rel="canonical" href="https://hexo.limour.top/openwrt-qos-configuration"/>
+  <link rel="canonical" href="https://hexo.limour.top/force-enable-adb-wireless-debugging"/>
 <meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="Limour's Blog" type="application/atom+xml">
 <link rel="alternate" href="/rss2.xml" title="Limour's Blog" type="application/rss+xml">
 </head>
@@ -230,7 +230,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">【记录】OpenWrt配置QoS规则</span>
+            <span id="subtitle">【记录】强行开启 ADB 的无线调试功能</span>
           
         </div>
 
@@ -246,8 +246,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-12-16 21:26" pubdate>
-          December 16, 2024 pm
+        <time datetime="2024-12-25 19:44" pubdate>
+          December 25, 2024 pm
         </time>
       </span>
     
@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          752 words
+          720 words
         
       </span>
     
@@ -306,12 +306,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">【记录】OpenWrt配置QoS规则</h1>
+            <h1 id="seo-header">【记录】强行开启 ADB 的无线调试功能</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on December 20, 2024 am
+                    Last updated on December 25, 2024 pm
                   
                 
               </p>
@@ -319,74 +319,47 @@
             
               <div class="markdown-body">
                 
-                <p>在宿舍环境下，QoS可以帮助优化带宽使用，确保关键应用（如视频通话、在线游戏等）获得足够的带宽支持，减少延迟和卡顿现象。其次，QoS还可以通过限制非关键应用的数据流，防止它们占用过多的带宽资源，从而保障其他重要服务的正常运行。此外，QoS还可以实现公平的带宽分配，避免单一用户过度占用资源，影响其他用户的网络体验。因此，尽管会损失硬件转发性能， OpenWrt 仍然是非常有必要开启 QoS 的。</p>
-<h2 id="更新-kernel">更新 kernel</h2>
+                <p>某无法 root 的X之光手机阉割了无线调试功能，因此只能曲线救国，尝试通过其他方法开启无线调试功能。</p>
+<h2 id="准备工作">准备工作</h2>
 <ul>
-<li>根据版本打开对应的包下载地址：<a href="https://hexo.limour.top/go/#aHR0cHM6Ly9kb3dubG9hZHMuaW1tb3J0YWx3cnQub3JnL3JlbGVhc2VzLzIzLjA1LVNOQVBTSE9UL3RhcmdldHMvaXBxODA3eC9nZW5lcmljL3BhY2thZ2VzLw==" rel="noopener external nofollow noreferrer">ImmortalWrt</a> 和 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9hcmNoaXZlLm9wZW53cnQub3JnL3JlbGVhc2VzLzIzLjA1LjAvdGFyZ2V0cy9pcHE4MDd4L2dlbmVyaWMvcGFja2FnZXMv" rel="noopener external nofollow noreferrer">OpenWrt</a></li>
-<li>找到对应的 kernel 更新包下载，比如 <code>kernel_5.15.171-1-dae069da9eaf18cbc98c1b58b15dc5c9_aarch64_cortex-a53.ipk</code></li>
-<li>OpenWrt 的 <code>系统-软件包-操作-上传软件包</code> 上传更新包并安装</li>
+<li>下载 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vdG9vbHMvcmVsZWFzZXMvcGxhdGZvcm0tdG9vbHM=" rel="noopener external nofollow noreferrer">ADB</a></li>
+<li>下载 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL1Jpa2thQXBwcy9TaGl6dWt1L3JlbGVhc2Vz" rel="noopener external nofollow noreferrer">Shizuku</a></li>
+<li>下载 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL3Rlcm11eC90ZXJtdXgtYXBw" rel="noopener external nofollow noreferrer">Termux</a></li>
+<li>下载 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL01hWWlGZWkxOTk1L1BhY2thZ2VWaWV3ZXIvcmVsZWFzZXM=" rel="noopener external nofollow noreferrer">PackageViewer</a></li>
 </ul>
-<h2 id="安装-QoS">安装 QoS</h2>
+<h2 id="安装-Shizuku">安装 Shizuku</h2>
 <ul>
-<li>OpenWrt 的 <code>系统-软件包-筛选器</code> 搜索并安装 <code>luci-app-qos</code> 和 <code>luci-app-statistics</code></li>
+<li>开启 USB 调试，并允许仅充电时调试</li>
 </ul>
-<h2 id="关闭硬件加速">关闭硬件加速</h2>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs powershell">adb devices<br>.\adb.exe install <span class="hljs-literal">-t</span> <span class="hljs-string">&#x27;.\termux.apk&#x27;</span><br>.\adb.exe install <span class="hljs-literal">-t</span> <span class="hljs-string">&#x27;.\shizuku.apk&#x27;</span><br>.\adb.exe install <span class="hljs-literal">-t</span> <span class="hljs-string">&#x27;.\packageviewer.apk&#x27;</span><br><br>adb shell<br>sh /storage/emulated/<span class="hljs-number">0</span>/Android/<span class="hljs-keyword">data</span>/moe.shizuku.privileged.api/start.sh<br></code></pre></td></tr></table></figure>
 <ul>
-<li>OpenWrt 的 <code>网络-防火墙-常用设置-路由/NAT 分载</code> 关闭 <code>软件流量分载</code> 和 <code>硬件流量分载</code></li>
-<li>OpenWrt 的 <code>网络-接口-全局网络选项</code> 开启 <code>数据包引导</code></li>
-<li>OpenWrt 的 <code>系统-重启</code> 执行重启</li>
+<li>关闭 <code>termux</code> 和 <code>Shizuku</code> 的电池优化，并在自启动里手动管理允许所有启动方式</li>
+<li>在 <code>Shizuku-在终端应用中使用Shizuku</code> 中导出 <code>rish</code> 文件到 <code>termux</code></li>
+<li>在  <code>termux</code> 中运行下列命令</li>
 </ul>
-<h2 id="初步配置">初步配置</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">pkg up <br>pkg install nmap android-tools<br>termux-setup-storage<br>termux-wake-lock<br><br>sed -i <span class="hljs-string">&#x27;s/ID=&quot;PKG&quot;/ID=&quot;com.termux&quot;/&#x27;</span> rish<br><span class="hljs-built_in">chmod</span> +x rish<br><span class="hljs-built_in">mv</span> rish ~/../usr/bin/<br><span class="hljs-built_in">mv</span> rish_shizuku.dex ~/../usr/bin/<br></code></pre></td></tr></table></figure>
 <ul>
-<li>ssh 登录后台执行下面的命令</li>
-<li>其中 <code>85000</code> 和 <code>4000</code> 分别表示下行和上行带宽，一般写真实带宽的 85%</li>
+<li>在 <code>termux</code> 中运行 <code>rish</code> 进入<code>adb shell</code></li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> &gt; /etc/config/qos &lt;&lt;<span class="hljs-string">EOF</span><br><span class="hljs-string">config classgroup &#x27;Default&#x27;</span><br><span class="hljs-string">        option classes &#x27;Priority Express Normal Bulk&#x27;</span><br><span class="hljs-string">        option default &#x27;Normal&#x27;</span><br><span class="hljs-string"></span><br><span class="hljs-string">config class &#x27;Priority&#x27;</span><br><span class="hljs-string">        option packetsize &#x27;400&#x27;</span><br><span class="hljs-string">        option avgrate &#x27;10&#x27;</span><br><span class="hljs-string">        option priority &#x27;20&#x27;</span><br><span class="hljs-string"></span><br><span class="hljs-string">config class &#x27;Priority_down&#x27;</span><br><span class="hljs-string">        option packetsize &#x27;1000&#x27;</span><br><span class="hljs-string">        option avgrate &#x27;10&#x27;</span><br><span class="hljs-string"></span><br><span class="hljs-string">config class &#x27;Express&#x27;</span><br><span class="hljs-string">        option packetsize &#x27;1000&#x27;</span><br><span class="hljs-string">        option avgrate &#x27;50&#x27;</span><br><span class="hljs-string">        option priority &#x27;10&#x27;</span><br><span class="hljs-string"></span><br><span class="hljs-string">config class &#x27;Normal&#x27;</span><br><span class="hljs-string">        option packetsize &#x27;1500&#x27;</span><br><span class="hljs-string">        option packetdelay &#x27;100&#x27;</span><br><span class="hljs-string">        option avgrate &#x27;20&#x27;</span><br><span class="hljs-string">        option priority &#x27;5&#x27;</span><br><span class="hljs-string"></span><br><span class="hljs-string">config class &#x27;Normal_down&#x27;</span><br><span class="hljs-string">        option avgrate &#x27;20&#x27;</span><br><span class="hljs-string"></span><br><span class="hljs-string">config class &#x27;Bulk&#x27;</span><br><span class="hljs-string">        option avgrate &#x27;1&#x27;</span><br><span class="hljs-string">        option packetdelay &#x27;200&#x27;</span><br><span class="hljs-string"></span><br><span class="hljs-string">config interface &#x27;wan&#x27;                               </span><br><span class="hljs-string">        option classgroup &#x27;Default&#x27;                  </span><br><span class="hljs-string">        option enabled &#x27;1&#x27;                           </span><br><span class="hljs-string">        option upload &#x27;4000&#x27;                         </span><br><span class="hljs-string">        option download &#x27;85000&#x27; </span><br><span class="hljs-string"></span><br><span class="hljs-string">config interface &#x27;lan&#x27;</span><br><span class="hljs-string">        option enabled &#x27;1&#x27;</span><br><span class="hljs-string">        option classgroup &#x27;Default&#x27;</span><br><span class="hljs-string">        option download &#x27;4000&#x27;</span><br><span class="hljs-string">        option upload &#x27;85000&#x27;</span><br><span class="hljs-string"></span><br><span class="hljs-string">config reclassify</span><br><span class="hljs-string">        option target &#x27;Priority&#x27;</span><br><span class="hljs-string">        option proto &#x27;udp&#x27;</span><br><span class="hljs-string">        option ports &#x27;53&#x27;</span><br><span class="hljs-string">        option comment &#x27;DNS&#x27;</span><br><span class="hljs-string"></span><br><span class="hljs-string">config reclassify</span><br><span class="hljs-string">        option target &#x27;Priority&#x27;</span><br><span class="hljs-string">        option proto &#x27;icmp&#x27;</span><br><span class="hljs-string"></span><br><span class="hljs-string">config classify</span><br><span class="hljs-string">        option target &#x27;Express&#x27;</span><br><span class="hljs-string">        option pktsize &#x27;-500&#x27;</span><br><span class="hljs-string">        option comment &#x27;SDP&#x27;</span><br><span class="hljs-string">EOF</span><br></code></pre></td></tr></table></figure>
-<p><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9vbGR3aWtpLmFyY2hpdmUub3BlbndydC5vcmcvZG9jL3VjaS9xb3M=" rel="noopener external nofollow noreferrer">wiki</a>: Another biggie was the exact meaning of each type. Types are necessary for connection tracking. By default, Classify is not run on a connection that had already been assigned a traffic class, so it is the initial connection-tracked classification. Reclassify can override the traffic class per packet, without altering the connection tracking mark. Default is a fall-back for everything that has not been marked by Classify/Reclassify. Rules get processed by type first (Classify gets processed first, then Reclassify and finally Default) and then based on the order in the configuration file (top to bottom).</p>
-<h2 id="深入配置">深入配置</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs adb">pm grant com.termux android.permission.WRITE_SECURE_SETTINGS<br></code></pre></td></tr></table></figure>
+<h2 id="开启无线调试">开启无线调试</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs adb">getprop service.adb.tcp.port<br># 为空说明没有开启无线调试<br>setprop service.adb.tcp.port 35555<br># 开启无线调试到 tcp 35555 端口<br></code></pre></td></tr></table></figure>
 <ul>
-<li>OpenWrt 的 <code>状态-实时信息-连接</code> 里 <code>启用DNS查找</code> 后观察游戏所在的目标地址的特征</li>
-<li>OpenWrt 的 <code>网络-QoS-分类规则</code> 里根据特征添加更细节的规则</li>
+<li>此时并没有生效，去开发者里关闭ADB并重新打开</li>
+<li>然后会发现 <code>Shizuku</code> 的 ADB 掉了，但是没有关系</li>
+<li>重新到 <code>Shizuku</code> 界面会发现多了一个通过无线调试启动的选项</li>
+<li>点击启动，然后允许调试即可恢复 <code>Shizuku</code> 的 ADB</li>
 </ul>
-<h2 id="观察配置">观察配置</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> /etc/config/qos <br>tc -s qdisc<br>/usr/lib/qos/generate.sh interface wan<br></code></pre></td></tr></table></figure>
-<h2 id="附加-DSCP">附加 DSCP</h2>
+<h2 id="后台保活">后台保活</h2>
 <ul>
-<li>手动给应用打上 DSCP 标记：<a href="./Windows-configuration-QoS-ensures-smooth-network-connectivity-for-important-applications">Windows配置QoS</a></li>
+<li>需要安卓版本为 12 12L 13 之一</li>
+<li>将下面的脚本保存为 <code>AcBat.sh</code>，放到 <code>Download</code> 目录</li>
 </ul>
-<h2 id="附加-Wireshark">附加 Wireshark</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment">#!sh</span><br><br><span class="hljs-comment"># 定义颜色</span><br>RED=<span class="hljs-string">&#x27;\033[31m&#x27;</span><br>GREEN=<span class="hljs-string">&#x27;\033[32m&#x27;</span><br>YELLOW=<span class="hljs-string">&#x27;\033[33m&#x27;</span><br>BLUE=<span class="hljs-string">&#x27;\033[34m&#x27;</span><br>NC=<span class="hljs-string">&#x27;\033[0m&#x27;</span> <span class="hljs-comment"># No Color</span><br><br><span class="hljs-comment"># 检测 Android 版本</span><br><span class="hljs-function"><span class="hljs-title">get_android_version</span></span>() &#123;<br>  <span class="hljs-built_in">local</span> version=$(getprop ro.build.version.release)<br>  <span class="hljs-built_in">echo</span> <span class="hljs-variable">$version</span><br>&#125;<br><br><span class="hljs-comment"># 检测是否有 GMS</span><br><span class="hljs-function"><span class="hljs-title">has_gms</span></span>() &#123;<br>  <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;[ -d &quot;/system/priv-app/GoogleServicesFramework&quot; ] || [ -d &quot;/system/app/GoogleServicesFramework&quot; ]&#x27;</span>; <span class="hljs-keyword">then</span><br>    <span class="hljs-built_in">return</span> 0<br>  <span class="hljs-keyword">else</span><br>    <span class="hljs-built_in">return</span> 1<br>  <span class="hljs-keyword">fi</span><br>&#125;<br><br><span class="hljs-comment"># 激活函数</span><br><span class="hljs-function"><span class="hljs-title">activate</span></span>() &#123;<br>  <span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;GREEN&#125;</span>激活中...<span class="hljs-variable">$&#123;NC&#125;</span>&quot;</span><br>  <span class="hljs-built_in">local</span> android_version=$(get_android_version)<br>  <br>  <span class="hljs-keyword">if</span> [[ <span class="hljs-string">&quot;<span class="hljs-variable">$android_version</span>&quot;</span> == <span class="hljs-string">&quot;12L&quot;</span> ]] || [[ <span class="hljs-string">&quot;<span class="hljs-variable">$android_version</span>&quot;</span> == <span class="hljs-string">&quot;13&quot;</span> ]]; <span class="hljs-keyword">then</span><br>    settings put global settings_enable_monitor_phantom_procs <span class="hljs-literal">false</span><br>  <span class="hljs-keyword">elif</span> [[ <span class="hljs-string">&quot;<span class="hljs-variable">$android_version</span>&quot;</span> == <span class="hljs-string">&quot;12&quot;</span> ]]; <span class="hljs-keyword">then</span><br>    <span class="hljs-keyword">if</span> has_gms; <span class="hljs-keyword">then</span><br>      device_config set_sync_disabled_for_tests persistent<br>      device_config put activity_manager max_phantom_processes 2147483647<br>    <span class="hljs-keyword">else</span><br>      device_config put activity_manager max_phantom_processes 2147483647<br>    <span class="hljs-keyword">fi</span><br>  <span class="hljs-keyword">else</span><br>    <span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;RED&#125;</span>不支持的 Android 版本: $android_version<span class="hljs-variable">$&#123;NC&#125;</span>&quot;</span><br>    <span class="hljs-built_in">return</span><br>  <span class="hljs-keyword">fi</span><br>  <br>  <span class="hljs-built_in">sleep</span> 1  <span class="hljs-comment"># 等待设置生效</span><br>  <span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;GREEN&#125;</span>激活成功。<span class="hljs-variable">$&#123;NC&#125;</span>&quot;</span><br>&#125;<br><br><span class="hljs-comment"># 取消激活函数</span><br><span class="hljs-function"><span class="hljs-title">deactivate</span></span>() &#123;<br>  <span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;RED&#125;</span>取消激活中...<span class="hljs-variable">$&#123;NC&#125;</span>&quot;</span><br>  <span class="hljs-built_in">local</span> android_version=$(get_android_version)<br>  <br>  <span class="hljs-keyword">if</span> [[ <span class="hljs-string">&quot;<span class="hljs-variable">$android_version</span>&quot;</span> == <span class="hljs-string">&quot;12L&quot;</span> ]] || [[ <span class="hljs-string">&quot;<span class="hljs-variable">$android_version</span>&quot;</span> == <span class="hljs-string">&quot;13&quot;</span> ]]; <span class="hljs-keyword">then</span><br>    settings delete global settings_enable_monitor_phantom_procs<br>  <span class="hljs-keyword">elif</span> [[ <span class="hljs-string">&quot;<span class="hljs-variable">$android_version</span>&quot;</span> == <span class="hljs-string">&quot;12&quot;</span> ]]; <span class="hljs-keyword">then</span><br>    device_config delete activity_manager max_phantom_processes<br>    device_config delete activity_manager set_sync_disabled_for_tests<br>  <span class="hljs-keyword">else</span><br>    <span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;RED&#125;</span>不支持的 Android 版本: $android_version<span class="hljs-variable">$&#123;NC&#125;</span>&quot;</span><br>    <span class="hljs-built_in">return</span><br>  <span class="hljs-keyword">fi</span><br>  <br>  <span class="hljs-built_in">sleep</span> 1  <span class="hljs-comment"># 等待设置生效</span><br>  <span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;RED&#125;</span>取消激活成功。<span class="hljs-variable">$&#123;NC&#125;</span>&quot;</span><br>&#125;<br><br><span class="hljs-comment"># 查看当前值函数</span><br><span class="hljs-function"><span class="hljs-title">view_values</span></span>() &#123;<br>  <span class="hljs-built_in">local</span> android_version=$(get_android_version)<br>  <br>  <span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;BLUE&#125;</span>Android 版本: $android_version<span class="hljs-variable">$&#123;NC&#125;</span>&quot;</span><br>  <br>  <span class="hljs-keyword">if</span> [[ <span class="hljs-string">&quot;<span class="hljs-variable">$android_version</span>&quot;</span> == <span class="hljs-string">&quot;12L&quot;</span> ]] || [[ <span class="hljs-string">&quot;<span class="hljs-variable">$android_version</span>&quot;</span> == <span class="hljs-string">&quot;13&quot;</span> ]]; <span class="hljs-keyword">then</span><br>    <span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;BLUE&#125;</span>settings_enable_monitor_phantom_procs 值：<span class="hljs-variable">$&#123;NC&#125;</span>&quot;</span><br>    settings get global settings_enable_monitor_phantom_procs<br>  <span class="hljs-keyword">elif</span> [[ <span class="hljs-string">&quot;<span class="hljs-variable">$android_version</span>&quot;</span> == <span class="hljs-string">&quot;12&quot;</span> ]]; <span class="hljs-keyword">then</span><br>    <span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;BLUE&#125;</span>max_phantom_processes 值：<span class="hljs-variable">$&#123;NC&#125;</span>&quot;</span><br>    device_config get activity_manager max_phantom_processes<br>    <span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;BLUE&#125;</span>set_sync_disabled_for_tests 值：<span class="hljs-variable">$&#123;NC&#125;</span>&quot;</span><br>    device_config get activity_manager set_sync_disabled_for_tests<br>  <span class="hljs-keyword">else</span><br>    <span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;RED&#125;</span>不支持的 Android 版本: $android_version<span class="hljs-variable">$&#123;NC&#125;</span>&quot;</span><br>  <span class="hljs-keyword">fi</span><br>&#125;<br><br>view_values<br>activate<br>view_values<br></code></pre></td></tr></table></figure>
 <ul>
-<li>下载 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly93d3cud2lyZXNoYXJrLm9yZy8jZG93bmxvYWRMaW5r" rel="noopener external nofollow noreferrer">Wireshark</a></li>
-<li>安装时勾选上插件里的 <code>Sshdump</code></li>
-<li>OpenWrt 的 <code>系统-软件包-筛选器</code> 搜索并安装 <code>tcpdump</code>（会同时捕获 udp）</li>
-<li>打开 Wireshark，选择 <code>捕获—选项</code>：</li>
+<li>打开 <code>termux</code></li>
 </ul>
-<p><img src="https://img.limour.top/2024/12/20/67646241bc3c8.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
-<ul>
-<li>点击 <code>SSH remote capture</code> 标签的前的图标，对远程抓包的参数进行配置</li>
-</ul>
-<p><img src="https://img.limour.top/2024/12/20/6764628b8bd6f.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
-<ul>
-<li>输入路由器的ip地址和ssh端口号</li>
-</ul>
-<p><img src="https://img.limour.top/2024/12/20/676463c5a6c69.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
-<ul>
-<li>输入路由器用户名和密码</li>
-</ul>
-<p><img src="https://img.limour.top/2024/12/20/676463fbc10a6.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
-<ul>
-<li><code>tcpdump</code> 设置, <code>Remote capture filter</code> 写 <code>not (port 22)</code> 就好, 网卡写 <code>br-lan</code></li>
-</ul>
-<p><img src="https://img.limour.top/2024/12/20/67646455a1173.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
-<ul>
-<li>选择 <code>SSH remote capture</code>，点击 <code>开始</code></li>
-</ul>
-<p><img src="https://img.limour.top/2024/12/20/6764621cb9cca.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
-<ul>
-<li>捕获完成后点左上角的红色方块停止捕获</li>
-</ul>
-<p><img src="https://img.limour.top/2024/12/20/676464cd7938b.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
-
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">adb connect localhost:35555<br><span class="hljs-comment"># 此时跳出允许调试，勾上始终允许，但此命令本身会失败</span><br>adb connect localhost:35555<br><span class="hljs-comment"># 再次执行，即可成功</span><br>adb shell sh sdcard/Download/AcBat.sh<br><span class="hljs-comment"># 即可起到和rish相同的效果</span><br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -398,7 +371,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/qos/" class="print-no-link">#QoS</a>
+        <a href="/tags/termux/" class="print-no-link">#termux</a>
       
     </div>
   
@@ -410,8 +383,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【记录】OpenWrt配置QoS规则</div>
-      <div>https://hexo.limour.top/openwrt-qos-configuration</div>
+      <div>【记录】强行开启 ADB 的无线调试功能</div>
+      <div>https://hexo.limour.top/force-enable-adb-wireless-debugging</div>
     </div>
     <div class="license-meta">
       
@@ -423,13 +396,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>December 16, 2024</div>
+          <div>December 25, 2024</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>December 20, 2024</div>
+          <div>December 25, 2024</div>
         </div>
       
       
@@ -472,9 +445,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/force-enable-adb-wireless-debugging" title="【记录】强行开启 ADB 的无线调试功能">
+                      <a href="/convert-old-phone-to-cloud-phone" title="【记录】将旧手机变成云手机">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【记录】强行开启 ADB 的无线调试功能</span>
+                        <span class="hidden-mobile">【记录】将旧手机变成云手机</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -482,8 +455,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/openwrt-dns-configuration" title="【记录】OpenWrt配置DNS解析">
-                        <span class="hidden-mobile">【记录】OpenWrt配置DNS解析</span>
+                      <a href="/openwrt-qos-configuration" title="【记录】OpenWrt配置QoS规则">
+                        <span class="hidden-mobile">【记录】OpenWrt配置QoS规则</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
