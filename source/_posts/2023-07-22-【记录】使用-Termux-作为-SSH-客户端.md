@@ -15,6 +15,7 @@ proot-distro login alpine
 sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
 apk update && apk add openssh
 ```
+
 ## 快捷登录
 ```ini
 host SER5
@@ -31,6 +32,7 @@ ssh-copy-id SER5
 nano ~/.ssh/config # 将注释取消掉
 ssh SER5 # 即可直接登录
 ```
+
 ## 附加 简易上传服务
 ```bash
 python upload.py 8000
@@ -334,23 +336,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-```
-
-## 附加 集成Shizuku
-+ [ADB](https://developer.android.com/tools/releases/platform-tools)
-+ [Shizuku](https://github.com/RikkaApps/Shizuku/releases)
-+ [PackageViewer](https://github.com/MaYiFei1995/PackageViewer/releases)
-```powershell
-adb devices
-.\adb.exe install -t '.\termux.apk'
-.\adb.exe install -t '.\shizuku.apk'
-
-adb shell
-sh /storage/emulated/0/Android/data/moe.shizuku.privileged.api/start.sh
-```
-+ 在`Shizuku-在终端应用中使用Shizuku`中导出`rish`文件到`termux`
-+ 修改`rish`文件中的`"PKG"`为`"com.termux"`
-+ 在`termux`中运行`sh rish`进入`adb shell`
-```adb
-pm disable-user --user 0 com.android.browser
 ```
