@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          298 words
+          578 words
         
       </span>
     
@@ -269,7 +269,7 @@
         
         
         
-          3 mins
+          5 mins
         
       </span>
     
@@ -311,7 +311,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on December 25, 2024 pm
+                    Last updated on December 26, 2024 pm
                   
                 
               </p>
@@ -335,6 +335,33 @@
 <li>修改 <code>scrcpy-console.bat</code> 如下，则可关闭物理屏幕</li>
 </ul>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmd">@<span class="hljs-built_in">echo</span> off<br>scrcpy --turn-screen-off --new-display --no-vd-destroy-content --<span class="hljs-built_in">pause</span>-on-<span class="hljs-keyword">exit</span>=<span class="hljs-keyword">if</span>-error %*<br></code></pre></td></tr></table></figure>
+<h3 id="私密远程访问">私密远程访问</h3>
+<ul>
+<li><a href="./-ji-lu--an-zhuang-npsfrp-fu-wu-duan-yu-ke-hu-duan">部署 nps 服务端</a></li>
+<li>下载 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL3lpc2llci9ucHMvcmVsZWFzZXM=" rel="noopener external nofollow noreferrer">npc</a></li>
+<li>下载 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL2dvLWdvc3QvZ29zdC9yZWxlYXNlcw==" rel="noopener external nofollow noreferrer">gost</a></li>
+<li>nps 服务端新增客户端，记录 ip 和 vkey</li>
+<li>电脑执行以下命令使手机连接到服务器</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs powershell">adb disconnect<br>adb connect <span class="hljs-number">192.168</span>.<span class="hljs-number">110.50</span>:<span class="hljs-number">35555</span> <span class="hljs-comment"># 手机的内网 ip</span><br><br>adb shell<br>mkdir <span class="hljs-literal">-p</span> /sdcard/npc<br><span class="hljs-built_in">cat</span> &gt; /sdcard/npc/run_npc.sh &lt;&lt;EOF<br><span class="hljs-comment">#!/data/data/com.termux/files/usr/bin/bash</span><br>npc <span class="hljs-literal">-server</span>=&lt;ip&gt;:<span class="hljs-number">8025</span> <span class="hljs-literal">-vkey</span>=&lt;vkey&gt; <span class="hljs-literal">-tls_enable</span>=true<br>EOF<br><br>adb push <span class="hljs-string">&quot;G:\apk\work\npc&quot;</span> /sdcard/npc<br></code></pre></td></tr></table></figure>
+<ul>
+<li>手机 Termux 执行以下命令启动客户端</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mv</span> storage/shared/npc/npc /data/data/com.termux/files/usr/bin/<br><span class="hljs-built_in">chmod</span> +x /data/data/com.termux/files/usr/bin/npc<br><span class="hljs-built_in">mv</span> storage/shared/npc/run_npc.sh .  <span class="hljs-comment"># 有个点，表示当前目录</span><br><span class="hljs-built_in">chmod</span> +x run_npc.sh<br>./run_npc.sh<br></code></pre></td></tr></table></figure>
+<ul>
+<li>nps 服务端新增TCP隧道，记录端口，比如 <code>40992</code></li>
+<li>电脑执行以下命令建立测试用私密连接</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">.\gost.exe <span class="hljs-literal">-L</span>=<span class="hljs-string">&quot;tcp://:3554/nps:40992&quot;</span> <span class="hljs-operator">-F</span>=<span class="hljs-string">&quot;ss://chacha20-ietf-poly1305:password@nps.blog.com:8337&quot;</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>电脑执行以下命令连接手机</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs powershell">adb disconnect<br>adb connect <span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:<span class="hljs-number">3554</span><br>adb devices<br></code></pre></td></tr></table></figure>
+<ul>
+<li>确认成功，则关闭测试用私密连接</li>
+<li>修改 <code>scrcpy-console.bat</code> 如下</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cmd">@<span class="hljs-built_in">echo</span> off<br><span class="hljs-built_in">start</span> &quot;scrcpy-gost&quot; <span class="hljs-built_in">cmd</span> /c gost -L=&quot;tcp://:<span class="hljs-number">3554</span>/nps:<span class="hljs-number">40992</span>&quot; -F=&quot;ss://chacha20-ietf-poly1305:password@nps.blog.com:<span class="hljs-number">8337</span>&quot;<br>timeout /t <span class="hljs-number">3</span> /nobreak &gt;<span class="hljs-built_in">nul</span><br>adb disconnect<br>adb connect <span class="hljs-number">127</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">1</span>:<span class="hljs-number">3554</span><br>scrcpy -Sw -m <span class="hljs-number">1024</span> -b <span class="hljs-number">3</span>M --max-fps=<span class="hljs-number">6</span> --<span class="hljs-built_in">pause</span>-on-<span class="hljs-keyword">exit</span>=<span class="hljs-keyword">if</span>-error %*<br></code></pre></td></tr></table></figure>
 <h2 id="Droidvnc-方案">Droidvnc 方案</h2>
 <ul>
 <li>下载 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL2JrMTM4L2Ryb2lkVk5DLU5HL3JlbGVhc2Vz" rel="noopener external nofollow noreferrer">droidvnc-ng</a></li>
@@ -392,7 +419,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>December 25, 2024</div>
+          <div>December 26, 2024</div>
         </div>
       
       
