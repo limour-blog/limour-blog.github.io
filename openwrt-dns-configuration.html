@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          522 words
+          686 words
         
       </span>
     
@@ -269,7 +269,7 @@
         
         
         
-          5 mins
+          6 mins
         
       </span>
     
@@ -311,7 +311,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on December 23, 2024 pm
+                    Last updated on December 31, 2024 pm
                   
                 
               </p>
@@ -368,7 +368,21 @@
 <li><a href="./-Docker-bu-shu-easyconnect">SmartDNS 的 TCP 模式简直是神仙</a></li>
 <li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9weW11bXUuZ2l0aHViLmlvL3NtYXJ0ZG5zL2NvbmZpZ3VyYXRpb24v" rel="noopener external nofollow noreferrer">SmartDNS 的配置项详解</a></li>
 </ul>
-
+<h2 id="附加-优选ip">附加 优选ip</h2>
+<ul>
+<li>OpenWrt 的 <code>系统-软件包-更新</code> 更新 <code>smartdns</code> 相关的所有包到最新版</li>
+<li>OpenWrt 的 SSH 执行以下命令</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /etc/smartdns/<br><br><span class="hljs-built_in">cat</span> &gt; cloudflare.ipv4 &lt;&lt;<span class="hljs-string">EOF</span><br><span class="hljs-string">173.245.48.0/20</span><br><span class="hljs-string">103.21.244.0/22</span><br><span class="hljs-string">103.22.200.0/22</span><br><span class="hljs-string">103.31.4.0/22</span><br><span class="hljs-string">141.101.64.0/18</span><br><span class="hljs-string">108.162.192.0/18</span><br><span class="hljs-string">190.93.240.0/20</span><br><span class="hljs-string">188.114.96.0/20</span><br><span class="hljs-string">197.234.240.0/22</span><br><span class="hljs-string">198.41.128.0/17</span><br><span class="hljs-string">162.158.0.0/15</span><br><span class="hljs-string">104.16.0.0/13</span><br><span class="hljs-string">104.24.0.0/14</span><br><span class="hljs-string">172.64.0.0/13</span><br><span class="hljs-string">131.0.72.0/22</span><br><span class="hljs-string">EOF</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>OpenWrt 的 <code>服务-SmartDNS-域名规则-域名地址</code> 添加以下配置，保存，重启</li>
+<li>其中 alias 的 ip 从 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL1hJVTIvQ2xvdWRmbGFyZVNwZWVkVGVzdC9yZWxlYXNlcw==" rel="noopener external nofollow noreferrer">CloudflareSpeedTest</a> 处获取</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs config">ip-set -name cloudflare -file /etc/smartdns/cloudflare.ipv4<br>ip-rules ip-set:cloudflare -ip-alias 104.18.47.223,104.16.97.145,173.245.58.79<br></code></pre></td></tr></table></figure>
+<ul>
+<li>电脑测试是否生效</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">nslookup img.limour.top<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -411,7 +425,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>December 23, 2024</div>
+          <div>December 31, 2024</div>
         </div>
       
       

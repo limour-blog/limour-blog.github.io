@@ -4,11 +4,30 @@
   
   
   <entry>
+    <title>【记录】重装系统后的操作</title>
+    <link href="/operation-after-reinstalling-the-system"/>
+    <url>/operation-after-reinstalling-the-system</url>
+    
+    <content type="html"><![CDATA[用了几年，笔记本系统又该重置了，每次重置后都要做一大堆操作，这里记录一下，方便以后参考。激活系统OpenWrt 开启 KMS 插件新系统以管理员权限执行下面的命令重复检查 Windows 更新 安装重启，直到不再有新的更新系统优化关闭虚拟内存：高级系统设置-性能-高级-虚拟内存 修改为无解决关机耗电问题基础软件基础上网工具notepad++Snipaste7zip将常用软件的安装目录添加的 Windows 安全中心 的排除项里，以免影响性能恢复博客gitVS Codeconda在 Anaconda Prompt 中执行 conda initimagemagickQuicker安装微信sandboxie，安装驱动时需要临时关闭实时防护右键沙盒-沙盒设置-恢复 移除 快速恢复 中的文件夹，关闭 直接恢复 中的启用沙盒设置-资源访问-文件访问-阻止访问 添加沙盒目录和 OneDrive 目录下载微信安装包，右键在沙箱中运行，勾上 UAC 管理员权限，安装完毕后登录一次再退出文件访问-阻止访问 添加 C:\Sandbox\ 目录配置-系统设置-添加快捷方式图标 勾上 UAC ，在程序里选择微信，此后可以从桌面的快捷方式启动沙盒内的微信文件访问-只写访问 添加 %AppData%\ 和 %Local AppData%\ 目录沙盒设置-限制-降低权限 勾上 降低管理员和超级用户组的权限笔记管理sumatrapdfzoteroTara 插件，导入之前导出的备份恢复虚拟机去博通官网下载 VMware直接恢复之前备份的整个虚拟机，之后所有操作都靠虚拟机快照进行，摆脱重装烦恼]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>win</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【记录】将旧手机变成云手机</title>
     <link href="/convert-old-phone-to-cloud-phone"/>
     <url>/convert-old-phone-to-cloud-phone</url>
     
-    <content type="html"><![CDATA[准备工作ADB 调试scrcpy 方案下载 scrcpy也可以内网穿透，那么修改下面的 IP 和端口为穿透后的 IP 和端口使用 scrcpy 目录下的 adb 执行 .\adb.exe connect 192.168.110.105:35555执行 .\scrcpy.exe --new-display --no-vd-destroy-content修改 scrcpy-console.bat 如下，则可关闭物理屏幕私密远程访问部署 nps 服务端下载 npc下载 gostnps 服务端新增客户端，记录 ip 和 vkey电脑执行以下命令使手机连接到服务器手机 Termux 执行以下命令启动客户端nps 服务端新增TCP隧道，记录端口，比如 40992电脑执行以下命令建立测试用私密连接电脑执行以下命令连接手机确认成功，则关闭测试用私密连接修改 scrcpy-console.bat 如下Droidvnc 方案下载 droidvnc-ng关闭 droidvnc-ng 电池优化，并在自启动里手动管理允许所有启动方式PackageViewer 获取 droidvnc-ng 的包名为 net.christianbeier.droidvnc_ng浏览器访问  即可内网穿透后可远程使用]]></content>
+    <content type="html"><![CDATA[准备工作ADB 调试scrcpy 方案下载 scrcpy也可以内网穿透，那么修改下面的 IP 和端口为穿透后的 IP 和端口使用 scrcpy 目录下的 adb 执行 .\adb.exe connect 192.168.110.105:35555执行 .\scrcpy.exe --new-display --no-vd-destroy-content修改 scrcpy-console.bat 如下，则可关闭物理屏幕私密远程访问部署 nps 服务端下载 npc下载 gostnps 服务端新增客户端，记录 ip 和 vkey电脑执行以下命令使手机连接到服务器手机 Termux 执行以下命令启动客户端nps 服务端新增TCP隧道，记录端口，比如 40992电脑执行以下命令建立测试用私密连接电脑执行以下命令连接手机确认成功，则关闭测试用私密连接修改 scrcpy-console.bat 如下Droidvnc 方案下载 droidvnc-ng关闭 droidvnc-ng 电池优化，并在自启动里手动管理允许所有启动方式PackageViewer 获取 droidvnc-ng 的包名为 net.christianbeier.droidvnc_ng浏览器访问  即可内网穿透后可远程使用附加 变NASAListFlutterAria2AndroidX-plore]]></content>
     
     
     
@@ -65,7 +84,7 @@
     <link href="/openwrt-dns-configuration"/>
     <url>/openwrt-dns-configuration</url>
     
-    <content type="html"><![CDATA[锐捷雪豹BE50 的 游戏加速 QoS 做得不错，但是没有办法正常的 PPPoE 拨号，因此只能用来当二级路由接到 OpenWrt 上。上网设置里使用 静态IP，OpenWrt 的 网络-DHCP/DNS-静态地址分配 里给它分配了静态地址。但不知道为什么，锐捷的 DNS 解析总出错，因此这里记录一下解决的过程。开启SmartDNSOpenWrt 的 服务-SmartDNS-设置-常规设置 的 启用 打勾OpenWrt 的 服务-SmartDNS-设置-常规设置 的 自动设置Dnsmasq 打勾OpenWrt 的 服务-SmartDNS-上游服务器 的添加合适的 DNS 服务器合适的 DNS 服务器可以看 ipw.cn也可以在 状态-概览-网络-IPv4 上游 里看下发的 DNS 1 和 DNS 2配置SmartDNSOpenWrt 的 服务-SmartDNS-设置-高级设置 的 域名预加载 打上勾OpenWrt 的 服务-SmartDNS-设置-高级设置 的 缓存过期服务 去掉勾OpenWrt 的 服务-SmartDNS-设置-高级设置 的 持久化缓存 去掉勾OpenWrt 的 服务-SmartDNS-设置-高级设置 的 双栈IP优选 和 停用IPv6地址解析 看自己情况OpenWrt 的 服务-SmartDNS-设置-第二DNS服务器 的 启用 去掉勾DNS重定向OpenWrt 的 网络-DHCP/DNS-常规设置 的 DNS 重定向 打勾OpenWrt 的 网络-DHCP/DNS-常规设置 的 DNS 转发 设置为 SmartDNS 的端口，比如 127.0.0.1#6353，一般都自动设置了检查DNS配置CN上游测试 nslookup github.com 202.96.209.133GW上游测试 nslookup github.com 1.1.1.1SmartDNS测试 nslookup github.com 192.168.88.1本地DNS测试 nslookup github.com关闭v6测试 nslookup -type=AAAA github.com附加 DoH自建DoH服务器SmartDNS 的 TCP 模式简直是神仙SmartDNS 的配置项详解]]></content>
+    <content type="html"><![CDATA[锐捷雪豹BE50 的 游戏加速 QoS 做得不错，但是没有办法正常的 PPPoE 拨号，因此只能用来当二级路由接到 OpenWrt 上。上网设置里使用 静态IP，OpenWrt 的 网络-DHCP/DNS-静态地址分配 里给它分配了静态地址。但不知道为什么，锐捷的 DNS 解析总出错，因此这里记录一下解决的过程。开启SmartDNSOpenWrt 的 服务-SmartDNS-设置-常规设置 的 启用 打勾OpenWrt 的 服务-SmartDNS-设置-常规设置 的 自动设置Dnsmasq 打勾OpenWrt 的 服务-SmartDNS-上游服务器 的添加合适的 DNS 服务器合适的 DNS 服务器可以看 ipw.cn也可以在 状态-概览-网络-IPv4 上游 里看下发的 DNS 1 和 DNS 2配置SmartDNSOpenWrt 的 服务-SmartDNS-设置-高级设置 的 域名预加载 打上勾OpenWrt 的 服务-SmartDNS-设置-高级设置 的 缓存过期服务 去掉勾OpenWrt 的 服务-SmartDNS-设置-高级设置 的 持久化缓存 去掉勾OpenWrt 的 服务-SmartDNS-设置-高级设置 的 双栈IP优选 和 停用IPv6地址解析 看自己情况OpenWrt 的 服务-SmartDNS-设置-第二DNS服务器 的 启用 去掉勾DNS重定向OpenWrt 的 网络-DHCP/DNS-常规设置 的 DNS 重定向 打勾OpenWrt 的 网络-DHCP/DNS-常规设置 的 DNS 转发 设置为 SmartDNS 的端口，比如 127.0.0.1#6353，一般都自动设置了检查DNS配置CN上游测试 nslookup github.com 202.96.209.133GW上游测试 nslookup github.com 1.1.1.1SmartDNS测试 nslookup github.com 192.168.88.1本地DNS测试 nslookup github.com关闭v6测试 nslookup -type=AAAA github.com附加 DoH自建DoH服务器SmartDNS 的 TCP 模式简直是神仙SmartDNS 的配置项详解附加 优选ipOpenWrt 的 系统-软件包-更新 更新 smartdns 相关的所有包到最新版OpenWrt 的 SSH 执行以下命令OpenWrt 的 服务-SmartDNS-域名规则-域名地址 添加以下配置，保存，重启其中 alias 的 ip 从 CloudflareSpeedTest 处获取电脑测试是否生效]]></content>
     
     
     

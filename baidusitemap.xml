@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://hexo.limour.top/operation-after-reinstalling-the-system.html</loc>
+    <lastmod>2024-12-31</lastmod>
+  </url>
+  <url>
+    <loc>https://hexo.limour.top/openwrt-dns-configuration.html</loc>
+    <lastmod>2024-12-31</lastmod>
+  </url>
+  <url>
     <loc>https://hexo.limour.top/convert-old-phone-to-cloud-phone.html</loc>
-    <lastmod>2024-12-26</lastmod>
+    <lastmod>2024-12-31</lastmod>
   </url>
   <url>
     <loc>https://hexo.limour.top/-ji-lu--an-zhuang-npsfrp-fu-wu-duan-yu-ke-hu-duan.html</loc>
@@ -22,10 +30,6 @@
   </url>
   <url>
     <loc>https://hexo.limour.top/-Docker-bu-shu-easyconnect.html</loc>
-    <lastmod>2024-12-23</lastmod>
-  </url>
-  <url>
-    <loc>https://hexo.limour.top/openwrt-dns-configuration.html</loc>
     <lastmod>2024-12-23</lastmod>
   </url>
   <url>
