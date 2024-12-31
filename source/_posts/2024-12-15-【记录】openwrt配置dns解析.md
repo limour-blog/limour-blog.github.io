@@ -69,3 +69,38 @@ Address:  192.168.110.1
 + [自建DoH服务器](./Self-built-ad-blocking-DoH-server)
 + [SmartDNS 的 TCP 模式简直是神仙](./-Docker-bu-shu-easyconnect)
 + [SmartDNS 的配置项详解](https://pymumu.github.io/smartdns/configuration/)
+
+## 附加 优选ip
++ OpenWrt 的 `系统-软件包-更新` 更新 `smartdns` 相关的所有包到最新版
++ OpenWrt 的 SSH 执行以下命令
+```bash
+cd /etc/smartdns/
+
+cat > cloudflare.ipv4 <<EOF
+173.245.48.0/20
+103.21.244.0/22
+103.22.200.0/22
+103.31.4.0/22
+141.101.64.0/18
+108.162.192.0/18
+190.93.240.0/20
+188.114.96.0/20
+197.234.240.0/22
+198.41.128.0/17
+162.158.0.0/15
+104.16.0.0/13
+104.24.0.0/14
+172.64.0.0/13
+131.0.72.0/22
+EOF
+```
++ OpenWrt 的 `服务-SmartDNS-域名规则-域名地址` 添加以下配置，保存，重启
++ 其中 alias 的 ip 从 [CloudflareSpeedTest](https://github.com/XIU2/CloudflareSpeedTest/releases) 处获取
+```config
+ip-set -name cloudflare -file /etc/smartdns/cloudflare.ipv4
+ip-rules ip-set:cloudflare -ip-alias 104.18.47.223,104.16.97.145,173.245.58.79
+```
++ 电脑测试是否生效
+```powershell
+nslookup img.limour.top
+```
