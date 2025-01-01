@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          582 words
+          708 words
         
       </span>
     
@@ -269,7 +269,7 @@
         
         
         
-          5 mins
+          6 mins
         
       </span>
     
@@ -311,7 +311,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on December 31, 2024 pm
+                    Last updated on January 1, 2025 pm
                   
                 
               </p>
@@ -362,6 +362,20 @@
 <li>修改 <code>scrcpy-console.bat</code> 如下</li>
 </ul>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cmd">@<span class="hljs-built_in">echo</span> off<br><span class="hljs-built_in">start</span> &quot;scrcpy-gost&quot; <span class="hljs-built_in">cmd</span> /c gost -L=&quot;tcp://:<span class="hljs-number">3554</span>/nps:<span class="hljs-number">40992</span>&quot; -F=&quot;ss://chacha20-ietf-poly1305:password@nps.blog.com:<span class="hljs-number">8337</span>&quot;<br>timeout /t <span class="hljs-number">3</span> /nobreak &gt;<span class="hljs-built_in">nul</span><br>adb disconnect<br>adb connect <span class="hljs-number">127</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">1</span>:<span class="hljs-number">3554</span><br>scrcpy -Sw -m <span class="hljs-number">1024</span> -b <span class="hljs-number">3</span>M --max-fps=<span class="hljs-number">6</span> --<span class="hljs-built_in">pause</span>-on-<span class="hljs-keyword">exit</span>=<span class="hljs-keyword">if</span>-error %*<br></code></pre></td></tr></table></figure>
+<h3 id="安卓访问">安卓访问</h3>
+<ul>
+<li>主力手机安装 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9odWdnaW5nZmFjZS5jby9kYXRhc2V0cy9MaW1vdXIvYXJjaHZpZS9ibG9iL21haW4vc2NyY3B5LWFuZHJvaWQuYXBr" rel="noopener external nofollow noreferrer">scrcpy-android</a></li>
+<li>下载 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL0xpbW91ci1kZXYvRGlzcGxheVRvZ2dsZS9yZWxlYXNlcw==" rel="noopener external nofollow noreferrer">DisplayToggle.dex</a></li>
+<li>电脑执行以下命令测试前台熄屏功能</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmd">adb push &quot;C:\Users\limou\Downloads\DisplayToggle.dex&quot; /sdcard/DisplayToggle.dex<br>adb shell CLASSPATH=/sdcard/DisplayToggle.dex app_process / DisplayToggle <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>手机 Termux 执行以下命令开启前台熄屏功能</li>
+</ul>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">cat</span> &gt; /data/data/<span class="hljs-keyword">com</span>.termux/<span class="hljs-keyword">files</span>/usr/bin/<span class="hljs-keyword">display</span>.<span class="hljs-keyword">sh</span> &lt;&lt;EOF<br>#!/data/data/<span class="hljs-keyword">com</span>.termux/<span class="hljs-keyword">files</span>/usr/bin/bash<br>rish -<span class="hljs-keyword">c</span> <span class="hljs-string">&quot;CLASSPATH=/sdcard/DisplayToggle.dex app_process / DisplayToggle 0&quot;</span><br>EOF<br>chmod +<span class="hljs-keyword">x</span> /data/data/<span class="hljs-keyword">com</span>.termux/<span class="hljs-keyword">files</span>/usr/bin/<span class="hljs-keyword">display</span>.<span class="hljs-keyword">sh</span><br><span class="hljs-keyword">display</span>.<span class="hljs-keyword">sh</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>之后主力手机通过 scrcpy-android 连接到旧手机后，termux 执行 <code>display.sh</code> 即可熄屏</li>
+</ul>
 <h2 id="Droidvnc-方案">Droidvnc 方案</h2>
 <ul>
 <li>下载 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL2JrMTM4L2Ryb2lkVk5DLU5HL3JlbGVhc2Vz" rel="noopener external nofollow noreferrer">droidvnc-ng</a></li>
@@ -425,7 +439,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>December 31, 2024</div>
+          <div>January 1, 2025</div>
         </div>
       
       

@@ -27,7 +27,7 @@
     <link href="/convert-old-phone-to-cloud-phone"/>
     <url>/convert-old-phone-to-cloud-phone</url>
     
-    <content type="html"><![CDATA[准备工作ADB 调试scrcpy 方案下载 scrcpy也可以内网穿透，那么修改下面的 IP 和端口为穿透后的 IP 和端口使用 scrcpy 目录下的 adb 执行 .\adb.exe connect 192.168.110.105:35555执行 .\scrcpy.exe --new-display --no-vd-destroy-content修改 scrcpy-console.bat 如下，则可关闭物理屏幕私密远程访问部署 nps 服务端下载 npc下载 gostnps 服务端新增客户端，记录 ip 和 vkey电脑执行以下命令使手机连接到服务器手机 Termux 执行以下命令启动客户端nps 服务端新增TCP隧道，记录端口，比如 40992电脑执行以下命令建立测试用私密连接电脑执行以下命令连接手机确认成功，则关闭测试用私密连接修改 scrcpy-console.bat 如下Droidvnc 方案下载 droidvnc-ng关闭 droidvnc-ng 电池优化，并在自启动里手动管理允许所有启动方式PackageViewer 获取 droidvnc-ng 的包名为 net.christianbeier.droidvnc_ng浏览器访问  即可内网穿透后可远程使用附加 变NASAListFlutterAria2AndroidX-plore]]></content>
+    <content type="html"><![CDATA[准备工作ADB 调试scrcpy 方案下载 scrcpy也可以内网穿透，那么修改下面的 IP 和端口为穿透后的 IP 和端口使用 scrcpy 目录下的 adb 执行 .\adb.exe connect 192.168.110.105:35555执行 .\scrcpy.exe --new-display --no-vd-destroy-content修改 scrcpy-console.bat 如下，则可关闭物理屏幕私密远程访问部署 nps 服务端下载 npc下载 gostnps 服务端新增客户端，记录 ip 和 vkey电脑执行以下命令使手机连接到服务器手机 Termux 执行以下命令启动客户端nps 服务端新增TCP隧道，记录端口，比如 40992电脑执行以下命令建立测试用私密连接电脑执行以下命令连接手机确认成功，则关闭测试用私密连接修改 scrcpy-console.bat 如下安卓访问主力手机安装 scrcpy-android下载 DisplayToggle.dex电脑执行以下命令测试前台熄屏功能手机 Termux 执行以下命令开启前台熄屏功能之后主力手机通过 scrcpy-android 连接到旧手机后，termux 执行 display.sh 即可熄屏Droidvnc 方案下载 droidvnc-ng关闭 droidvnc-ng 电池优化，并在自启动里手动管理允许所有启动方式PackageViewer 获取 droidvnc-ng 的包名为 net.christianbeier.droidvnc_ng浏览器访问  即可内网穿透后可远程使用附加 变NASAListFlutterAria2AndroidX-plore]]></content>
     
     
     
