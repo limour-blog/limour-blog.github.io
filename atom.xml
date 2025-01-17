@@ -6,7 +6,7 @@
   <link href="https://hexo.limour.top/atom.xml" rel="self"/>
   
   <link href="https://hexo.limour.top/"/>
-  <updated>2024-12-31T11:36:15.541Z</updated>
+  <updated>2025-01-17T17:42:49.290Z</updated>
   <id>https://hexo.limour.top/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【记录】打包便携版Python</title>
+    <link href="https://hexo.limour.top/portable-python-package"/>
+    <id>https://hexo.limour.top/portable-python-package</id>
+    <published>2025-01-17T01:40:21.000Z</published>
+    <updated>2025-01-17T17:42:49.290Z</updated>
+    
+    <content type="html"><![CDATA[<p>内网电脑是 win7，且不想改变电脑的环境设置，因此打包一个便携版的 Python 来自用。</p><h2 id="准备文件">准备文件</h2><p>从 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly93d3cucHl0aG9uLm9yZy9kb3dubG9hZHMvcmVsZWFzZS9weXRob24tMzgxMC8=" rel="noopener external nofollow noreferrer">python-3810</a> 下载最后支持 win7 的编译好的文件</p><ul><li>python-3.8.10-amd64.exe</li><li>python-3.8.10-embed-amd64.zip</li></ul><h2 id="KB2533623-更新">KB2533623 更新</h2><ul><li>安装 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly93d3cubWljcm9zb2Z0LmNvbS96aC1jbi9kb3dubG9hZC9kZXRhaWxzLmFzcHg/aWQ9NDc0NDI=" rel="noopener external nofollow noreferrer">KB3063858</a></li><li>重启 win7 虚拟机，再运行 python-3.8.10-amd64.exe</li><li>取消勾选 <code>install launcher</code>， 从 <code>Custmoize installation</code>  继续</li><li>只勾选 <code>pip</code> 和 <code>tcl/tk</code>，取消其他所有勾选，继续</li><li>选一个临时目录A，取消所有勾选，再勾上<code>Precompile standard lib</code>，继续</li></ul><h2 id="pip-安装需要的包">pip 安装需要的包</h2><ul><li>打开目录A的 Scripts 文件夹，地址栏输入 cmd</li><li><code>pip install httpx lxml -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple</code></li><li>安装完成后测试安装的包正常运行</li></ul><h2 id="构造便携版">构造便携版</h2><ul><li>将 <code>Lib/site-packages</code> 移动到目录A内，重命名为 <code>mods</code></li><li>将 <code>Lib/tkinter</code> 移动到 <code>mods</code> 目录内</li><li>将 python-3.8.10-embed-amd64.zip 中的 python38.zip 放到目录A内</li><li>目录A内创建名为 <code>python38._pth</code> 的文本文件，其内容如下</li></ul><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs txt">DLLs<br>python38.zip<br>.<br>site-packages.zip<br>mods<br></code></pre></td></tr></table></figure><ul><li>移除 <code>Lib、libs、include、Scripts、Tools</code> 等文件夹，</li><li>只保留 <code>DLLs</code>、<code>mods</code>、<code>tcl</code> 这三个文件夹，同时创建 <code>site-packages.zip</code> 文件</li><li>进入 <code>mods</code> 文件夹，删除不必须的包，然后将包一个一个移入 <code>site-packages.zip</code></li><li>每移动一个测试安装的包是否正常运行，不能则保留在 <code>mods</code> 文件夹</li><li>直到所有包都测试完毕，此时碎片文件数量达到最优</li></ul><h2 id="测试便携版">测试便携版</h2><ul><li>将目录A打包成 python-3.8.10-amd64.zip</li><li>将虚拟机回滚到初始快照，安装 KB3063858 更新后重启</li><li>解压 python-3.8.10-amd64.zip，测试是否可用</li></ul><h2 id="打包好的成品">打包好的成品</h2><ul><li><a href="https://od.limour.top/archives/dist/python">Python-Win7-X64_httpx.zip</a></li><li>该成品可以在重装后只安装了 KB3063858 一个更新的 Win7 系统中无依赖运行</li><li>同时可以使用 <code>tkinter</code>、<code>httpx</code> 和 <code>lxml</code> 这三个模块和所有python内置的模块</li><li>配合 <a href="https://od.limour.top/archives/dist/chrome">Chrome-Win7-X64.zip</a> 便携版，可以方便内网抓包写小脚本。</li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;内网电脑是 win7，且不想改变电脑的环境设置，因此打包一个便携版的 Python 来自用。&lt;/p&gt;
+&lt;h2 id=&quot;准备文件&quot;&gt;准备文件&lt;/h2&gt;
+&lt;p&gt;从 &lt;a href=&quot;https://hexo.limour.top/go/#aHR0cHM6Ly93d3cucHl0</summary>
+      
+    
+    
+    
+    
+    <category term="Windows" scheme="https://hexo.limour.top/tags/windows/"/>
+    
+  </entry>
   
   <entry>
     <title>【记录】重装系统后的操作</title>
@@ -477,28 +501,6 @@
     
     
     <category term="acme" scheme="https://hexo.limour.top/tags/acme/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【记录】搭建流量统计工具 Shynet</title>
-    <link href="https://hexo.limour.top/Building-a-traffic-statistics-tool-Shynet"/>
-    <id>https://hexo.limour.top/Building-a-traffic-statistics-tool-Shynet</id>
-    <published>2024-03-25T12:52:28.000Z</published>
-    <updated>2024-03-25T13:10:47.567Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL21pbGVzbWNjL3NoeW5ldA==" rel="noopener external nofollow noreferrer">Shynet</a> 是一款用 python 编写的现代、隐私友好、无需Cookie或JS即可工作的网络流量统计工具。</p><p>相比 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL3VtYW1pLXNvZnR3YXJlL3VtYW1p" rel="noopener external nofollow noreferrer">Umami</a>, Shynet 支持通过 1 pixel 的图像进行统计，而不依赖 JS， 并且 Shynet 统计的信息更加详细。</p><p><img src="https://img.limour.top/2024/03/25/660177c20629f.webp" alt="最终效果"></p><h2 id="搭建-Shynet">搭建 Shynet</h2><ul><li><a href="/Docker-bu-shu-Nginx-Proxy-Manager">反向代理服务</a></li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/app/shynet &amp;&amp; <span class="hljs-built_in">cd</span> ~/app/shynet &amp;&amp; nano docker-compose.yml<br></code></pre></td></tr></table></figure><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.6&#x27;</span><br> <br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">shynet:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">milesmcc/shynet:latest</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">env_file:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">.env</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./db:/var/local/shynet/db/</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">/etc/localtime:/etc/localtime:ro</span><br> <br><span class="hljs-attr">networks:</span><br>  <span class="hljs-attr">default:</span><br>    <span class="hljs-attr">external:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">ngpm</span><br></code></pre></td></tr></table></figure><ul><li>配置环境变量</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget -O .<span class="hljs-built_in">env</span> https://github.com/milesmcc/shynet/raw/master/TEMPLATE.<span class="hljs-built_in">env</span><br><span class="hljs-comment"># 注释掉 .env 中 PostgreSQL 相关的部分，启用 SQLITE 相关的部分</span><br><span class="hljs-comment"># 注释掉 .env 中 Email 相关的部分</span><br><span class="hljs-comment"># 按说明生成 DJANGO_SECRET_KEY</span><br><span class="hljs-comment"># 修改 ALLOWED_HOSTS 和 CSRF_TRUSTED_ORIGINS</span><br><span class="hljs-comment"># 语言换成中文 LANGUAGE_CODE=zh-cn</span><br><span class="hljs-comment"># 时区换成上海 TIME_ZONE=Asia/Shanghai</span><br><span class="hljs-built_in">mkdir</span> -p db &amp;&amp; <span class="hljs-built_in">chmod</span> 777 db<br>sudo docker-compose up -d<br><span class="hljs-comment"># 反代 shynet:8080</span><br></code></pre></td></tr></table></figure><ul><li>配置管理账号</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo docker-compose <span class="hljs-built_in">exec</span> -it shynet ./manage.py registeradmin &lt;your email&gt;<br><span class="hljs-comment"># 控制台输出如下信息</span><br><span class="hljs-comment"># Email address: &lt;your email&gt;</span><br><span class="hljs-comment"># Password: &lt;Password&gt;</span><br></code></pre></td></tr></table></figure><h2 id="配置混淆">配置混淆</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">sub_filter</span> <span class="hljs-string">&#x27;https://xxx/ingress/&#x27;</span> <span class="hljs-string">&#x27;https://xxx/vue/&#x27;</span>;<br><span class="hljs-attribute">sub_filter_once</span> <span class="hljs-literal">off</span>;<br><span class="hljs-attribute">sub_filter_types</span> application/javascript;<br></code></pre></td></tr></table></figure><p><img src="https://img.limour.top/2024/03/25/6601762cad36c.webp" alt=""></p><h2 id="配置-Hexo">配置 Hexo</h2><ul><li><a href="/-ji-lu--zai-GitHub-shang-da-jian-Hexo">搭建 Hexo</a></li><li>编辑 <code>scripts/custom.js</code>, 内容如下</li></ul><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// shynet 统计</span><br>hexo.<span class="hljs-property">extend</span>.<span class="hljs-property">injector</span>.<span class="hljs-title function_">register</span>(<span class="hljs-string">&#x27;head_begin&#x27;</span>, <span class="hljs-string">`</span><br><span class="hljs-string">&lt;script defer src=&quot;https://xxxx/vue/xxxx/script.js&quot;&gt;&lt;/script&gt;</span><br><span class="hljs-string">`</span>);<br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL21pbGVzbWNjL3NoeW5ldA==&quot; rel=&quot;noopener external nofollow noreferrer&quot;&gt;Shynet</summary>
-      
-    
-    
-    
-    
-    <category term="hexo" scheme="https://hexo.limour.top/tags/hexo/"/>
     
   </entry>
   

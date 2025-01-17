@@ -18,11 +18,11 @@
   <meta name="author" content="Limour">
   <meta name="keywords" content="">
   
-    <meta name="description" content="用了几年，笔记本系统又该重置了，每次重置后都要做一大堆操作，这里记录一下，方便以后参考。 激活系统  OpenWrt 开启 KMS 插件 新系统以管理员权限执行下面的命令  12345slmgr /upkslmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GXslmgr /skms 192.168.88.1slmgr /atoset-executionpolicy remo">
+    <meta name="description" content="内网电脑是 win7，且不想改变电脑的环境设置，因此打包一个便携版的 Python 来自用。 准备文件 从 python-3810 下载最后支持 win7 的编译好的文件  python-3.8.10-amd64.exe python-3.8.10-embed-amd64.zip  KB2533623 更新  安装 KB3063858 重启 win7 虚拟机，再运行 python-3.8.10-a">
   
   
   
-  <title>【记录】重装系统后的操作 - Limour&#39;s Blog</title>
+  <title>【记录】打包便携版Python - Limour&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://jscdn.limour.top/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
 
@@ -76,7 +76,7 @@
 
 
   
-  <link rel="canonical" href="https://hexo.limour.top/operation-after-reinstalling-the-system"/>
+  <link rel="canonical" href="https://hexo.limour.top/portable-python-package"/>
 <meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="Limour's Blog" type="application/atom+xml">
 <link rel="alternate" href="/rss2.xml" title="Limour's Blog" type="application/rss+xml">
 </head>
@@ -230,7 +230,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">【记录】重装系统后的操作</span>
+            <span id="subtitle">【记录】打包便携版Python</span>
           
         </div>
 
@@ -246,8 +246,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-12-31 00:54" pubdate>
-          December 31, 2024 am
+        <time datetime="2025-01-17 09:40" pubdate>
+          January 17, 2025 am
         </time>
       </span>
     
@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          500 words
+          465 words
         
       </span>
     
@@ -269,7 +269,7 @@
         
         
         
-          5 mins
+          4 mins
         
       </span>
     
@@ -306,12 +306,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">【记录】重装系统后的操作</h1>
+            <h1 id="seo-header">【记录】打包便携版Python</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on December 31, 2024 pm
+                    Last updated on January 18, 2025 am
                   
                 
               </p>
@@ -319,62 +319,54 @@
             
               <div class="markdown-body">
                 
-                <p>用了几年，笔记本系统又该重置了，每次重置后都要做一大堆操作，这里记录一下，方便以后参考。</p>
-<h2 id="激活系统">激活系统</h2>
+                <p>内网电脑是 win7，且不想改变电脑的环境设置，因此打包一个便携版的 Python 来自用。</p>
+<h2 id="准备文件">准备文件</h2>
+<p>从 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly93d3cucHl0aG9uLm9yZy9kb3dubG9hZHMvcmVsZWFzZS9weXRob24tMzgxMC8=" rel="noopener external nofollow noreferrer">python-3810</a> 下载最后支持 win7 的编译好的文件</p>
 <ul>
-<li>OpenWrt 开启 KMS 插件</li>
-<li>新系统以管理员权限执行下面的命令</li>
+<li>python-3.8.10-amd64.exe</li>
+<li>python-3.8.10-embed-amd64.zip</li>
 </ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs powershell">slmgr /upk<br>slmgr /ipk W269N<span class="hljs-literal">-WFGWX-YVC9B-4J6C9-T83GX</span><br>slmgr /skms <span class="hljs-number">192.168</span>.<span class="hljs-number">88.1</span><br>slmgr /ato<br><span class="hljs-built_in">set-executionpolicy</span> remotesigned<br></code></pre></td></tr></table></figure>
+<h2 id="KB2533623-更新">KB2533623 更新</h2>
 <ul>
-<li>重复检查 <code>Windows 更新</code> 安装重启，直到不再有新的更新</li>
+<li>安装 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly93d3cubWljcm9zb2Z0LmNvbS96aC1jbi9kb3dubG9hZC9kZXRhaWxzLmFzcHg/aWQ9NDc0NDI=" rel="noopener external nofollow noreferrer">KB3063858</a></li>
+<li>重启 win7 虚拟机，再运行 python-3.8.10-amd64.exe</li>
+<li>取消勾选 <code>install launcher</code>， 从 <code>Custmoize installation</code>  继续</li>
+<li>只勾选 <code>pip</code> 和 <code>tcl/tk</code>，取消其他所有勾选，继续</li>
+<li>选一个临时目录A，取消所有勾选，再勾上<code>Precompile standard lib</code>，继续</li>
 </ul>
-<h2 id="系统优化">系统优化</h2>
+<h2 id="pip-安装需要的包">pip 安装需要的包</h2>
 <ul>
-<li>关闭虚拟内存：<code>高级系统设置-性能-高级-虚拟内存</code> 修改为无</li>
-<li><a href="./resolve-the-power-consumption-issue-of-windows-laptop-shutdown">解决关机耗电问题</a></li>
+<li>打开目录A的 Scripts 文件夹，地址栏输入 cmd</li>
+<li><code>pip install httpx lxml -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple</code></li>
+<li>安装完成后测试安装的包正常运行</li>
 </ul>
-<h2 id="基础软件">基础软件</h2>
+<h2 id="构造便携版">构造便携版</h2>
 <ul>
-<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL2NsYXNoLXZlcmdlLXJldi9jbGFzaC12ZXJnZS1yZXYvcmVsZWFzZXM=" rel="noopener external nofollow noreferrer">基础上网工具</a></li>
-<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL25vdGVwYWQtcGx1cy1wbHVzL25vdGVwYWQtcGx1cy1wbHVz" rel="noopener external nofollow noreferrer">notepad++</a></li>
-<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9hcHBzLm1pY3Jvc29mdC5jb20vZGV0YWlsLzlwMXd4cGtiNjhreA==" rel="noopener external nofollow noreferrer">Snipaste</a></li>
-<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly93d3cuNy16aXAub3JnLw==" rel="noopener external nofollow noreferrer">7zip</a></li>
-<li>将常用软件的安装目录添加的 <code>Windows 安全中心</code> 的排除项里，以免影响性能</li>
+<li>将 <code>Lib/site-packages</code> 移动到目录A内，重命名为 <code>mods</code></li>
+<li>将 <code>Lib/tkinter</code> 移动到 <code>mods</code> 目录内</li>
+<li>将 python-3.8.10-embed-amd64.zip 中的 python38.zip 放到目录A内</li>
+<li>目录A内创建名为 <code>python38._pth</code> 的文本文件，其内容如下</li>
 </ul>
-<h2 id="恢复博客">恢复博客</h2>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs txt">DLLs<br>python38.zip<br>.<br>site-packages.zip<br>mods<br></code></pre></td></tr></table></figure>
 <ul>
-<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXQtc2NtLmNvbS9kb3dubG9hZHMvd2lu" rel="noopener external nofollow noreferrer">git</a></li>
-<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9jb2RlLnZpc3VhbHN0dWRpby5jb20v" rel="noopener external nofollow noreferrer">VS Code</a></li>
-<li><a href="./-ji-lu--an-zhuang-conda-bing-geng-huan-qing-hua-yuan">conda</a></li>
-<li>在 <code>Anaconda Prompt</code> 中执行 <code>conda init</code></li>
+<li>移除 <code>Lib、libs、include、Scripts、Tools</code> 等文件夹，</li>
+<li>只保留 <code>DLLs</code>、<code>mods</code>、<code>tcl</code> 这三个文件夹，同时创建 <code>site-packages.zip</code> 文件</li>
+<li>进入 <code>mods</code> 文件夹，删除不必须的包，然后将包一个一个移入 <code>site-packages.zip</code></li>
+<li>每移动一个测试安装的包是否正常运行，不能则保留在 <code>mods</code> 文件夹</li>
+<li>直到所有包都测试完毕，此时碎片文件数量达到最优</li>
 </ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs powershell">git config <span class="hljs-literal">--global</span> user.name <span class="hljs-string">&quot;Limour&quot;</span><br>git config <span class="hljs-literal">--global</span> user.email <span class="hljs-string">&quot;limour@limour.top&quot;</span><br>git clone <span class="hljs-literal">-b</span> main <span class="hljs-literal">--single-branch</span> https://github.com/limour<span class="hljs-literal">-blog</span>/limour<span class="hljs-literal">-blog</span>.github.io.git<br><span class="hljs-comment"># 在 VS Code 中 打开 limour-blog.github.io 文件夹</span><br>conda create <span class="hljs-literal">-n</span> node conda<span class="hljs-literal">-forge</span>::nodejs<br>conda activate node<br>npm config <span class="hljs-built_in">set</span> registry https://registry.npmmirror.com<br>npm i hexo<span class="hljs-literal">-cli</span> <span class="hljs-literal">-g</span><br>npm install<br></code></pre></td></tr></table></figure>
+<h2 id="测试便携版">测试便携版</h2>
 <ul>
-<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9pbWFnZW1hZ2ljay5vcmcvc2NyaXB0L2Rvd25sb2FkLnBocA==" rel="noopener external nofollow noreferrer">imagemagick</a></li>
-<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL0xpbW91ci1kZXYvUXVpY2tlcg==" rel="noopener external nofollow noreferrer">Quicker</a></li>
+<li>将目录A打包成 python-3.8.10-amd64.zip</li>
+<li>将虚拟机回滚到初始快照，安装 KB3063858 更新后重启</li>
+<li>解压 python-3.8.10-amd64.zip，测试是否可用</li>
 </ul>
-<h2 id="安装微信">安装微信</h2>
+<h2 id="打包好的成品">打包好的成品</h2>
 <ul>
-<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL3NhbmRib3hpZS1wbHVzL1NhbmRib3hpZS9yZWxlYXNlcw==" rel="noopener external nofollow noreferrer">sandboxie</a>，安装驱动时需要临时关闭实时防护</li>
-<li><code>右键沙盒-沙盒设置-恢复</code> 移除 <code>快速恢复</code> 中的文件夹，关闭 <code>直接恢复</code> 中的启用</li>
-<li><code>沙盒设置-资源访问-文件访问-阻止访问</code> 添加沙盒目录和 <code>OneDrive</code> 目录</li>
-<li>下载微信安装包，右键在沙箱中运行，勾上 UAC 管理员权限，安装完毕后登录一次再退出</li>
-<li><code>文件访问-阻止访问</code> 添加 <code>C:\Sandbox\</code> 目录</li>
-<li><code>配置-系统设置-添加快捷方式图标</code> 勾上 UAC ，在程序里选择微信，此后可以从桌面的快捷方式启动沙盒内的微信</li>
-<li><code>文件访问-只写访问</code> 添加 <code>%AppData%\</code> 和 <code>%Local AppData%\</code> 目录</li>
-<li><code>沙盒设置-限制-降低权限</code> 勾上 <code>降低管理员和超级用户组的权限</code></li>
-</ul>
-<h2 id="笔记管理">笔记管理</h2>
-<ul>
-<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL3N1bWF0cmFwZGZyZWFkZXIvc3VtYXRyYXBkZi9yZWxlYXNlcw==" rel="noopener external nofollow noreferrer">sumatrapdf</a></li>
-<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly93d3cuem90ZXJvLm9yZy8=" rel="noopener external nofollow noreferrer">zotero</a></li>
-<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL2wwbzAvdGFyYQ==" rel="noopener external nofollow noreferrer">Tara</a> 插件，导入之前导出的备份</li>
-</ul>
-<h2 id="恢复虚拟机">恢复虚拟机</h2>
-<ul>
-<li>去博通官网下载 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly93d3cudm13YXJlLmNvbS9wcm9kdWN0cy9kZXNrdG9wLWh5cGVydmlzb3Ivd29ya3N0YXRpb24tYW5kLWZ1c2lvbg==" rel="noopener external nofollow noreferrer">VMware</a></li>
-<li>直接恢复之前备份的整个虚拟机，之后所有操作都靠虚拟机快照进行，摆脱重装烦恼</li>
+<li><a target="_blank" rel="noopener" href="https://od.limour.top/archives/dist/python">Python-Win7-X64_httpx.zip</a></li>
+<li>该成品可以在重装后只安装了 KB3063858 一个更新的 Win7 系统中无依赖运行</li>
+<li>同时可以使用 <code>tkinter</code>、<code>httpx</code> 和 <code>lxml</code> 这三个模块和所有python内置的模块</li>
+<li>配合 <a target="_blank" rel="noopener" href="https://od.limour.top/archives/dist/chrome">Chrome-Win7-X64.zip</a> 便携版，可以方便内网抓包写小脚本。</li>
 </ul>
 
                 
@@ -388,7 +380,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/win/" class="print-no-link">#win</a>
+        <a href="/tags/windows/" class="print-no-link">#Windows</a>
       
     </div>
   
@@ -400,8 +392,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【记录】重装系统后的操作</div>
-      <div>https://hexo.limour.top/operation-after-reinstalling-the-system</div>
+      <div>【记录】打包便携版Python</div>
+      <div>https://hexo.limour.top/portable-python-package</div>
     </div>
     <div class="license-meta">
       
@@ -413,13 +405,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>December 31, 2024</div>
+          <div>January 17, 2025</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>December 31, 2024</div>
+          <div>January 18, 2025</div>
         </div>
       
       
@@ -462,18 +454,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/portable-python-package" title="【记录】打包便携版Python">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【记录】打包便携版Python</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/convert-old-phone-to-cloud-phone" title="【记录】将旧手机变成云手机">
-                        <span class="hidden-mobile">【记录】将旧手机变成云手机</span>
+                      <a href="/operation-after-reinstalling-the-system" title="【记录】重装系统后的操作">
+                        <span class="hidden-mobile">【记录】重装系统后的操作</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
