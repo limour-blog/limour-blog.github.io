@@ -151,7 +151,7 @@ sudo docker-compose up -d
 version: '3'
 services:
   next-web:
-    image: tianzhentech/chatgpt-next-web:latest
+    image: limour/next-chat
     environment:
       - TZ=Asia/Shanghai
       - BASE_URL=https://rcdn.limour.top/one-api

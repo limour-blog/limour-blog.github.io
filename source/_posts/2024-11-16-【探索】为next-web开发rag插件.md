@@ -14,6 +14,8 @@ Dify、FastGPT、LangChain之类的用来做知识库都太过笨重，难以在
 + 可以正常使用的 [Next-Web](./Aggregating-Azure-and-OpenAI-APIs-with-OneAPI)
 + 一些相关的文件 [Limour-dev/fastapi](https://github.com/Limour-dev/fastapi)
 ### FastAPI
++ 部署 [fastapi-launcher](https://github.com/Limour-dev/fastapi-launcher)
+{% fold info @点开查看调试过程 %}
 ```bash
 mkdir -p ~/app/fastapi && cd ~/app/fastapi && touch Dockerfile && touch docker-compose.yml && touch .env
 mkdir -p ~/app/fastapi/app && mkdir -p ~/app/fastapi/app/Plugins
@@ -71,16 +73,10 @@ networks:
 + 反代 `FastAPI`， 访问可以看到 `"Hello": "World"`
 
 ![](https://img.limour.top/2024/11/16/6737b54c2a573.webp)
+{% endfold %}
+
 ## 包装API
-### 测试环境
-+ 在测试环境编写好脚本后，再转移脚本到 `app/Plugins` 目录下
-```bash
-conda create -n fastapi conda-forge::fastapi conda-forge::httpx conda-forge::python==3.9
-```
-### 编写脚本
-```bash
-wget -O app/Plugins/qdrant.py https://raw.githubusercontent.com/Limour-dev/fastapi/refs/heads/main/Plugins/qdrant.py
-```
++ `wget -O ./app/Plugins/qdrant.py https://raw.githubusercontent.com/Limour-dev/fastapi/refs/heads/main/Plugins/qdrant.py`
 ### 配置环境变量
 + `nano .env` 编辑 `.env`，写入下面的文件
 + 依次配置好嵌入、重排和Qdrant数据库
@@ -96,8 +92,19 @@ QDRANT_URL=http://qdrant:6333
 QDRANT_KEY=no-key
 FASTAPI_KEY=123456
 ```
+{% fold info @点开查看调试过程 %}
+### 测试环境
++ 在测试环境编写好脚本后，再转移脚本到 `app/Plugins` 目录下
+```bash
+conda create -n fastapi conda-forge::fastapi conda-forge::httpx conda-forge::python==3.9
+```
+### 编写脚本
+```bash
+wget -O app/Plugins/qdrant.py https://raw.githubusercontent.com/Limour-dev/fastapi/refs/heads/main/Plugins/qdrant.py
+```
 ### 测试脚本
 + 填入自己的信息后，运行 [TestQdrant.py](https://github.com/Limour-dev/fastapi/blob/main/TestQdrant.py)
+{% endfold %}
 ## 配置插件
 + 获取 `openapi.json` ，例如访问 `https://fastapi.limour.top/openapi.json`
 + 将其修改成下面的格式

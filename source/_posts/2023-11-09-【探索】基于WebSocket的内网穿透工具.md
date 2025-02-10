@@ -10,6 +10,12 @@ excerpt: 国内的服务器备案麻烦，所以很多内网服务需要使用�
 ## 服务端
 + [反向代理服务](/Docker-bu-shu-Nginx-Proxy-Manager)
 ```bash
+mkdir -p ~/app/proxynt && cd ~/app/proxynt
+wget https://raw.githubusercontent.com/Limour-dev/proxynt/refs/heads/master/docker-compose.yml
+wget -O config.json https://raw.githubusercontent.com/sazima/proxynt/refs/heads/master/config_s.json
+```
+{% fold info @点开查看调试过程 %}
+```bash
 mkdir -p ~/app/proxynt && cd ~/app/proxynt && nano Dockerfile && nano docker-compose.yml
 docker build -t limour/proxynt .
 nano config.json
@@ -36,6 +42,8 @@ networks:
     external: true
     name: ngpm
 ```
+{% endfold %}
++ 编辑配置文件 `nano config.json`
 ```json
 {
     "port": 18888,
@@ -48,6 +56,7 @@ networks:
     }
 }
 ```
++ 启动服务 `sudo docker compose up -d`
 
 ![反代 proxynt:18888](https://img.limour.top/2023/11/09/654cc58f6ea33.webp)
 ## 客户端
@@ -99,6 +108,14 @@ WantedBy=multi-user.target
 ```
 + 访问 `https://limour.top:443/websocket_path/admin`
 + 看到客户端上线后，新建配置即可
+### 版本更新
++ Windows 便携版：[Python-Win7-X64-lite.zip](https://od.limour.top/archives/dist/python/Python-Win7-X64-lite.zip)
++ `Python-Win7-X64-lite/test/proxynt/run_client.bat`
+```bash
+sudo systemctl status proxynt
+pip install -U https://xxx.limour.top/token/https://github.com/sazima/proxynt/archive/refs/heads/master.zip
+sudo systemctl restart proxynt
+```
 
 ## 附加 WebSSH
 和上面的内网穿透配合，连接时host填`proxynt`,可以保证内网ssh不暴露公网的同时，又能通过公网进行ssh连接。
