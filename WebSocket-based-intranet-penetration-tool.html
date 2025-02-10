@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          652 words
+          739 words
         
       </span>
     
@@ -269,7 +269,7 @@
         
         
         
-          6 mins
+          7 mins
         
       </span>
     
@@ -311,7 +311,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on October 23, 2024 pm
+                    Last updated on February 10, 2025 am
                   
                 
               </p>
@@ -324,10 +324,25 @@
 <ul>
 <li><a href="/Docker-bu-shu-Nginx-Proxy-Manager">反向代理服务</a></li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/app/proxynt &amp;&amp; <span class="hljs-built_in">cd</span> ~/app/proxynt &amp;&amp; nano Dockerfile &amp;&amp; nano docker-compose.yml<br>docker build -t limour/proxynt .<br>nano config.json<br>sudo docker-compose up -d<br></code></pre></td></tr></table></figure>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Dockerfile"><span class="hljs-keyword">FROM</span> python:<span class="hljs-number">3.9</span>-alpine<br><span class="hljs-keyword">RUN</span><span class="language-bash"> pip install -U python-snappy</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> pip install -U https://github.com/sazima/proxynt/archive/refs/heads/master.zip</span><br><span class="hljs-keyword">ENTRYPOINT</span><span class="language-bash"> [<span class="hljs-string">&quot;nt_server&quot;</span>, <span class="hljs-string">&quot;-c&quot;</span>, <span class="hljs-string">&quot;/opt/config.json&quot;</span>]</span><br></code></pre></td></tr></table></figure>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.3&#x27;</span><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">proxynt:</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">unless-stopped</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;./config.json:/opt/config.json&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;/etc/localtime:/etc/localtime:ro&#x27;</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">limour/proxynt</span><br> <br><span class="hljs-attr">networks:</span><br>  <span class="hljs-attr">default:</span><br>    <span class="hljs-attr">external:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">ngpm</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/app/proxynt &amp;&amp; <span class="hljs-built_in">cd</span> ~/app/proxynt<br>wget https://raw.githubusercontent.com/Limour-dev/proxynt/refs/heads/master/docker-compose.yml<br>wget -O config.json https://raw.githubusercontent.com/sazima/proxynt/refs/heads/master/config_s.json<br></code></pre></td></tr></table></figure>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-699a757e" role="button" aria-expanded="false" aria-controls="collapse-699a757e">
+        <div class="fold-arrow">▶</div>点开查看调试过程
+      </div>
+      <div class="fold-collapse collapse" id="collapse-699a757e">
+        <div class="fold-content">
+          <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/app/proxynt &amp;&amp; <span class="hljs-built_in">cd</span> ~/app/proxynt &amp;&amp; nano Dockerfile &amp;&amp; nano docker-compose.yml<br>docker build -t limour/proxynt .<br>nano config.json<br>sudo docker-compose up -d<br></code></pre></td></tr></table></figure><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Dockerfile"><span class="hljs-keyword">FROM</span> python:<span class="hljs-number">3.9</span>-alpine<br><span class="hljs-keyword">RUN</span><span class="language-bash"> pip install -U python-snappy</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> pip install -U https://github.com/sazima/proxynt/archive/refs/heads/master.zip</span><br><span class="hljs-keyword">ENTRYPOINT</span><span class="language-bash"> [<span class="hljs-string">&quot;nt_server&quot;</span>, <span class="hljs-string">&quot;-c&quot;</span>, <span class="hljs-string">&quot;/opt/config.json&quot;</span>]</span><br></code></pre></td></tr></table></figure><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.3&#x27;</span><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">proxynt:</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">unless-stopped</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;./config.json:/opt/config.json&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;/etc/localtime:/etc/localtime:ro&#x27;</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">limour/proxynt</span><br> <br><span class="hljs-attr">networks:</span><br>  <span class="hljs-attr">default:</span><br>    <span class="hljs-attr">external:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">ngpm</span><br></code></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+<ul>
+<li>编辑配置文件 <code>nano config.json</code></li>
+</ul>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;port&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">18888</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;log_file&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/dev/null&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;path&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/websocket_path&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;password&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;helloworld&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;admin&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;enable&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;admin_password&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;new_password&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>启动服务 <code>sudo docker compose up -d</code></li>
+</ul>
 <p><img src="https://img.limour.top/2023/11/09/654cc58f6ea33.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt="反代 proxynt:18888"></p>
 <h2 id="客户端">客户端</h2>
 <ul>
@@ -342,6 +357,12 @@
 <li>访问 <code>https://limour.top:443/websocket_path/admin</code></li>
 <li>看到客户端上线后，新建配置即可</li>
 </ul>
+<h3 id="版本更新">版本更新</h3>
+<ul>
+<li>Windows 便携版：<a target="_blank" rel="noopener" href="https://od.limour.top/archives/dist/python/Python-Win7-X64-lite.zip">Python-Win7-X64-lite.zip</a></li>
+<li><code>Python-Win7-X64-lite/test/proxynt/run_client.bat</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo systemctl status proxynt<br>pip install -U https://xxx.limour.top/token/https://github.com/sazima/proxynt/archive/refs/heads/master.zip<br>sudo systemctl restart proxynt<br></code></pre></td></tr></table></figure>
 <h2 id="附加-WebSSH">附加 WebSSH</h2>
 <p>和上面的内网穿透配合，连接时host填<code>proxynt</code>,可以保证内网ssh不暴露公网的同时，又能通过公网进行ssh连接。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/app/webssh &amp;&amp; <span class="hljs-built_in">cd</span> ~/app/webssh &amp;&amp; nano docker-compose.yml<br>sudo docker-compose up -d<br></code></pre></td></tr></table></figure>
@@ -408,7 +429,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>October 23, 2024</div>
+          <div>February 10, 2025</div>
         </div>
       
       
