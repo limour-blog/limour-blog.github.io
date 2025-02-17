@@ -227,6 +227,31 @@ networks:
 cd alist-fly
 flyctl deploy
 ```
+## 修复 stuck
++ [Machine stuck in replacing state](https://community.fly.io/t/machine-stuck-in-replacing-state/16105)
+```bash
+cd alist-fly
+
+# 获取 volumes 的可用快照 vs_D2l
+fly volumes show
+# 恢复快照 得到 vol_r7q
+fly volumes create data \
+--snapshot-id vs_D2l \
+--size 1 \
+-a alist-fly-limour
+
+# 获取 stuck 的 machine id 178
+fly machine  list
+# 另起一台 machine
+fly machine clone 178 \
+--attach-volume vol_r7q:/opt/alist/data \
+--app alist-fly-limour
+
+# 删除 stuck 的 machine
+fly machine destroy -f 178 --app alist-fly-limour
+# 删除 stuck 的 machine 所用的 volumes
+fly volumes destroy vol_zre
+```
 
 ## 演示地址
 + https://od.limour.top
