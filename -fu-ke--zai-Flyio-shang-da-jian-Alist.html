@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k words
+          1.1k words
         
       </span>
     
@@ -269,7 +269,7 @@
         
         
         
-          9 mins
+          10 mins
         
       </span>
     
@@ -311,7 +311,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    Last updated on December 23, 2024 pm
+                    Last updated on February 17, 2025 pm
                   
                 
               </p>
@@ -385,6 +385,11 @@
 <li>可能需要验卡: <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9mbHkuaW8vaGlnaC1yaXNrLXVubG9jaw==" rel="noopener external nofollow noreferrer">high-risk-unlock</a></li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> alist-fly<br>flyctl deploy<br></code></pre></td></tr></table></figure>
+<h2 id="修复-stuck">修复 stuck</h2>
+<ul>
+<li><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9jb21tdW5pdHkuZmx5LmlvL3QvbWFjaGluZS1zdHVjay1pbi1yZXBsYWNpbmctc3RhdGUvMTYxMDU=" rel="noopener external nofollow noreferrer">Machine stuck in replacing state</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> alist-fly<br><br><span class="hljs-comment"># 获取 volumes 的可用快照 vs_D2l</span><br>fly volumes show<br><span class="hljs-comment"># 恢复快照 得到 vol_r7q</span><br>fly volumes create data \<br>--snapshot-id vs_D2l \<br>--size 1 \<br>-a alist-fly-limour<br><br><span class="hljs-comment"># 获取 stuck 的 machine id 178</span><br>fly machine  list<br><span class="hljs-comment"># 另起一台 machine</span><br>fly machine <span class="hljs-built_in">clone</span> 178 \<br>--attach-volume vol_r7q:/opt/alist/data \<br>--app alist-fly-limour<br><br><span class="hljs-comment"># 删除 stuck 的 machine</span><br>fly machine destroy -f 178 --app alist-fly-limour<br><span class="hljs-comment"># 删除 stuck 的 machine 所用的 volumes</span><br>fly volumes destroy vol_zre<br></code></pre></td></tr></table></figure>
 <h2 id="演示地址">演示地址</h2>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://od.limour.top">https://od.limour.top</a></li>
@@ -432,7 +437,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>December 23, 2024</div>
+          <div>February 17, 2025</div>
         </div>
       
       
