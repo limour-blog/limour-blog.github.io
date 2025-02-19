@@ -86,9 +86,9 @@ const urls = [
 ];
 getFastestUrl(urls).then((fastest) => {
 caches.open('freecdn.limour').then((cache) => {
-const res = new Response(cdn_index);
-cache.put('cdn_index', res);
 console.log('最快的 URL:', fastest);
+const res = new Response(fastest.id);
+cache.put('cdn_index', res);
 cdn_index = fastest.id;
 });
 });
@@ -102,7 +102,7 @@ oninstall = (e) => {
 
 onactivate = (e) => {
 	e.waitUntil(clients.claim());
-	console.log(cdn_list, cdn_index);
+	console.log(cdn_list);
 };
 
 onfetch = (event) => {
