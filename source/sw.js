@@ -50,14 +50,14 @@ const cdn_list = {
 var cdn_index = 0;
 var flag = 0;
 const update_cdn_index = (e) => {
-if(flag){return}
-flag = 1;
-e.waitUntil((async () => {
+const get_cache = (async () => {
 const cache = await caches.open('freecdn.limour');
 const res = await cache.match('cdn_index');
 cdn_index = res ? Number(await res.text()) : 0;
-})());
-
+})();
+if(e){e.waitUntil(get_cache);};
+if(flag){return;};
+flag = 1;
 async function getFastestUrl(urls) {
 	const controllers = new Map();
 	const testUrl = (one) => {
@@ -85,29 +85,30 @@ const urls = [
 	['https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', 2]
 ];
 getFastestUrl(urls).then((fastest) => {
-cdn_index = fastest.id
 caches.open('freecdn.limour').then((cache) => {
 const res = new Response(cdn_index);
 cache.put('cdn_index', res);
 console.log('最快的 URL:', fastest);
+cdn_index = fastest.id;
 });
 });
 };
 
+update_cdn_index();
+
 oninstall = (e) => {
-	update_cdn_index(e);
 	self.skipWaiting();
 };
 
 onactivate = (e) => {
 	e.waitUntil(clients.claim());
-	update_cdn_index(e);
 	console.log(cdn_list, cdn_index);
 };
 
 onfetch = (event) => {
 	const url = new URL(event.request.url);
 if (cdn_regex.test(url.pathname)){
+	update_cdn_index();
 	const key = url.pathname.match(cdn_regex)[1]
 	const newUrl = url.href.replace(cdn_regex, cdn_list[key][cdn_index]);
 	console.log(newUrl);
