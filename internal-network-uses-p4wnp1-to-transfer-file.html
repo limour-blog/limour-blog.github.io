@@ -7,7 +7,6 @@
 
 <head><!-- hexo injector head_begin start -->
 <script defer src="https://api.limour.top/vue/0d2f95c1-755d-436b-adf8-eee12a80ed32/script.js"></script>
-<script src="/theme-inject/cdn.js"></script>
 <!-- hexo injector head_begin end -->
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="https://img.limour.top/2023/08/29/64ee07361815a.webp">
@@ -64,7 +63,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"hexo.limour.top","root":"/","version":"1.9.8","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":false,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"hexo.limour.top","root":"/","version":"1.9.8","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":false,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://img.limour.top/inload.svg","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -341,7 +340,7 @@
 <li>如果靶机无法联网，请参考下文的 Bad USB 技术</li>
 </ul>
 <h2 id="24-11-22-更新">24.11.22 更新</h2>
-<p><img src="https://img.limour.top/2024/11/22/67407ef4d2bcd.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<p><img src="https://img.limour.top/2024/11/22/67407ef4d2bcd.webp" srcset="https://img.limour.top/inload.svg" lazyload alt=""></p>
 <p>使用一段时间后，发现常用的还是往外传病历，因此使用 10 块钱的国产 <code>PICO</code> 板固化了一版专门用于写入 <code>client.html</code> 的固件</p>
 <ol>
 <li>按住 <code>boot</code> 键插入电脑，松开按钮 ，将 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL0xpbW91ci1kZXYvcXJqcy9yZWxlYXNlcw==" rel="noopener external nofollow noreferrer">pico-badusb.uf2</a> 拖入根目录</li>
@@ -364,21 +363,21 @@
 <li>或者也可以搜索一个<code>P4wnP1</code>的蓝牙，连接它，默认PIN是 <code>1337</code>，然后加入蓝牙个人区域网，此时IP为 <code>172.26.0.1</code></li>
 <li>然后可以ssh连接对应的IP，默认用户名<code>root</code>，密码<code>toor</code></li>
 </ul>
-<p><img src="https://img.limour.top/2024/10/27/671df3c9042f0.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<p><img src="https://img.limour.top/2024/10/27/671df3c9042f0.webp" srcset="https://img.limour.top/inload.svg" lazyload alt=""></p>
 <h2 id="配置-USB">配置 USB</h2>
 <ul>
 <li>访问 <code>http://172.24.0.1:8000/</code> (蓝牙就算了，太慢了打不开)</li>
 <li>此时靶机会有一个驱动错误的提示，我们需要将 <code>USB Gadget Settings</code> 中的 <code>CDC ECM</code> 和 <code>RNDIS</code> 两项关闭</li>
 <li>只保留 <code>Keyboard</code> 和 <code>Mouse</code> 两项，然后点击 <code>STORE</code> 和 <code>DEPLOY STORED</code> 后等一会，驱动错误提示就会消失了</li>
 </ul>
-<p><img src="https://img.limour.top/2024/10/27/671df3e21fc9b.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""><br>
-<img src="https://img.limour.top/2024/10/27/671df5156410b.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<p><img src="https://img.limour.top/2024/10/27/671df3e21fc9b.webp" srcset="https://img.limour.top/inload.svg" lazyload alt=""><br>
+<img src="https://img.limour.top/2024/10/27/671df5156410b.webp" srcset="https://img.limour.top/inload.svg" lazyload alt=""></p>
 <h2 id="测试-HIDScript">测试 HIDScript</h2>
 <ul>
 <li>从 <code>USB SETTINGS</code> 转到 <code>HIDScrip</code></li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">layout</span>(<span class="hljs-string">&#x27;us&#x27;</span>);			<span class="hljs-comment">// 键盘布局</span><br><span class="hljs-title function_">typingSpeed</span>(<span class="hljs-number">50</span>,<span class="hljs-number">100</span>);	<span class="hljs-comment">// 敲击按键的时候等待的间隔100毫秒加上0-150毫秒之间的随机值</span><br> <br><span class="hljs-title function_">press</span>(<span class="hljs-string">&quot;GUI r&quot;</span>);         <span class="hljs-comment">//类似按下某个键位然后再抬起来，具体可以看官方文档，和上面的机制相识</span><br><span class="hljs-title function_">delay</span>(<span class="hljs-number">500</span>);             <span class="hljs-comment">//暂停时间</span><br><span class="hljs-title function_">type</span>(<span class="hljs-string">&quot;notepad\n&quot;</span>);      <span class="hljs-comment">//输入字符串，模拟键盘按键</span><br><span class="hljs-title function_">delay</span>(<span class="hljs-number">1500</span>);            <span class="hljs-comment">//暂停时间</span><br><span class="hljs-comment">// moveStepped(x,y);    //鼠标移动，相当于模拟正常运动</span><br><span class="hljs-comment">// moveTo(x,y);         //鼠标移动到设置的坐标点，x和y分别是横纵坐标</span><br><span class="hljs-title function_">type</span>(<span class="hljs-string">&quot;Hello from P4wnP1\n&quot;</span>);<br><br><span class="hljs-title function_">typingSpeed</span>(<span class="hljs-number">10</span>,<span class="hljs-number">20</span>);<br><span class="hljs-keyword">var</span> base64 = <span class="hljs-string">&#x27;SGVsbG8gZnJvbSBQNHduUDE=&#x27;</span> <span class="hljs-comment">// btoa(&#x27;Hello from P4wnP1&#x27;);</span><br><span class="hljs-title function_">type</span>(<span class="hljs-string">&quot;atob(&#x27;&quot;</span> + base64 + <span class="hljs-string">&quot;&#x27;);&quot;</span>);<br></code></pre></td></tr></table></figure>
-<p><img src="https://img.limour.top/2024/10/27/671df52854a41.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<p><img src="https://img.limour.top/2024/10/27/671df52854a41.webp" srcset="https://img.limour.top/inload.svg" lazyload alt=""></p>
 <h2 id="关闭树莓派">关闭树莓派</h2>
 <ul>
 <li>不要直接拔电源，不然下次无法开机</li>
@@ -391,7 +390,7 @@
 <li>下载 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9odWdnaW5nZmFjZS5jby9kYXRhc2V0cy9MaW1vdXIvYXJjaHZpZS9ibG9iL21haW4vVVNCRGV2aWV3LnJhcg==" rel="noopener external nofollow noreferrer">USBDeview</a></li>
 <li>将靶机的键盘插到自己电脑上，获取<code>序列号</code>、<code>VID</code>、<code>PID</code>等信息，在 <code>P4wnP1</code> 中模拟</li>
 </ul>
-<p><img src="https://img.limour.top/2024/10/29/671fd70dec580.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<p><img src="https://img.limour.top/2024/10/29/671fd70dec580.webp" srcset="https://img.limour.top/inload.svg" lazyload alt=""></p>
 <h2 id="传递-client-html">传递 client.html</h2>
 <ul>
 <li>靶机输入法调成美式键盘</li>
@@ -400,7 +399,7 @@
 <li>靶机上用 <code>chrome</code> 打开 <code>client.html</code></li>
 <li><code>client.html</code> 上选择要传递的文件，等待二维码开始变化</li>
 </ul>
-<p><img src="https://img.limour.top/2024/10/29/671fd82bcfdeb.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<p><img src="https://img.limour.top/2024/10/29/671fd82bcfdeb.webp" srcset="https://img.limour.top/inload.svg" lazyload alt=""></p>
 <h2 id="接收文件">接收文件</h2>
 <ul>
 <li>宿主机配置对应的环境后运行 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL0xpbW91ci1kZXYvcXJqcy9ibG9iL21haW4vc2VydmVyLnB5" rel="noopener external nofollow noreferrer">server.py</a></li>
@@ -650,7 +649,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a target="_blank" rel="nofollow noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43130202000203"><img src="https://img.limour.top/2023/08/27/64eadeb81d6a0.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload>湘公网安备43130202000203号  </a> <a target="_blank" rel="nofollow noopener" href="https://beian.miit.gov.cn/">湘ICP备20008299号 </a> <a target="_blank" rel="nofollow noopener" href="https://icp.gov.moe/?keyword=20210128">萌ICP备20210128号</a> <br> <a href="https://www.foreverblog.cn/" target="_blank"> <img src="https://img.foreverblog.cn/logo_en_default.png" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt="" style="width:auto;height:24px"> </a> <br> <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/limour-blog/limour-blog.github.io" target="_blank" rel="nofollow noopener"><span>SRC</span></a> <i class="iconfont icon-love"></i> <a href="https://web.archive.org/web/20231130095837/https://effectiveacceleration.tech/" target="_blank" rel="nofollow noopener"><span>e/Acc</span></a> 
+       <a target="_blank" rel="nofollow noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43130202000203"><img src="https://img.limour.top/2023/08/27/64eadeb81d6a0.webp" srcset="https://img.limour.top/inload.svg" lazyload>湘公网安备43130202000203号  </a> <a target="_blank" rel="nofollow noopener" href="https://beian.miit.gov.cn/">湘ICP备20008299号 </a> <a target="_blank" rel="nofollow noopener" href="https://icp.gov.moe/?keyword=20210128">萌ICP备20210128号</a> <br> <a href="https://www.foreverblog.cn/" target="_blank"> <img src="https://img.foreverblog.cn/logo_en_default.png" srcset="https://img.limour.top/inload.svg" lazyload alt="" style="width:auto;height:24px"> </a> <br> <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/limour-blog/limour-blog.github.io" target="_blank" rel="nofollow noopener"><span>SRC</span></a> <i class="iconfont icon-love"></i> <a href="https://web.archive.org/web/20231130095837/https://effectiveacceleration.tech/" target="_blank" rel="nofollow noopener"><span>e/Acc</span></a> 
     </div>
   
   
@@ -791,6 +790,8 @@
     <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
 <!-- hexo injector body_end start -->
+<script src="/theme-inject/cdn.js"></script>
+
 <script defer src="/theme-inject/timeliness.js"></script>
 <!-- hexo injector body_end end --></body>
 </html>

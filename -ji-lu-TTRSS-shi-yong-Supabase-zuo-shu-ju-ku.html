@@ -7,7 +7,6 @@
 
 <head><!-- hexo injector head_begin start -->
 <script defer src="https://api.limour.top/vue/0d2f95c1-755d-436b-adf8-eee12a80ed32/script.js"></script>
-<script src="/theme-inject/cdn.js"></script>
 <!-- hexo injector head_begin end -->
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="https://img.limour.top/2023/08/29/64ee07361815a.webp">
@@ -64,7 +63,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"hexo.limour.top","root":"/","version":"1.9.8","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":false,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"hexo.limour.top","root":"/","version":"1.9.8","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":false,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://img.limour.top/inload.svg","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -324,11 +323,11 @@
 <h2 id="创建数据库">创建数据库</h2>
 <ul>
 <li>地区选离自己小鸡近的，比如圣何塞的免费龟壳就选美西<br>
-<img src="https://img.limour.top/2023/08/30/64ef3e6315540.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></li>
+<img src="https://img.limour.top/2023/08/30/64ef3e6315540.webp" srcset="https://img.limour.top/inload.svg" lazyload alt=""></li>
 <li>进项目的设置页面，记录下数据库的连接信息<br>
-<img src="https://img.limour.top/2023/08/30/64ef3e744ba6c.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></li>
+<img src="https://img.limour.top/2023/08/30/64ef3e744ba6c.webp" srcset="https://img.limour.top/inload.svg" lazyload alt=""></li>
 <li>连接信息获取方式有更新 <code>postgresql://xxxx/postgres</code><br>
-<img src="https://img.limour.top/2024/03/23/65fead7923d77.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></li>
+<img src="https://img.limour.top/2024/03/23/65fead7923d77.webp" srcset="https://img.limour.top/inload.svg" lazyload alt=""></li>
 </ul>
 <h2 id="搭建-TTRSS">搭建 TTRSS</h2>
 <ul>
@@ -336,17 +335,17 @@
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/app/TTRSS &amp;&amp; <span class="hljs-built_in">cd</span> ~/app/TTRSS &amp;&amp; nano docker-compose.yml<br>sudo docker-compose up -d &amp;&amp; sudo <span class="hljs-built_in">chmod</span> -R 777 feed-icons<br><span class="hljs-comment"># 默认账户：admin</span><br><span class="hljs-comment"># 密码：password</span><br></code></pre></td></tr></table></figure>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&quot;3&quot;</span><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">ttrss:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">wangqiru/ttrss:latest</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">SELF_URL_PATH=https://read.limour.top/</span> <span class="hljs-comment"># please change to your own domain</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">DB_HOST=db.xxx.supabase.co</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">DB_PORT=5432</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">DB_NAME=postgres</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">DB_USER=postgres</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">DB_PASS=&lt;设置的密码&gt;</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./feed-icons:/var/www/feed-icons/</span><br>    <span class="hljs-attr">stdin_open:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">tty:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br> <br><span class="hljs-attr">networks:</span><br>  <span class="hljs-attr">default:</span><br>    <span class="hljs-attr">external:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">ngpm</span><br></code></pre></td></tr></table></figure>
-<p><img src="https://img.limour.top/2023/08/30/64ef3e83eb4bd.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<p><img src="https://img.limour.top/2023/08/30/64ef3e83eb4bd.webp" srcset="https://img.limour.top/inload.svg" lazyload alt=""></p>
 <h2 id="使用-FeedMe">使用 FeedMe</h2>
 <p><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL3NlYXpvbi9GZWVkTWU=" rel="noopener external nofollow noreferrer">FeedMe</a> 是一个用于 RSS 服务的安卓端阅读器。</p>
 <ol>
 <li>TTRSS 偏好设置里启用API<br>
-<img src="https://img.limour.top/2023/08/30/64ef3e924b904.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></li>
+<img src="https://img.limour.top/2023/08/30/64ef3e924b904.webp" srcset="https://img.limour.top/inload.svg" lazyload alt=""></li>
 <li>登录方式选 <code>Fever</code> 而非 <code>TTRSS</code></li>
 <li>API 端点是 <code>https://xxx/plugins</code> 没有 <code>.local</code><br>
-<img src="https://img.limour.top/2023/08/30/64ef3e9d3f321.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></li>
+<img src="https://img.limour.top/2023/08/30/64ef3e9d3f321.webp" srcset="https://img.limour.top/inload.svg" lazyload alt=""></li>
 <li>FeedMe 设置里开启墨水屏优化，查看里设置布局为卡片，效果如下<br>
-<img src="https://img.limour.top/2023/08/30/64ef3eaecfc70.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></li>
+<img src="https://img.limour.top/2023/08/30/64ef3eaecfc70.webp" srcset="https://img.limour.top/inload.svg" lazyload alt=""></li>
 </ol>
 <h2 id="附加项">附加项</h2>
 <ul>
@@ -593,7 +592,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a target="_blank" rel="nofollow noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43130202000203"><img src="https://img.limour.top/2023/08/27/64eadeb81d6a0.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload>湘公网安备43130202000203号  </a> <a target="_blank" rel="nofollow noopener" href="https://beian.miit.gov.cn/">湘ICP备20008299号 </a> <a target="_blank" rel="nofollow noopener" href="https://icp.gov.moe/?keyword=20210128">萌ICP备20210128号</a> <br> <a href="https://www.foreverblog.cn/" target="_blank"> <img src="https://img.foreverblog.cn/logo_en_default.png" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt="" style="width:auto;height:24px"> </a> <br> <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/limour-blog/limour-blog.github.io" target="_blank" rel="nofollow noopener"><span>SRC</span></a> <i class="iconfont icon-love"></i> <a href="https://web.archive.org/web/20231130095837/https://effectiveacceleration.tech/" target="_blank" rel="nofollow noopener"><span>e/Acc</span></a> 
+       <a target="_blank" rel="nofollow noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43130202000203"><img src="https://img.limour.top/2023/08/27/64eadeb81d6a0.webp" srcset="https://img.limour.top/inload.svg" lazyload>湘公网安备43130202000203号  </a> <a target="_blank" rel="nofollow noopener" href="https://beian.miit.gov.cn/">湘ICP备20008299号 </a> <a target="_blank" rel="nofollow noopener" href="https://icp.gov.moe/?keyword=20210128">萌ICP备20210128号</a> <br> <a href="https://www.foreverblog.cn/" target="_blank"> <img src="https://img.foreverblog.cn/logo_en_default.png" srcset="https://img.limour.top/inload.svg" lazyload alt="" style="width:auto;height:24px"> </a> <br> <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/limour-blog/limour-blog.github.io" target="_blank" rel="nofollow noopener"><span>SRC</span></a> <i class="iconfont icon-love"></i> <a href="https://web.archive.org/web/20231130095837/https://effectiveacceleration.tech/" target="_blank" rel="nofollow noopener"><span>e/Acc</span></a> 
     </div>
   
   
@@ -734,6 +733,8 @@
     <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
 <!-- hexo injector body_end start -->
+<script src="/theme-inject/cdn.js"></script>
+
 <script defer src="/theme-inject/timeliness.js"></script>
 <!-- hexo injector body_end end --></body>
 </html>

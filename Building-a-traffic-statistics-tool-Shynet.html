@@ -7,7 +7,6 @@
 
 <head><!-- hexo injector head_begin start -->
 <script defer src="https://api.limour.top/vue/0d2f95c1-755d-436b-adf8-eee12a80ed32/script.js"></script>
-<script src="/theme-inject/cdn.js"></script>
 <!-- hexo injector head_begin end -->
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="https://img.limour.top/2023/08/29/64ee07361815a.webp">
@@ -64,7 +63,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"hexo.limour.top","root":"/","version":"1.9.8","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":false,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"hexo.limour.top","root":"/","version":"1.9.8","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":false,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://img.limour.top/inload.svg","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -322,7 +321,7 @@
                 
                 <p><a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL21pbGVzbWNjL3NoeW5ldA==" rel="noopener external nofollow noreferrer">Shynet</a> 是一款用 python 编写的现代、隐私友好、无需Cookie或JS即可工作的网络流量统计工具。</p>
 <p>相比 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9naXRodWIuY29tL3VtYW1pLXNvZnR3YXJlL3VtYW1p" rel="noopener external nofollow noreferrer">Umami</a>, Shynet 支持通过 1 pixel 的图像进行统计，而不依赖 JS， 并且 Shynet 统计的信息更加详细。</p>
-<p><img src="https://img.limour.top/2024/03/25/660177c20629f.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt="最终效果"></p>
+<p><img src="https://img.limour.top/2024/03/25/660177c20629f.webp" srcset="https://img.limour.top/inload.svg" lazyload alt="最终效果"></p>
 <h2 id="搭建-Shynet">搭建 Shynet</h2>
 <ul>
 <li><a href="/Docker-bu-shu-Nginx-Proxy-Manager">反向代理服务</a></li>
@@ -339,7 +338,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo docker-compose <span class="hljs-built_in">exec</span> -it shynet ./manage.py registeradmin &lt;your email&gt;<br><span class="hljs-comment"># 控制台输出如下信息</span><br><span class="hljs-comment"># Email address: &lt;your email&gt;</span><br><span class="hljs-comment"># Password: &lt;Password&gt;</span><br></code></pre></td></tr></table></figure>
 <h2 id="配置混淆">配置混淆</h2>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">sub_filter</span> <span class="hljs-string">&#x27;https://xxx/ingress/&#x27;</span> <span class="hljs-string">&#x27;https://xxx/vue/&#x27;</span>;<br><span class="hljs-attribute">sub_filter_once</span> <span class="hljs-literal">off</span>;<br><span class="hljs-attribute">sub_filter_types</span> application/javascript;<br></code></pre></td></tr></table></figure>
-<p><img src="https://img.limour.top/2024/03/25/6601762cad36c.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt=""></p>
+<p><img src="https://img.limour.top/2024/03/25/6601762cad36c.webp" srcset="https://img.limour.top/inload.svg" lazyload alt=""></p>
 <h2 id="配置-Hexo">配置 Hexo</h2>
 <ul>
 <li><a href="/-ji-lu--zai-GitHub-shang-da-jian-Hexo">搭建 Hexo</a></li>
@@ -574,7 +573,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a target="_blank" rel="nofollow noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43130202000203"><img src="https://img.limour.top/2023/08/27/64eadeb81d6a0.webp" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload>湘公网安备43130202000203号  </a> <a target="_blank" rel="nofollow noopener" href="https://beian.miit.gov.cn/">湘ICP备20008299号 </a> <a target="_blank" rel="nofollow noopener" href="https://icp.gov.moe/?keyword=20210128">萌ICP备20210128号</a> <br> <a href="https://www.foreverblog.cn/" target="_blank"> <img src="https://img.foreverblog.cn/logo_en_default.png" srcset="https://jscdn.limour.top/gh/Limour-dev/Sakurairo_Vision/load_svg/inload.svg" lazyload alt="" style="width:auto;height:24px"> </a> <br> <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/limour-blog/limour-blog.github.io" target="_blank" rel="nofollow noopener"><span>SRC</span></a> <i class="iconfont icon-love"></i> <a href="https://web.archive.org/web/20231130095837/https://effectiveacceleration.tech/" target="_blank" rel="nofollow noopener"><span>e/Acc</span></a> 
+       <a target="_blank" rel="nofollow noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43130202000203"><img src="https://img.limour.top/2023/08/27/64eadeb81d6a0.webp" srcset="https://img.limour.top/inload.svg" lazyload>湘公网安备43130202000203号  </a> <a target="_blank" rel="nofollow noopener" href="https://beian.miit.gov.cn/">湘ICP备20008299号 </a> <a target="_blank" rel="nofollow noopener" href="https://icp.gov.moe/?keyword=20210128">萌ICP备20210128号</a> <br> <a href="https://www.foreverblog.cn/" target="_blank"> <img src="https://img.foreverblog.cn/logo_en_default.png" srcset="https://img.limour.top/inload.svg" lazyload alt="" style="width:auto;height:24px"> </a> <br> <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/limour-blog/limour-blog.github.io" target="_blank" rel="nofollow noopener"><span>SRC</span></a> <i class="iconfont icon-love"></i> <a href="https://web.archive.org/web/20231130095837/https://effectiveacceleration.tech/" target="_blank" rel="nofollow noopener"><span>e/Acc</span></a> 
     </div>
   
   
@@ -715,6 +714,8 @@
     <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
 <!-- hexo injector body_end start -->
+<script src="/theme-inject/cdn.js"></script>
+
 <script defer src="/theme-inject/timeliness.js"></script>
 <!-- hexo injector body_end end --></body>
 </html>

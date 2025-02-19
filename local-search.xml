@@ -208,9 +208,9 @@
       
       <tag>docker</tag>
       
-      <tag>openai</tag>
-      
       <tag>rag</tag>
+      
+      <tag>openai</tag>
       
     </tags>
     
@@ -667,6 +667,8 @@
     
     <tags>
       
+      <tag>ssh</tag>
+      
       <tag>探索</tag>
       
       <tag>docker</tag>
@@ -674,8 +676,6 @@
       <tag>ngpm</tag>
       
       <tag>内网穿透</tag>
-      
-      <tag>ssh</tag>
       
       <tag>ws</tag>
       
@@ -765,9 +765,9 @@
     
     <tags>
       
-      <tag>llama</tag>
-      
       <tag>docker</tag>
+      
+      <tag>llama</tag>
       
       <tag>ngpm</tag>
       
@@ -1188,9 +1188,9 @@
     
     <tags>
       
-      <tag>termux</tag>
-      
       <tag>ssh</tag>
+      
+      <tag>termux</tag>
       
     </tags>
     
@@ -1282,11 +1282,11 @@
       
       <tag>docker</tag>
       
+      <tag>jupyter</tag>
+      
       <tag>vscode</tag>
       
       <tag>rstudio</tag>
-      
-      <tag>jupyter</tag>
       
     </tags>
     
@@ -1536,9 +1536,9 @@
     
     <tags>
       
-      <tag>llama</tag>
-      
       <tag>docker</tag>
+      
+      <tag>llama</tag>
       
     </tags>
     
@@ -2666,9 +2666,9 @@
     
     <tags>
       
-      <tag>forestplot</tag>
-      
       <tag>regression</tag>
+      
+      <tag>forestplot</tag>
       
     </tags>
     
@@ -2767,9 +2767,9 @@
     
     <tags>
       
-      <tag>celltypist</tag>
-      
       <tag>生信</tag>
+      
+      <tag>celltypist</tag>
       
       <tag>分群</tag>
       

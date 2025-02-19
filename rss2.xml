@@ -296,9 +296,9 @@
       
       <category domain="https://hexo.limour.top/tags/docker/">docker</category>
       
-      <category domain="https://hexo.limour.top/tags/openai/">openai</category>
-      
       <category domain="https://hexo.limour.top/tags/rag/">rag</category>
+      
+      <category domain="https://hexo.limour.top/tags/openai/">openai</category>
       
       
       <comments>https://hexo.limour.top/develop-rag-plugin-for-next-web#disqus_thread</comments>
