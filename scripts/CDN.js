@@ -11,6 +11,6 @@ filter.register('before_generate', () => {
 }, 99);
 
 // freecdn
-hexo.extend.injector.register('body_end', `
+hexo.extend.injector.register('head_begin', `
 <script src="/theme-inject/cdn.js"></script>
 `);

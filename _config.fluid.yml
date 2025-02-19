@@ -1083,31 +1083,31 @@ static_prefix:
   internal_css: /css
   internal_img: /img
 
-  anchor: https://jscdn.limour.top/npm/anchor-js@4.3.1/
+  anchor: /cdn/anchor-js/
 
-  github_markdown: https://jscdn.limour.top/npm/github-markdown-css@4.0.0/
+  github_markdown: /cdn/github-markdown-css/
 
-  jquery: https://jscdn.limour.top/npm/jquery@3.6.4/dist/
+  jquery: /cdn/jquery/
 
-  bootstrap: https://jscdn.limour.top/npm/bootstrap@4.6.1/dist/
+  bootstrap: /cdn/bootstrap/
 
   prismjs: https://lib.baomitu.com/prism/1.29.0/
 
-  tocbot: https://jscdn.limour.top/npm/tocbot@4.20.1/dist/
+  tocbot: /cdn/tocbot/
 
   typed: https://lib.baomitu.com/typed.js/2.0.12/
 
   fancybox: https://lib.baomitu.com/fancybox/3.5.7/
 
-  nprogress: https://jscdn.limour.top/npm/nprogress@0.2.0/
+  nprogress: /cdn/nprogress/
 
   mathjax: https://lib.baomitu.com/mathjax/3.2.2/
 
-  katex: https://jscdn.limour.top/npm/katex@0.16.21/dist/
+  katex: /cdn/katex/
 
   busuanzi: https://busuanzi.ibruce.info/busuanzi/2.3/
 
-  clipboard: https://jscdn.limour.top/npm/clipboard-js@0.3.6/
+  clipboard: /cdn/clipboard-js/
 
   mermaid: https://lib.baomitu.com/mermaid/8.14.0/
 
@@ -1123,4 +1123,4 @@ static_prefix:
 
   discuss: https://lib.baomitu.com/discuss/1.2.1/
 
-  hint: https://jscdn.limour.top/npm/hint.css@2.7.0/
+  hint: /cdn/hint.css/
