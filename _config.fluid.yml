@@ -1103,11 +1103,11 @@ static_prefix:
 
   mathjax: https://lib.baomitu.com/mathjax/3.2.2/
 
-  katex: https://lib.baomitu.com/KaTeX/0.16.2/
+  katex: https://jscdn.limour.top/npm/katex@0.16.21/dist/
 
   busuanzi: https://busuanzi.ibruce.info/busuanzi/2.3/
 
-  clipboard: https://lib.baomitu.com/clipboard.js/2.0.11/
+  clipboard: https://jscdn.limour.top/npm/clipboard-js@0.3.6/
 
   mermaid: https://lib.baomitu.com/mermaid/8.14.0/
 
