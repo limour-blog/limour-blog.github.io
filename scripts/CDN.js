@@ -9,3 +9,8 @@ filter.register('before_generate', () => {
             .replace('//cdn.jsdelivr.net/', '//jscdn.limour.top/');
     }
 }, 99);
+
+// freecdn
+hexo.extend.injector.register('body_end', `
+<script src="/theme-inject/cdn.js"></script>
+`);

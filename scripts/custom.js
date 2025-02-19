@@ -2,7 +2,7 @@
 
 // 文章实效性提示
 hexo.extend.injector.register('body_end', `
-  <script defer src="/theme-inject/timeliness.js"></script>
+<script defer src="/theme-inject/timeliness.js"></script>
 `);
 
 // shynet 统计
@@ -14,7 +14,6 @@ hexo.extend.injector.register('head_begin', `
 hexo.extend.helper.register('autoCanonical', function (config, page) {
   var base_url = config.url;
   if (config.url.charAt(config.url.length - 1) !== '/') base_url += '/';
-  base_url += page.canonical_path
-
+  base_url += page.canonical_path;
   return '<link rel="canonical" href="' + base_url.replace('/index.html', '/').replace(/\.html$/g, '') + '"/>';
 });
