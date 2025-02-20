@@ -48,24 +48,18 @@ const cdn_list = {
 };
 const cdn_index = new Promise((resolve) => {
 	async function getFastestUrl(urls) {
-		const controllers = new Map();
 		const testUrl = (one) => {
 			const url = one[0];
 			const id = one[1];
-			const controller = new AbortController();
-			controllers.set(url, controller);
 			const startTime = performance.now();
-			return fetch(url, { method: 'GET', signal: controller.signal })
+			return fetch(url, {method: 'GET'})
 				.then(() => {
 					return {url, id, time: performance.now() - startTime};
 				})
-				.catch((error) => {
-					return {url, id, time: Infinity};
-				});
+				.catch(() => new Promise(() => {}));
 		}
 		const promises = urls.map(testUrl);
 		const fastest = await Promise.race(promises);
-		controllers.forEach((controller, url) => {if (url !== fastest.url) {controller.abort(); }});
 		return fastest;
 	}
 	const urls = [
@@ -73,9 +67,9 @@ const cdn_index = new Promise((resolve) => {
 		['https://jscdn.limour.top/npm/anchor-js@4.3.1/anchor.min.js', 0],
 		['https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', 2]
 	];
-    getFastestUrl(urls).then( (fastest) => {
+    getFastestUrl(urls).then((fastest) => {
         caches.open('freecdn.limour').then( (cache) => {
-            resolve(fastest.id)
+            resolve(fastest.id);
             console.log('最快的 URL:', fastest);
         });
     });
