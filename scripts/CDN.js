@@ -12,5 +12,10 @@ filter.register('before_generate', () => {
 
 // freecdn
 hexo.extend.injector.register('head_begin', `
+<script>
+const sw = navigator.serviceWorker
+sw.ready.then(() => {if(!sw.controller){location.reload();}});
+sw.register('/sw.js', {scope: '/'});
+</script>
 <script src="/theme-inject/cdn.js"></script>
 `);
