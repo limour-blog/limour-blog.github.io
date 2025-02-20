@@ -44,8 +44,16 @@ const cdn_list = {
 		"https://jscdn.limour.top/npm/hint.css@2.7.0/",
 		"https://cdn.jsdelivr.net/npm/hint.css@2.7.0/",
 		"https://lib.baomitu.com/hint.css/2.7.0/",
-	]
+	],
+	"waline": [
+		"https://unpkg.com/@waline/client@3.5.2/dist/",
+		"https://cdn.jsdelivr.net/npm/@waline/client@3.5.2/dist/",
+		"https://registry.npmmirror.com/@waline/client/3.5.2/files/dist/",
+	],
 };
+const cdn_patch = [
+	[/waline.js$/, "waline.umd.js"]
+];
 const cdn_index = new Promise((resolve) => {
 	async function getFastestUrl(urls) {
 		const testUrl = (one) => {
@@ -84,7 +92,8 @@ onactivate = (e) => {
 
 async function cdn_redirect(url, resolve) {
 	const key = url.pathname.match(cdn_regex)[1];
-	const newUrl = url.href.replace(cdn_regex, cdn_list[key][await cdn_index]);
+	var newUrl = url.href.replace(cdn_regex, cdn_list[key][await cdn_index]);
+	for(const [reg, text] of cdn_patch){newUrl = newUrl.replace(reg, text)};
 	console.log(newUrl);
 	resolve(Response.redirect(newUrl, 301));
 }
