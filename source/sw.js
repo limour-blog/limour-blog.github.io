@@ -46,72 +46,61 @@ const cdn_list = {
 		"https://lib.baomitu.com/hint.css/2.7.0/",
 	]
 };
-
-var cdn_index = 0;
-var flag = 0;
-const update_cdn_index = (e) => {
-const get_cache = (async () => {
-const cache = await caches.open('freecdn.limour');
-const res = await cache.match('cdn_index');
-cdn_index = res ? Number(await res.text()) : 0;
-})();
-if(e){e.waitUntil(get_cache);};
-if(flag){return;};
-flag = 1;
-async function getFastestUrl(urls) {
-	const controllers = new Map();
-	const testUrl = (one) => {
-		const url = one[0];
-		const id = one[1];
-		const controller = new AbortController();
-		controllers.set(url, controller);
-		const startTime = performance.now();
-		return fetch(url, { method: 'GET', signal: controller.signal })
-			.then(() => {
-				return {url, id, time: performance.now() - startTime};
-			})
-			.catch((error) => {
-				return {url, id, time: Infinity};
-			});
-	};
-	const promises = urls.map(testUrl);
-	const fastest = await Promise.race(promises);
-	controllers.forEach((controller, url) => {if (url !== fastest.url) {controller.abort(); }});
-	return fastest;
-}
-const urls = [
-	['https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js', 1],
-	['https://jscdn.limour.top/npm/anchor-js@4.3.1/anchor.min.js', 0],
-	['https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', 2]
-];
-getFastestUrl(urls).then((fastest) => {
-caches.open('freecdn.limour').then((cache) => {
-console.log('最快的 URL:', fastest);
-const res = new Response(fastest.id);
-cache.put('cdn_index', res);
-cdn_index = fastest.id;
+const cdn_index = new Promise((resolve) => {
+	async function getFastestUrl(urls) {
+		const controllers = new Map();
+		const testUrl = (one) => {
+			const url = one[0];
+			const id = one[1];
+			const controller = new AbortController();
+			controllers.set(url, controller);
+			const startTime = performance.now();
+			return fetch(url, { method: 'GET', signal: controller.signal })
+				.then(() => {
+					return {url, id, time: performance.now() - startTime};
+				})
+				.catch((error) => {
+					return {url, id, time: Infinity};
+				});
+		}
+		const promises = urls.map(testUrl);
+		const fastest = await Promise.race(promises);
+		controllers.forEach((controller, url) => {if (url !== fastest.url) {controller.abort(); }});
+		return fastest;
+	}
+	const urls = [
+		['https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js', 1],
+		['https://jscdn.limour.top/npm/anchor-js@4.3.1/anchor.min.js', 0],
+		['https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', 2]
+	];
+    getFastestUrl(urls).then( (fastest) => {
+        caches.open('freecdn.limour').then( (cache) => {
+            resolve(fastest.id)
+            console.log('最快的 URL:', fastest);
+        });
+    });
 });
-});
-};
 
-update_cdn_index();
-
-oninstall = (e) => {
-	self.skipWaiting();
-};
+oninstall = (e) => {self.skipWaiting();};
 
 onactivate = (e) => {
 	e.waitUntil(clients.claim());
 	console.log(cdn_list);
 };
 
-onfetch = (event) => {
-	const url = new URL(event.request.url);
-if (cdn_regex.test(url.pathname)){
-	update_cdn_index();
+async function cdn_redirect(url, resolve) {
 	const key = url.pathname.match(cdn_regex)[1]
-	const newUrl = url.href.replace(cdn_regex, cdn_list[key][cdn_index]);
+	const newUrl = url.href.replace(cdn_regex, cdn_list[key][await cdn_index]);
 	console.log(newUrl);
-	const redirect = Response.redirect(newUrl, 301);
-	event.respondWith(redirect);
-}}
+	resolve(Response.redirect(newUrl, 301));
+}
+
+onfetch = (e) => {
+    const url = new URL(e.request.url);
+    if (cdn_regex.test(url.pathname)) {
+        e.respondWith(new Promise( (resolve) => {
+            cdn_redirect(url, resolve)
+        }
+        ))
+    }
+}
