@@ -13,11 +13,10 @@ JsDelivr 被墙后博客主题换用了国内的CDN，现在想让博客能根�
 // freecdn
 hexo.extend.injector.register('head_begin', `
 <script>
-const sw = navigator.serviceWorker
+const sw = navigator.serviceWorker;
 sw.ready.then(() => {if(!sw.controller){location.reload();}});
 sw.register('/sw.js', {scope: '/'});
 </script>
-<script src="/theme-inject/cdn.js"></script>
 `);
 ```
 + `head_begin` 会将 `<script>` 插入到页面 `<head>` 后的第一行，确保第一时间加载 `sw.js`
@@ -135,3 +134,33 @@ onfetch = (e) => {
 + 将资源地址改为 `/cdn/<key>/`
 ## 更新博客
 + 完成以上操作后，正常生成并部署博客。
+## 附加 butterfly 主题
++ 引入 `sw.js` 不变
++ `sw.js` 修改 `cdn_list` 如下
+```js
+const cdn_list = {
+	"custom": [
+		"https://s4.zstatic.net/ajax/libs/",
+		"https://cdnjs.cloudflare.com/ajax/libs/",
+		"https://lib.baomitu.com/",
+		"https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/",
+	],
+}
+```
++ `sw.js` 修改 `urls` 如下
+```js
+const urls = [
+		['https://s4.zstatic.net/ajax/libs/anchor-js/5.0.0/anchor.min.js', 0],
+		['https://cdnjs.cloudflare.com/ajax/libs/anchor-js/5.0.0/anchor.min.js', 1],
+		['https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', 2],
+		['https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/anchor-js/5.0.0/anchor.min.js', 3]
+	];
+```
++ 修改 butterfly 的配置文件
+```yml
+CDN:
+  internal_provider: local
+  third_party_provider: custom
+  version: false
+  custom_format: /cdn/custom/${cdnjs_name}/${version}/${min_cdnjs_file}
+```
