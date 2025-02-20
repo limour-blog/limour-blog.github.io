@@ -1,6 +1,6 @@
 ---
 title: 【记录】ServiceWorker实现前端资源高可用
-urlname: ServiceWorker实现前端资源高可用
+urlname: service-worker-resource-high-availability
 index_img: https://api.limour.top/randomImg?d=2025-02-20 07:46:29
 date: 2025-02-20 15:46:29
 tags: hexo
