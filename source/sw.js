@@ -83,7 +83,7 @@ onactivate = (e) => {
 };
 
 async function cdn_redirect(url, resolve) {
-	const key = url.pathname.match(cdn_regex)[1]
+	const key = url.pathname.match(cdn_regex)[1];
 	const newUrl = url.href.replace(cdn_regex, cdn_list[key][await cdn_index]);
 	console.log(newUrl);
 	resolve(Response.redirect(newUrl, 301));
