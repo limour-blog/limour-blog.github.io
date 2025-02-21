@@ -80,7 +80,7 @@ const cdn_index = new Promise((resolve) => {
 			const url = one[0];
 			const id = one[1];
 			const startTime = performance.now();
-			return fetch(url, {method: 'GET'})
+			return fetch(url, {method: 'GET', cache: 'no-cache'})
 				.then(() => {
 					return {url, id, time: performance.now() - startTime};
 				})
