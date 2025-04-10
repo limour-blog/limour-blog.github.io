@@ -25,3 +25,31 @@ services:
         command: -L="http+tls://limour:passwd@:13443?cert=cert.pem&key=key.pem&probe_resist=code:400&knock=knock.limour.top"
 
 ```
+## 附加 docker 配置代理
++ 将局域网代理转成本地代理
+```bash
+mkdir -p ~/app/gost && cd ~/app/gost && \
+cat > docker-compose.yml <<EOF
+services:
+  gost:
+    restart: unless-stopped
+    image: ginuerzh/gost
+    network_mode: host
+    command: -L=http://:8580 -F=socks5://localhost:7890?ip=192.168.1.4:7890
+EOF
+sudo docker compose up -d
+```
++ 配置某容器的代理为本地代理
+```bash
+mkdir -p ~/app/xxx && cd ~/app/xxx && \
+cat > docker-compose.yml <<EOF
+services:
+  xxx:
+    environment:
+      - http_proxy=http://host.docker.internal:8580
+      - https_proxy=http://host.docker.internal:8580
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+EOF
+sudo docker compose up -d
+```
