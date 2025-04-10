@@ -58,7 +58,7 @@ const cdn_list = {
 		"https://jscdn.limour.top/npm/@waline/client@3.5.2/dist/",
 		"https://cdn.jsdelivr.net/npm/@waline/client@3.5.2/dist/",
 		"https://unpkg.com/@waline/client@3.5.2/dist/",
-		"https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/waline/3.3.1/"
+		"https://s4.zstatic.net/npm/@waline/client@3.5.2/dist/"
 	],
 };
 const cdn_patch = [
