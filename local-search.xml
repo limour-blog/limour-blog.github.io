@@ -1149,7 +1149,7 @@
     <link href="/-bai-piao--shi-yong-CloudFlare-R2-da-jian-ge-ren-tu-chuang"/>
     <url>/-bai-piao--shi-yong-CloudFlare-R2-da-jian-ge-ren-tu-chuang</url>
     
-    <content type="html"><![CDATA[优点介绍免费额度足够个人使用无需额外配置 CDN自定义域名比较优雅FreePaid - Rates存储10 GB / month$0.015 / GB-monthA 类操作1 million requests / month$4.50 / million requestsB 类操作10 million requests / month$0.36 / million requests第一步 创建 R2 存储桶第二步 绑定域名第三步 创建 S3 令牌第四步 安装 lsky 图床安装反代服务webp 截图第五步 图床添加 R2 储存桶附加 图床备份获取拥有读取和列表权限的令牌附加 图片预处理imagemagick附加 旧图片归档获取拥有读写权限的令牌修改原文章图片地址 _posts 目录]]></content>
+    <content type="html"><![CDATA[优点介绍免费额度足够个人使用无需额外配置 CDN自定义域名比较优雅FreePaid - Rates存储10 GB / month$0.015 / GB-monthA 类操作1 million requests / month$4.50 / million requestsB 类操作10 million requests / month$0.36 / million requests第一步 创建 R2 存储桶第二步 绑定域名第三步 创建 S3 令牌第四步 安装 lsky 图床安装反代服务webp 截图第五步 图床添加 R2 储存桶附加 图床备份获取拥有读取和列表权限的令牌附加 图片预处理imagemagick附加 旧图片归档获取拥有读写权限的令牌修改原文章图片地址 _posts 目录附加 CF优选IPCF现在会给某些地区的用户固定分配 104.21.16/32/48/64/80/96/112.1 这几个IP，以适配特定防火墙。而 R2 的自定义域无法正常更改CNAME，因此得曲线救国一下。启用R2的 公共开发 URL，格式一般为 pub-xxx.r2.devnginx 反代 pub-xxx.r2.dev，配置类似下面这样注意点1 nginx 配置的 Domain Names 为主域名注意点2 因CF限制，主域名不能直接 CNAME 到优选域名，需 CNAME 到次域名，次域名再 CNAME 到优选域名正常按照 Cloudflare优选IP 流程进行即可。]]></content>
     
     
     
