@@ -103,3 +103,18 @@ sed -i 's|https://img-cdn.limour.top/i/|https://img.limour.top/archives_2023/|g'
 sed -i 's|https://img-cdn.limour.top/|https://img.limour.top/archives_2023/|g' *.md
 sed -i 's#https://img.limour.top/archives_2023/\(.*\)\.png#https://img.limour.top/archives_2023/\1.webp#g' *.md
 ```
+## 附加 CF优选IP
+CF现在会给某些地区的用户固定分配 `104.21.16/32/48/64/80/96/112.1` 这几个IP，以适配特定防火墙。而 R2 的自定义域无法正常更改CNAME，因此得曲线救国一下。
++ 启用R2的 `公共开发 URL`，格式一般为 `pub-xxx.r2.dev`
++ nginx 反代 `pub-xxx.r2.dev`，配置类似下面这样
+```nginx
+location / {
+	proxy_pass https://pub-xxx.r2.dev;
+	proxy_ssl_server_name on;
+	proxy_ssl_name pub-xxx.r2.dev;
+	proxy_set_header Host pub-xxx.r2.dev;
+}
+```
++ 注意点1 nginx 配置的 Domain Names 为主域名 
++ 注意点2 因CF限制，主域名不能直接 CNAME 到优选域名，需 CNAME 到次域名，次域名再 CNAME 到优选域名
++ 正常按照 [Cloudflare优选IP](https://blog.mnxy.eu.org/posts/tech/cdn) 流程进行即可。
