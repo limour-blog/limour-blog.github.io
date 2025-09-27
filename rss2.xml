@@ -9,8 +9,36 @@
     <atom:link href="https://hexo.limour.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sun, 08 Jun 2025 04:03:32 GMT</pubDate>
+    <pubDate>Sat, 27 Sep 2025 06:22:13 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>【绘图】云雨图比较两组的分布差异</title>
+      <link>https://hexo.limour.top/distribution-differences-using-raincloud-chart</link>
+      <guid>https://hexo.limour.top/distribution-differences-using-raincloud-chart</guid>
+      <pubDate>Sat, 27 Sep 2025 05:09:19 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h2 id=&quot;配置环境&quot;&gt;配置环境&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/-ji-lu--an-zhuang-sheng-xin-de-dai-ma-bian-xie-huan-jing&quot;&gt;基础编程环境&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;hi</description>
+        
+      
+      
+      
+      <content:encoded><![CDATA[<h2 id="配置环境">配置环境</h2><ul><li><a href="/-ji-lu--an-zhuang-sheng-xin-de-dai-ma-bian-xie-huan-jing">基础编程环境</a></li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda create -n raincloud conda-forge::r-tidyverse conda-forge::r-irkernel conda-forge::r-gghalves conda-forge::r-ggbeeswarm -y<br><span class="hljs-comment"># conda install -n raincloud conda-forge::r-ggbeeswarm -y</span><br>conda run -n raincloud Rscript -e <span class="hljs-string">&quot;IRkernel::installspec(name=&#x27;raincloud&#x27;, displayname=&#x27;r-raincloud&#x27;)&quot;</span><br></code></pre></td></tr></table></figure><h2 id="使用示例">使用示例</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs R">require<span class="hljs-punctuation">(</span>ggplot2<span class="hljs-punctuation">)</span><br>require<span class="hljs-punctuation">(</span>gghalves<span class="hljs-punctuation">)</span><br>require<span class="hljs-punctuation">(</span>ggbeeswarm<span class="hljs-punctuation">)</span><br>require<span class="hljs-punctuation">(</span>tidyverse<span class="hljs-punctuation">)</span><br>require<span class="hljs-punctuation">(</span>RColorBrewer<span class="hljs-punctuation">)</span><br>options<span class="hljs-punctuation">(</span>repr.plot.width<span class="hljs-operator">=</span><span class="hljs-number">6</span><span class="hljs-punctuation">,</span> repr.plot.height<span class="hljs-operator">=</span><span class="hljs-number">12</span><span class="hljs-punctuation">)</span><br>RColorBrewer<span class="hljs-operator">::</span>display.brewer.all<span class="hljs-punctuation">(</span>type <span class="hljs-operator">=</span> <span class="hljs-string">&quot;all&quot;</span><span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs R">data <span class="hljs-operator">&lt;-</span> iris<br>data  <span class="hljs-operator">%&gt;%</span> head<br></code></pre></td></tr></table></figure><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs R">p <span class="hljs-operator">&lt;-</span> ggplot<span class="hljs-punctuation">(</span>data<span class="hljs-punctuation">,</span> aes<span class="hljs-punctuation">(</span><br>    x <span class="hljs-operator">=</span> Species<span class="hljs-punctuation">,</span><br>    y <span class="hljs-operator">=</span> Sepal.Length<span class="hljs-punctuation">,</span><br>    fill <span class="hljs-operator">=</span> Species<span class="hljs-punctuation">,</span><br>    color <span class="hljs-operator">=</span> Species<br><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br>p_color <span class="hljs-operator">&lt;-</span> RColorBrewer<span class="hljs-operator">::</span>brewer.pal<span class="hljs-punctuation">(</span><span class="hljs-number">3</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;Dark2&quot;</span><span class="hljs-punctuation">)</span> <br>p <span class="hljs-operator">&lt;-</span> p <span class="hljs-operator">+</span> scale_color_manual<span class="hljs-punctuation">(</span>values<span class="hljs-operator">=</span>rev<span class="hljs-punctuation">(</span>p_color<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">+</span> scale_fill_manual<span class="hljs-punctuation">(</span>values<span class="hljs-operator">=</span>rev<span class="hljs-punctuation">(</span>p_color<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs R">p1 <span class="hljs-operator">&lt;-</span> p <span class="hljs-operator">+</span> geom_half_violin<span class="hljs-punctuation">(</span><br>    nudge <span class="hljs-operator">=</span> <span class="hljs-number">0.08</span><span class="hljs-punctuation">,</span> <br>    side <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;R&#x27;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment"># side：显示哪一侧， &quot;I&quot;代表左侧，&quot;R&quot;代表右侧，默认&quot;I&quot;；</span><br>    trim <span class="hljs-operator">=</span> <span class="hljs-built_in">T</span><span class="hljs-punctuation">,</span> <span class="hljs-comment"># trim：小提琴图尾部的数据修整，默认为&quot;T&quot;,表示将尾部修整到数据范围；&quot;F&quot;表示不修剪尾部；</span><br>    alpha <span class="hljs-operator">=</span> <span class="hljs-number">0.9</span><br><span class="hljs-punctuation">)</span> <span class="hljs-operator">+</span> geom_beeswarm<span class="hljs-punctuation">(</span><br>    aes<span class="hljs-punctuation">(</span>x <span class="hljs-operator">=</span> <span class="hljs-built_in">as.numeric</span><span class="hljs-punctuation">(</span>Species<span class="hljs-punctuation">)</span> <span class="hljs-operator">-</span> <span class="hljs-number">0.08</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span><br>    side <span class="hljs-operator">=</span> <span class="hljs-operator">-</span><span class="hljs-number">1L</span><span class="hljs-punctuation">,</span>  <span class="hljs-comment"># side：显示哪一侧， &quot;-1L&quot;代表左侧，&quot;1L&quot;代表右侧；</span><br>    size <span class="hljs-operator">=</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span> shape <span class="hljs-operator">=</span> <span class="hljs-number">20</span><span class="hljs-punctuation">,</span> alpha <span class="hljs-operator">=</span> <span class="hljs-number">0.8</span><br><span class="hljs-punctuation">)</span> <span class="hljs-operator">+</span> geom_boxplot<span class="hljs-punctuation">(</span><br>    outlier.shape <span class="hljs-operator">=</span> <span class="hljs-literal">NA</span><span class="hljs-punctuation">,</span> <span class="hljs-comment"># 隐藏离群点；</span><br>    width <span class="hljs-operator">=</span> <span class="hljs-number">0.1</span><span class="hljs-punctuation">,</span><br>    alpha <span class="hljs-operator">=</span> <span class="hljs-number">0.5</span><br><span class="hljs-punctuation">)</span> <span class="hljs-operator">+</span> coord_flip<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">+</span> theme_bw<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">+</span> theme<span class="hljs-punctuation">(</span>panel.grid<span class="hljs-operator">=</span>element_blank<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br>options<span class="hljs-punctuation">(</span>repr.plot.width<span class="hljs-operator">=</span><span class="hljs-number">12</span><span class="hljs-punctuation">,</span> repr.plot.height<span class="hljs-operator">=</span><span class="hljs-number">9</span><span class="hljs-punctuation">)</span><br>p1<br></code></pre></td></tr></table></figure><p><img src="https://img.limour.top/2025/09/27/68d78281b0a1b.webp" alt=""></p>]]></content:encoded>
+      
+      
+      
+      <category domain="https://hexo.limour.top/tags/raincloud/">raincloud</category>
+      
+      
+      <comments>https://hexo.limour.top/distribution-differences-using-raincloud-chart#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>【记录】安装 Win11 IoT LTSC</title>
@@ -506,36 +534,6 @@
       
       
       <comments>https://hexo.limour.top/Using-Chinese-New-Interpretation-to-Test-Model-Authenticity#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>【探索】Windows配置QoS保证重要应用的网络通畅</title>
-      <link>https://hexo.limour.top/Windows-configuration-QoS-ensures-smooth-network-connectivity-for-important-applications</link>
-      <guid>https://hexo.limour.top/Windows-configuration-QoS-ensures-smooth-network-connectivity-for-important-applications</guid>
-      <pubDate>Tue, 06 Aug 2024 08:59:49 GMT</pubDate>
-      
-        
-        
-      <description>&lt;h2 id=&quot;开启组策略&quot;&gt;开启组策略&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;运行下面的 &lt;code&gt;.bat&lt;/code&gt; 脚本&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight cmd&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;s</description>
-        
-      
-      
-      
-      <content:encoded><![CDATA[<h2 id="开启组策略">开启组策略</h2><ul><li>运行下面的 <code>.bat</code> 脚本</li></ul><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cmd">@<span class="hljs-built_in">echo</span> off<br><span class="hljs-built_in">pushd</span> &quot;%~dp0&quot;<br><span class="hljs-built_in">dir</span> /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~<span class="hljs-number">3</span>*.mum &gt;List.txt<br><span class="hljs-built_in">dir</span> /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~<span class="hljs-number">3</span>*.mum &gt;&gt;List.txt<br><span class="hljs-keyword">for</span> /f <span class="hljs-variable">%%i</span> <span class="hljs-keyword">in</span> (&#x27;<span class="hljs-built_in">findstr</span> /i . List.txt <span class="hljs-number">2</span>^&gt;<span class="hljs-built_in">nul</span>&#x27;) <span class="hljs-keyword">do</span> dism /online /norestart /add-package:&quot;C:\Windows\servicing\Packages\<span class="hljs-variable">%%i</span>&quot;<br><span class="hljs-built_in">pause</span><br></code></pre></td></tr></table></figure><h2 id="开启-QoS">开启 QoS</h2><ul><li>win+r 运行 <code>gpedit.msc</code></li><li>计算机配置 -&gt; 管理模板 -&gt; 网络 -&gt; QoS数据包计划程序 -&gt; 限制可保留带宽</li></ul><h2 id="配置优先级">配置优先级</h2><ul><li>win+r 运行 <code>gpedit.msc</code></li><li>计算机配置 -&gt; Windows 设置 -&gt; 基于策略的 QoS</li><li>在树形图“基于策略的 QoS”上右键，点选“新建策略”，在“新建策略”窗口中输入策略名称</li><li>在“新建策略”窗口中，DSCP 值即为程序优先级（0-63），高于32则提升优先级，低于32则降低优先级。</li><li>如果选中“指定出站调节率”，可对出站流量启用中止功能，然后指定一个大于 1 的值。设置完成之后，点击下一步。</li></ul>]]></content:encoded>
-      
-      
-      
-      <category domain="https://hexo.limour.top/tags/windows/">Windows</category>
-      
-      <category domain="https://hexo.limour.top/tags/qos/">QoS</category>
-      
-      
-      <comments>https://hexo.limour.top/Windows-configuration-QoS-ensures-smooth-network-connectivity-for-important-applications#disqus_thread</comments>
       
     </item>
     
