@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>【绘图】使用Upset图替代韦恩图</title>
+    <link href="/replace-venn-diagram-with-upset-diagram"/>
+    <url>/replace-venn-diagram-with-upset-diagram</url>
+    
+    <content type="html"><![CDATA[配置环境基础编程环境使用示例]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>绘图</tag>
+      
+      <tag>Upset</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【绘图】云雨图比较两组的分布差异</title>
     <link href="/distribution-differences-using-raincloud-chart"/>
     <url>/distribution-differences-using-raincloud-chart</url>
@@ -15,6 +36,8 @@
     <tags>
       
       <tag>raincloud</tag>
+      
+      <tag>绘图</tag>
       
     </tags>
     
@@ -2598,6 +2621,27 @@
       <tag>MICE</tag>
       
       <tag>R</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【绘图】聚类热图展示数据细节</title>
+    <link href="/cluster-heatmap-displays-data-details"/>
+    <url>/cluster-heatmap-displays-data-details</url>
+    
+    <content type="html"><![CDATA[配置环境基础编程环境使用示例]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>heatmap</tag>
+      
+      <tag>绘图</tag>
       
     </tags>
     
