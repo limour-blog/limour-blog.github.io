@@ -9,8 +9,36 @@
     <atom:link href="https://hexo.limour.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sun, 26 Oct 2025 16:20:44 GMT</pubDate>
+    <pubDate>Sun, 02 Nov 2025 15:07:42 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>【想法】基于双签钱包的零信任交易设计</title>
+      <link>https://hexo.limour.top/design-of-zero-trust-transaction-based-on-dual-signature-wallet</link>
+      <guid>https://hexo.limour.top/design-of-zero-trust-transaction-based-on-dual-signature-wallet</guid>
+      <pubDate>Sun, 02 Nov 2025 14:52:37 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h2 id=&quot;情景&quot;&gt;情景&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;小A想4000U向小B购买1盎司实物黄金，小A、小B互相匿名&lt;/li&gt;
+&lt;li&gt;双方约定，以小B向某双方安全的地点放置黄金，之后小A在安全的时间取走的方式交货&lt;/li&gt;
+&lt;li&gt;通过以下方式可以保证小A拿到黄金后，不会拒绝</description>
+        
+      
+      
+      
+      <content:encoded><![CDATA[<h2 id="情景">情景</h2><ul><li>小A想4000U向小B购买1盎司实物黄金，小A、小B互相匿名</li><li>双方约定，以小B向某双方安全的地点放置黄金，之后小A在安全的时间取走的方式交货</li><li>通过以下方式可以保证小A拿到黄金后，不会拒绝向小B付款</li></ul><h2 id="设计">设计</h2><ol><li>双方约定一个双签钱包Y，需要双方共同签名才能取走资金</li><li>小A向Y存入风险押金X=400U，等待小B向Y存入X=400U</li><li>重复2，直到双签钱包总资金达到8000U，此时小A再向双签钱包存入4000U</li><li>小B放置黄金，并等待小A取走</li><li>小A取走黄金后，双方通过Y向小B转2X=800U，之后通过Y向小A转X=400U</li><li>重复5，直到小B收到4000U货款，并拿回自己质押的4000U</li><li>此时Y中剩下小A的400U押金，最后通过Y向小A转400U，交易结束</li><li>通过控制风险押金X的值，小A可以在至多损失X的情况下完成交易</li></ol>]]></content:encoded>
+      
+      
+      
+      <category domain="https://hexo.limour.top/tags/dex/">dex</category>
+      
+      
+      <comments>https://hexo.limour.top/design-of-zero-trust-transaction-based-on-dual-signature-wallet#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>【绘图】数据一致性分析和BA图</title>
@@ -519,30 +547,6 @@
       
       
       <comments>https://hexo.limour.top/shi-yong-circacompare-fen-xi-sheng-wu-jie-lv#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>【记录】将OSS挂载为WebDAV</title>
-      <link>https://hexo.limour.top/Mount-OSS-as-a-WebMAV</link>
-      <guid>https://hexo.limour.top/Mount-OSS-as-a-WebMAV</guid>
-      <pubDate>Fri, 01 Nov 2024 05:03:45 GMT</pubDate>
-      
-        
-        
-      <description>&lt;p&gt;OSS（对象存储服务）是一种分布式存储服务，它提供了简单的Web服务接口，使得用户可以在任何地方、任何时间存储和检索数据。而WebDAV（基于Web的分布式创作和版本控制）则是一个基于HTTP的协议，它允许用户通过网络对文件进行编辑和管理。将OSS转换成WebDAV可以方便</description>
-        
-      
-      
-      
-      <content:encoded><![CDATA[<p>OSS（对象存储服务）是一种分布式存储服务，它提供了简单的Web服务接口，使得用户可以在任何地方、任何时间存储和检索数据。而WebDAV（基于Web的分布式创作和版本控制）则是一个基于HTTP的协议，它允许用户通过网络对文件进行编辑和管理。将OSS转换成WebDAV可以方便使用Zotero这类文献管理软件进行同步。Zotero支持通过WebDAV协议同步附件，这样用户可以在不同的设备和平台上访问和管理自己的文献资料，提高了工作和研究的效率。因此，使用WebDAV对接OSS可以为Zotero用户带来极大的便利。</p><h2 id="新建-OSS-桶">新建 OSS 桶</h2><ul><li>新建一个储存桶，记录下<code>桶名称</code></li><li>新建一个RAM角色</li><li>记录下 <code>AccessKey ID</code> 和 <code>AccessKey Secret</code></li></ul><p><img src="https://img.limour.top/2024/11/01/6724624067144.webp" alt=""><br><img src="https://img.limour.top/2024/11/01/672462819133e.webp" alt=""></p><ul><li>授予访问权限，用 <code>http</code> 而非 <code>https</code>，因为 <code>ossfs-webdav</code> 很老了</li></ul><p><img src="https://img.limour.top/2024/11/01/672462bd10e86.webp" alt=""></p><ul><li>记录下<code>内网 EndPoint</code></li></ul><p><img src="https://img.limour.top/2024/11/01/6724631500a13.webp" alt=""></p><h2 id="转-WebDAV">转 WebDAV</h2><ul><li><a href="/Docker-bu-shu-Nginx-Proxy-Manager">反向代理服务</a></li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/app/ossfs &amp;&amp; <span class="hljs-built_in">cd</span> ~/app/ossfs &amp;&amp; nano docker-compose.yml<br>sudo docker compose up -d<br></code></pre></td></tr></table></figure><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&quot;3&quot;</span><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">ossfs:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">xxx.limour.top/yindaheng98/ossfs-webdav</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">cap_add:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">SYS_ADMIN</span><br>    <span class="hljs-attr">devices:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">/dev/fuse</span><br>    <span class="hljs-attr">security_opt:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">apparmor=unconfined</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-attr">SERVER_NAMES:</span> <span class="hljs-string">zotero.limour.top</span><br>      <span class="hljs-attr">BucketName:</span> <span class="hljs-string">你的BucketName</span><br>      <span class="hljs-attr">AccessKeyId:</span> <span class="hljs-string">你的AccessKeyId</span><br>      <span class="hljs-attr">AccessKeySecret:</span> <span class="hljs-string">你的AccessKeySecret</span><br>      <span class="hljs-attr">EndPoint:</span> <span class="hljs-string">你的EndPoint</span><br>      <span class="hljs-attr">USERNAME:</span> <span class="hljs-string">你的webdav用户名</span><br>      <span class="hljs-attr">PASSWORD:</span> <span class="hljs-string">你的webdav密码</span><br>      <span class="hljs-attr">OWNER_USER:</span> <span class="hljs-string">www-data</span><br>      <span class="hljs-attr">OWNER_GROUP:</span> <span class="hljs-string">www-data</span><br> <br><span class="hljs-attr">networks:</span><br>  <span class="hljs-attr">default:</span><br>    <span class="hljs-attr">external:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">ngpm</span><br></code></pre></td></tr></table></figure><h2 id="配置反代">配置反代</h2><p><img src="https://img.limour.top/2024/11/01/672463b1b0c91.webp" alt=""></p>]]></content:encoded>
-      
-      
-      
-      <category domain="https://hexo.limour.top/tags/oss/">oss</category>
-      
-      
-      <comments>https://hexo.limour.top/Mount-OSS-as-a-WebMAV#disqus_thread</comments>
       
     </item>
     
