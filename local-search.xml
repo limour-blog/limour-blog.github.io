@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>【记录】搭建 OpenList</title>
+    <link href="/set-up-openlist"/>
+    <url>/set-up-openlist</url>
+    
+    <content type="html"><![CDATA[部署反向代理服务注意 OPENLIST_ADMIN_PASSWORD 设置管理员密码挂载按 手册 获取新的配置更改静态资源地址Cloudflare 反代 jsDelivr添加评论系统搭建Waline评论系统]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>alist</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【宏观】投行对标普500走势的预测与回测</title>
     <link href="/prediction-and-backtesting-of-sp-500-trend"/>
     <url>/prediction-and-backtesting-of-sp-500-trend</url>
@@ -1248,7 +1267,7 @@
     <link href="/-fu-ke--zai-Flyio-shang-da-jian-Alist"/>
     <url>/-fu-ke--zai-Flyio-shang-da-jian-Alist</url>
     
-    <content type="html"><![CDATA[按 @moeyy 的教程《使用 Fly.io 部署 Alist》完成后，还有一些优化体验的小细节，在此记录一下。获取管理员账号更改静态资源地址Cloudflare 反代 jsDelivr新建一个Worker触发器-路由设置为 jscdn.limour.top/*转换规则设置允许跨域替换CDN在AList 管理页面中，将所有的 cdn.jsdelivr.net 修改为自己反代的地址添加评论系统在 Vercel 上部署 WalineAList 管理-设置-全局-自定义头部 中引入 Waline 样式AList 管理-元信息 中引入 Waline 客户端Waline 邮件异步推送Waline 邮件异步推送 by 星辰日记搭建反代服务在环境变量中添加 WEBHOOK, 值为  Deployments 里，重新部署WEBHOOK说明附加 Waline 换 MongoDBMongoDB 官网 新建免费的 M0 数据库，地区选新加坡，放行 0.0.0.0/0Vercel 上的 Waline 项目，Settings/Functions 里更改 Region 到新加坡MongoDB 连接里记录下连接信息，选项如下选择 Drivers 作为连接方式，Driver 为 Node.js，Version为 2.2.12 or later进入 Waline 管理后台，导出数据Vercel 里删除 LEAN 相关的环境变量，按 说明 添加 MongoDB 的连接信息Vercel/Deployments 里选择合适的分支，点旁边的三个点，选择 Redeploy进入 Waline 管理后台，重新注册后，导入数据自定义域名DNS 解析只能是&lt;仅 DNS&gt;Domain ownership verification 是 CNAME版本更新进 alist 后台 备份 &amp; 恢复 进行一次备份以防万一可能需要验卡: high-risk-unlock修复 stuckMachine stuck in replacing state演示地址]]></content>
+    <content type="html"><![CDATA[按 @moeyy 的教程《使用 Fly.io 部署 Alist》完成后，还有一些优化体验的小细节，在此记录一下。2026年更新Fly.io 免费不稳定了，Alist也被卖了请转向 搭建 OpenList获取管理员账号添加评论系统搭建Waline评论系统自定义域名DNS 解析只能是&lt;仅 DNS&gt;Domain ownership verification 是 CNAME版本更新进 alist 后台 备份 &amp; 恢复 进行一次备份以防万一可能需要验卡: high-risk-unlock修复 stuckMachine stuck in replacing state演示地址]]></content>
     
     
     
@@ -1301,6 +1320,44 @@
       <tag>ngpm</tag>
       
       <tag>r2</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【记录】搭建Waline评论系统</title>
+    <link href="/build-waline-comment-system"/>
+    <url>/build-waline-comment-system</url>
+    
+    <content type="html"><![CDATA[部署在 Vercel 上部署 WalineAList 管理-设置-全局-自定义头部 中引入 Waline 样式AList 管理-元信息 中引入 Waline 客户端Waline 邮件异步推送Waline 邮件异步推送 by 星辰日记搭建反代服务在环境变量中添加 WEBHOOK, 值为  Deployments 里，重新部署WEBHOOK说明附加 Waline 换 MongoDBMongoDB 官网 新建免费的 M0 数据库，地区选新加坡，放行 0.0.0.0/0Vercel 上的 Waline 项目，Settings/Functions 里更改 Region 到新加坡MongoDB 连接里记录下连接信息，选项如下选择 Drivers 作为连接方式，Driver 为 Node.js，Version为 2.2.12 or later进入 Waline 管理后台，导出数据Vercel 里删除 LEAN 相关的环境变量，按 说明 添加 MongoDB 的连接信息Vercel/Deployments 里选择合适的分支，点旁边的三个点，选择 Redeploy进入 Waline 管理后台，重新注册后，导入数据]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>alist</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【记录】Cloudflare 反代 jsDelivr</title>
+    <link href="/cloudflare-reverse-proxies-jsdelivr"/>
+    <url>/cloudflare-reverse-proxies-jsdelivr</url>
+    
+    <content type="html"><![CDATA[Worker 部署新建一个Worker触发器-路由设置为 jscdn.limour.top/*转换规则设置允许跨域替换CDN将所有的 cdn.jsdelivr.net 修改为自己反代的地址]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>alist</tag>
       
     </tags>
     

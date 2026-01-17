@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://hexo.limour.top/set-up-openlist.html</loc>
+    <lastmod>2026-01-17</lastmod>
+  </url>
+  <url>
+    <loc>https://hexo.limour.top/-fu-ke--zai-Flyio-shang-da-jian-Alist.html</loc>
+    <lastmod>2026-01-17</lastmod>
+  </url>
+  <url>
+    <loc>https://hexo.limour.top/build-waline-comment-system.html</loc>
+    <lastmod>2026-01-17</lastmod>
+  </url>
+  <url>
+    <loc>https://hexo.limour.top/cloudflare-reverse-proxies-jsdelivr.html</loc>
+    <lastmod>2026-01-17</lastmod>
+  </url>
+  <url>
     <loc>https://hexo.limour.top/prediction-and-backtesting-of-sp-500-trend.html</loc>
     <lastmod>2026-01-17</lastmod>
   </url>
@@ -59,10 +75,6 @@
   <url>
     <loc>https://hexo.limour.top/service-worker-resource-high-availability.html</loc>
     <lastmod>2025-02-21</lastmod>
-  </url>
-  <url>
-    <loc>https://hexo.limour.top/-fu-ke--zai-Flyio-shang-da-jian-Alist.html</loc>
-    <lastmod>2025-02-17</lastmod>
   </url>
   <url>
     <loc>https://hexo.limour.top/WebSocket-based-intranet-penetration-tool.html</loc>
