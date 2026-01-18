@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>【绘图】使用RCS展示剂量反应关系</title>
+    <link href="/using-rcs-to-demonstrate-dose-response-relationship"/>
+    <url>/using-rcs-to-demonstrate-dose-response-relationship</url>
+    
+    <content type="html"><![CDATA[数据拟合过程中，由于两端的数据较稀疏，如果在两端用立方样条，容易出现置信区间偏大的情况，因此，我们通常会把两端设定成线性回归，中间仍然设定成立方样条，这种方法称为限制性立方样条模型（Restricted Cubic Spline, RCS）。RCS常用来探索连续变量（比如LGE的具体百分比、ECV的具体数值）与结局风险（Hazard Ratio, HR）之间的非线性关系。早期的研究往往只做简单的线性回归（假设数值越大风险越高），或者人为地按四分位数分组。但生物学指标往往不是线性的（比如血糖、血压，过高过低都不好，或者超过某个值才危险）。RCS是目前公认的展示“剂量-反应关系”的最佳工具，它比单纯的线性回归更严谨，能捕捉到数据的细微变化趋势。RCS能告诉我们，随着连续变量数值的增加，死亡风险并不是匀速增加的，而是可能在某个点突然变得很陡峭（风险激增）。配置环境基础编程环境配置环境示例数据简单建模预测风险比可视化风险分布叠加密度图绘制生存曲线组合图片]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>绘图</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【记录】搭建 OpenList</title>
     <link href="/set-up-openlist"/>
     <url>/set-up-openlist</url>
