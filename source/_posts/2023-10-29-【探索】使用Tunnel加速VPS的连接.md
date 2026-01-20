@@ -3,7 +3,7 @@ title: 【探索】使用Tunnel加速VPS的连接
 urlname: Use-Tunnel-to-speed-up-the-connection-of-VPS
 date: 2023-10-29 04:36:52
 index_img: https://api.limour.top/randomImg?d=2023-10-29 04:36:52
-tags: [clash, ss, Tunnel, '探索']
+tags: 探索
 hide: true
 ---
 ## 准备依赖
@@ -68,6 +68,8 @@ dns:
   use-hosts: true
   nameserver: ['https://my.com/token']
   proxy-server-nameserver: [223.5.5.5, 119.29.29.29]
+  fallback: ['https://dns.alidns.com/dns-query']
+  fallback-filter: { geoip: true, geoip-code: CN, ipcidr: [240.0.0.0/4, 127.0.0.1/8] }
 proxies:
   - { name: "链式节点", type: ss, server: cdn.cdn.com, port: 80, cipher: chacha20-ietf-poly1305, password: password0, udp: true, dialer-proxy: "手动选择"}
 proxy-providers:
@@ -133,4 +135,9 @@ proxies:
   - { name: 'WARP', type: wireguard, server: engage.cloudflareclient.com, port: 2408, ip: 172.16.0.2, ipv6: ["config"]["interface"]["addresses"]["v6"], private-key: ["private_key"], public-key: ["config"]["peers"]["public_key"], reserved: [0, 0, 0], udp: true, dialer-proxy: "手动选择" }
 proxy-groups:
   - { name: PROXY, type: select, proxies: ["手动选择", "链式节点", "WARP", DIRECT] }
+```
+## 附加 自己写转换
++ 部署 [fastapi-launcher](https://github.com/Limour-dev/fastapi-launcher)
+```bash
+wget -O app/Plugins/subconverter.py https://raw.githubusercontent.com/Limour-dev/fastapi/refs/heads/main/Plugins/subconverter.py
 ```
