@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>【记录】独角数卡+BEpusdt搭建小店</title>
+    <link href="/dujiaoka-bepusdt"/>
+    <url>/dujiaoka-bepusdt</url>
+    
+    <content type="html"><![CDATA[搭建独角数卡反向代理更改下面的 MYSQL_PASSWORD 后执行更改下面的 DB_PASSWORD 为上面设置数据库的密码启动容器端口映射访问首页完成安装数据库地址填 shop-db，用户名密码为上面设置数据库的账户密码Redis地址 填 shop-redis账号：admin密码：admin登陆完成后更改密码更改容器状态更新状态搭建BEpusdt端口映射访问完成初次安装，记录下所有信息钱包新建几个子账户，记录地址填入两者对接检测文档有无更新下载补丁，并检测要修补的文件路径更改容器状态，应用补丁更新状态按文档完成剩下的配置注意将回调添加到防火墙白名单中，以免订单失败]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>docker</tag>
+      
+      <tag>ngpm</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【故事】拥挤的乐园</title>
     <link href="/crowded-eden"/>
     <url>/crowded-eden</url>
@@ -995,7 +1016,7 @@
     <link href="/Aggregating-Azure-and-OpenAI-APIs-with-OneAPI"/>
     <url>/Aggregating-Azure-and-OpenAI-APIs-with-OneAPI</url>
     
-    <content type="html"><![CDATA[One-api 是 OpenAI 接口管理 &amp; 分发系统，支持Azure、Anthropic Claude、Google PaLM 2、智谱 ChatGLM、百度文心一言、讯飞星火认知、阿里通义千问、360 智脑以及腾讯混元，可用于二次分发管理 key。在负载均衡的同时，有效避免了key的泄露风险部署 One-api反向代理账号：root密码：123456客户端ChatGPT-Next-Web沉浸式翻译Jupyter-ai在 令牌 中新建一个令牌，端点填反代的地址新建渠道Azure 需要确保部署模型的名称是 gpt-35-turbo可以将 one-api 本身当一个渠道进行套娃在 日志 里可以看到对不同渠道进行了负载均衡附加 关闭 Azure 筛选安装油猴插件去控制台新建一个筛选器，将筛选关闭，并开启异步筛选注释设置模型部署中模型的高级选项，切换筛选器为刚刚创建的筛选器附加 Google Vertex注册 GCP 账户访问  并注册GCP账户。激活账户获得所有模型的访问权限启用 Vertex AI API访问  为你的项目启用 Vertex AI API。访问  申请 Claude 模型。访问  激活 IAM Service Account Credentials API创建服务账户访问  Vertex AI Service Agent, Service Account Token Creator 和 Vertex AI User 的角色。在你刚创建的服务账户页面，转到&quot;密钥&quot;标签，点击&quot;添加密钥&quot;。选择&quot;创建新密钥&quot;并选择&quot;JSON&quot;作为密钥类型。密钥文件将自动下载。该文件包含worker所需的变量，如project_id、private_key和client_email。添加到 one-api 渠道区域 Region 写 us-east5Vertex AI Project ID 在 json 文件里Google Cloud Application Default Credentials JSON 为下载的 json 文件的内容详细内容点此附加 Amazon Bedrock申请模型访问权限添加 Access keylitellm 文档one-api 添加渠道推荐 部署 SillyTavern附加 部署 Next-Web添加基本身份验证修改 /api/openai 接口的 header设置里的 对话摘要模型 改为 gpt-4o-mini, 否则会默认使用最贵的模型来生成标题附加 搭建独角数卡反向代理账号：admin密码：admin数据库地址填 shop-dbRedis地址 填 shop-redis]]></content>
+    <content type="html"><![CDATA[One-api 是 OpenAI 接口管理 &amp; 分发系统，支持Azure、Anthropic Claude、Google PaLM 2、智谱 ChatGLM、百度文心一言、讯飞星火认知、阿里通义千问、360 智脑以及腾讯混元，可用于二次分发管理 key。在负载均衡的同时，有效避免了key的泄露风险部署 One-api反向代理账号：root密码：123456客户端ChatGPT-Next-Web沉浸式翻译Jupyter-ai在 令牌 中新建一个令牌，端点填反代的地址新建渠道Azure 需要确保部署模型的名称是 gpt-35-turbo可以将 one-api 本身当一个渠道进行套娃在 日志 里可以看到对不同渠道进行了负载均衡附加 关闭 Azure 筛选安装油猴插件去控制台新建一个筛选器，将筛选关闭，并开启异步筛选注释设置模型部署中模型的高级选项，切换筛选器为刚刚创建的筛选器附加 Google Vertex注册 GCP 账户访问  并注册GCP账户。激活账户获得所有模型的访问权限启用 Vertex AI API访问  为你的项目启用 Vertex AI API。访问  申请 Claude 模型。访问  激活 IAM Service Account Credentials API创建服务账户访问  Vertex AI Service Agent, Service Account Token Creator 和 Vertex AI User 的角色。在你刚创建的服务账户页面，转到&quot;密钥&quot;标签，点击&quot;添加密钥&quot;。选择&quot;创建新密钥&quot;并选择&quot;JSON&quot;作为密钥类型。密钥文件将自动下载。该文件包含worker所需的变量，如project_id、private_key和client_email。添加到 one-api 渠道区域 Region 写 us-east5Vertex AI Project ID 在 json 文件里Google Cloud Application Default Credentials JSON 为下载的 json 文件的内容详细内容点此附加 Amazon Bedrock申请模型访问权限添加 Access keylitellm 文档one-api 添加渠道推荐 部署 SillyTavern附加 部署 Next-Web添加基本身份验证修改 /api/openai 接口的 header设置里的 对话摘要模型 改为 gpt-4o-mini, 否则会默认使用最贵的模型来生成标题附加 独角数卡售卖独角数卡+BEpusdt搭建小店]]></content>
     
     
     
@@ -1726,7 +1747,7 @@
     <link href="/-ji-lu--an-zhuang-conda-bing-geng-huan-qing-hua-yuan"/>
     <url>/-ji-lu--an-zhuang-conda-bing-geng-huan-qing-hua-yuan</url>
     
-    <content type="html"><![CDATA[安装下载工具GitHub Proxy | file-proxy安装 aria2，并添加到环境变量Path安装 Aria2 Explorer chrome浏览器拓展可以 aria2c --enable-rpc 配合 Aria2 Explorer 进行下载安装conda下载 miniconda：清华镜像 | 官网conda config --set show_channel_urls yes(Windows) notepad.exe $env:HOMEPATH/.condarc(Linux) nano .condarc 确保是 清华镜像附加 修改 envs 位置nano .condarc 附加下面的配置项附加 打包环境常用命令示例创建环境：conda create -n llama -c conda-forge python -y查看环境：conda info --env删除环境：conda remove -n py36 --all安装 conda 包：conda install -n llama compilers make -c conda-forge -y安装 pip 包：conda run -n llama pip install llama-cpp-python[server] -i  clean --all安装 paddlepaddle：conda install paddlepaddle-gpu==2.4.2 cudatoolkit=11.6 -c  -c conda-forge创建新环境示例conda create -n tts_edge python -c conda-forgeconda activate tts_edgepython -m pip install edge-tts -i  --list-voicesedge-tts --voice zh-CN-XiaoxiaoNeural --text &quot;你好！有什么我可以帮助你的吗？&quot; --write-media hello.mp3 --write-subtitles hello.vtt回滚环境使用mamba加速构建包附加 win平台w64devkit-fortran: 不支持nvccVS BuildTools: 生成工具、CMake; CRT、ATL、MFC的SDK]]></content>
+    <content type="html"><![CDATA[安装下载工具GitHub Proxy | file-proxy安装 aria2，并添加到环境变量Path安装 Aria2 Explorer chrome浏览器拓展可以 aria2c --enable-rpc 配合 Aria2 Explorer 进行下载安装conda下载 miniconda：清华镜像 | 官网conda config --set show_channel_urls yes(Windows) notepad.exe $env:HOMEPATH/.condarc(Linux) nano .condarc 确保是 清华镜像执行 conda init 以便跟随终端一起启动附加 修改 envs 位置nano .condarc 附加下面的配置项附加 打包环境常用命令示例创建环境：conda create -n llama -c conda-forge python -y查看环境：conda info --env删除环境：conda remove -n py36 --all安装 conda 包：conda install -n llama compilers make -c conda-forge -y安装 pip 包：conda run -n llama pip install llama-cpp-python[server] -i  clean --all安装 paddlepaddle：conda install paddlepaddle-gpu==2.4.2 cudatoolkit=11.6 -c  -c conda-forge创建新环境示例conda create -n tts_edge python -c conda-forgeconda activate tts_edgepython -m pip install edge-tts -i  --list-voicesedge-tts --voice zh-CN-XiaoxiaoNeural --text &quot;你好！有什么我可以帮助你的吗？&quot; --write-media hello.mp3 --write-subtitles hello.vtt回滚环境使用mamba加速构建包附加 win平台w64devkit-fortran: 不支持nvccVS BuildTools: 生成工具、CMake; CRT、ATL、MFC的SDK]]></content>
     
     
     
