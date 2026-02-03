@@ -8,6 +8,7 @@ hide: true
 ---
 ## 准备依赖
 + [自建DoH服务](/Self-built-ad-blocking-DoH-server)
+### 有DOCKER
 ```bash
 mkdir -p ~/app/ss && cd ~/app/ss && nano docker-compose.yml
 cat > ./config.json <<EOF
@@ -35,6 +36,23 @@ services:
       - './config.json:/etc/shadowsocks-libev/config.json'
       - '/etc/localtime:/etc/localtime:ro'
     image: teddysun/shadowsocks-libev
+```
+### 无DOCKER
+```bash
+apt-get update && apt-get install shadowsocks-libev
+cat > /etc/shadowsocks-libev/config.json <<EOF
+{
+    "server":"0.0.0.0",
+    "server_port":25141,
+    "password":"password0",
+    "timeout":300,
+    "method":"chacha20-ietf-poly1305",
+    "fast_open":false,
+    "nameserver":"8.8.8.8",
+    "mode":"tcp_and_udp"
+}
+EOF
+systemctl restart shadowsocks-libev && systemctl status shadowsocks-libev
 ```
 ## 配置Tunnel
 + 项目地址: [Github](https://github.com/clash-verge-rev/clash-verge-rev); [Wiki](https://wiki.metacubex.one/config/); [Android](https://github.com/MetaCubeX/ClashMetaForAndroid)
