@@ -40,3 +40,6 @@ mkdir data && chmod 777 data && sudo docker compose up -d
 ![](https://img.limour.top/2026/03/02/69a47a812cb63.webp)
 
 + 访问地址创建管理员密码完成初始化
+
+## 渠道
++ [Vertex AI](https://docs.cloud.google.com/vertex-ai/generative-ai/docs/start/api-keys?usertype=standard)
