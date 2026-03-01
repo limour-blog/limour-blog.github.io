@@ -9,8 +9,29 @@
     <atom:link href="https://hexo.limour.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Tue, 03 Feb 2026 16:26:59 GMT</pubDate>
+    <pubDate>Sun, 01 Mar 2026 17:43:13 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>【记录】使用 axonhub 替换 one-api</title>
+      <link>https://hexo.limour.top/replace-one-api-with-axonhub</link>
+      <guid>https://hexo.limour.top/replace-one-api-with-axonhub</guid>
+      <pubDate>Sun, 01 Mar 2026 17:17:48 GMT</pubDate>
+      
+      <description>无论你使用的是 OpenAI SDK、Anthropic SDK 还是任何 AI SDK，AxonHub 都会透明地将你的请求转换为与任何支持的模型供应商兼容的格式。无需重构，无需更换 SDK——只需更改配置即可。</description>
+      
+      
+      
+      <content:encoded><![CDATA[<h2 id="部署">部署</h2><ul><li><a href="/Docker-bu-shu-Nginx-Proxy-Manager">反向代理</a></li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/app/axonhub &amp;&amp; <span class="hljs-built_in">cd</span> ~/app/axonhub<br></code></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> &gt; docker-compose.yml &lt;&lt;<span class="hljs-string">EOF</span><br><span class="hljs-string">version: &quot;3&quot;</span><br><span class="hljs-string"></span><br><span class="hljs-string">services:</span><br><span class="hljs-string">  axonhub:</span><br><span class="hljs-string">    image: looplj/axonhub:latest</span><br><span class="hljs-string">    environment:</span><br><span class="hljs-string">      AXONHUB_DB_DIALECT: sqlite3</span><br><span class="hljs-string">      AXONHUB_DB_DSN: file:/data/axonhub.db?cache=shared&amp;_fk=1</span><br><span class="hljs-string">    volumes:</span><br><span class="hljs-string">      - ./data:/data</span><br><span class="hljs-string">    restart: unless-stopped</span><br><span class="hljs-string"></span><br><span class="hljs-string">networks:</span><br><span class="hljs-string">  default:</span><br><span class="hljs-string">    external: true</span><br><span class="hljs-string">    name: ngpm</span><br><span class="hljs-string">EOF</span><br></code></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> data &amp;&amp; <span class="hljs-built_in">chmod</span> 777 data &amp;&amp; sudo docker compose up -d<br></code></pre></td></tr></table></figure><ul><li>端口映射</li></ul><p><img src="https://img.limour.top/2026/03/02/69a47a812cb63.webp" alt=""></p><ul><li>访问地址创建管理员密码完成初始化</li></ul>]]></content:encoded>
+      
+      
+      
+      <category domain="https://hexo.limour.top/tags/openai/">openai</category>
+      
+      
+      <comments>https://hexo.limour.top/replace-one-api-with-axonhub#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>【记录】独角数卡+BEpusdt搭建小店</title>
@@ -502,33 +523,6 @@
       
       
       <comments>https://hexo.limour.top/openwrt-dns-configuration#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>【记录】移除Windows中不受信任的证书</title>
-      <link>https://hexo.limour.top/remove-untrusted-certificates-windows</link>
-      <guid>https://hexo.limour.top/remove-untrusted-certificates-windows</guid>
-      <pubDate>Thu, 12 Dec 2024 13:27:24 GMT</pubDate>
-      
-        
-        
-      <description>&lt;p&gt;今天逛知乎，有人提到 EasyConnect 会给系统加上自己的 CA 证书。在自己系统里查了一下，发现是真的，因此这里记录一下删除这些恶意证书的过程。&lt;/p&gt;
-&lt;h2 id=&quot;查找恶意证书&quot;&gt;查找恶意证书&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;下载 &lt;a href=&quot;https:/</description>
-        
-      
-      
-      
-      <content:encoded><![CDATA[<p>今天逛知乎，有人提到 EasyConnect 会给系统加上自己的 CA 证书。在自己系统里查了一下，发现是真的，因此这里记录一下删除这些恶意证书的过程。</p><h2 id="查找恶意证书">查找恶意证书</h2><ol><li>下载 <a href="https://hexo.limour.top/go/#aHR0cHM6Ly9sZWFybi5taWNyb3NvZnQuY29tL3poLWNuL3N5c2ludGVybmFscy9kb3dubG9hZHMvc2lnY2hlY2s=" rel="noopener external nofollow noreferrer">sigcheck</a></li><li>下载 <a href="https://hexo.limour.top/go/#aHR0cDovL2N0bGRsLndpbmRvd3N1cGRhdGUuY29tL21zZG93bmxvYWQvdXBkYXRlL3YzL3N0YXRpYy90cnVzdGVkci9lbi9hdXRocm9vdHN0bC5jYWI=" rel="noopener external nofollow noreferrer">authrootstl.cab</a></li><li>将 <code>authrootstl.cab</code> 放入 <code>sigcheck</code> 的根目录</li><li>断网执行下面的命令</li></ol><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell">sigcheck64.exe <span class="hljs-literal">-tv</span><br>sigcheck64.exe <span class="hljs-literal">-tuv</span><br></code></pre></td></tr></table></figure><ul><li>得到了如下的结果</li></ul><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs txt">Machine\ROOT:<br>   Sangfor Technologies Inc.<br>        Cert Status:    Valid<br>        Valid Usage:    All<br>        Cert Issuer:    Sangfor Technologies Inc.<br>        Serial Number:  00 DE A4 D5 FA 33 CF 9E 9E<br>        Thumbprint:     A9062C5C1721FF87EBCBD89DF03719755560E7A0<br>        Algorithm:      sha256RSA<br>        Valid from:     23:27 2017/4/27<br>        Valid to:       23:27 2117/4/3<br>Machine\TrustedPublisher:<br>   Sangfor Technologies Inc.<br>        Cert Status:    Valid<br>        Valid Usage:    All<br>        Cert Issuer:    Sangfor Technologies Inc.<br>        Serial Number:  00 DE A4 D5 FA 33 CF 9E 9E<br>        Thumbprint:     A9062C5C1721FF87EBCBD89DF03719755560E7A0<br>        Algorithm:      sha256RSA<br>        Valid from:     23:27 2017/4/27<br>        Valid to:       23:27 2117/4/3<br></code></pre></td></tr></table></figure><h2 id="删除恶意证书">删除恶意证书</h2><ul><li>记录要删除证书的 <code>Thumbprint</code></li><li>将下面的文件保存成 <code>rm-ca.ps1</code></li></ul><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-keyword">param</span>(<br>[<span class="hljs-built_in">string</span>]<span class="hljs-variable">$Thumbprint</span>=<span class="hljs-variable">$</span>(<span class="hljs-keyword">throw</span> <span class="hljs-string">&quot;Parameter missing: -Thumbprint Thumbprint&quot;</span>)<br>)<br><br><span class="hljs-variable">$CAStores</span>=<span class="hljs-string">&quot;cert:\currentuser\root&quot;</span>, <span class="hljs-string">&quot;cert:\currentuser\authroot&quot;</span>, <span class="hljs-string">&quot;cert:\localmachine\root&quot;</span>, <span class="hljs-string">&quot;cert:\localmachine\authroot&quot;</span><br><br><span class="hljs-variable">$exist</span> = <span class="hljs-number">0</span><br><span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$store</span> <span class="hljs-keyword">in</span> <span class="hljs-variable">$CAStores</span>) &#123;<br>    <span class="hljs-variable">$location</span> = <span class="hljs-variable">$store</span>+<span class="hljs-string">&quot;\&quot;</span>+<span class="hljs-variable">$Thumbprint</span><br>    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">Test-Path</span> <span class="hljs-literal">-Path</span> <span class="hljs-variable">$location</span>) &#123;<br>        <span class="hljs-variable">$exist</span> = <span class="hljs-number">1</span><br>        <span class="hljs-built_in">Remove-Item</span>  <span class="hljs-literal">-Path</span> <span class="hljs-variable">$location</span> <span class="hljs-literal">-Force</span><br>    &#125;    <br>&#125;<br><span class="hljs-keyword">if</span> (<span class="hljs-variable">$exist</span> <span class="hljs-operator">-eq</span> <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">&quot;Thumbprint does not exist.&quot;</span><br>&#125;<br></code></pre></td></tr></table></figure><ul><li>运行 <code>.\rm-ca.ps1 -Thumbprint A9062C5C1721FF87EBCBD89DF03719755560E7A0</code> 删除对应的证书</li><li>再次 <code>查找恶意证书</code> 以确认成功</li></ul>]]></content:encoded>
-      
-      
-      
-      <category domain="https://hexo.limour.top/tags/doh/">DoH</category>
-      
-      
-      <comments>https://hexo.limour.top/remove-untrusted-certificates-windows#disqus_thread</comments>
       
     </item>
     
