@@ -7,6 +7,8 @@ tags: ['docker', 'ngpm', 'openai', 'llama']
 ---
 [One-api](https://github.com/songquanpeng/one-api) 是 OpenAI 接口管理 & 分发系统，支持Azure、Anthropic Claude、Google PaLM 2、智谱 ChatGLM、百度文心一言、讯飞星火认知、阿里通义千问、360 智脑以及腾讯混元，可用于二次分发管理 key。
 + 在负载均衡的同时，有效避免了key的泄露风险
+## 26-03-02 更新 
++ [使用 axonhub 替换 one-api](/replace-one-api-with-axonhub)
 ## 部署 One-api
 + [反向代理](/Docker-bu-shu-Nginx-Proxy-Manager)
 + 账号：`root`
