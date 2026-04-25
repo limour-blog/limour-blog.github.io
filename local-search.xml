@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>【绘图】相关性散点图</title>
+    <link href="/scatter-plot-of-correlation"/>
+    <url>/scatter-plot-of-correlation</url>
+    
+    <content type="html"><![CDATA[配置环境基础编程环境示例加载依赖读入数据选择数据绘图]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>绘图</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【绘图】两两比较热图</title>
     <link href="/pairwise-comparison-heatmap"/>
     <url>/pairwise-comparison-heatmap</url>
