@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>【记录】虚拟机安装Debian</title>
+    <link href="/installing-debian-on-vmware"/>
+    <url>/installing-debian-on-vmware</url>
+    
+    <content type="html"><![CDATA[观察了挺久，对于码农之外的人，pi-agent很不错。但这些agent在powershell环境下用起来总归是事倍功半，因此先虚拟机安装debian环境为搭建pi-agent做点准备。同时快照功能还能在AI删库后快速还原。准备文件debian系统的iso镜像无需多言的大好人VMware安装注意事项1、安装时选的镜像换源不干净，会卡住，搜教程在安装时换源，推荐阿里源2、虚拟机不需要swap分区，分区时删掉它sudo自动化换安全的源按安装的debian的版本改一下常用的软件中文输入法conda安装conda并更换清华源]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>openai</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【观点】我为什么恰好活在此刻</title>
     <link href="/why-am-i-living-at-this-very-moment"/>
     <url>/why-am-i-living-at-this-very-moment</url>
