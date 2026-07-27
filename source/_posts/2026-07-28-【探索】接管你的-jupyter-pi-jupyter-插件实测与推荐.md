@@ -1,5 +1,5 @@
 ---
-title: 【探索】接管你的 Jupyter —— pi-jupyter 插件实测与推荐
+title: 【探索】接管你的 Jupyter
 urlname: pi-jupyter
 index_img: https://api.limour.top/randomImg?d=2026-07-27 17:41:57
 date: 2026-07-28 01:41:57
@@ -106,3 +106,5 @@ pi-jupyter 走的是 Jupyter Server 自己的 HTTP / WebSocket 协议 + token �
 好的 agent 工具，不该把执行环境锁死在本地沙箱，也不该把人和 AI 隔在两个 kernel 里。pi-jupyter 用"连一个真实、持久、可见的远程 Jupyter"这一个朴素的设计，同时打通了**本机能用超算的算力**和**人机共用一个会话**两件事——而这正是数据 / 科研场景里最缺的两块拼图。两轮跨内核实测下来，它稳定、规范、细节到位，是我会放心推荐给同样在 Jupyter 里讨生活的同行的一款插件。
 
 去试试吧，让 agent 在你的超算 notebook 里，和你并肩写代码。
+
+`pi install git:github.com/Limour-dev/pi-jupyter`
