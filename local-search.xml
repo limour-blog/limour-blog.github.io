@@ -564,7 +564,7 @@
     
     <tags>
       
-      <tag>Windows</tag>
+      <tag>win</tag>
       
     </tags>
     
@@ -897,9 +897,9 @@
     
     <tags>
       
-      <tag>Windows</tag>
-      
       <tag>QoS</tag>
+      
+      <tag>win</tag>
       
     </tags>
     
@@ -1062,25 +1062,6 @@
       <tag>探索</tag>
       
       <tag>llama</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【避坑】Azure AI 避免反向薅羊毛</title>
-    <link href="/Azure-AI-prevents-reverse-wool-shearing"/>
-    <url>/Azure-AI-prevents-reverse-wool-shearing</url>
-    
-    <content type="html"><![CDATA[起因今天收到 Azure 的付费邮件，一看账单，好家伙，24.54$ ，比上个月暴涨 622%，给我 CPU 干烧了。赶紧去成本分析里按资源分类看上个月的扣费详情，然后就看到两个 10.33$ 的 Container Registry，分别位于我在 Azure AI Studio 里的两个不同项目所在区域。一顿折腾，发现这个 Container Registry，有一年的免费试用期，但是免费限额是 31/个/天，一个 15 天刚好是 10.33$ 。这 Azure 不讲武德，这样免费，头半个月根本不知道这东西要收费，等月末美滋滋去付账单时钱都已经扣完了。。。特别是，这东西似乎是 Azure AI Studio 自动开通的，我根本没有用到过它。心情更糟了。解决方案赶紧去资源组里找到这两个容器注册表，全给删了。删除后不会对 Azure AI 的使用产生影响。然后是想办法提工单，看能不能把这钱退回来。工单结果透过案件了解到Container Registry是您不清楚的情况下创建的，且您已经将此资源进行了删除。考虑到您是首次使用Azure产品较不熟悉，且已经将资源删除，经过竭力向主管团队申请，现为您申请了相关费用的减免，即：12/1/2023-12/31/2023期间由Container Registry – Standard产生的费用20.66 USD已经申请退回至您的信用卡，依据银行流程，款项约需要7-21个工作日抵达您的账户，届时请您查看。同时，我们也查看了您当前的计费周期（1/1/2024-1/31/2024）的使用量报表，Container Registry – Standard未产生费用，还请您放心。]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>openai</tag>
       
     </tags>
     
@@ -1288,27 +1269,6 @@
   
   
   <entry>
-    <title>【学习】孟德尔随机化</title>
-    <link href="/Mendelian-Randomization"/>
-    <url>/Mendelian-Randomization</url>
-    
-    <content type="html"><![CDATA[MR定义孟德尔随机化是一种基于全基因组测序数据(GWAS数据)，利用单核首酸多态性(SNPs)作为工具变量(IV)，用于揭示因果关系的新型流行病学方法，相较于队列研究等观察性研究，暴露在出生前便已确定，较少受到反向因果及混杂因素的影响，因而能够有效减少偏倚。MR的核心是运用遗传学数据作为桥梁，来探索某一暴露和某一结局之间的因果关联。与RCT将参与者随机分配到试验组或对照组类似，MR研究基于影响危险因素的一个或多个等位基因，对参与基因进行&quot;随机化&quot;(自然的随机化)，以确定这些遗传变异的携带者与非携带者相比，是否具有不同的疾病发生风险，因此，孟德尔随机化可以被认为类似于&quot;自然的随机对照试验&quot;。MR的相关术语理论假设the variant is associated with the exposurethe variant is not associated with the outcome via a confounding pathwaythe variant does not affect the outcome directly, only possibly indirectly via the exposure关联性假设：变异与暴露有关独立性假设：变异与结果之间没有通过混杂途径相关排他性假设：变异不直接影响结果，只可能通过暴露途径间接影响关联性假设：p值，F统计量，R^2排他性假设：与结局的相关性计算时，p值要大于0.05MR-Egger回归相比线性回归可以弱化对排他性假设的要求适用范围不确定先有鸡还是先有蛋，比如，到底是抑郁导致肺癌还是肺癌导致了抑郁？暴露因素难以测量，或者花费昂贵。例如，水溶性维生素等生物标志物的检测金标准可能成本太高，大样本无法承受，或者空腹血糖的测量需要隔夜空腹，可能不现实。暴露与结局数据来自同一人群，且不存在或存在少量可接受范围内的样本重叠配置环境基础编程环境GitHub 下载加速可能需要用到的加速服务数据来源精神病学基因组：PGC社会科学遗传学：SSGAC大脑健康和疾病：CTGMRCIEU汇总数据库：IEUGWAS研究目录：NHGRI-EBI自己分析出数据更多相关网站一些参考数据示例结局数据浏览器下载 ADHD2022_iPSYCH_deCODE_PGC.meta.gz上传到服务器其中SNP,Effect allele,Beta(OR),SE,P这五列是必须的。遇到没有提供EAF的数据，可以匹配千人基因组数据的EAF，get_eaf_from_1000G。示例暴露数据获取暴露数据自己的数据gwas_catalogmetab_qtlsproteomic_qtls某个基因某个性状的某个甲基化位点相关QTLIEU的IDUK_Biobank计算统计效力获取结局数据IEUUK_BiobankPGC的示例附加 代理SNP一部分暴露的SNPs在结局中找不到，可以找和这部分SNPs连锁不平衡的SNPs来代替。相关网站：snipaHarmonization将Exposure-SNP及Outcome-SNP等位基因方向协同根据EAF大小，剔除不能判断方向的回文SNP剔除incompatible SNP附加 一键报告MR分析回归分析异质性检测有异质性用随机效应模型ivw，无异质性用固定效应模型（也可以用随机效应模型，两者结果一致）异质性可能带来多效性，如果没有多效性，则可以说异质性没有带来多效性水平多效性P &lt; 0.05 说明不满足独立性假设，建议放弃继续做这个课题P &lt; 0.05 拒绝了截距为0的假设，说明SNP效应为0时依然有影响(截距存在)，有其他因素在起作用敏感性分析Leave-one-out analysis所有结果都不应该存在跨过0的情况，否则说明结果不稳定，不再能说明因果关系单SNP分析对每个暴露-结果组合进行多次分析，每次使用不同的单 SNP 进行分析方向性检测附加 稳健回归附加 绘制森林图美化森林图附加 计算PowerCalculating statistical power in Mendelian randomization studiesPower calculations for Mendelian RandomizationSample size: 结局总的样本量，不是暴露的样本量K: 结局中病例的比例，case/(case+control)OR: IVW的OR值，exp(beta)R2: MR_calc_r2_F 计算得到的所有R2的sum]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>SNP</tag>
-      
-      <tag>MR</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>【记录】使用one-api聚合Azure和OpenAI的API</title>
     <link href="/Aggregating-Azure-and-OpenAI-APIs-with-OneAPI"/>
     <url>/Aggregating-Azure-and-OpenAI-APIs-with-OneAPI</url>
@@ -1351,54 +1311,6 @@
       <tag>文明</tag>
       
       <tag>无政府主义</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【学习】使用GATK4.0找SNP</title>
-    <link href="/shi-yong-GATK-zhao-SNP"/>
-    <url>/shi-yong-GATK-zhao-SNP</url>
-    
-    <content type="html"><![CDATA[配置环境基础编程环境GitHub 下载加速可能需要用到的加速服务SRA工具GATK4BWA是DNA比对工具(不会跨外显子比对)，STAR是RNA比对工具找SNP不推荐用RNAseq的数据各种比对工具的说明准备数据参考数据NCBI上各物种的参考序列，可以找到RefSeq，比如Human是GCF_000001405知道序号后可以到FTP上下载相应的genomic.fna.gz文件比如GCF_000001405，依次进入000/001/405即可找到对应的文件最后得到的RefSeq目录结构如下已知SNPGATK官网提供了一些数据NCBI提供了dbSNPlftp ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/，密码空，直接回车下载和参考数据相对应的indels.hg38.vcf转换染色体名称到NCBI的参考文件assembly_report.txt 在下载NCBI参考数据FTP目录下建立索引最后得到的knownSites目录结构如下测序数据WGS的DNA测序数据以SRX247249做学习的示例数据，感谢曾老师指路下载方式见SRA文件转FASTQ文件也可以到ENA数据库上下载rawData质控原始数据质量判断​原始数据过滤工具质量判断（可跳过）对于PE而言，正向和反向reads的测量过程是独立的，将当成两次SE来处理最后的报告中：Q20的碱基要在95%以上（最差不低于90%）Q30要求大于85%（最差也不要低于80%）对于人类来说，GC含量应该在40%左右fastp一键质控fastp的详细说明; 中文介绍最后得到的cleanData目录结构如下数据比对最后得到的BAM目录结构如下同样本合并最后得到的MERGED目录结构如下局部重比对具体见黄树嘉博士的相关介绍因为本文是GATK 4.0的HaplotypeCaller模块，自带局部重比对，故用到的时候再写BQSR最后得到的MERGED目录结构如下两步法变异检测HaplotypeCallerCombineGVCFs单样本多样本GenotypeGVCFs最后得到的结果如下VQSR最后得到的结果如下SNP内容示例变异注释安装 VEPVEP官网地址进行注释最后得到的结果如下]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>GATK</tag>
-      
-      <tag>SNP</tag>
-      
-      <tag>WGS</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【复习】单细胞最佳实践的流程</title>
-    <link href="/dan-xi-bao-zui-jia-shi-jian-de-liu-cheng"/>
-    <url>/dan-xi-bao-zui-jia-shi-jian-de-liu-cheng</url>
-    
-    <content type="html"><![CDATA[配置环境基础编程环境GitHub 下载加速附加 安装SCP准备数据二代测序数据格式cellranger 定量读入数据环境 RNA 校正计算细胞周期评分双细胞过滤更多细节可视化过滤低质量细胞查看分群走向可视化]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>单细胞</tag>
-      
-      <tag>pipeline</tag>
-      
-      <tag>DoubletFinder</tag>
-      
-      <tag>DecontX</tag>
       
     </tags>
     
@@ -1564,7 +1476,7 @@
     
     <tags>
       
-      <tag>Github</tag>
+      <tag>GitHub</tag>
       
       <tag>hexo</tag>
       
@@ -1661,29 +1573,6 @@
   
   
   <entry>
-    <title>【白嫖】使用 CloudFlare R2 搭建个人图床</title>
-    <link href="/-bai-piao--shi-yong-CloudFlare-R2-da-jian-ge-ren-tu-chuang"/>
-    <url>/-bai-piao--shi-yong-CloudFlare-R2-da-jian-ge-ren-tu-chuang</url>
-    
-    <content type="html"><![CDATA[优点介绍免费额度足够个人使用无需额外配置 CDN自定义域名比较优雅FreePaid - Rates存储10 GB / month$0.015 / GB-monthA 类操作1 million requests / month$4.50 / million requestsB 类操作10 million requests / month$0.36 / million requests第一步 创建 R2 存储桶第二步 绑定域名第三步 创建 S3 令牌第四步 安装 lsky 图床安装反代服务webp 截图第五步 图床添加 R2 储存桶附加 图床备份获取拥有读取和列表权限的令牌附加 图片预处理imagemagick附加 旧图片归档获取拥有读写权限的令牌修改原文章图片地址 _posts 目录附加 CF优选IPCF现在会给某些地区的用户固定分配 104.21.16/32/48/64/80/96/112.1 这几个IP，以适配特定防火墙。而 R2 的自定义域无法正常更改CNAME，因此得曲线救国一下。启用R2的 公共开发 URL，格式一般为 pub-xxx.r2.devnginx 反代 pub-xxx.r2.dev，配置类似下面这样注意点1 nginx 配置的 Domain Names 为主域名注意点2 因CF限制，主域名不能直接 CNAME 到优选域名，需 CNAME 到次域名，次域名再 CNAME 到优选域名正常按照 Cloudflare优选IP 流程进行即可。]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>docker</tag>
-      
-      <tag>ngpm</tag>
-      
-      <tag>r2</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>【记录】搭建Waline评论系统</title>
     <link href="/build-waline-comment-system"/>
     <url>/build-waline-comment-system</url>
@@ -1736,11 +1625,11 @@
       
       <tag>jupyter</tag>
       
-      <tag>win10</tag>
-      
       <tag>nvidia</tag>
       
       <tag>torch</tag>
+      
+      <tag>win</tag>
       
     </tags>
     
@@ -1833,25 +1722,6 @@
       <tag>claude</tag>
       
       <tag>日记</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【探索】动脉血气&amp;肺功能报告简单判读</title>
-    <link href="/-hu-xi--dong-mai-xue-qi--fei-gong-neng-bao-gao-jian-dan-pan-du"/>
-    <url>/-hu-xi--dong-mai-xue-qi--fei-gong-neng-bao-gao-jian-dan-pan-du</url>
-    
-    <content type="html"><![CDATA[动脉血气肺功能]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>探索</tag>
       
     </tags>
     
@@ -2059,25 +1929,6 @@
   
   
   <entry>
-    <title>【分享】WEBP截图工具：ShareX + imagemagick</title>
-    <link href="/WEBP-jie-tu-gong-ju-ShareX--imagemagick"/>
-    <url>/WEBP-jie-tu-gong-ju-ShareX--imagemagick</url>
-    
-    <content type="html"><![CDATA[WebP可为 Web 上的图像提供卓越的无损和有损压缩。使用 WebP，网站管理员和 Web 开发人员可以创建更小、更丰富的图像，从而使 Web 更快。与 PNG 相比，WebP 无损图像的大小要小 26% 。在同等 SSIM质量指数下， WebP 有损图像比可比较的 JPEG 图像小 25-34%而平时用的截图功能，默认只提供png/jpeg格式的图片，手动转换太麻烦了。Snipaste 的这个支持webp格式的issue也不知道解决了没有。😜在搜索解决方法时，发现了全站今日起使用WEBP格式，截图工具ShareX分享，这篇文章分享了通过 ShareX + imagemagick 的方式曲线支持截图为webp。用了一下，感觉不错，因此记录一下流程。😏准备软件ShareX | Github Repoimagemagick | Github Repoimagemagick 下载第一个 Q16-HDRI-x64-dll.exe 就行，下载的是安装文件，需要运行进行安装。ShareX 动作设置按下图 动作设置-动作-添加 进入动作添加页面按下图 配置动作 参数：&quot;$input&quot; -quality 50 -define WebP:lossless=true &quot;$output&quot;ShareX 截图任务按下图顺序设置截图后的任务顺序配置完成，按截图快捷键即刻体验PS：本文的图片和标注均使用 ShareX 😆]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>webp</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>【记录】部署 Nginx Proxy Manager</title>
     <link href="/Docker-bu-shu-Nginx-Proxy-Manager"/>
     <url>/Docker-bu-shu-Nginx-Proxy-Manager</url>
@@ -2118,48 +1969,6 @@
   
   
   <entry>
-    <title>【迁移】Docker搭建vicuna</title>
-    <link href="/-qian-yi--Docker-da-jian-vicuna"/>
-    <url>/-qian-yi--Docker-da-jian-vicuna</url>
-    
-    <content type="html"><![CDATA[项目地址：llama-cpp-python镜像地址：hub-mirror模型地址：ggml-vic13b-q5_1.bin前端UI地址(目前仍不兼容)：BetterChatGPT部署Docker镜像测试是否成功查看文档：]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>docker</tag>
-      
-      <tag>llama</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】基于Chroma搭建个人知识库的全文索引</title>
-    <link href="/-qian-yi--ji-yu-Chroma-da-jian-ge-ren-zhi-shi-ku-de-quan-wen-suo-yin"/>
-    <url>/-qian-yi--ji-yu-Chroma-da-jian-ge-ren-zhi-shi-ku-de-quan-wen-suo-yin</url>
-    
-    <content type="html"><![CDATA[Chroma是一个可以帮助计算机理解文本的工具。它可以让你把文本放到一个“盒子”里，这个“盒子”可以让计算机更容易地找到和理解文本。你可以用它来创建一个文本库，然后通过输入问题，找到和问题相关的文本。比如，你可以创建一个文本库，里面有许多关于历史的文章，然后你可以输入“什么是古代中国的四大发明”，Chroma就可以帮你找到相关的文章。Chroma还有很多其他的功能，可以让你更方便地管理和搜索文本。它是完全免费和开放的，任何人都可以使用它。构建Docker镜像部署Docker镜像安装客户端测试用例sudo docker-compose restart 测试持久化]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>docker</tag>
-      
-      <tag>rag</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>【杂感】观《汪诘：在空中爆炸的星舰，为何赢得全程掌声？》有感</title>
     <link href="/-zai-kong-zhong-bao-zha-de-xing-jian-wei-he-ying-de-quan-cheng-zhang-sheng"/>
     <url>/-zai-kong-zhong-bao-zha-de-xing-jian-wei-he-ying-de-quan-cheng-zhang-sheng</url>
@@ -2179,92 +1988,6 @@
   
   
   <entry>
-    <title>【迁移】Docker部署easyconnect</title>
-    <link href="/-Docker-bu-shu-easyconnect"/>
-    <url>/-Docker-bu-shu-easyconnect</url>
-    
-    <content type="html"><![CDATA[深信服开发的非自由的 EasyConnect 代理软件就是依托答辩，想把它运行在 docker 中，并开放 Socks5 供宿主机连接以使用代理，保证不污染环境。使用的项目是 Hagb/docker-easyconnect一、搭建服务端反向代理服务反代登录地址，访问并登录 EasyConnect二、使用客户端Android，特别说明：远程 DNS 填 127.0.0.11Windows三、解决内网 DNS一台内网的服务器，假设 ip 是 10.184.107.127回到外网服务端四、进阶移除 EasyConnect CA 证书链式代理：使用Tunnel加速VPS的连接浏览器插件：ZeroOmega单独重启某个容器、查看其日志、执行命令]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>docker</tag>
-      
-      <tag>easyconnect</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】群星控制台召唤灰风老婆</title>
-    <link href="/-qian-yi--qun-xing-kong-zhi-tai-zhao-huan-hui-feng-lao-po"/>
-    <url>/-qian-yi--qun-xing-kong-zhi-tai-zhao-huan-hui-feng-lao-po</url>
-    
-    <content type="html"><![CDATA[检查L星门内容修改L星门内容灰蛊舰队：effect if = { set_global_flag = gray_goo_crisis_set set_global_flag = active_gray_goo }纳米龙：effect set_global_flag = dragon_season纳米国家：effect set_global_flag = gray_goo_empire_set什么也没有：effect if = { remove_global_flag = gray_goo_crisis_set remove_global_flag = active_gray_goo remove_global_flag = dragon_season remove_global_flag = gray_goo_empire_set }召唤灰风老婆event graygoo.401当L星门内什么也没有时，调查纳米星球有6%概率刷出这个事件，调查完没刷出再控制台召唤。]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>stellaris</tag>
-      
-      <tag>gray</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】基于PaddleOCR的PDF转WORD</title>
-    <link href="/-ji-yu-PaddleOCR-de-PDF-zhuan-WORD"/>
-    <url>/-ji-yu-PaddleOCR-de-PDF-zhuan-WORD</url>
-    
-    <content type="html"><![CDATA[PP-Structure是PaddleOCR团队自研的智能文档分析系统，旨在帮助开发者更好的完成版面分析、表格识别等文档理解相关任务。PP-Structurev2的主要特性如下：支持对图片/pdf形式的文档进行版面分析，可以划分文字、标题、表格、图片、公式等区域；支持通用的中英文表格检测任务；支持表格区域进行结构化识别，最终结果输出Excel文件；支持基于多模态的关键信息抽取(Key Information Extraction，KIE)任务-语义实体识别(Semantic Entity Recognition，SER)和关系抽取(Relation Extraction，RE)；支持版面复原，即恢复为与原始图像布局一致的word或者pdf格式的文件；支持自定义训练及python whl包调用等多种推理部署方式，简单易用；与半自动数据标注工具PPOCRLabel打通，支持版面分析、表格识别、SER三种任务的标注。安装PaddleOCRpython -m pip install &quot;PyMuPDF==1.18.7&quot; -i  （解决Issue#877）PDF转WORD准备一份没有嵌字，纯扫描件的UnrealText.pdfpaddleocr --image_dir=UnrealText.pdf --type=structure --recovery=true效果比直接用Acrobat好一点如果是简短的一段文字，还是直接用Umi-OCR识别图片方便一点（基于PaddleOCR）等Microsoft 365 Copilot正式出来后，对paddleocr重建的docx进行智能纠错和格式美化应该效果会好一点。]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>PaddleOCR</tag>
-      
-      <tag>PDF</tag>
-      
-      <tag>WORD</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】Docker部署drawio</title>
-    <link href="/-Docker-bu-shu-drawio"/>
-    <url>/-Docker-bu-shu-drawio</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>docker</tag>
-      
-      <tag>drawio</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>【翻译】微软所删除的《GPT-4》论文内容</title>
     <link href="/-shan-chu-de-GPT-4-lun-wen-nei-rong"/>
     <url>/-shan-chu-de-GPT-4-lun-wen-nei-rong</url>
@@ -2275,9 +1998,9 @@
     
     <tags>
       
-      <tag>translation</tag>
-      
       <tag>GPT-4</tag>
+      
+      <tag>翻译</tag>
       
     </tags>
     
@@ -2353,49 +2076,9 @@
     
     <tags>
       
-      <tag>OpenAI</tag>
+      <tag>openai</tag>
       
-      <tag>translation</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】Whisper搭配VoiceMeeter记录网课内容</title>
-    <link href="/-Whisper-da-pei-VoiceMeeter-ji-lu-wang-ke-nei-rong"/>
-    <url>/-Whisper-da-pei-VoiceMeeter-ji-lu-wang-ke-nei-rong</url>
-    
-    <content type="html"><![CDATA[由于网络环境、语音清晰度等问题，有时候我们可能会错过老师讲的重点内容。为了解决这个问题，我们可以使用OpenAI开源的自动语音识别系统Whisper，并结合虚拟声卡程序VoiceMeeter，来记录网课内容。这样一来，我们不仅可以随时回看老师的讲解，还可以对于不太清晰的语音进行识别，提高学习效率。除了方便记录老师讲解的内容，使用Whisper和VoiceMeeter还可以快速构建自己的听课笔记。具体操作方法是将自动识别出来的文本内容复制到笔记软件中，然后加上自己的理解和注释，形成完整的笔记。这样一来，不仅可以帮助自己更好地理解知识点，还可以方便日后的复习和回顾。同时，Whisper还支持多种语言的转录和翻译功能，这样即使是外语课程，也可以将讲解内容转录成本地语言，方便理解和记录。而且，Whisper还可以提高对于口音、背景噪音和技术术语的识别能力，让我们更加轻松地记录和理解老师的讲解。总之，使用Whisper和VoiceMeeter可以方便快速地构建自己的听课笔记，提高学习效率和效果，是网课学习中不可或缺的好帮手。（以上介绍由chatGPT生成）VoiceMeeterWhisper 模型：ggml-medium.binWhisper 前端：WhisperDesktop.zip运行Whisper前端后，先选好Whisper模型的路径，然后下一步，在Capture Audio中选择VoiceMeeter的音频输出。]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>Whisper</tag>
-      
-      <tag>VoiceMeeter</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】使用 Gost 搭建 HTTPS 代理</title>
-    <link href="/-shi-yong--Gost--da-jian--HTTPS--dai-li"/>
-    <url>/-shi-yong--Gost--da-jian--HTTPS--dai-li</url>
-    
-    <content type="html"><![CDATA[将提前申请好的ssl证书保存好mkdir -p ~/app/gost &amp;&amp; cd ~/app/gost &amp;&amp; nano docker-compose.ymlsudo docker-compose up -d+代理设置为 yourdomain:13443 用户名 limour 密码 passwd使用SwitchyOmega插件时，每次打开浏览器先访问一下 knock.limour.top 进行认证激活附加 docker 配置代理将局域网代理转成本地代理配置某容器的代理为本地代理]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>gost</tag>
+      <tag>翻译</tag>
       
     </tags>
     
@@ -2415,27 +2098,6 @@
     <tags>
       
       <tag>杂感</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】SearXNG：开启morty</title>
-    <link href="/SearXNG-kai-qi-morty"/>
-    <url>/SearXNG-kai-qi-morty</url>
-    
-    <content type="html"><![CDATA[部署 SearXNG部署 morty]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>searxng</tag>
-      
-      <tag>morty</tag>
       
     </tags>
     
@@ -2484,65 +2146,6 @@
   
   
   <entry>
-    <title>【迁移】使用手表做指南针</title>
-    <link href="/-qian-yi--shi-yong-shou-biao-zuo-zhi-nan-zhen"/>
-    <url>/-qian-yi--shi-yong-shou-biao-zuo-zhi-nan-zhen</url>
-    
-    <content type="html"><![CDATA[在北半球，我们可以通过找时针对准太阳时，时针与12点的角平分线来找到南方，同理，在南半球，可以通过类似的方式找到北方。背后的原理只涉及地方时、经度和手表表盘。正午时，太阳位于正南方，此时地方时为12点整，让我们以此为起点。地球自转一周用时24h，因此太阳划过天空的角速度为均匀的360°/24h=15°/h。表盘一圈为12h，因此时针划过表盘的角速度为均匀的360°/12h=30°/h，是太阳划过天空速度的2倍。让我们虚拟一个指阳针，角速度与太阳划过天空的角速度相同，从12点整开始运动，起始与时针重合。因为角速度只有时针的一半，这个虚拟指阳针将时刻位于12点刻度与时针所成角的角平分线上。当用虚拟指阳针对准太阳时，12点的刻度将始终指向正午太阳出发的方位，即正南方。同理，当时针指向太阳时，虚拟指阳针就指向了正南方。太阳的位置可以通过立细杆来精确标示，因此正南方的精确度取决于地方时的精确度。我们知道，0°经线所在地的地方时为格林尼治标准时间GMT，因此我们只要知道当地的精确经度，即可通过太阳的角速度，每15°相差1小时，精确算出当地的地方时，进而精确得出正南方的位置。此外，用相反的方式，我们也可以通过精确的指南针和精确的地方时，根据太阳算出当地的经度。通过观察正午太阳与地平线的夹角，算出精确的纬度，进而确定自己的位置。]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>地理</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】Rclone备份 VPS 数据到 onedrive</title>
-    <link href="/Rclone-bei-fen-VPS-shu-ju-dao-onedrive"/>
-    <url>/Rclone-bei-fen-VPS-shu-ju-dao-onedrive</url>
-    
-    <content type="html"><![CDATA[Rclone 挂载 onedrive下载 电脑版，解压，进入目录，左上角文件，打开 PowerShell./rclone confignonedrive32 MS OneDrieenterenter1enterenter1enterenter复制下窗口的jsonenterq登录服务器mkdir rclone &amp;&amp; cd rclonecurl  | sudo bashrclone confignonedrive32 MS OneDrieenterenter1entern粘贴token1enterenterq备份脚本使用Rclone搭配OneDrive迁移大量数据之前在自己的小机器上分析，现在需要在学校集群进行分析，因此需要在两个没有公网ip且不互联的服务器之间转移大量数据。因此计划使用Rclone，通过OneDrive进行中转。打包需要转移的数据Rclone挂载OneDriveconda activate jupyterconda install -c conda-forge rclone -y在两台服务器上挂载同一个OneDrive，第二台可以直接使用第一台的配置，文件路径在 ~/.config/rclone/rclone.confRclone上传下载数据rclone copy --ignore-existing --progress --ignore-errors --transfers=1 ./22.10.04.rds onedrive:tmprclone ls onedrive:tmprclone copy --ignore-existing --progress --ignore-errors --transfers=1 onedrive:tmp/22.10.04.rds .]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>rclone</tag>
-      
-      <tag>onedrive</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【从零开始配置VPS】09：替换网站页面中的关键词</title>
-    <link href="/ti-huan-wang-zhan-ye-mian-zhong-de-guan-jian-ci"/>
-    <url>/ti-huan-wang-zhan-ye-mian-zhong-de-guan-jian-ci</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>从零开始配置VPS</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>【转载】Docker搭建MicroBin</title>
     <link href="/Docker-da-jian-MicroBin"/>
     <url>/Docker-da-jian-MicroBin</url>
@@ -2556,187 +2159,6 @@
       <tag>docker</tag>
       
       <tag>ngpm</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【树莓派】将U盘格式化为F2FS格式并挂载</title>
-    <link href="/jiang-U-pan-ge-shi-hua-wei-F2FS-ge-shi-bing-gua-zai"/>
-    <url>/jiang-U-pan-ge-shi-hua-wei-F2FS-ge-shi-bing-gua-zai</url>
-    
-    <content type="html"><![CDATA[F2FS是专为具有NAND闪存设备的硬件设计的，比如NVMe SSD，SmartMediaCard（SD卡）等，在使用这类设备情况下具有更快的读写速度。]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>raspberrypi</tag>
-      
-      <tag>F2FS</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【从零开始配置VPS】04：WordPress</title>
-    <link href="/cong-ling-kai-shi-pei-zhi-VPS-WordPress"/>
-    <url>/cong-ling-kai-shi-pei-zhi-VPS-WordPress</url>
-    
-    <content type="html"><![CDATA[MariaDB拉取镜像创建数据库cd ~/app/WordPress/wwwwget  -O .php访问 limour.top/.php服务器：172.17.0.1用户名：root密码：ROOT_ACCESS_PASSWORD点击“创建新数据库”进行创建数据库左侧输入框填写数据库名字 wordpress右边的编码选择 utf8mb4_general_ci创建访问该数据库的用户创建好数据库之后，默认进入该数据库的表和视图，在该界面点击“权限”链接在此界面点击“创建用户”链接权限 勾选 All privileges用户名 wordpress密码 examplepassWordPress初始化访问 limour.top按提示完成初始化优化小细节nano ~/app/WordPress/www/wp-config.php’添加以上代码安装实用插件Easy WP SMTPWP-Optimize安装Sakurairo主题下载主题文件按说明完成Sakurairo安装解除php文件上传的大小限制]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>从零开始配置VPS</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】Win11设置开机启动移动热点</title>
-    <link href="/Win11-she-zhi-kai-ji-qi-dong-yi-dong-re-dian"/>
-    <url>/Win11-she-zhi-kai-ji-qi-dong-yi-dong-re-dian</url>
-    
-    <content type="html"><![CDATA[全面开放后，赶紧从学校润回了家里，零刻SER5也带走了。家里的路由器无线功能不太行，准备用零刻SER5来分享移动热点，改善无线环境。启动移动热点的脚本第一个脚本写入 C:\D\wifi.ps1 文件第二个脚本写入 C:\D\wifi.bat 文件运行第二个脚本，确认可以启动移动热点（需要自己先手动配置一次移动热点）计划任务配置系统启动自启搜素 计划任务创建任务常规里设置 不管用户是否登录都要运行 使用最高权限运行触发器里设置 在系统启动时操作里设置 启动程序 C:\D\wifi.bat条件里设置 只有在以下网络连接可用时才启动 任何连接设置里设置 按下图进行设置重启测试，确认运行正常附加 强制 win10 共享 PPPoE 网络第一步 执行启动移动热点的脚本第二步 进入 更改适配器选项，会发现多了一个 本地连接* 2第三步 属性-共享中将 PPPoE 共享给 本地连接* 2]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>win11</tag>
-      
-      <tag>热点</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】FFT的有趣应用：计算整数乘法</title>
-    <link href="/FFT-de-you-qu-ying-yong-ji-suan-zheng-shu-cheng-fa"/>
-    <url>/FFT-de-you-qu-ying-yong-ji-suan-zheng-shu-cheng-fa</url>
-    
-    <content type="html"><![CDATA[配置环境回答验证]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>FFT</tag>
-      
-      <tag>整数乘法</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】Docker部署Matrix-Dendrite</title>
-    <link href="/Docker-bu-shu-Matrix-Dendrite"/>
-    <url>/Docker-bu-shu-Matrix-Dendrite</url>
-    
-    <content type="html"><![CDATA[To generate keys生成配置文件下载 dendrite-sample.monolith.yamlwget  -O dendrite.yaml修改dendrite.yaml的以下配置项注意 well_known_server_name 需要加端口部署反向代理域名解析 m.limour.topWAF 添加 m.limour.top 白名单NGPM反向代理 m.limour.top到12008注册账号sudo docker exec -it dendrite-monolith-1 /usr/bin/create-account -admin --config /etc/dendrite/dendrite.yaml --username limour搭建自己的element-web]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>docker</tag>
-      
-      <tag>matrix</tag>
-      
-      <tag>dendrite</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】药理四：中枢神经系统药物之抗癫痫和抗惊厥</title>
-    <link href="/-zhong-shu-shen-jing-xi-tong-yao-wu-zhi-kang-dian-xian-he-kang-jing-jue"/>
-    <url>/-zhong-shu-shen-jing-xi-tong-yao-wu-zhi-kang-dian-xian-he-kang-jing-jue</url>
-    
-    <content type="html"><![CDATA[            Code Beautify 从 wordpress 自动转换而来，可能存在格式错误。           癫痫是一种突然发生的、阵发性、短暂性、反复发作的大脑功能障碍，发作时常伴有脑电的异常。惊厥是中枢神经系统过度兴奋的一种症状，表现为突发性的全身性或局限性肌群强直性或阵挛性抽搐。常用的抗惊厥药物包括巴比妥类、苯二氮䓬类中的部分药物、水合氯醛及硫酸镁。癫痫小发作，首选乙琥胺，抑T钙通道局限发作大发作，卡马西平加二苯皮质激素肌阵挛，持续状态用安定慢加剂量停药渐，坚持用药防骤停苯妥英钠大仑丁，小无效，三坐舌咽室性常膜稳定，阻钠钙，口慢不肌静脉给，小十一级大零级碱刺激，齿龈增，低钙贫血男女症，补D补钙补叶酸卡马西平单局性，三舌咽，锂盐无效躁狂症阻滞钠，升GABA，骨髓抑制肝损伤丙戊酸钠大小并，顽固性，GABA生成代谢少抑制钠T钙通道，广谱抗癫痫病药硫酸镁效用主要看途径，泻下利胆用口服消炎去肿外热敷，注射用药抑中枢高压危象急救用，子痫抽搐破伤风乙琥胺口服吸收完全，血浆蛋白结合率低，儿童半衰期30小时，成人半衰期40~50小时抑制丘脑T型钙通道，抑制3Hz异常放电，高浓度可抑制钠钾泵和GABA转氨酶治疗小发作的首选药（对其他类型无效），抗戊四氮引起的阵挛性惊厥，提高电惊厥阈值毒性低，但可引起肠胃道反应、中枢神经系统症状（精神病患者慎用）偶见粒细胞缺乏症，严重者发生再生障碍性贫血。苯妥英钠（大仑丁）口服吸收不规则，起效慢，不宜作肌内注射。静脉注射用于治疗癫痫的持续状态。药物消除速率与血药浓度密切相关，＜10μg/mg按一级动力学消除，半衰期为20小时；大于10μg/mg按零级动力学消除，半衰期＞60小时。有条件监测血药浓度，调整剂量。具有膜稳定作用，阻止病灶放电向正常组织扩散，主要通过：阻断电压依赖性Na+通道，阻断电压依赖性Ca2+通道，影响钙调素激酶系统。抗癫痫 抗大发作、局限性发作首选，但对小发作无效，甚至会增加发作次数治疗中枢性疼痛综合征及外周神经痛：三叉神经、坐骨神经、舌咽神经痛抗心律失常 室性，特别是强心苷中毒局部刺激、齿龈增生神经系统反应 20 共济失调，40 精神错乱， 50 昏迷血液系统反应 巨幼红细胞性贫血骨骼系统反应 低钙血症过敏反应其他反应 男性乳房增大、女性多毛症、淋巴结肿大、致畸，久用突然停药可致癫痫发作加剧药物相互作用 肝药酶诱导剂、血浆蛋白卡马西平（酰胺咪嗪）口服吸收缓慢、不规则，血浆蛋白质结合率为75%~80%，单次给药半衰期为15~20小时。与苯妥英钠相似，治疗浓度阻滞Na+通道，阻止放电扩散，并可提高脑内GABA浓度，增强其中枢抑制作用。抗癫痫 为有效的广谱抗癫痫药，治疗单纯性局限性发作和大发作的首选之一，还可抗复合性局限性发作和小发作对中枢性疼痛（三叉、舌咽）的疗效优于苯妥英钠对锂盐无效的躁狂症有效常见眩晕、视物模糊、恶心、呕吐、共济失调、手指震颤、水钠潴留等不良反应严重不良反应有骨髓抑制、过敏反应（肝损伤）、心律失常等药物相互作用 肝药酶诱导剂苯巴比妥（鲁米那）既能抑制病灶的异常放电又能阻止放电扩散，主要通过：促进GABA与GABAA受体结合，延长Cl-通道开放时间，产生中枢抑制作用；阻断突触前膜Ca2+摄取，减少Ca2+依赖性神经递质的释放；较高浓度可阻断Na+和Ca2+通道。可用于癫痫的大发作和持续状态，对单纯的局限性发作和精神运动性发作也有效，但对小发作效果差中枢抑制作用强，不作为长期维持用药用药初期易出现嗜睡、精神萎靡长期使用产生耐受性药物相互作用 肝药酶诱导剂药物相互作用 肝药酶诱导剂扑米酮（去氧苯巴比妥）体内代谢为苯巴比妥和苯乙基丙二酰胺对部分性发作和大发作疗效好（不能耐受二苯的大发作），对小发作无效常见的不良反应包括中枢症状和血液系统毒性丙戊酸钠口服吸收完全迅速，血浆蛋白质结合率高，半衰期约为15小时阻止放电扩散，使GABA生成增加、代谢减少，增加GABA能神经突触后抑制作用，抑制Na+通道和T型Ca2+通道，抑制3Hz异常放电广谱抗癫痫药，尤其对小发作效果好，但有肝毒性，不作为小发作的首选药是大发作合并小发作时的首选药，对其他药物不能控制的顽固性癫痫也有效消化系统症状 恶心、呕吐、腹痛等肝毒性偶见皮疹、脱发、血小板减少及聚集障碍苯二氮䓬类可以阻止放电扩散，但不能消除病灶的异常放电地西泮首选用于癫痫持续状态，静脉注射起效快，但需要注意其对呼吸的抑制作用硝西泮主要用于癫痫的小发作，肌阵挛性发作、婴儿痉挛氯硝西泮抗癫痫谱广，但易耐受，久用突然停药会加剧癫痫发作氟桂利嗪口服易吸收，半衰期19~22天，血浆蛋白质结合率高（99%）可以阻断T型和L型Ca2+通道及电压依赖性Na+通道对局限性发作、大发作效果好常见不良反应是困倦、体重增加。拉莫三嗪口服吸收完全，生物利用度98%，血浆蛋白质结合率55%，半衰期12.6小时阻断电压依赖性Na+通道，阻止病灶的异常放电多与其他抗癫痫药合用，治疗难治性癫痫中枢系统反应 头痛、头晕、嗜睡、视物模糊、复视、共济失调胃肠道反应 恶性、呕吐、便秘偶见皮肤水肿及弥散性血管内凝血托吡酯可以阻断电压依赖性Na+通道，增强GABA活性，并抑制谷氨酸介导的兴奋作用主要用于局限性发作和大发作，特别是辅助治疗难治性癫痫常见的不良反应是中枢系统反应，孕妇慎用硫酸镁不同给药途径产生不同的药理作用，口服泻下和利胆作用，外用热敷消炎去肿，注射产生全身作用可能是由于Mg2+可以特异性地与Ca2+竞争Ca2+受体，拮抗Ca2+作用，从而发挥肌松及降压作用，而Mg2+作用于中枢神经系统，则引起感觉及意识丧失。主要用于子痫、破伤风等惊厥，也常用于高血压危象。注射给药的安全范围窄，血镁过高会引发呼吸抑制、血压骤降和心搏骤停肌腱反射消失是呼吸抑制的先兆，连续注射需监测急性中毒时应立即进行人工呼吸，注射氯化钙和葡萄糖酸钙解毒]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>药理</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】药理五：中枢神经系统药物之治疗退行疾病</title>
-    <link href="/-zhong-shu-shen-jing-xi-tong-yao-wu-zhi-zhi-liao-tui-hang-ji-bing"/>
-    <url>/-zhong-shu-shen-jing-xi-tong-yao-wu-zhi-zhi-liao-tui-hang-ji-bing</url>
-    
-    <content type="html"><![CDATA[            Code Beautify 从 wordpress 自动转换而来，可能存在格式错误。           中枢神经系统退行性疾病，指由慢性进行性中枢神经组织退行性变性而产生的疾病。主要包括DA减少的帕金森病和ACh减少的阿尔茨海默症，以及其他遗传性的亨廷顿舞蹈症、肌萎缩侧索硬化症等。抗帕金森药帕金森病是一种主要表现为进行性的锥体外系功能障碍的中枢神经系统退行性疾病。典型的症状是静止震颤、肌肉强直、运动迟缓和共济失调。病因多巴胺学说：锥体外系的黑质-纹状体通路多巴胺神经功能减弱，胆碱能神经功能相对占优，引起肌张力增高。另外还有氧化应激学说等锥体外系是指锥体系以外的影响和控制躯体运动的所有传导路径，包括大脑皮质（主要是躯体运动区和躯体感觉区）、纹状体、背侧丘脑、底丘脑、中脑顶盖、红核、黑质、脑桥核、前庭核、小脑和脑干网状结构等以及它们的纤维联系皮质-纹状体系，纹状体是控制运动的重要调节中枢，有复杂的纤维联系，形成皮质-新纹状体-背侧丘脑-皮质环路、新纹状体-黑质环路、苍白球-底丘脑核环路；皮质-新纹状体-背侧丘脑-皮质环路可影响锥体束的躯体运动中枢的活动，新纹状体-黑质环路中的黑质神经细胞能产生和释放多巴胺，变性后纹状体内多巴胺含量降低，与帕金森病的发生有关，苍白球-底丘脑核环路对同侧苍白球反馈抑制，受损后对侧肢体出现大幅度颤搐皮质-脑桥-小脑系，小脑综合脊髓本体感觉纤维的信息，一起协调和共济肌肉运动，受损导致共济失调，行走蹒跚、醉汉步态药物种类左旋卡比苄丝肼，司来硝替溴隐停利舒阿扑去吗啡，罗匹尼罗普拉索金刚烷胺促释放，苯海扎品共拮抗多巴胺前体药左旋多巴帕金森，转化去甲肝性脑年轻症，肌强直，运动困难较颤好显效慢，持续长，药源帕金森无效早胃肠，心血管；长期运动过多症多不安，动不能，开关现象精神状VB6，外脱羧，疗效降低不良增吩噻嗪，利血平，合用药源帕金森左旋多巴口服易吸收，主要分布在外周，仅1%进入中枢。外周L-DOPA被外周多巴脱羧酶转化为DA，外周作用增大，使副作用增多，为增加进入中枢的L-DOPA，可同时服用多巴脱羧酶抑制剂卡比多巴。酪氨酸在羟化酶的作用下转变成左旋多巴，在脱羧酶作用下转变成多巴胺，经β羟化酶变成去甲肾、经儿茶酚-O-甲基转移酶变成3-O-甲基多巴。帕金森患者酪氨酸羟化酶减少，L-DOPA可以补充纹状体中多巴胺的不足而发挥作用。治疗帕金森 轻症和年轻者效果好，改善肌强直和运动困难较肌震颤效果明显，显效慢，持续时间长用于肝型脑病 使意识从昏迷转为清醒，不改善肝功能早期反应，胃肠道反应，厌食、恶心、呕吐、腹痛、腹泻，由于多巴胺刺激延髓催吐化学感受区D2受体，可用D2受体阻断药多潘立酮（吗丁啉）改善；心血管反应，体位性低血压、心动过速或心律失常，可用β受体阻断药改善。长期反应，运动过多症，不自主异常运动；波动症状，开（活动正常）关（严重的帕金森症状）现象；精神症状，与脑内多巴胺增多，兴奋中脑-皮质和中脑-边缘系统通路有关。药物相互作用禁止同时服用维生素B6，它使多巴胺脱羧酶辅酶，加速左旋多巴胺在外周脱羧，进入脑循环减少，使疗效降低，不良反应增多不宜合用吩噻嗪类、利血平，它们通过阻断中枢DA受体和耗竭DA储存而引起药源性帕金森，拮抗左旋多巴的作用禁止同时服用MAO-A抑制剂，它可阻断NA代谢，升高血中NA浓度，升高血压左旋多巴增效药左旋多巴增效药，A苄B司C卡朋卡比复方心宁美，苄丝左旋美多巴托卡外周中枢抑，恩他外周抗母TA：AADC，氨基脱羧酶抑制药B：MAO-B，单胺氧化酶B抑制药C：COMT，儿茶酚胺-O-甲基转移酶抑制药AADC卡比多巴（α-甲基多巴肼/洛得新）外周脱羧酶抑制剂，不能通过血脑屏障，对中枢的脱羧酶无作用，单用无意义与左旋多巴配伍用减少其在外周脱羧，增加进入中枢系统的量，提高疗效，减少副作用复方制剂心宁美：卡比多巴：左旋多巴（1：4或1：10），使左旋多巴最适有效量比单独用时减少75%苄丝肼（羟苄丝肼/色丝肼）复方制剂美多巴为苄丝肼：左旋多巴（1：4）合用，作用同心宁美MAO-B司来吉兰（丙炔苯丙胺）选择性抑制MAO-B，抑制内/外源性神经毒性物质产生，减少DA神经元损害，加强和延长左旋多巴的疗效，可与左旋多巴合用慎与哌替啶、三环类抗抑郁药或其他MAO抑制药合用COMT硝替卡朋不易通过血脑屏障，只抑制外周的COMT，增加纹状体左旋多巴的生物利用度托卡朋和恩他卡朋托卡朋抑制外周和中枢的COMT，延长左旋多巴的半衰期，可引起肝损伤恩他卡朋只抑制外周的COMT，生物利用度比托卡朋低多巴胺受体激动药溴隐亭，大剂量，黑质纹状帕金森小剂量，结节漏，回乳反氯肢端大溴隐亭D2受体的强效激动剂，部分拮抗D1受体，对外周多巴胺受体、α受体有弱激动作用小剂量对结节-漏斗处D2受体有选择性激动作用，减少催乳素释放，增大剂量可激动黑质-纹状体内D2受体，与左旋多巴合用疗效好不良反应多，包括消化系统、心血管系统、运动功能障碍及精神系统症状等利修来得D2受体强激动剂，D1受体弱拮抗剂，改善运动功能障碍，减少严重的开关反应和左旋多巴引起的运动过多症罗匹尼罗和普拉克索选择性激动D2受体，对D1受体几乎没有作用，耐受性好，多作为帕金森早期治疗药物，不易引起开关反应和运动障碍胃肠道反应较小，可引起直立性低血压、运动障碍、幻觉和精神错乱，特别是可引起突发性睡眠阿扑吗啡DA受体激动药，可改善严重的开关反应长期用药可引起QT间期延长、肾功能损害和精神症状促多巴胺释放药金刚烷胺促进DA进入脑循环，增加DA的合成和释放，并抑制神经末梢对DA的再摄取，有部分抗胆碱作用缓解帕金森症状作用强于抗胆碱药起效快，用药数天达最大疗效，持续短，连用6~8周后疗效减弱长期用药引起下肢皮肤出现网状青斑，还可引起精神不安、失眠和运动失调等，癫痫患者禁用中枢性抗胆碱药苯海索（安坦）中枢胆碱能受体阻断药，减弱黑质-纹状体通路中ACh作用用于早期轻症帕金森患者，及不能耐受左旋多巴或左旋多巴禁忌症患者抗精神病药物引起的帕金森综合征苯扎托品抗胆碱，还有抗组胺、局部麻醉作用和大脑皮质抑制作用治疗阿尔茨海默病的药阿尔茨海默症是一种和年龄高度相关、以进行性认知障碍和记忆力损害等表现为特征的中枢神经系统退行性疾病。表现为淀粉样蛋白沉积形成老年斑，异常的磷酸化Tau蛋白的聚集形成的神经纤维缠结。目前采用的治疗策略是增加中枢胆碱能神经功能，如乙酰胆碱酯酶抑制药和M胆碱受体激动剂是目前治疗AD的主要药物。AD多奈利斯明，石杉碱甲加他敏他克林，肝毒性，心肝肾病利斯明加他敏，轻中度，老年记忆石碱甲美金刚，非竞争，NMDA受体拮抗剂胆碱酯酶抑制药他克林第一代可逆性中枢性AChE抑制剂，可抑制血浆和组织中的AChE可直接激动M胆碱受体和N胆碱受体，对M胆碱受体的亲和力是N胆碱受体的100倍；还可通过M1受体促进ACh释放不良反应较多，包括肝毒性和消化道反应，由于其对肝毒性较大，目前已停用多奈哌齐第二代可逆性中枢AChE抑制剂，使脑内ACh含量增加与他克林相比，选择性高，半衰期较长，疗效好，且无肝毒性用于轻至中度的AD患者不良反应有胃肠道、心血管及神经系统反应，以及流感样胸痛、牙痛、失水尿失禁、呼吸困难、视物模糊等。利凡斯的明第二代AChE抑制剂，可选择性抑制大脑皮质和海马中的AChE活性，而对纹状体、脑桥以及心脏中的AChE活性抑制作用较弱可明显改善AD患者的认知功能障碍安全、耐受性好、不良反应少，且无外周作用适用于伴有心脏、肝及肾等疾病的AD患者常见的不良反应有恶心、呕吐、眩晕和腹泻等，服药一段时间后大多可自行消失。加兰他敏第二代AChE抑制剂，对神经元中的AChE有高度选择性其疗效与他克林相似，但无肝毒性，用药6~8周效果开始明显用于轻、中度的AD患者不良反应主要为胃肠道反应（治疗初期2~3周），稍后即消失石杉碱甲可逆性、高度选择性的AChE抑制剂具有显著改善AD患者记忆和认知功能的作用用于老年性记忆功能减退及各型AD患者常见不良反应有恶心、头晕、多汗、腹痛、视物模糊等，一般可自行缓解，严重者可用阿托品拮抗美曲膦酯唯一以无活性前药形式存在的AChE抑制药，服用数小时后转化为活性的代谢产物而发挥持久疗效可同时改善AD患者的行为和认知功能适用于治疗轻、中度AD不良反应较少，偶见腹泻、下肢痉挛、鼻炎等症状，继续使用会自行消失NMDA受体非竞争性拮抗药美金刚（美金刚胺）特异性、非竞争性NMDA受体拮抗剂，可降低谷氨酸引起的兴奋性毒性本药能显著改善AD患者的认知功能，可改善中至重度AD患者的动作能力，认知障碍和社会行为不良反应为眩晕、不安、头重、口干等M胆碱受体激动药M胆碱受体激动药可以增强胆碱能神经功能，逆转Aβ诱导的神经元损伤，减少Tau蛋白的磷酸化呫诺美林选择性M1受体激动药，对M2、M3、M4、M5受体作用很弱易透过血脑屏障，大脑皮质和纹状体摄取率较高可改善AD患者的认知和行为功能易引起胃肠道及心血管方面的不良反应，可选择经皮肤给药沙可美林相对选择性M1受体激动药安全、耐受性好，可改善AD患者的认知功能常见的不良反应有轻微出汗等]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>药理</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】药理三：中枢神经系统药物之镇静催眠</title>
-    <link href="/-zhong-shu-shen-jing-xi-tong-yao-wu-zhi-zhen-jing-cui-mian"/>
-    <url>/-zhong-shu-shen-jing-xi-tong-yao-wu-zhi-zhen-jing-cui-mian</url>
-    
-    <content type="html"><![CDATA[            Code Beautify 从 wordpress 自动转换而来，可能存在格式错误。           镇静催眠药通过增强GABA功能或作用于GABA受体而抑制中枢神经系统，随着剂量的增加，依次产生镇静、催眠、抗惊厥、抗癫痫和中枢性肌松作用。常用的镇静催眠药包括苯二氮䓬类、巴比妥类和非苯二氮䓬类。其中苯二氮䓬类还有抗焦虑、抗抑郁的作用。镇静催眠巴比妥，苯二氮䓬首安定抗惊抗癫抗焦虑，中枢肌松地西泮剂量不同效有异，过量中毒快抢救洗胃补液又给氧，碱化尿液促排泄特效解毒氟马尼，特异位点拮抗剂苯二口服肌注慢，消除短效三唑仑硫喷妥钠静脉麻，水和氯醛胃肠激硝西泮，肌阵挛，扎来佐匹唑吡坦，主要用作镇催眠。成瘾性：苯二氮䓬类&gt;依匹克隆&gt;唑吡坦&gt;扎来普隆苯二氮䓬类苯二氮䓬类可以分长效、中效、短效三类，长效的地西泮在肝脏代谢生成活性代谢产物去甲西泮，后者进一步代谢产生短效的奥沙西泮，最后形成葡萄糖醛酸结合物经肾脏排泄。西泮中长效的有地西泮、氟西泮、夸西泮，短效的有奥沙西泮，其他的劳拉西泮、替马西泮、氯硝西泮为中效；唑仑除三唑仑是短效外，阿普唑仑和艾司唑仑是中效；氯氮卓是长效。苯二氮䓬类口服吸收迅速完全，肌内注射吸收缓慢且不规则；脂溶性高，极易透过生物屏障，血浆蛋白结合率高，代谢物往往仍有活性。苯二氮䓬类的中枢作用主要与增强中枢抑制性神经递质GABA功能有关：苯二氮䓬类药物与GABAA受体复合物上的苯二氮䓬类受点结合，促进GABA与GABAA受体结合，增加Cl-通道开放，促进Cl-内流，神经细胞超极化，增强GABA的中枢抑制作用。镇静催眠作用 主要延长非快速眼动睡眠（NREMS）的第2期，对快速眼动睡眠（REMS）影响小，停药后很少出现反跳、多梦现象。根据脑电图的特点，NREM睡眠可以分四期，I期为入睡期，脑电波表现为低幅θ波和β波，脑电波趋于平坦，很快过渡到II期II期为浅睡期，脑电波呈持续0.5~1s的σ波（α波的变异，频率稍快，幅度稍低）及若干κ复合波（δ波和σ波的复合），随后睡眠进入III期III期是中度睡眠期，脑电波中出现高幅δ波。当δ波在脑电波中超过50%时，睡眠便进入IV期，即深度睡眠期。III期和IV期统称为δ睡眠，在人类，合称慢波睡眠。慢波睡眠之后，脑电的渐进性高幅低频变化出现逆转，呈现与觉醒时相似的不规则β波，表现为皮质活动的去同步化，但在行为上却表现为睡眠状态。在REM期，机体各种感觉进一步减弱，肌紧张减弱，交感神经活动进一步降低，下丘脑体温调节功能明显减退，表明其睡眠深度要比慢波睡眠更深。REM睡眠期间，脑内蛋白质合成加快，脑的耗氧量和血流量增多，生长激素分泌则减少。REM睡眠与幼儿神经系统的成熟和建立新的突触联系密切有关，能促进学习与记忆以及精力恢复。抗惊厥、抗癫痫作用 用于辅助治疗破伤风、子痫、小儿高热惊厥、药物中毒性惊厥等。地西泮时治疗癫痫持续状态的首选药物。中枢性肌松作用 具有较强的肌松作用，可缓解动物去大脑僵直，也可减轻人大脑损伤所致的肌肉僵硬，可用于内镜检查所致肌痉挛。抗焦虑作用 小剂量即可显著改善紧张、忧虑、激动、失眠等症状。主要用于焦虑症。其他 较大剂量可致暂时记忆缺失，抑制肺泡换气功能，降低血压，减慢心率。副作用 常见服药次日出现出现嗜睡、头晕、乏力、记忆力下降、共济失调。久用产生耐受性和依赖性。与其他中枢抑制药、乙醇合用，中枢抑制作用增强。过量可致昏迷和呼吸抑制。用氟马西尼解毒（苯二氮䓬受体结合位点的拮抗药）。巴比妥类巴比妥类药物根据消除的半衰期的长短可分为：长效的苯巴比妥和巴比妥，中效的戊巴比妥、异戊巴比妥，短效的司可巴比妥，超短效的硫喷妥钠。口服、肌注均易吸收，碱化尿液可促进排出。作用机制与苯二氮䓬类相似，结合GABAA受体上的巴比妥类受体位点，促进GABA与GABAA受体结合，延长Cl-通道开放时间，产生中枢抑制作用。此外，巴比妥类药物还可抑制谷氨酸受体。产生中枢抑制作用。镇静催眠 引起非生理性睡眠，缩短REMS。久用突然停药后，REMS时相反跳性延长，出现焦虑、失眠、多梦。“反跳”是依赖性原因之一。抗惊厥、抗癫痫作用 用于癫痫大发作和持续状态，也可用于小儿高热、破伤风、子痫、脑膜炎、中枢兴奋性药中毒。麻醉 硫喷妥钠用于静脉麻醉。后遗作用 催眠剂量的巴比妥类在次日晨仍可出现头晕、困倦、精神不振和定向障碍等。久用产生成瘾性。肝药酶诱导剂，能加速其他药物的代谢。中等剂量可导致呼吸抑制，通过碱化尿液、维持呼吸和循环功能、应用中枢兴奋药解救非苯二氮䓬类能选择性结合BZ受体亚单位，不影响认知、学习和记忆，起效快，对正常睡眠结构影响小。依匹克隆（唑比酮）具有镇静、抗焦虑、抗惊厥和肌松作用失眠者服用后入睡快，增加深睡眠，醒后感觉良好无明显的耐药和停药反跳现象唑吡坦（思诺思）镇静催眠作用较强，抗焦虑、中枢性肌松和抗惊厥作用弱缩短睡眠潜伏期，延长睡眠总时间，减少觉醒次数常规剂量不产生耐药性，停药后无反跳中毒时用氟马西尼解毒扎来普隆具有镇静、抗焦虑、抗惊厥和肌松作用有效缩短入睡时间，适用于入睡困难的短期治疗，后遗作用小耐受性良好，无依赖性。水合氯醛不影响REMS，停药后无反跳现象大剂量有抗惊厥作用对胃肠道有强烈刺激作用久服也可引起耐受性、成瘾性大剂量对心脏有抑制作用丁螺环酮5-HT1A受体部分激动剂，与GABAA系统无直接关系。主要用于抗焦虑和伴有焦虑的失眠、抑郁症等不良反应有头晕、头痛和胃肠功能紊乱无明显的生理依赖性和成瘾性]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>药理</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】定时清理僵尸进程</title>
-    <link href="/-ding-shi-qing-li-jiang-shi-jin-cheng"/>
-    <url>/-ding-shi-qing-li-jiang-shi-jin-cheng</url>
-    
-    <content type="html"><![CDATA[之前Docker搭建ServerStatus给树莓派装了个监控，发现CPU使用率偏高，一看，发现逗逼宝塔面板产生了几万个僵尸进程，只好临时用北洋的青春的脚本来定时清理一下。]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>清理</tag>
       
     </tags>
     
@@ -2766,383 +2188,6 @@
   
   
   <entry>
-    <title>【迁移】寄生虫三：医学蠕虫之绦虫</title>
-    <link href="/-yi-xue-ru-chong-zhi-tao-chong"/>
-    <url>/-yi-xue-ru-chong-zhi-tao-chong</url>
-    
-    <content type="html"><![CDATA[            Code Beautify 从 wordpress 自动转换而来，可能存在格式错误。           绦虫属于扁形动物门，多数寄生于脊椎动物的消化道，幼虫寄生于中间宿主（包括人体）各种组织内。无口及消化道，无体腔，绝大多数雌雄同体。裂头蚴/曼氏迭宫绦虫人并非本虫的适宜终宿主。感染主要是由于体表局部敷贴生蛙肉、吞食生的蛙、蛇、鸡或猪肉，误食感染的剑水蚤等。成虫子宫位于节片中部，螺旋状盘曲，紧密重叠（迭宫）。终宿主是猫、犬及其他食肉动物，第一中间宿主是剑水蚤，第二中间宿主是蛙，蛇、鸟、猪等可作为转续宿主，人可作为第二中间宿主、转续宿主和终宿主。裂头蚴病比成虫致病常见且严重。裂头蚴在移行或寄居部位形成囊腔、穴道和嗜酸性肉芽肿囊包，使局部肿胀、甚至发生脓肿。当寄生于皮下肌肉、口腔颌面或外眼等器官时，主要表现为游走性皮下结节或肿块，病人有疼痛以及虫爬感和小白虫逸出史等。寄生于脑、脊髓或眼球深部组织时则主要表现为压迫以及占位性病变，如癫痫、瘫痪、视力障碍。成虫感染则是中、上腹不适，隐痛、恶心呕吐等。诊断成虫检查粪便虫卵、裂头蚴病局部组织检出虫体、影像学和免疫学辅助检查。成虫感染口服吡喹酮、阿苯达唑。裂头蚴靠手术摘除，或用40%酒精普鲁卡因2~4ml局部注射杀虫。带绦虫/链状带绦虫和肥胖带绦虫人是唯一的终宿主。猪带绦虫：误食囊蚴得猪带绦虫病，误食虫卵得囊尾蚴病，有自体感染、自体外感染、异体感染。牛带绦虫：误食含有活囊尾蚴的牛肉。成虫主要寄生在小肠，孕节脱落，随粪便排出，孕节被人食入得囊虫病，被猪食入，在十二指肠孵出六钩蚴，钻入肠壁，血管移行、肺、左心、全身各组织形成囊尾蚴，被人食入，在十二指肠胆汁刺激下翻出头节，以吸盘和小钩附着于肠黏膜上，发育为成虫。成虫寄生在小肠引起绦虫病。牛带绦虫的囊尾蚴不寄生人体，牛是唯一的中间宿主。猪带绦虫则引起皮下肌肉囊虫病、眼囊虫病、脑囊虫病。诊断找孕节，数分支，猪带绦虫每侧分支7~13支，牛带绦虫每侧15~30支。猪带绦虫也可以粪便饱和盐水漂浮法或直接涂片法。皮下肌肉可以活检，脑可以影像学和免疫检查，眼可以眼底镜检查。中药驱虫安全可靠，成功标准是排出头节。用南瓜子和槟榔煎剂。确定没有脑囊虫，可以用吡喹酮、阿苯达唑、甲苯达唑。包虫/细粒棘球绦虫成虫寄生于犬科动物的肠道内，幼虫寄生于食草动物和人的组织、脏器中。引起囊性包虫病。犬科动物的小肠内的孕节脱落，随粪便排出，卵被食草动物或人食入，在十二指肠孵出六钩蚴，钻入肠壁，经血管移行，幼虫依次在肝、肺、腹腔、脑、脾、肾、骨、子宫、眼等器官，形成棘球蚴，牛羊被犬吞食后，囊内原头蚴在胆汁刺激下翻出顶突，附着小肠壁，逐渐发育为成虫。棘球蚴囊占位压迫，肺/颅脑/骨等囊型棘球蚴病。囊破裂会发生继发感染和种植性生长。诊断禁忌穿刺，依据手术取出的棘球蚴，或痰、胸膜积液、腹水、尿液中拣获的棘球蚴碎片或原头蚴。或影像学、免疫学检查。治疗以外科手术为主，对早期的小棘球蚴，可口服阿苯达、吡喹酮、甲苯达唑。泡球蚴/多房棘球蚴从事猎狐、饲养狐和加工、买卖毛皮制品等生产活动的人群尤其易感。引起泡球蚴，呈弥漫型浸润，有“虫癌”之称。人是多房棘球绦虫的非适宜中间宿主，人体感染囊泡内含胶状物而无原头蚴。常见终宿主为犬科动物，偶尔可寄生猫体内。中间宿主为啮齿动物、耗牛、绵羊和人等。成虫寄生在终宿主小肠，孕节和虫卵随粪便排出，鼠类等因觅食终宿主粪便而感染，人因误食虫卵而感染。体内带有泡球蚴的鼠或动物内脏被终宿主吞食后，囊内原头蚴逸出，经45天发育为成虫。泡球蚴危害严重，病死率高。泡球蚴几乎原发于肝脏，弥漫性浸润，波及整个器官。除肝脏外，肺、脑等经肝血液继发感染转移过来。皮下、脾、膀胱等都可被寄生。适用于棘球蚴的诊断，免疫诊断效果尤佳。治疗以手术为主，药物用阿苯达唑、甲苯达唑和吡喹酮。]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>寄生虫</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】寄生虫二：医学蠕虫之吸虫</title>
-    <link href="/-yi-xue-ru-chong-zhi-xi-chong"/>
-    <url>/-yi-xue-ru-chong-zhi-xi-chong</url>
-    
-    <content type="html"><![CDATA[            Code Beautify 从 wordpress 自动转换而来，可能存在格式错误。           寄生人体的吸虫都属于复殖目，称为复殖吸虫。生活史有世代交替，无性世代寄生在软体动物，有性世代多寄生在脊椎动物。除裂体科是雌雄异体，其他均是雌雄同体。可进行异体受精或自体受精。肝吸虫/华支睾吸虫主要保虫宿主为猫、狗和猪，水中存在第一第二中间宿舍，人群习惯吃不熟的淡水鱼虾。成虫睾丸一对前后排列于虫体后部，分支状。虫卵是人体最小的寄生虫卵；窄的一端有卵盖，周围形成肩峰，对侧有小疣。成虫寄生在人的肝胆管内，偶见于胰腺管，以胆管黏膜分泌物、上皮细胞为食，寿命可达20~30年。虫卵在水中不易孵出，被第一中间宿主淡水螺类摄取后，经胞蚴、雷蚴，形成尾蚴逸出，侵入第二中间宿主淡水鱼和虾，脱尾形成囊蚴。囊蚴随鱼虾肉进入人体，经蛋白酶消化外壁，虫体逸出，从十二指肠经胆总管进入肝胆管。进入人体的肝吸虫囊蚴，潜伏期1个月，上腹部持续性刺痛和腹泻。阻塞性黄疸、胆道炎症、胆石症，胆汁性肝硬化、门脉高压。诊断可以用涂片法和集卵法，以及十二指肠引流胆汁检查。也可以免疫检查和影像检查。治疗首选吡喹酮，阿苯达唑。姜片虫/布氏姜片吸虫猪感染姜片虫较普遍，是最重要的保虫宿主。虫卵是常见寄生虫中最大的，卵盖小不明显。姜片虫腹吸盘较大，寄生在小肠，卵入水中孵出毛蚴，钻入第一中间宿主扁卷螺，经雷蚴至尾蚴，附着在第二媒介菱角、荸荠等水生植物上发育成有感染能力的囊蚴。被人或猪吞食后，在十二指肠囊壁被消化，尾蚴逸出用腹吸盘附着在肠黏膜表面。姜片虫主要引起消化道症状。强力的吸盘可以造成肠道机械性损伤。可能腹泻与便秘交替出现。偶有肠梗阻。因为虫卵大，直接涂片法效果好。浓集法可以离心也可以水洗自然沉淀。改良加藤法可以计数。也有免疫学检查。吡喹酮最有效。硫双二氯酚(别丁）、槟榔煎剂。肺吸虫/卫氏并殖吸虫和斯氏并殖吸虫哺乳动物均可成为传染源。成虫常寄生在肺内，虫卵随痰咳出，入水孵化成毛蚴，进入第一宿主淡水螺，经胞蚴、雷蚴到尾蚴，逸出进入第二中间宿主淡水蟹或蝲蛄发育成囊蚴。随进食进入人体，经消化液脱囊作用成为童虫。童虫活动能力强，穿过肠壁进入腹腔浆膜表面，沿肝表面向上移行，贯穿膈肌到达胸腔发育为成虫。吃进囊蚴前一个月为幼虫移行期，轻症食欲不振、低热，重症高热、腹泻、腹痛，肠、肝损伤。进入肺部后咳带虫卵的铁锈色痰，留在腹部的出现腹痛、腹泻、便血、肝损，皮下可见游走性包块。不慎入脑出现头晕、癫痫、偏瘫、视力障碍。诊断有痰或粪便找虫、皮下包块或手术后结节找虫，以及免疫学检查。常用吡喹酮治疗，硫双二氯酚。血吸虫/日本裂体吸虫雌雄异体。病人和病牛是最重要的传染源。血吸虫成虫寄生在人和多种哺乳动物的门脉-肠系膜静脉系统，平均4.5年。雌虫在静脉末梢产卵，部分虫卵沉积在结肠肠壁组织小血管中，另一部分虫卵随血流沉积于肝脏。虫卵发育成熟后，肠黏膜内含有毛蚴的虫卵脱落入肠腔，随粪便排出体外。在水中孵出毛蚴，侵入钉螺，经过母胞蚴、子胞蚴，后者进入钉螺肝内分批形成尾蚴。尾蚴成熟后离开钉螺，分布在水体表层，人接触疫水后经皮肤侵入人体，变成童虫。童虫穿入小静脉或淋巴管，经右心、肺、左心后到达全身。大部分童虫进入小静脉，随血流入肝内门静脉，滞留发育。遇到异性童虫开始合抱，并迁移到门静脉-肠系膜静脉寄居，交配产卵。尾蚴侵入人体发生尾蚴性皮炎，属自限性疾病。童虫移行产生尾蚴性肺炎，成虫对血管的机械性、化学性刺激产生静脉炎、腹痛。代谢物、排泄物引起血吸虫性肾炎。虫卵在肠壁和肝汇管区引起嗜酸性肉芽肿、纤维化，导致门脉高压、食道圩堤静脉曲张，可发生上消化道大出血。诊断首选粪便水洗沉淀后进行毛蚴孵化。急性期可以粪便直接涂片。此外还有尼龙袋集卵法、肠镜活检法。免疫学和生物标志物结果可参考。治疗用吡喹酮。蒿甲醚和青蒿琥酯对童虫有很好的杀灭作用。]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>寄生虫</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】寄生虫一：医学蠕虫之线虫</title>
-    <link href="/-yi-xue-ru-chong-zhi-xian-chong"/>
-    <url>/-yi-xue-ru-chong-zhi-xian-chong</url>
-    
-    <content type="html"><![CDATA[            Code Beautify 从 wordpress 自动转换而来，可能存在格式错误。           线虫一般呈线性或圆柱形，体表光滑，两侧对称，不分节。前端一般较钝圆，后端逐渐变细。线虫雌雄异体，通常雌虫较大，尾端尖直，略向腹面弯曲，生殖器官大多为双管型；雌虫较小，尾端卷曲呈钩状或尾端膨大呈伞状，生殖器官呈单管型。线虫卵一般为椭圆形，黄色、棕黄色或无色。卵壳由外层的卵黄膜（或受精膜）、中层的壳制层和内层的蛔苷层（或脂层）三层结构组成。蛔虫/似蚓蛔线虫人是唯一宿主。蛔虫是人体最大的肠道线虫，主要在温暖潮湿的地区流行，农村感染率高于城市，温暖潮湿地区高于寒冷干燥地区。成虫雌雄异体，生活在人体小肠，寿命一年，有肛门开口，口孔位于虫体顶端，周围有三个唇瓣，排列成品字形。排出到外界的虫卵，如果受精，会在卵内发育成幼虫，卵内幼虫蜕一次皮后，虫卵成为感染期卵，被人误食后在小肠孵出幼虫，侵入肠黏膜和黏膜下层，进入静脉或淋巴管，先后经肝、右心、到达肺，穿破肺毛细血管进入肺泡，沿支气管、气管逆行至咽部，随吞咽动作再次进入消化道，最后在小肠内发育为成虫。蛔虫的幼虫移行阶段可引起蛔虫性肺炎或蛔虫性哮喘，经过肝脏时可以引起轻微的炎症，但主要的还是成虫致病。胆道蛔虫症、蛔虫性胰腺炎、蛔虫性阑尾炎，蛔虫性肠梗阻可进一步发展成肠扭转、肠套叠、肠坏死。其中胆道蛔虫症最常见，可引起梗阻性胆管炎和肝脓肿。蛔虫幼虫致病时，患者可发烧、干咳、哮喘、胸痛、咯血、荨麻诊，肺部散在游走性片状阴影。外周血中嗜酸性粒细胞增多，称为 Loeffler’s 综合征。多数病例两周内自愈。成虫致病，常有腹部不适或间歇性脐周疼痛。代谢产物和排泄物引起毒性和变态反应，出现食欲不振、恶心、烦躁、夜间磨牙、瘙痒、荨麻诊、哮喘，甚至出现中毒性脑病，儿童偶有异嗜症。生理盐水直接涂片法是首选的诊断方法，三片检出率可达95%。饱和盐水漂浮法或粪便沉淀法可以提高虫卵检出率。对于蛔蚴性肺炎，可以痰液涂片。常用驱虫药有阿苯达唑、甲苯达唑、三苯双脒和伊维菌素。鞭虫/毛首鞭形线虫人是唯一宿主。主要流行在热带、亚热带发展中国家和地区。农村感染率高于城市。鞭虫因形似马鞭而得名，虫卵两端各有一个透明栓。成虫一般寄生在盲肠，寿命3~5年，严重时可寄生于结肠、直肠甚至回肠下端，排出到外界的虫卵经三周发育为含有幼虫的感染期卵。经口食入后在小肠内孵出，仅钻入小肠上皮，10天后回到肠腔，移行至盲肠发育为成虫。幼虫侵入肠壁有轻微炎症但常无自觉症状。成虫有机械性损伤和代谢产物刺激，引起肠黏膜出血、炎症和溃疡，长期慢性炎症可以引起肉芽肿。表现为腹部不适、腹痛、腹泻、贫血、心慌、脱肛。首选饱和盐水漂浮法，也可以用直接涂片法、改良加藤厚涂片法。（光）纤维结肠镜检查发现虫体。常用驱虫药有阿苯达唑、甲苯达唑、奥克太尔。蛲虫/蠕形住肠线虫人是唯一宿主。可经空气传播，感染率儿童高于成人，幼儿园感染率高，有家庭聚集性。蛲虫前端角皮膨大形成头翼，咽管末端肌肉发达形成咽管球。卵内含一胚胎。成虫常寄生在盲肠，因肠腔低氧，雌虫几乎不产卵。宿主入睡后。受孕雌虫移行至肛门外，虫卵产在肛周，卵内幼虫经6小时发育为感染期卵。经手-口或空气吸入的卵，在十二指肠孵出，沿小肠下行。肛门处孵化的幼虫也可逆行感染。肛周产卵引起瘙痒，患者常有烦躁、失眠、食欲缺乏、消瘦、夜间磨牙、夜惊、学习成绩下降。挠痒抓破皮肤可继发感染。吸入的虫卵可引起哮喘。首选透明胶纸法进行检查。也可以用肛门拭子法和肛周找虫法。常用阿苯达唑和甲苯达唑治疗。局部外用3%噻嘧啶软膏。钩虫/十二指肠钩口线虫和美洲板口线虫人是唯一宿主。含虫卵的粪便污染土壤，田间劳作时裸露的皮肤接触疫土。主要流行在黄河以南的广大农村地区。十二指肠钩口线虫呈C形，美洲板口线虫呈S形，口囊内钩齿或板齿。钩虫卵壳薄，内有卵细胞，间隙明显。成虫咬附小肠黏膜，以血液和淋巴液为食。排出到外界的虫卵经1~2天孵出杆状蚴，再经一周发育成具有感染能力的丝状蚴。丝状蚴钻入皮肤，经小静脉或淋巴管进入右心、肺，穿过肺毛细血管进入肺泡、支气管、气管，在咽部随吞咽进入小肠，蜕皮后发育为成虫。幼虫可以引起钩蚴性皮炎，移行到肺部引起 Loeffler’s 综合征。成虫吸取血液，分泌抗凝物质，使伤口长时间渗血。丢失大量血红蛋白，损失的铁无法得到补充，小细胞低色素性贫血。损失肠黏膜，可出现上腹部疼痛或腹泻。缺铁引起异嗜症。此外，十二指肠钩虫也可以经口感染，钩蚴也可以经过胎盘或母乳感染胎儿或婴儿。优选饱和盐水漂浮法。感染严重时可以直接涂片法。钩蚴培养法也行。常用阿苯达唑、甲苯达唑、噻嘧啶，驱虫时需要补充铁剂。旋毛虫/旋毛形线虫除人外，许多哺乳动物如猪、老鼠、犬、野生动物等均可作为保虫宿主。旋毛虫是寄生人体最小的线虫。流行具有地方性、群体性和食源性。成虫主要寄生在十二指肠和空肠上段，雌雄交配产生幼虫，幼虫侵入局部淋巴管或小静脉，抵达骨骼肌进一步发育，刺激肌细胞形成囊包。囊包幼虫为感染期，需要转换新的宿主才能完成生活史，否则大部分在半年后钙化。侵入时在十二指肠和空肠产生广泛性肠炎，恶心、呕吐、腹痛、腹泻，伴有厌食、乏力、畏寒、低热，持续一周，易误诊。幼虫进入肌肉时，有全身中毒、过敏症状，血管炎、肌炎，眼睑和面部水肿，可因心衰、呼吸道并发症死亡。常用活检法，取腓肠肌或肱二头肌进行活检。收取吃剩的猪肉也可作为佐证。免疫诊断常用ELISA法，敏感性高、特异性强，适用于急性期病人的早期诊断。阿苯达唑是首选药，能杀死肌肉中的幼虫。感染一周内用药，治愈率可达100%。丝虫/班氏吴策线虫和马来布鲁线虫班氏微丝蚴马来微丝蚴大小大小体态自然僵硬头间隙短长体核圆、清晰椭圆、重叠尾核无2个人是终宿主、蚊是中间宿主。经蚊虫叮咬传播。成虫寄生在淋巴管内。微丝蚴白天聚集在肺部的毛细血管中，夜晚进入外周血液中。经蚊虫吸入后，发育成腊肠期幼虫、感染期幼虫（丝状蚴），叮咬人后进入人体。微丝蚴血症，仅有发热和淋巴管炎症状，可持续10年以上。幼虫和成虫的分泌排泄裂解物刺激，出现淋巴管/结炎、精索炎、附睾炎、睾丸炎，慢性期发生淋巴阻塞，淋巴水肿和象皮肿、鞘膜积液、乳糜尿。夜间取血检查微丝蚴，首选厚血膜法，尿液和体液中也可检查微丝蚴。免疫学可以皮内试验或检测抗体和循环抗原。治疗用海群生（乙胺嗪）、呋喃嘧酮、阿苯达唑、伊维菌素。保泰松治疗急性淋巴管炎。]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>寄生虫</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】核酸检测完成情况提醒bot：shell解析json</title>
-    <link href="/-shell-jie-xi-json"/>
-    <url>/-shell-jie-xi-json</url>
-    
-    <content type="html"><![CDATA[之前做了个核酸检测完成情况提醒bot，来给班群三天两次进行提醒。运行了一段时间后，发现微信每15天就会踢人下线，有点恶心。因此代码里的toUserName就不能再写死了，得通过api每天获取。这样就被踢了就只要重新登录一下，不用再改toUserName了。获取UserNamesudo apt install jqnano 04.shchmod +x 04.sh修改UserName获取方式shell给图片添加文字水印上辈子造了孽，这辈子用微信。shell解析json后，微信又出幺蛾子了，核酸检测表格的图片被屏蔽了，只有自己能看到，群里其他人看不到。现在需要每天给图片加点料，避开微信的检测。安装依赖apt updateapt install imagemagick添加水印的脚本nano sb_wechat.sh &amp;&amp; chmod +x sb_wechat.sh添加定时执行crontab -e0 7 * * * /root/itchat/sb_wechat.shcrontab -l]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>shell</tag>
-      
-      <tag>json</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】药理一：传出神经系统药物之胆碱受体</title>
-    <link href="/-chuan-chu-shen-jing-xi-tong-yao-wu-zhi-dan-jian-shou-ti"/>
-    <url>/-chuan-chu-shen-jing-xi-tong-yao-wu-zhi-dan-jian-shou-ti</url>
-    
-    <content type="html"><![CDATA[传出神经分植物神经和运动神经，前者支配心肌、平滑肌和腺体等，后者支配骨骼肌。植物神经分交感和副交感(副交感节前纤维常在迷走神经内走行)，交感兴奋时效应器表现为应急时的状态，副交感兴奋时效应器表现为睡眠时的状态。ACh、AChE相关药拟胆碱药分两类，兴奋受体抑制酶匹罗卡品作用眼，外用治疗青光眼阿托交替芸香碱，防止虹膜晶状粘贝胆碱、腹气胀，兴奋泌尿和胃肠新斯地明抗酯酶，主治重症肌无力术后腹胀尿潴留，小心胆碱能危象毒扁豆碱毒性大，作用眼科降眼压解磷定解N症状，百虫遇碱敌敌畏，乐果中毒碘无效M样作用扩张血管降血压，负性三连心动缓兴奋膀胱逼尿肌，括约舒张胃肠蠕缩瞳降压调痉挛，泪腺唾液汗泌增N样作用骨骼肌，神经节，N样受体有烟碱毛果芸香碱（匹罗卡品）毛开头，所以是M受体激动剂，具有副交感样作用，一般用于滴眼。放松时，看近物比较多，比如刷手机，需要避免近处亮光刺激眼睛，因此瞳孔括约肌上的M受体激动时瞳孔会收缩，此时前房角会开大，有利于房水从内部的小梁网排出，降低眼内压，常用1%滴眼液来治疗青光眼。同时看近物需要更高的晶状体屈光度，所以会调节痉挛，睫状肌上的M受体激动、睫状肌收缩，悬韧带两端靠近而松弛，让晶状体回弹。由于所有腺体上都长M受体，所有毛果芸香碱不小心通过内眦的鼻泪管进入鼻腔、然后进入口腔时，会有大量鼻涕和唾液分泌，所以也能用来治疗口腔干燥，不过如果是治疗青光眼，则需要压迫内眦，避免此副作用。如果全身给药，肠道、支气管等内脏平滑肌上也长M受体，会促进胃肠蠕动引起痉挛、诱发哮喘，心肌上长M受体，会降低心率和血压，中枢神经长M受体，会激活和维持皮层觉醒。阿毛是一对，所以阿托品是M受体拮抗剂，可以起到与毛果芸香碱相反的作用，交替使用可以瞳孔扩缩交替，让虹膜保持运动状态，避免虹膜与晶状体粘连。如果阿托品中毒，则用毛果芸香碱来解毒。氯贝胆碱为M胆碱受体激动剂，对胃肠道和膀胱平滑肌的选择性较高，对心血管系统影响小，所以常用于术后腹气胀，胃张力缺乏症及胃潴留等的治疗。新斯的明能抑制AChE，同时还具有直接激动骨骼肌上的N2受体的作用，因此主要用于治疗重症肌无力，同时也能用于治疗抑制N2受体的非去极化肌松药中毒和筒箭毒中毒。如果过量，则产生胆碱能危象，持续激活化学门控离子通道N2受体，肌束震颤，较长时间后，其他电压门控离子通道由于不能复极化而无法复活，当失活数量太多时，将产生肌麻痹，而呼吸肌麻痹后果严重。此外因为抑制AChE、激动M受体，胃肠道、支气管、膀胱、心脏、腺体、眼睛，所以可以治疗术后肠胀气、尿潴留、阵发性室上性心动过速、青光眼、解救阿托品中毒，同时机械性肠/尿路梗阻、支气管哮喘禁用。季铵类化合物，脂溶性差，不易穿过血脑屏障。依酚氯胺常用于诊断。多奈哌齐常用于中枢阿尔兹海默症。毒扁豆碱具有与新斯的明相似的可逆性抑制胆碱酯酶的作用，同时易于通过血脑屏障，对中枢神经系统，小剂量兴奋，大剂量抑制。因此毒性大，只外用来降低眼压。有机磷酸酯类急性中毒，除了M样症状和N样症状外，还有中枢症状，早期兴奋中枢，表现为躁动不安、幻觉、谵妄、惊厥，后期抑制，头晕、乏力、嗜睡、昏迷，晚期呼吸循环衰竭，呼吸中枢和心血管中枢抑制有机磷酸酯类治疗，首先清除尚未吸收的药物，生理盐水或小苏打洗胃、但是敌百虫（美曲膦酯）遇碱会水解成敌敌畏、对硫磷遇高锰酸钾会氧化成对氧磷，用肥皂水清洗皮肤，然后解毒，联用阿托品和解磷定，由于解磷定的半衰期非常短，需要重复给药，同时维持气道通畅、给氧、抗休克。注意事项 阿托品给药需要一直到阿托品化，瞳孔扩大、面色潮红、皮肤干燥、口干、心率加快；复活剂在碱性溶液中会水解成氰化物，不能与碱性药物并用，且对中毒超3d的老化AChE无效。M样作用的扩血管主要来自激动血管内皮细胞上的M3受体，其释放NO，从而使周围平滑肌舒张，血压下降，此时会有短暂的反射性心率增加，之后作用于心肌M受体，负性三连。胆碱受体阻断药阿托品莨菪碱类阿托品，抑制腺体平滑肌瞳孔扩大眼压升，调节麻痹心率快大量改善微循环，中枢兴奋须防范作用广泛有利弊，应用注意心血管临床用途有奇效，胃肠绞痛立即缓抑制分泌麻醉前，虹膜睫状体发炎，散瞳配镜眼底检防止虹晶粘，能治心动缓感染休克解痉挛，有机磷中毒它首选禁用前列青光眼，幽门梗阻也禁选阿托中毒解救药，毒扁豆碱地西泮莨菪碱类莨菪碱类阿托品，阻断M–抗胆碱尿不出去和便秘，老年痴呆青光眼作用广泛有利弊，最好不用老年人镇静显著东莨碱，能抗晕动是特点帕金森病麻醉前，只是不用它点眼感染休克山莨碱，内脏平滑肌绞痛N受体美卡拉明神经节，两类骨骼肌松弛琥珀胆、肌束颤，没有神经节阻断除极化、N结合，烧伤高钾心脏停碱分解、勿硫喷，呼吸麻痹抗生素筒箭毒碱正相反，缓慢持久组胺释阿托品可以抑制腺体M受体，胃酸分泌影响不明显，汗腺、唾液腺支气管腺分泌减少，可以用来治疗流涎、盗汗和麻醉前给药防止支气管痰液阻塞。正在发热的患者使用会降低出汗散热的能力，导致高热。阿托品散瞳，眼压升高，阻断睫状肌，调节麻痹，因此可以阿毛一起用于虹膜炎，但阿托品常用的还是眼底检查和验光配镜。散瞳和调节麻痹的效果可以持续一周，所以验光后会长时间视力模糊。解除迷走神经对心脏的抑制作用，可以正性三变。因此首选用于治疗各种缓慢性心律失常，如窦性心动过缓、房室传导阻滞。会用心悸的副作用、可能诱发心梗。低剂量会心率短暂性轻度减慢。能解除内脏平滑肌痉挛状态，因此和阿片类（中枢止痛但会加剧外周平滑肌痉挛，阿托品解除痉挛）合用可以治疗胃肠道、膀胱、肾、胆的绞痛。禁用于便秘、肠胀气、尿潴留、前列腺肥大。当大剂量使用阿托品时（与阻断M受体无关），也能解除血管平滑肌痉挛，扩张血管（直接和间接两种方式，间接的比如汗腺分泌减少后，散热需要通过皮肤血管扩张来代偿），改善微循环，增加重要脏器的血供，适用于感染性休克。休克时皮肤苍白湿冷、而阿托品可以使面色潮红、手脚温暖。也会使中枢先兴奋后抑制，先多言、谵妄、幻觉、惊厥，然后呼吸抑制。唯有阿托品，可解除迷走对心脏的抑制而治疗缓慢型心律失常利多卡因、苯妥英钠，可用于治疗强心苷中毒时的快速型心律失常普萘洛尔，首选用于窦性心动过速奎尼丁，可将地高辛从组织中置换出来，升高其血药浓度而加重中毒东莨菪碱容易穿过血脑屏障，对中枢的作用强，有中枢抗胆碱作用和中枢镇静作用，可以抑制前庭神经，治疗帕金森和晕动病。对腺体的抑制作用比阿托品强，加上具有中枢镇静的效果，所以常用于麻醉前给药。容易出现中枢不良反应、谵妄、幻觉、欣快，进而导致滥用。对心血管、眼的作用弱。山莨菪碱（6542）很难穿过血脑屏障，对眼、腺体、中枢作用弱，主要具有强大的血管平滑肌和内脏平滑肌的痉挛作用，主治感染性休克、内脏绞痛，补足血容量的前提下，可用于其他休克。有面色潮红、便秘、肠胀气、尿潴留的副作用。阿托品的徒子徒孙（合成代用品）有合成扩瞳药，后马托品、托吡卡胺、环喷托酯、尤卡托品，较阿托品起效快，持续时间短，名字都带托，起效一点不托；合成解痉药，异丙托溴铵、溴丙胺太林（普鲁本辛）、贝那替嗪（胃复康）。另，各种西平，如派仑西平，可以选择阻断胃壁细胞上的M1受体，抑制胃酸分泌。N1受体主要在神经节上，阻断剂有经典的美卡拉明，六甲双铵，速效短效的樟磺咪芬，既阻断交感，又阻断副交感。美卡拉明阻断交感，血压下降，麻醉时用来控制血压。阻断副交感，阻断M样症状，口干、视力模糊、便秘、肠胀气、尿潴留。去打老虎，因此琥珀胆碱事去极化型肌松药，激动N2受体，持久去极化，使骨骼肌长期处于不应期状态。因此短暂肌束颤动后起效快，时间短，易于控制。静注用于短时操作，如气管插管、消化道镜检，静滴用于较长的手术。不能用新斯的明解救，因为琥珀年代久远，不新了。由于持续去极化，肌肉钾离子流出，血钾会升高。呼吸肌麻痹可能窒息、肌束震颤会疼、血钾升高抑制心脏。禁用于白内障、青光眼（眼外骨骼肌短暂收缩，升高眼压）、晶体摘除手术和血钾升高的烧伤、脑血管意外、恶性高热等。与氨基糖苷类抗生素或多黏菌素B合用，后者阻断神经肌肉接头，协同易致呼吸肌麻痹。而捡裤子穿的筒箭毒碱阻断N2受体，竞争性抑制受体，使骨骼肌不能收缩。肌松作用慢而持久，先松弛眼部和头部的小肌肉，然后是颈部，到四肢、躯干，再面、舌、咽喉和咀嚼肌，最后是肋间肌、膈肌，另，对喉头、气管作用强。用于大手术的辅助麻醉。用新斯的明解救。此外，还具有促组胺释放和神经节阻滞的作用，诱发皮疹、支气管痉挛、血压下降。]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>药理</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】药理二：传出神经系统药物之肾上腺受体</title>
-    <link href="/-chuan-chu-shen-jing-xi-tong-yao-wu-zhi-shen-shang-xian-shou-ti"/>
-    <url>/-chuan-chu-shen-jing-xi-tong-yao-wu-zhi-shen-shang-xian-shou-ti</url>
-    
-    <content type="html"><![CDATA[激动药药物种类麻黄碱、多巴胺，α β 肾上腺去甲肾、间羟胺，β 只有异丙肾肾上腺素α β 受体兴奋药，肾上腺素是代表血管收缩血压升，局麻用它延时间局部止血效明显，过敏休克当首选心脏兴奋气管扩，哮喘持续它能缓心跳骤停用三联，应用注意心血管α 受体被阻断，升压作用能翻转心衰高压脑硬化，甲亢糖尿都禁用多巴胺α β 多巴胺，心脏兴奋血压升肾脏调节分两种，中低多巴血流增高浓α 致肾衰，联合利尿治肾衰麻黄碱鼻塞麻黄碱，麻醉低血压缓解皮肤粘，防治轻哮喘兴奋中枢不良反，缓慢持久耐受性去甲肾上腺素去甲强烈缩血管，升压作用不翻转，药物中毒低血压只能静滴要缓慢，上消化道出血时，引起肾衰很常见用药期间看尿量，休克常用间羟胺异丙肾上腺素异丙扩张支气管，哮喘发病他能缓扩张血管治感染，血容补足效才显房室阻滞毒休克，甲亢心冠切莫选肾上腺素对心肌β1受体激动作用最强大，正性三变，输出量增加，收缩压升高、耗氧量增加，用来抢救心跳骤停，但会导致心悸、心肌缺血，导致致死性心律失常。支气管、骨骼肌血管、冠脉平滑肌和睫状肌上长β2，能控制哮喘急性发作、治疗青光眼。皮肤、黏膜、内脏血管上长α1，收缩舒张压升高。β2扩血管和α1缩血管对舒张压的作用互相抵消，小剂量舒张压下降、大剂量舒张压升高。大剂量需小心脑出血。皮肤、黏膜血管收缩，可以减缓局麻药扩散吸收，常用利多卡因配伍，同时也能用来局部止血。局部进针注射玻尿酸时，可以用来缩血管，降低玻尿酸注入血管中的概率。α受体激动，可以加速糖原分解，使血糖升高。β3受体激动，可以促进脂肪分解，血中游离脂肪酸升高。所以运动可以减肥。过敏性休克首选用肾上腺素，因为喉头α1缓解水肿，心肌β1强心，支气管β2解痉挛改善通气，同时还能抑制过敏介质释放。多巴胺不易通过血脑屏障，外周给药无明显中枢作用（可以用左旋）。尿多小剂量激动D1，肾、肠系膜、冠脉血管扩张，直接排钠利尿，合用利尿剂治疗肾衰。中剂量激动β1，增加心输出量，常用于抗各种伴有肾衰、心衰的休克，但可能导致心动过速、心律失常。大剂量既直接激动α1受体，也能通过促进NA释放间接激动α受体，皮肤黏膜血管收缩，肾等内脏血管收缩，可能手足发冷、坏死，也会导致肾衰。麻黄碱既能直接促进α1，也能通过促进NA释放间接激动α受体，使鼻等的黏膜皮肤血管收缩，广泛用于鼻塞，缓解荨麻疹和血管神经性水肿的皮肤黏膜症状。可以激动心肌β1，麻醉给药预防低血压。激动支气管黏膜β2，治疗轻度哮喘。中枢兴奋，可能产生焦虑、失眠。去甲肾静滴，小动脉收缩外周阻力升高，收缩压升高，小静脉收缩，舒张压升高。可以用来治疗上消化道出血，改善造成神经源性休克、α受体阻断药中毒等低血压状态。注意密切关注尿量，可能发生急性肾衰。外漏容易发生组织血管怀死。有非常微弱的β1激动作用，进一步提高收缩压，心耗氧量增加，腺苷增多，可以扩冠脉，此激动作用刚好与降压反射时的迷走神经的抑制作用相抵消，甚至是下降。去甲肾外漏，需要停止注射、热敷，使用酚妥拉明阻断α受体、0.25%普鲁卡因局部封闭。间羟胺（阿拉明），作用与去甲肾相似，但对肾脏血管收缩较弱，不易引起肾衰和心律失常，已经取代NA用于抗休克。去氧肾上腺素（新福林），可以兴奋瞳孔扩大肌，作用弱、时间短，不易引起眼压升高，作为快速短效扩瞳药，用于眼底检查。异丙肾对窦房结作用强，有起搏作用，能加速传导，常用于房室传导阻滞，少用于休克。对心室影响小，不易引起心律失常。激动β2，缓解哮喘急性发作。激动β3，促进脂肪分解。引起血管扩张，同时抑制过敏介质释放。多巴酚丁胺，增加心输出量，但对心率影响小，可以治疗心肌梗塞并发心力衰竭，但只能短时间使用，长时间使用会增加心肌耗氧量，加重心肌梗塞。沙丁胺醇吸入给药，速效短效的支气管舒张作用，而对心血管和中枢影响小，治疗支气管哮喘的一线药物。特罗长效、特步他林速效短效，奥西那林是新药。拮抗剂β 洛尔β 受体阻断药，普萘洛尔是代表洛尔兄弟一大片，对抗交感降血压临床治疗高血压，心律失常心绞痛三条禁忌记心间，哮喘心衰心动缓β1 长心脏上，阻断效果是四降降率降传降耗氧，降低输出降血压β2 长在气管上，还有冠脉和腿上阻断无益反不良，哮喘急冠和肢凉α1 唑嗪特拉唑嗪哌唑嗪，扩张血管降血压一般不做首选药，属于二线降压药引起体位低血压，起的太猛易摔倒最好使用控释剂，最好用在睡觉前同时扩张下尿道，老年男性较适用普萘洛尔是非特异性β受体阻断剂，在阻断心脏β1受体缓解心动过速，降低心率、抑制球旁细胞β1受体减少肾素分泌等来控制高血压的同时，也会阻断冠脉平滑肌、支气管平滑肌、骨骼肌血管平滑肌上的β2受体，其中支气管平滑肌β2受体被阻断后，会发生支气管痉挛，呼气困难，机体缺氧，进而面色发绀。除支气管平滑肌β2被阻断的不良反应外，还有：阻断心脏β1，心脏受抑制，如果过度，可能诱发急性左心衰、加重房室传导阻滞，血压下降幅度过大可能发生头昏、眩晕、神智模糊、精神抑郁、反应迟钝等中枢神经系统不良反应；阻断冠脉β2，冠脉收缩，可能诱发变异性心绞痛；阻断骨骼肌血管β2，血管收缩，外周血供不足，可能发生手脚冰凉等雷诺氏综合征样症状；阻断外周组织新陈代谢相关的β2受体亚型和抑制低活性T4变成高活性T3，会抑制糖异生和糖原分解，如果患者合用了胰岛素，会导致致死性低血糖；阻断脂肪细胞β3，抑制脂肪分解，长期用可能发胖；大剂量会抑制血小板聚集，可能导致出血倾向；大剂量会抑制粒细胞生成，可能发生咽痛和发热；如果发生过敏，则会出现皮疹。此外大剂量有膜稳定作用（奎尼丁样作用），抗心律失常。酚妥拉明/妥拉唑啉最基本的作用是扩张血管，此外还有心脏兴奋引起心绞痛、心悸、心律失常等不良反应，这一不良反应既有阻断交感神经末梢突触前膜上的α2，促进NA释放，有微弱的β1激动效果，也能通过降压反射兴奋心脏。强大的扩血管作用，可以解除血管痉挛，主治动脉狭窄引起的雷诺综合征、闭塞性脉管炎、冻伤、NA外漏等。降血压很猛，治疗嗜铬细胞瘤引起的高血压、高血压危象。解除心衰时的小动脉小静脉反射性收缩，降低心脏负荷，治疗顽固性心衰和急性心肌梗死。改善微循环，补足血容时与NA合用抗休克。此外还有拟胆碱作用、组胺样作用和抗五羟色胺的作用，诱发消化道反应，诱发和加重溃疡。]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>药理</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】19级临八药理第一次小测</title>
-    <link href="/19-ji-lin-ba-yao-li-di-yi-ci-xiao-ce"/>
-    <url>/19-ji-lin-ba-yao-li-di-yi-ci-xiao-ce</url>
-    
-    <content type="html"><![CDATA[拟胆碱药物是（A）A PhysostigmineB AnisodamineC SolifenacinD ScopolamineE Atropine主要发挥中枢抗胆碱作用的药物是（A）A 东莨菪碱B 毒扁豆碱C 山莨菪碱D 阿托品E 毛果芸香碱去甲肾上腺素治疗消化道出血时的给药途径为（A）A 口服B 肌内注射C 舌下给药D 皮下注射E 静脉滴注Acetylcholine合成的限速因素是（A）A 转运胆碱的Na+依赖性转运体B THC MAOD COMTE AChEβ 肾上腺素受体阻断药的不良反应（A）A 诱发或加重支气管哮喘B 升高血糖C 使心脏兴奋性提高D 促进肾素释放E 外周血管舒张抗肾上腺素药物是（A）A TamsulosinB DoparnineC IsoproterenolD MetaraminolE Adrenaline对乙酰胆碱的叙述，正确的是（A）A 心肌收缩力下降B 瞳孔扩大C 化学性质稳定D 减少腺体分泌E 松弛内脏平滑肌对Pilocarpine的描述正确的是（ABC）A 缩瞳B 降低眼内压C 视近物清楚D 扩瞳E 视远物清楚以下说法正确的是（ABC）A 对于阿托品中毒，应选用毒扁豆碱B 对于筒箭毒碱过量引起的肌松，可用新斯的明解救C 对于阿曲库铵引起的肌松，可用新斯的明解救D 对于阿托品中毒，可以选用新斯的明解救E 对于琥珀胆碱过量引起的肌松，可以选用新斯的明解救]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>药理</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】导出SingleR需要的数据</title>
-    <link href="/-dao-chu-SingleR-xu-yao-de-shu-ju"/>
-    <url>/-dao-chu-SingleR-xu-yao-de-shu-ju</url>
-    
-    <content type="html"><![CDATA[loom文件使用记录随着单细胞数据量的增长，计算要求成指数增长，当数据量大于10万个细胞的时候，seurat包分析就显得非常有压力了，因为在实时内存中储存数据就变得非常困难，HDF5数据格式提供了高效的磁盘存储，而不是在内存中存储数据，这就将分析扩展到大规模数据集，甚至可以达到大于100万细胞的级别 ，Linnarson实验室开发了一种基于hdf5的数据结构，loom，可以方便地存储单细胞基因组数据集和元数据。他们发布了一个名为loompy的Python API来与loom文件交互，而loomR能基于R的与loom交互（Merlin_cd6c）安装补充包conda activate seuratconda install -c conda-forge r-hdf5r -y# conda install -c bioconda r-loom=0.2.0.2 -ywget  -O loomR-develop.zipdevtools::install_local(‘loomR-develop.zip’)conda install -c conda-forge binutils_impl_linux-64 -yBiocManager::install(“hdf5r”)conda create -n loom -c conda-forge loompy=3.0.6 -yconda activate loom下载数据The Human Cell Atlas is an international collaborative consortium that charts the cell types in the healthy body, across time from development to adulthood, and eventually to old age. This enormous undertaking, larger even than the Human Genome Project, will transform our understanding of the 37.2 trillion cells in the human body.The HCA Data Portal stores and provides single-cell data contributed by labs around the world. Anyone can contribute data, find data, or access community tools and applications.wget 'xxx' -O ProstateCellAtlas-human-prostate-gland-10xv2.loom类似的网站：CZ CELLxGENE；可以检索需要的数据集，下载rds格式的文件curl -o local.rds &quot;xxx&quot;mv local.rds cellxgene_Human_prostate.rds使用记录公共的集群是真难用，一堆包装半天装不上，磁盘IO慢的一批。。。。。构造Pseudo-bulk的表达量矩阵加速SingleR运行The Human Cell Atlas 和 CZ CELLxGENE 的单细胞数据集有些metadata里有细胞类型注释。我们使用前面下载的数据集来构建一个SingleR的参考集。导出SingleR需要的数据]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>SingleR</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】给VMware虚拟机加硬盘</title>
-    <link href="/gei-VMware-xu-ni-ji-jia-ying-pan"/>
-    <url>/gei-VMware-xu-ni-ji-jia-ying-pan</url>
-    
-    <content type="html"><![CDATA[买了一台零刻 SER5 Pro 32G作为虚拟机的宿主机，用了一个月感觉还行，准备加装一个铠侠TC10 1T SATA3固态。小心排线接口上有个黑色的东东，先用镊子挑起来再拔。然后虚拟机设置里添加磁盘。挂载磁盘并设置开机自动mountsudo sufdisk -l #i查看可挂载磁盘mkfs.ext4 /dev/sdb #格式化为ext4# apt install util-linuxblkid #获取磁盘的uuid和属性mkdir /home/limour/upload #新建一个目录chown limour:limour /home/limour/uploadnano /etc/fstabUUID=8efc6ca9-229c-4aaf-b39c-77b55bf0d615 /home/limour/upload ext4 defaults 0 2reboot 重启查看是否成功sudo chown limour:limour /home/limour/upload]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>VMware</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】基于NMF分解的降维聚类</title>
-    <link href="/ji-yu-NMF-fen-jie-de-jiang-wei-ju-lei"/>
-    <url>/ji-yu-NMF-fen-jie-de-jiang-wei-ju-lei</url>
-    
-    <content type="html"><![CDATA[安装补充包conda activate seuratconda install -c conda-forge r-nmf -yconda install -c conda-forge r-fastica -y获取非负表达矩阵使用《使用metacell进行分群聚类》中的数据NMF分解聚类提取signatures]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>nmf</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】使用metacell进行分群聚类</title>
-    <link href="/shi-yong-metacell-jin-hang-fen-qun-ju-lei"/>
-    <url>/shi-yong-metacell-jin-hang-fen-qun-ju-lei</url>
-    
-    <content type="html"><![CDATA[预处理安装补充包conda activate seurat~/dev/xray/xray -c ~/etc/xui2.json &amp;wget -e “https_proxy=  -O metacell-master.zipdevtools::install_local(‘metacell-master.zip’)conda install -c bioconda bioconductor-singlecellexperiment -yseurat转metacell聚类MetaCell导出MetaCell到seurat确定最佳分群读入之前使用metacell进行分群聚类中的数据进行分群标注Doublet读表获取先验的Doublet占比可视化]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>metacell</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】使用FindTransferAnchors对样本进行预注释</title>
-    <link href="/shi-yong-FindTransferAnchors-dui-yang-ben-jin-hang-yu-zhu-shi"/>
-    <url>/shi-yong-FindTransferAnchors-dui-yang-ben-jin-hang-yu-zhu-shi</url>
-    
-    <content type="html"><![CDATA[处理参考样本integration处理预处理完的样本样本来自此打个补丁FindTransferAnchorsTransferData可视化]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>FindTransferAnchors</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】使用SCTransform标准化</title>
-    <link href="/shi-yong-SCTransform-biao-zhun-hua"/>
-    <url>/shi-yong-SCTransform-biao-zhun-hua</url>
-    
-    <content type="html"><![CDATA[安装包conda create -n seurat -c conda-forge r-seurat=4.1.1 -yconda activate seuratconda install -c conda-forge r-tidyverse -yconda install -c conda-forge r-irkernel -yRscript -e “IRkernel::installspec(name=‘seurat’, displayname=‘r-seurat’)”conda install -c conda-forge r-biocmanager -y# conda install -c conda-forge r-sctransform -y# conda install -c conda-forge r-rocr -yconda install -c conda-forge r-modes -y# conda install -c conda-forge r-kernsmooth -yconda install -c conda-forge r-fields -yconda install -c conda-forge r-devtools -yconda install -c conda-forge r-clustree -yBiocManager::install(“glmGamPoi”)~/dev/xray/xray -c ~/etc/xui2.json &amp;wget -e “https_proxy=  -O DoubletFinder-master.zipdevtools::install_local(‘DoubletFinder-master.zip’)读取数据从UMI矩阵cellranger输出初步QC计算细胞周期评分SCTransform标准化查看分群走向降维分群使用DoubletFinder去除doubletpK IdentificationRun DoubletFinder]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>SCTransform</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】使用Bootstrap法计算自举置信区间</title>
-    <link href="/shi-yong-Bootstrap-fa-ji-suan-zi-ju-zhi-xin-qu-jian"/>
-    <url>/shi-yong-Bootstrap-fa-ji-suan-zi-ju-zhi-xin-qu-jian</url>
-    
-    <content type="html"><![CDATA[计算药物LD50用Bliss法最严谨，而改良寇氏法计算的结果误差也不大，因此做了一次改良寇氏法计算LD50的实验。最后需要计算一下结果的可信区间，于是来试试万能的Bootstrap法安装包（这个例子用不上）conda activate MICEconda install -c conda-forge r-boot=1.3_28 -y构造样本组别剂量 mg/kg动物数死亡数1110.81002147.71003196.91054262.51085350.01010计算自举置信区间定义统计量计算 the bootstrap percentile interval计算P值]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>Bootstrap</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】cellranger定量：One Library, Multiple Flowcells</title>
-    <link href="/cellranger-ding-liang--One-Library--Multiple-Flowcells"/>
-    <url>/cellranger-ding-liang--One-Library--Multiple-Flowcells</url>
-    
-    <content type="html"><![CDATA[重命名R1、R2原始数据质控重命名前├── SRR12391722│ ├── SRR12391722_1.fastq.gz│ └── SRR12391722_2.fastq.gz├── SRR12391723│ ├── SRR12391723_1.fastq.gz│ └── SRR12391723_2.fastq.gz├── SRR12391724│ ├── SRR12391724_1.fastq.gz│ └── SRR12391724_2.fastq.gz└── SRR12391725│├── SRR12391725_1.fastq.gz│└── SRR12391725_2.fastq.gz重命名后SRX8890106├── SRX8890106_S1_L001_R1_001.fastq.gz├── SRX8890106_S1_L001_R2_001.fastq.gz├── SRX8890106_S1_L002_R1_001.fastq.gz├── SRX8890106_S1_L002_R2_001.fastq.gz├── SRX8890106_S1_L003_R1_001.fastq.gz├── SRX8890106_S1_L003_R2_001.fastq.gz├── SRX8890106_S1_L004_R1_001.fastq.gz└── SRX8890106_S1_L004_R2_001.fastq.gz进行定量Running cellranger count; cellranger 安装nano 103.shchmod +x 103.sh./103.sh附加：scVelo 细胞轨迹安装依赖cellrangerGRCh38_rmsk.gtf.gz： cellrangerdata├── hPB003│ ├── hPB003_S1_L001_R1_001.fastq.gz│ └── hPB003_S1_L001_R2_001.fastq.gz├── hPB004│ ├── hPB004_S1_L001_R1_001.fastq.gz│ └── hPB004_S1_L001_R2_001.fastq.gz├── hPB005│ ├── hPB005_S1_L001_R1_001.fastq.gz│ └── hPB005_S1_L001_R2_001.fastq.gz├── hPB006│ ├── hPB006_S1_L001_R1_001.fastq.gz│ └── hPB006_S1_L001_R2_001.fastq.gz└── hPB007├── hPB007_S1_L001_R1_001.fastq.gz└── hPB007_S1_L001_R2_001.fastq.gz准备2：从cellranger得到loom文件准备3：从 Seurat 输出 标注 和 UMAP运行1: 合并数据第一步 导入模块第二步 读取数据（时间很长）第三步 取交集并合并数据运行2: 计算绘图计算绘图]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>cellranger</tag>
-      
-      <tag>scVelo</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】从ENI数据库下载fastq文件</title>
-    <link href="/cong-ENI-shu-ju-ku-xia-zai-fastq-wen-jian"/>
-    <url>/cong-ENI-shu-ju-ku-xia-zai-fastq-wen-jian</url>
-    
-    <content type="html"><![CDATA[从 ENI 数据库下载进入ENA Browser，搜索对应的GSE号，进入study项目，选择TSV格式的Download report。从TSV表格中提取下载链接，一行一个写入url.txt，前面加上ftp://，接着使用wget -c -i url.txt下载批量重命名脚本：使用 Aspera 下载Aspera是IBM公司的一款私有专利的高速传输软件，据说能充分利用现有的 WAN 基础设施和通用硬件，传输速度比 FTP 和 HTTP 快达数百倍。安装aspera获取下载地址将ftp://ftp.sra.ebi.ac.uk/vol1/之类的地址的前缀换成era-fasp@fasp.sra.ebi.ac.uk:/vol1/进行下载似乎确实挺快的，可以直连，没有不可名状的干扰从 NCBI 数据库下载安装依赖批量下载SRA文件mkdir upload/zl_liu/sra/GSE172205cd upload/zl_liu/sra/GSE172205通过  得到 &lt;SRP_ID&gt;通过  搜索 &lt;SRP_ID&gt;下载 Total 的 Accession List，上传到 upload/zl_liu/sra/GSE172205 目录下vdb-config -i 设置http代理，网络好也可以不设置prefetch --option-file SRR_Acc_List.txt批量转换为FASTQ文件后续分析STAR：一键脚本使用GATK4.0找SNPcellranger定量]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>fastq</tag>
-      
-      <tag>ENI</tag>
-      
-      <tag>NCBI-GEO</tag>
-      
-      <tag>SRA</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】使用 JTK_CYCLE 算法分析生物节律</title>
-    <link href="/shi-yong--JTK-CYCLE--suan-fa-fen-xi-sheng-wu-jie-lv"/>
-    <url>/shi-yong--JTK-CYCLE--suan-fa-fen-xi-sheng-wu-jie-lv</url>
-    
-    <content type="html"><![CDATA[JTK是一种非参数检测程序，能从芯片数据中检测循环转录本。除了计算每个转录本最佳的相位(LAG)、振幅(AMP)和周期(PER)外，JTK还计算了置换检验P值(ADJ.P)和Benjamini-Hochberg q值 (BH.Q)。与常规的周期检测算法相比，JTK具有更好的检验效能、更高的计算效率和更强的鲁棒性。R语言的metacycle包实现了ARSER、JTK_CYCLE、Lomb-Scargle三种分析方法。conda安装包准备数据通过比对，得到的counts矩阵f_counts2TMM分析周期节律绘制热图绘制某个基因的拟合曲线]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>JTK_CYCLE</tag>
-      
-      <tag>节律</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】R解决导出PDF时的字体问题</title>
-    <link href="/R-jie-jue-dao-chu-PDF-shi-de-zi-ti-wen-ti"/>
-    <url>/R-jie-jue-dao-chu-PDF-shi-de-zi-ti-wen-ti</url>
-    
-    <content type="html"><![CDATA[安装包conda activate clusterprofilerconda install -c conda-forge r-sysfonts -yconda install -c conda-forge r-showtext -y绘图]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>R</tag>
-      
-      <tag>fonts</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】使用MICE包对数据缺失值进行插补</title>
-    <link href="/shi-yong-MICE-bao-dui-shu-ju-que-shi-zhi-jin-hang-cha-bu"/>
-    <url>/shi-yong-MICE-bao-dui-shu-ju-que-shi-zhi-jin-hang-cha-bu</url>
-    
-    <content type="html"><![CDATA[在分析数据集时，常常会碰到一些缺失值，如果缺失值的数量相对总体来说非常小，那么直接删除缺失值就是一种可行的方法。但某些情况下，直接删除缺失值可能会损失一些有用信息，此时就需要寻找方法来补全缺失值。安装包导入数据查看数据质量左边第一列，为样本数右边第一列，为累积缺失值个数，0为没有缺失。第一行可以理解为，有111条记录，所有列都有值，没有缺失值。第二行可以理解为，有35条记录，Ozone列有缺失值。当同一侧红蓝箱线图较为接近时可认为其对应考察的另一侧变量缺失情况比较贴近完全随机缺失，这种情况下可以放心大胆地进行之后的插补，否则就不能冒然进行插补。通量图可用于发现潜在的预测因子、更容易被预测的变量以及干扰插补模型的变量。一般来说，离对角线较近的变量通常比距离较远的变量关联性更好（关联性好的预测性更好），位于较低区域（尤其是左下角附近）且对后续分析不感兴趣的变量最好在插补之前从数据中删除。mice包介绍mice包实现了，多变量缺失数据填补的方法，基于多元回归模型来预测，每个不完整变量由单独的模型估算，进行多重混合评估。mice包算法可以实现对于连续型，二进制，无序分类和有序分类数据的进行混合。此外，mice包可以处理连续的两级数据，并通过被动插补来保持插补之间的一致性，通过各种统计诊断图，保证插补数据的质量，该包论文在统计软件领域顶刊JSS上。(from 粉丝日志)对于缺失值数据的处理，用3个步骤来进行定义。填充：mice()函数，从一个包含缺失数据的数据框开始，然后返回一个包含多个完整数据集的对象，每个完整数据集都是通过对原始数据框中的缺失数据进行插而生成的。分析：with()函数，可依次对每个完整数据集应用统计模型，分析填充的结果。优化：pool()函数，将这些单独的分析结果整合为一组结果，最终模型的标准误和p值，都将准确地反映出由于缺失值和多重插补而产生的不确定性。进行迭代插补选择合适的插补（看图）导出插补后的数据插补的不确定性插补数据集分析插补的环境]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>MICE</tag>
-      
-      <tag>R</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>【绘图】聚类热图展示数据细节</title>
     <link href="/cluster-heatmap-displays-data-details"/>
     <url>/cluster-heatmap-displays-data-details</url>
@@ -3156,266 +2201,6 @@
       <tag>heatmap</tag>
       
       <tag>绘图</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】使用limma包进行差异基因分析</title>
-    <link href="/shi-yong-limma-bao-jin-hang-cha-yi-ji-yin-fen-xi"/>
-    <url>/shi-yong-limma-bao-jin-hang-cha-yi-ji-yin-fen-xi</url>
-    
-    <content type="html"><![CDATA[虽然现在已经是高通量测序的时代，大家基本都是从counts矩阵出发，使用DESeq2进行差异表达分析，但是GEO和ArrayExpress上的仍有海量且持续更新的芯片数据，有时候也不可避免遇到一些FPKM格式乃至已经进行了z-score转换的数据，对于这些数据的分析，我们可以认为其在适当变换下(log2FPKM)，满足正态分布，那么仍可以使用limma直接进行分析。下面博主以E-MEXP-1422为例，写一份分析代码的demo。蛋白质组学TCPA数据集获取数据进入TCPA的下载页面选择感兴趣的L4数据unzip TCGA-PRAD-L4.zip清洗数据f_dedup_IQRTCGAbiolinks下载蛋白质组数据之前通过tcpa下载过蛋白数据]，而TCGAbiolinks也有下载蛋白质组学数据的示例，后者看上去更全面一点。下载数据清洗数据计算差异蛋白]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>DEG</tag>
-      
-      <tag>limma</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】oligo：GEO/ArrayExpress芯片数据处理</title>
-    <link href="/oligo-GEO-ArrayExpress-xin-pian-shu-ju-chu-li"/>
-    <url>/oligo-GEO-ArrayExpress-xin-pian-shu-ju-chu-li</url>
-    
-    <content type="html"><![CDATA[安装依赖下载芯片数据GEOArrayExpress~/dev/xray/xray -c ~/etc/xui2.json &amp;wget -e “https_proxy=  -O E-MEXP-1422.raw.1.zipunzip E-MEXP-1422.raw.1.zipRMA标准化数据探针转Symbol使用IQR方法进行重复值的选择使用 rownames(df) &lt;- rowNn 时经常会遇到rowNn中有重复值的情况，此时需要使用合适的策略来选择需要保留的那一列。下面这个函数默认保留IQR值(四分位距)最大的那一列。通过传入不同的select_func参数值，也可以改用其他的保留选择策略。如 mean 来保留算数平均值最大的一列，也可以传入自己定义的函数。探针转Symboldata.raw@annotation 可以得到注释的包信息，如pd.hg.u133a.2在bioconductor上搜索pd.hg.u133a.2，可以知道其Platform为HG-U133A_2谷歌搜索 HG-U133A_2 + affymetrix，可以找到affymetrix官网对应的页面谷歌搜索 affymetrix “HG-U133A_2” site:www.ncbi.nlm.nih.gov，随便进一个GSE页面，找到对应的Platforms，如 GPL571 [HG-U133A_2] Affymetrix Human Genome U133A 2.0 Array，说明HG-U133A_2对应GPL571GPL与Platform对应表gplbioc_packagetitleGPL32mgu74a[MG_U74A] Affymetrix Murine Genome U74A ArrayGPL33mgu74b[MG_U74B] Affymetrix Murine Genome U74B ArrayGPL34mgu74c[MG_U74C] Affymetrix Murine Genome U74C ArrayGPL71ag[AG] Affymetrix Arabidopsis Genome ArrayGPL72drosgenome1[DrosGenome1] Affymetrix Drosophila Genome ArrayGPL74hcg110[HC_G110] Affymetrix Human Cancer ArrayGPL75mu11ksuba[Mu11KsubA] Affymetrix Murine 11K SubA ArrayGPL76mu11ksubb[Mu11KsubB] Affymetrix Murine 11K SubB ArrayGPL77mu19ksuba[Mu19KsubA] Affymetrix Murine 19K SubA ArrayGPL78mu19ksubb[Mu19KsubB] Affymetrix Murine 19K SubB ArrayGPL79mu19ksubc[Mu19KsubC] Affymetrix Murine 19K SubC ArrayGPL80hu6800[Hu6800] Affymetrix Human Full Length HuGeneFL ArrayGPL81mgu74av2[MG_U74Av2] Affymetrix Murine Genome U74A Version 2 ArrayGPL82mgu74bv2[MG_U74Bv2] Affymetrix Murine Genome U74B Version 2 ArrayGPL83mgu74cv2[MG_U74Cv2] Affymetrix Murine Genome U74 Version 2 ArrayGPL85rgu34a[RG_U34A] Affymetrix Rat Genome U34 ArrayGPL86rgu34b[RG_U34B] Affymetrix Rat Genome U34 ArrayGPL87rgu34c[RG_U34C] Affymetrix Rat Genome U34 ArrayGPL88rnu34[RN_U34] Affymetrix Rat Neurobiology U34 ArrayGPL89rtu34[RT_U34] Affymetrix Rat Toxicology U34 ArrayGPL90ygs98[YG_S98] Affymetrix Yeast Genome S98 ArrayGPL91hgu95av2[HG_U95A] Affymetrix Human Genome U95A ArrayGPL92hgu95b[HG_U95B] Affymetrix Human Genome U95B ArrayGPL93hgu95c[HG_U95C] Affymetrix Human Genome U95C ArrayGPL94hgu95d[HG_U95D] Affymetrix Human Genome U95D ArrayGPL95hgu95e[HG_U95E] Affymetrix Human Genome U95E ArrayGPL96hgu133a[HG-U133A] Affymetrix Human Genome U133A ArrayGPL97hgu133b[HG-U133B] Affymetrix Human Genome U133B ArrayGPL98hu35ksuba[Hu35KsubA] Affymetrix Human 35K SubA ArrayGPL99hu35ksubb[Hu35KsubB] Affymetrix Human 35K SubB ArrayGPL100hu35ksubc[Hu35KsubC] Affymetrix Human 35K SubC ArrayGPL101hu35ksubd[Hu35KsubD] Affymetrix Human 35K SubD ArrayGPL198ath1121501[ATH1-121501] Affymetrix Arabidopsis ATH1 Genome ArrayGPL199ecoli2[Ecoli_ASv2] Affymetrix E. coli Antisense Genome ArrayGPL200celegans[Celegans] Affymetrix C. elegans Genome ArrayGPL201hgfocus[HG-Focus] Affymetrix Human HG-Focus Target ArrayGPL339moe430a[MOE430A] Affymetrix Mouse Expression 430A ArrayGPL340mouse4302[MOE430B] Affymetrix Mouse Expression 430B ArrayGPL341rae230a[RAE230A] Affymetrix Rat Expression 230A ArrayGPL342rae230b[RAE230B] Affymetrix Rat Expression 230B ArrayGPL570hgu133plus2[HG-U133_Plus_2] Affymetrix Human Genome U133 Plus 2.0 ArrayGPL571hgu133a2[HG-U133A_2] Affymetrix Human Genome U133A 2.0 ArrayGPL886hgug4111aAgilent-011871 Human 1B Microarray G4111A (Feature Number version)GPL887hgug4110bAgilent-012097 Human 1A Microarray (V2) G4110B (Feature Number version)GPL1261mouse430a2[Mouse430_2] Affymetrix Mouse Genome 430 2.0 ArrayGPL1318xenopuslaevis[Xenopus_laevis] Affymetrix Xenopus laevis Genome ArrayGPL1319zebrafish[Zebrafish] Affymetrix Zebrafish Genome ArrayGPL1322drosophila2[Drosophila_2] Affymetrix Drosophila Genome 2.0 ArrayGPL1352u133x3p[U133_X3P] Affymetrix Human X3P ArrayGPL1355rat2302[Rat230_2] Affymetrix Rat Genome 230 2.0 ArrayGPL1708hgug4112aAgilent-012391 Whole Human Genome Oligo Microarray G4112A (Feature Number version)GPL2112bovine[Bovine] Affymetrix Bovine Genome ArrayGPL2529yeast2[Yeast_2] Affymetrix Yeast Genome 2.0 ArrayGPL2891h20kcodGE Healthcare/Amersham Biosciences CodeLink™ UniSet Human 20K I BioarrayGPL2898adme16codGE Healthcare/Amersham Biosciences CodeLink™ ADME Rat 16-Assay BioarrayGPL3154ecoli2[E_coli_2] Affymetrix E. coli Genome 2.0 ArrayGPL3213chicken[Chicken] Affymetrix Chicken Genome ArrayGPL3533porcine[Porcine] Affymetrix Porcine Genome ArrayGPL3738canine2[Canine_2] Affymetrix Canine Genome 2.0 ArrayGPL3921hthgu133a[HT_HG-U133A] Affymetrix HT Human Genome U133A ArrayGPL3979canine[Canine] Affymetrix Canine Genome 1.0 ArrayGPL4032[Maize] Affymetrix Maize Genome ArrayGPL4191h10kcodCodeLink UniSet Human I BioarrayGPL5188huex10sttranscriptcluster[HuEx-1_0-st] Affymetrix Human Exon 1.0 ST Array [probe set (exon) version]GPL5689hgug4100aAgilent Human 1 cDNA Microarray (G4100A) [layout C]GPL6097illuminaHumanv1Illumina human-6 v1.0 expression beadchipGPL6102illuminaHumanv2Illumina human-6 v2.0 expression beadchipGPL6244hugene10sttranscriptcluster[HuGene-1_0-st] Affymetrix Human Gene 1.0 ST Array [transcript (gene) version]GPL6246mogene10sttranscriptcluster[MoGene-1_0-st] Affymetrix Mouse Gene 1.0 ST Array [transcript (gene) version]GPL6885illuminaMousev2Illumina MouseRef-8 v2.0 expression beadchipGPL6947illuminaHumanv3Illumina HumanHT-12 V3.0 expression beadchipGPL8300hgu95av2[HG_U95Av2] Affymetrix Human Genome U95 Version 2 ArrayGPL8321mouse430a2[Mouse430A_2] Affymetrix Mouse Genome 430A 2.0 ArrayGPL8490IlluminaHumanMethylation27kIllumina HumanMethylation27 BeadChip (HumanMethylation27_270596_v.1.2)GPL10558illuminaHumanv4Illumina HumanHT-12 V4.0 expression beadchipGPL11532hugene11sttranscriptcluster[HuGene-1_1-st] Affymetrix Human Gene 1.1 ST Array [transcript (gene) version]GPL13497HsAgilentDesign026652Agilent-026652 Whole Human Genome Microarray 4x44K v2 (Probe Name version)GPL13534IlluminaHumanMethylation450kIllumina HumanMethylation450 BeadChip (HumanMethylation450_15017482)GPL13667hgu219[HG-U219] Affymetrix Human Genome U219 ArrayGPL14877hgu133plus2Affymetrix Human Genome U133 Plus 2.0 Array [Brainarray Version 13, HGU133Plus2_Hs_ENTREZG]GPL15380GGHumanMethCancerPanelv1Illumina Sentrix Array Matrix (SAM) - GoldenGate Methylation Cancer Panel IGPL15396hthgu133b[HT_HG-U133B] Affymetrix HT Human Genome U133B Array [custom CDF: ENTREZ brainarray v. 14]GPL17556hugene10sttranscriptcluster[HuGene-1_0-st] Affymetrix Human Gene 1.0 ST Array [HuGene10stv1_Hs_ENTREZG_17.0.0]GPL17897hthgu133a[HT_HG-U133A] Affymetrix Human Genome U133A Array (custom CDF: HTHGU133A_Hs_ENTREZG.cdf version 17.0.0)GPL18190hugene11sttranscriptcluster[HuGene-1_1-st] Affymetrix Human Gene 1.1 ST Array [CDF: Brainarray HuGene11stv1_Hs_ENTREZG_15.1.0]]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>oligo</tag>
-      
-      <tag>GEO</tag>
-      
-      <tag>ArrayExpress</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】菜鸟博主对神经网络的简单理解</title>
-    <link href="/simple-understanding-of-neural-networks"/>
-    <url>/simple-understanding-of-neural-networks</url>
-    
-    <content type="html"><![CDATA[博主最近在看临床预测模型，里面涉及到一些神经网络的相关知识，这里记录一下博主的简单理解。基本概念X：一个nx维的输入张量，可以是nx=0的标量，nx=1的向量，nx=2的矩阵，或更高维的张量Y：一个ny维的输出张量，可以是nx=0的标量，nx=1的向量，nx=2的矩阵，或更高维的张量f：一个特定结构的神经网络，如简单的BP神经网络、复杂的深度神经网络DNN等，用于将X映射到YW：一个nw维的张量，用来代表f中的所有权重，nw与f、X、Y有关，具体多少不用管L：损失函数，可以是交叉熵、残差平方等，用来计算f(X)与实际Y的差距一个简单的例子：假设f是DNN，X是一个256*256图片的像素矩阵，Y是一个3维分类向量，那么f就可以用于将一张特定的256*256图片X0映射到一个特定的Y0(P(🐱), P(🐕), P(🐖))，那么我们输出(🐱,🐕,🐖)[which.max(Y0)]，就可以对图片X0进行(🐱,🐕,🐖)的分类。对训练的理解假设我们有一个训练好的权重W，那么我们就可以得到任意X下对实际Y的良好估计f(X,W),有L(f(X,W),Y)相对较小。我们训练的目的，就是根据已有的数据集D{(X,Y)}，通过适当的拟合来找到这样一个权重W，它可以实现前面假设中的效果。那么如何进行适当的拟合呢？一个简单的思路是梯度下降法。根据定义，我们知道L是f(X)和Y的函数，那么变换视角，L就是关于W的函数。假设学习率为η，初始权重为W0，对于D中的任意(X0,Y0)，我们可以求ΔW0=-η∇L(W0,(X0,Y0),f)。根据梯度的特性，我们可以知道对于更新后的权重W1=W0+ΔW0，有L(W1,(X0,Y0),f)&lt;L(W0,(X0,Y0),f)。在适当的参数下，通过不断循环上述过程，就能得到最终的W。那么∇L(W,f)如何求呢？作为医学生，我们不必了解具体的数学原理来编程，只要构建好我们想要的网络结构f，PyTorch的自动求导功能就可以自动帮我们计算出∇L(W,f)啦。]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>llama</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】Counts矩阵的标准化方法：TMM和VST、RLOG</title>
-    <link href="/Counts-ju-zhen-de-biao-zhun-hua-fang-fa--TMM-he-VST-RLOG"/>
-    <url>/Counts-ju-zhen-de-biao-zhun-hua-fang-fa--TMM-he-VST-RLOG</url>
-    
-    <content type="html"><![CDATA[TMM：The Trimmed Mean of M value by edgeRVST：The variance stabilizing transformation by DESeq2RLOG：The regularized-logarithm transformation by DESeq2Counts矩阵来源于STAR匹配得到的结果：df &lt;- read.csv('GSE123379.csv', row.names = 1)安装补充包conda activate tcgaconda install -c bioconda bioconductor-edger -yTMM方法VST方法RLOG方法]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>TMM</tag>
-      
-      <tag>VST</tag>
-      
-      <tag>RLOG</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】从差异基因到RRA聚合</title>
-    <link href="/cong-cha-yi-ji-yin-dao-RRA-ju-he"/>
-    <url>/cong-cha-yi-ji-yin-dao-RRA-ju-he</url>
-    
-    <content type="html"><![CDATA[通过比对，我们得到了counts矩阵，接下来可以进行DEGs分析。此时如果我们有多组之间的对比，则可以使用RRA算法来聚合我们的结果。RRA的安装deseq2 数据要求：低生物学重复 &amp; raw counts；假定负二项分布；适合高通量测序数据sleuth 数据要求：Kallisto输出的结果limma 数据要求：logCPM；假定正态分布；适合芯片数据fpkm数据差异基因分析 ：理论上是不能进行分析的，无计可施时可以参考高生物学重复请直接使用 wilcox.test 以避免大量假阳性多数据集结果整合：RobustRankAggregfpkm转tpm示例（基于 SummarizedExperiment 数据框架）第一步，多组差异基因分析第二步，RRA聚合差异结果附加：绘图安装包数据准备绘图1绘图2附加：单细胞数据第一步 读取数据第二步 计算差异基因第三步 整合数据第四步 保存结果]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>DEGs</tag>
-      
-      <tag>RRA</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】森林图展示回归分析的结果</title>
-    <link href="/Forest-plot-displays-the-results-of-regression-analysis"/>
-    <url>/Forest-plot-displays-the-results-of-regression-analysis</url>
-    
-    <content type="html"><![CDATA[配置环境基础编程环境GitHub 下载加速可能需要用到的加速服务使用示例]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>regression</tag>
-      
-      <tag>forestplot</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】有序分类Logistic回归</title>
-    <link href="/ordered-classification-logistic-regression"/>
-    <url>/ordered-classification-logistic-regression</url>
-    
-    <content type="html"><![CDATA[Logistic 回归的假设假设1：因变量唯一，且为有序多分类变量假设2：存在一个或多个自变量，可为连续、有序多分类或无序分类变量。假设3：自变量之间无多重共线性。假设4：模型满足“比例优势”假设。选择自变量单因素回归数据归一化方式1方式2Logistic 回归附加 线性回归多重共线性检测缺失值插补更多信息见 mice 包多因素回归用到再写绘制森林图f_forestplot]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>regression</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】树莓派：Rclone+aria2做Onedrive离线下载机</title>
-    <link href="/Rclone-aria2-zuo-Onedrive-li-xian-xia-zai-ji"/>
-    <url>/Rclone-aria2-zuo-Onedrive-li-xian-xia-zai-ji</url>
-    
-    <content type="html"><![CDATA[Rclone使用自建应用挂上了Ondrive，接下来就该配置aria2+自动上传脚本了。安装aira2路由器配置端口映射，51413映射到树莓派的51413，tcp+udpmkdir aira2 &amp;&amp; cd aira2nano docker-compose.ymlsudo -icd /home/pi/aira2docker-compose up -ddocker-compose logscp ~/.config/rclone/rclone.conf ./aria2-config/查看rclone是否成功配置 docker exec -it aria2-pro rclone config 顺便记下网盘名称反代16800端口到AriaNG反代的location的/jsonrpc上配置自动上传脚本根据实际情况修改 ./aria2-config/ 配置文件目录下script.conf文件中的网盘名称(drive-name)和网盘路径(drive-dir)这两个选项的值；注意网盘路径前有注释，配置时需去掉#到 七米蓝的仓库 找一份文件进行下载测试参考1：p3terx参考2：p3terx参考3：咕咕鸽]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>raspberrypi</tag>
-      
-      <tag>rclone</tag>
-      
-      <tag>aria2</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】时空图：以天狼星单程旅行为例</title>
-    <link href="/-qian-yi--shi-kong-tu--yi-tian-lang-xing-dan-cheng-l-xing-wei-li"/>
-    <url>/-qian-yi--shi-kong-tu--yi-tian-lang-xing-dan-cheng-l-xing-wei-li</url>
-    
-    <content type="html"><![CDATA[最近看《从一到无穷大》，对里面的闵氏时空图很感兴趣，恰好里面有去天狼星的例子，因此想用时空图画画看。为简化问题，这里取天狼星到地球的距离为9光年，实际约为8.6光年。同时为了便于画图，纵轴时间轴以年×光速为单位，横轴空间轴以光年为单位。使用 geogebra 进行绘图。出发前的时空图如图1所示，线段g（CAD）表示飞船，A点为质心。直线f表示天狼星B的世界线。射线h（AE）表示A的光锥。射线i（AF）表示飞船的将来的世界线，其速度为 tanα=0.9 倍光速。出发后的时空图如图2所示，为了便于绘图，减小了α。直线AF与直线AL构成了以飞船为参考系的新时空坐标系。x’为0的直线AF为新的纵轴，t’为0的直线AL为新的横轴，两者关于AE轴对称AB在新坐标系的几何位置为（AL，AK），物理位置为（ALβ，AKβ）一些有趣的发现AB的时空距离原来为 9，现在AB’的时空距离依然为 9，即 92+(0i)2=20.652+(−18.58i)29^2 + (0i)^2 = 20.65^2 + (-18.58i)^292+(0i)2=20.652+(−18.58i)2AF、AL上的单位对应的几何长度均变为原来的 1/β，即 ∣AF→∣β=tAF′→′∣AL→∣β=xAB′→′\lvert\overrightarrow{AF}\rvert\beta = t&#x27;_{ \overrightarrow{AF&#x27;}} \quad \lvert\overrightarrow{AL}\rvert\beta = x&#x27;_{ \overrightarrow{AB&#x27;}}∣AF∣β=tAF′′​∣AL∣β=xAB′′​对于出发的飞船上的人来说，旅行只花了 4.36 年，小于 10 年，即 tAF′→′=4.36&lt;10=tAF→t&#x27;_{ \overrightarrow{AF&#x27;}} = 4.36 \lt 10 = t_{ \overrightarrow{AF}}tAF′′​=4.36&lt;10=tAF​对于出发的飞船上的人来说，天狼星距离为 3.92 光年，小于9光年，B’点的天狼星是 18.58 年前的幻影，现在的天狼星是M’点的天狼星，即 xAM′→′=(∣AB→∣cosα)β=3.92&lt;9=xAB→x&#x27;_{ \overrightarrow{AM&#x27;}} = (\frac{ \lvert\overrightarrow{AB}\rvert}{cos\alpha})\beta = 3.92 \lt 9 = x_{ \overrightarrow{AB}}xAM′′​=(cosα∣AB∣​)β=3.92&lt;9=xAB​对于出发的飞船上的人来说，天狼星靠近的速度 v = 3.92/4.36 = 0.9 倍光速，与外界观察飞船飞行的速度一致飞船感知外界的空间长度 xAB→=9x_{\overrightarrow{AB}} = 9xAB​=9 变成了空间长度 xAB′→′=∣AL→∣β=20.65x&#x27;_{\overrightarrow{AB&#x27;}} = \lvert\overrightarrow{AL}\rvert\beta = 20.65xAB′′​=∣AL∣β=20.65，变长了γ倍，外界尺子变长了飞船感知外界的时间长度 tAF→=10t_{\overrightarrow{AF}} = 10tAF​=10 变成了时间长度 tAF′→′=∣AF→∣β=4.36t&#x27;_{ \overrightarrow{AF&#x27;}} = \lvert\overrightarrow{AF}\rvert\beta = 4.36tAF′′​=∣AF∣β=4.36，缩短为1/γ，外界时间变快了飞船认为外界“尺长钟快”，因此外界认为飞船上“尺缩钟慢”根据四维时空距离不变性，可以轻松计算飞船感知的旅程时间耗费，飞船参考系下的AF’的时空长度与外界参考系下AF的时空长度一致，即 (i∣AF′→∣)2=(i∣AF→∣β)2=AB2+(iBF)2(i\lvert\overrightarrow{AF&#x27;}\rvert)^2 = (i\lvert\overrightarrow{AF}\rvert\beta)^2=AB^2+(iBF)^2(i∣AF′∣)2=(i∣AF∣β)2=AB2+(iBF)2]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>时空图</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】STAR：一键脚本</title>
-    <link href="/STAR--yi-jian-jiao-ben"/>
-    <url>/STAR--yi-jian-jiao-ben</url>
-    
-    <content type="html"><![CDATA[            2023-09-27更新：添加了转录本计数相关内容           一些依赖安装 biobambam项目地址： star可选：BAM转FASTQ将所有bam文件以.bam结尾，单独存放到一个目录，conda activate biobambam，新建以下脚本运行biobambam 高版本可能有 libmaus2 相关错误尚未修复filename、outputdir 等参数等于号后不能有空格单端测序，outputdir 里只有 default_s.fq.gz 的输出更多信息首次：构建小鼠的基因组索引来源human 和 mouse 推荐从 Gencode 上下载其他物种可以从 NCBI 上下载，也可以从 ENSEMBL 上下载需要参考基因组 fasta 文件和对应的 gtf 注释步骤如果要自己构建，可以使用 zcat R1.fq.gz | head 来查看reads长度，选用reads长度减1（149）作为 --sjdbOverhang 比默认的100要好，但是说明里认为绝大多数情况下100和理想值差不多已构建好的索引TCGA 上有已经构建好的索引，但是可能是损坏的wget  -O star-2.7.5c_GRCh38.d1.vd1_gencode.v36.tgztar -zxvf star-2.7.5c_GRCh38.d1.vd1_gencode.v36.tgz附加 构建转录本索引大概生成了以下文件一键脚本原始数据质控单独起一个目录，在这个目录下，以样本名为目录名，将样本的fataq文件以gzip压缩后存放，单端一个文件，双端两个文件，都可以，示例结构如下在这个目录外，conda activate star，新建以下脚本运行，即可跑完前五步附加 转录本计数转录本水平: cufflinks、eXpress、RSEM外显子水平: DEXseq最后得到的RSEM_OUT目录结构如下组装RSEM_Counts文件组装Counts文件DESeq2分析附加：删除临时文件]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>STAR</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】CellTypist 注释免疫细胞亚群</title>
-    <link href="/-qian-yi-CellTypist-zhu-shi-mian-yi-xi-bao-ya-qun"/>
-    <url>/-qian-yi-CellTypist-zhu-shi-mian-yi-xi-bao-ya-qun</url>
-    
-    <content type="html"><![CDATA[安装 CellTypist配置环境加载包加载数据seurat 转 scanpy进行预测预测添加到 seurat 对象]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>生信</tag>
-      
-      <tag>celltypist</tag>
-      
-      <tag>分群</tag>
-      
-      <tag>注释</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】二代测序数据处理之数据格式说明</title>
-    <link href="/er-dai-ce-xu-shu-ju-chu-li-zhi-shu-ju-ge-shi-shuo-ming"/>
-    <url>/er-dai-ce-xu-shu-ju-chu-li-zhi-shu-ju-ge-shi-shuo-ming</url>
-    
-    <content type="html"><![CDATA[FASTA(.fa) 储存参考数据集从零开始完整学习全基因组测序（WGS）数据分析：第2节 FASTA和FASTQ基本单元序列所表示的基因名：&gt;ENSMUSG00000020122ENSMUST00000138518，后可接空格表示注释前缀具体序列信息：CCCTCCTATCATGC……GGGCCCACCTGTTCTCTGGT基因名独占一行，序列信息为基因名后一行至下一个 &gt; 基因名标记前FASTA文件为基本单元的简单罗列FASTQ(.fq) 储存原始测序数据每四行成为一个独立的单元，称之为read；FASTQ文件为read的简单罗列第一行：以‘@’开头，是这一条read的唯一标识符第二行：测序read的序列，由A，C，G，T和N这五种字母构成，N代表的是测序时那些无法被识别出来的碱基；第三行：以‘+’开头，用以兼容旧版格式第四行：测序read的质量值，Q = -10log(测序错误率)，字符=chr(ord('!')+Q)，上限为 ~GTF(.gtf) 描述基因和转录本的信息GTF文件格式简介头部有 # 开头的注释行主体为 \t 分隔的具有九列的表格，空值用 . 填充第一列 seqid 代表染色体的ID第二列是 source 代表基因结构的来源第三列是feature, 代表区间对应的特征类型，如外显子等第四、五列为区间的起止坐标第六列是 score第七列是 strand, 代表正负链的信息, +表示正链，-表示负链，?表示不清楚第八列是 phase，当描述的是CDS区间信息时，需要指定翻译时开始的位置，取值范围有0,1,2两种第九列是attributes, 表示属性，键值对间以分号分隔，键值对内以空格分隔IDX(.idx) 基因组比对工具HISAT2的索引文件RNA-Seq基因组比对工具HISAT2使用 hisat2-build 工具从.fa文件建立Sam/Bam(.bam) 记录比对的具体情况Sam/Bam文件格式详解bam文件是sam文件的二进制格式，sam 文件是Sequence Alignment/Map Format的简写，产生于比对之后的数据输出，记录了比对的具体情况。文件中以tab键分割，包括 Header section 和 Alignments section 两部分：Header section该部分全部以“@”开头，提供基本的软件版本，参考序列信息，排序信息等@HD行：这一行中有各种不同的标识标识“VN”用以说明格式版本标识“SO”用以说明比对排序的情况，有unknown (default)、unsorted、queryname和coordinate,对于coordinate，排序的主键是Alignments section的第三列“RNAME”，其顺序由@SQ行的“SN”标识的顺序定义，次要排序键是Alignments section的第四列“POS”字段。对于RNAME和POS相等的比对，排列顺序则是任意的@SQ行的“SN”标签是参考序列说明，它的值主要是用于Alignments section的第三列“RNAME”和第七列“MRNM”比对的记录@PG行是使用的程序说明；该行“ID”为程序记录标识符，“PN”为程序名字，“CL”为命令行@CO行是任意的说明信息Alignments section该部分包含了11列必需字段，无效或者没有的字段一般用0或者*表示。第1列：QnameRead的名字第2列：FLAG每一个read的比对情况可以用十进制数字（或者十六进制数字）表示，如果比对情况 有多个，将多个比对情况所代表的十进制数字加和就是这一行的FLAG。另，以下网站可以通过输入FLAG值，直接找出该FLAG是那些FLAG的加和：Decoding SAM flags第3列：RNAME比对上的参考序列的名字，该名字出现在Header section的@SQ行的SN标识中，如果该read没有比对上，也就是说该read在参考序列上没有坐标，那么这一列则用“”表示，那么这一行的POS和CIGAR列也会是“”。第4列：POSread比对到的参考序列“RNAME”最左侧的位置坐标，也是CIGAR中第一个比对标识“M”对应的最左侧碱基在参考序列的位置，未比对上的read在参考序列中没有坐标，此列标识为“0”。第5列：MAPQ比对的质量值，计算方法为比对错误率的-10*log10的值，一般是四舍五入的整数值，如果是255，说明该比对值无效。第6列：CIGARCIGAR标识符表示read中每个碱基的比对情况，主要有以下标识符：M: read上的碱基与参考序列“RNAME”完全匹配，碱基一一对应，包括了正确匹配与错误匹配I: read上的碱基相对于参考序列“RNAME”有插入现象D: read上的碱基相对于参考序列“RNAME”有删除现象N: read上的碱基相对于参考序列“RNAME”存在连续没有比对上的空缺S: read的开头或者结尾部分没有比对到参考序列&quot;RNAME”上, 但这部分未比对上的连续序列仍保留在sam文件的该read序列中H: read的开头或者结尾部分没有比对到参考序列&quot;RNAME”上, 这部分未比对上的连续序列未保留P: padding (silent deletion from padded reference)=：sequence match 正确匹配X：sequence mismatch 错误匹配第7列：MRNM该read的mate read比对上的参考序列的名字，该名字出现在Header section的@SQ行的SN标识中，如果和该read所在行的第三列“RNAME”一样，则用“=”表示，说明这对read比对到了同一条参考序列上；如果mate read没有比对上，第七列则用“*”表示；如果这对read没有比对到同一条参考序列，那么这一列则是mate read所在行第三列的“RNAME”。第8列：MPOS该read的mate read比对到的参考序列“RNAME”最左侧的位置坐标，也是mate read CIGAR中第一个比对标识“M”对应的最左侧碱基在参考序列的位置，未比对上的read在参考序列中没有坐标，此列标识为“0”。第9列：ISIZE表示pair read完全匹配到同一条参考序列时，两个read之间的长度，可简单理解为测序文库的长度。第10列：SEQ存储的序列，没有存储，此列则用“*”标识。该序列的长度一定等于CIGAR标识中“M”，“I”，“S”，“=”，“X”标识的碱基长度之和。第11列：QUAL序列的每个碱基对应一个碱基质量字符，每个碱基质量字符对应的ASCII码值减去33（Sanger Phred-33 质量值体系），即为该碱基的测序质量得分（Phred Quality Score）。不同Phred Quality Score代表不同的碱基测序错误率，如Phred Quality Score值为20和30分别表示碱基测序错误率为1%和0.1%。相关参数说明基因组的那些事儿测序深度：30x；每个碱基平均被测次数，相关研究表明5~60x中 30x对于后续分析可以达95%置信度测序策略：PE150；PE双端测序、一条序列正反测两次；150每次测150bp，双端测一条片段共300bp350bpcDNA建库：将DNA用超声波随机打断成350bp，加接头，作为测序前的准备工作]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>NGS</tag>
-      
-      <tag>fasta</tag>
-      
-      <tag>fastq</tag>
-      
-      <tag>gft</tag>
-      
-      <tag>bam</tag>
       
     </tags>
     
@@ -3458,27 +2243,6 @@
     <tags>
       
       <tag>探索</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【迁移】树莓派开启蓝牙个人区域网</title>
-    <link href="/ssh-by-bluetooth-in-raspberrypi"/>
-    <url>/ssh-by-bluetooth-in-raspberrypi</url>
-    
-    <content type="html"><![CDATA[开启 SSH 连接boot 目录下新建 ssh 的空文件boot 目录下新建 wpa_supplicant.conf蓝牙局域网设置连接蓝牙局域网win11 上右键蓝牙加入个人区域网树莓派上 ifconfig 可以看到多了一个 bnep0 的网络win11 上 ipconfig.exe 可以看到多了一个以太网适配器 蓝牙网络连接其默认网关为 172.20.1.1此时 win11 上 ssh 连接 172.20.1.1 即可连接到树莓派]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>raspberrypi</tag>
-      
-      <tag>ssh</tag>
       
     </tags>
     
