@@ -97,6 +97,10 @@ hexo-theme-fluid ^1.9.9                 # 主题（npm 包形式）
 
 ---
 
+## 部署前检查（每次部署前必做）
+
+见 [DEPLOY-CHECK.md](DEPLOY-CHECK.md)。
+
 ## 部署方式（SSH，无 token）
 
 已弃用 HTTPS + `ghp_xxxx` token 方式，改用 SSH 密钥验证推送：
