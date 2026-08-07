@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Allow: /archives/
+
+Sitemap: https://hexo.limour.top/sitemap.xml
+Sitemap: https://hexo.limour.top/baidusitemap.xml
