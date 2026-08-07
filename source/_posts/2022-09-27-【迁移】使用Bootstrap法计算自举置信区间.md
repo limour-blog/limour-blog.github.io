@@ -4,6 +4,7 @@ urlname: shi-yong-Bootstrap-fa-ji-suan-zi-ju-zhi-xin-qu-jian
 date: 2022-09-27 19:25:08
 index_img: https://api.limour.top/randomImg?d=2022-09-27 19:25:08
 tags: Bootstrap
+hide: true
 ---
 
 计算药物LD50用Bliss法最严谨，而改良寇氏法计算的结果误差也不大，因此做了一次改良寇氏法计算LD50的实验。最后需要计算一下结果的可信区间，于是来试试万能的Bootstrap法

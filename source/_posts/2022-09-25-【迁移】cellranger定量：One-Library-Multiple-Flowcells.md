@@ -3,7 +3,8 @@ title: 【迁移】cellranger定量：One Library, Multiple Flowcells
 urlname: cellranger-ding-liang--One-Library--Multiple-Flowcells
 date: 2022-09-25 19:42:28
 index_img: https://api.limour.top/randomImg?d=2022-09-25 19:42:28
-tags: ['cellranger', 'scVelo']
+tags: [cellranger, scVelo]
+hide: true
 ---
 ## 重命名R1、R2
 + [原始数据质控](/shi-yong-GATK-zhao-SNP#fastp一键质控)

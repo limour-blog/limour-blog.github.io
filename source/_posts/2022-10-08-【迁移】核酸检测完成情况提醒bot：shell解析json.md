@@ -3,7 +3,8 @@ title: 【迁移】核酸检测完成情况提醒bot：shell解析json
 urlname: -shell-jie-xi-json
 date: 2022-10-08 15:03:57
 index_img: https://api.limour.top/randomImg?d=2022-10-08 15:03:57
-tags: ['shell', 'json']
+tags: [shell, json]
+hide: true
 ---
 
 之前做了个核酸检测完成情况提醒bot，来给班群三天两次进行提醒。运行了一段时间后，发现微信每15天就会踢人下线，有点恶心。因此代码里的`toUserName`就不能再写死了，得通过api每天获取。这样就被踢了就只要重新登录一下，不用再改`toUserName`了。

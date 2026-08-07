@@ -4,6 +4,7 @@ urlname: shi-yong-SCTransform-biao-zhun-hua
 date: 2022-09-29 17:32:00
 index_img: https://api.limour.top/randomImg?d=2022-09-29 17:32:00
 tags: SCTransform
+hide: true
 ---
 
 ## 安装包

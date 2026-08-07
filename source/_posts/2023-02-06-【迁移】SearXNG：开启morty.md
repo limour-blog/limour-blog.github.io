@@ -3,7 +3,8 @@ title: 【迁移】SearXNG：开启morty
 urlname: SearXNG-kai-qi-morty
 date: 2023-02-06 22:46:12
 index_img: https://api.limour.top/randomImg?d=2023-02-06 22:46:12
-tags: ['searxng', 'morty']
+tags: [searxng, morty]
+hide: true
 ---
 ## 部署 SearXNG
 ```bash

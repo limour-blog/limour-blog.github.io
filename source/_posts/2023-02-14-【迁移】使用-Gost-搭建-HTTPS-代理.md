@@ -3,7 +3,8 @@ title: 【迁移】使用 Gost 搭建 HTTPS 代理
 urlname: -shi-yong--Gost--da-jian--HTTPS--dai-li
 date: 2023-02-14 21:06:28
 index_img: https://api.limour.top/randomImg?d=2023-02-14 21:06:28
-tags: ['gost']
+tags: gost
+hide: true
 ---
 + 将提前申请好的ssl证书保存好
 + `mkdir -p ~/app/gost && cd ~/app/gost && nano docker-compose.yml`

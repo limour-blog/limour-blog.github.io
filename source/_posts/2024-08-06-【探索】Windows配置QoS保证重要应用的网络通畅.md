@@ -3,7 +3,7 @@ title: 【探索】Windows配置QoS保证重要应用的网络通畅
 urlname: Windows-configuration-QoS-ensures-smooth-network-connectivity-for-important-applications
 index_img: https://api.limour.top/randomImg?d=2024-08-06 08:59:49
 date: 2024-08-06 16:59:49
-tags: [Windows, QoS]
+tags: [win, QoS]
 ---
 
 ## 开启组策略

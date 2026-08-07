@@ -3,7 +3,8 @@ title: 【迁移】Docker部署drawio
 urlname: -Docker-bu-shu-drawio
 date: 2023-03-29 20:21:26
 index_img: https://api.limour.top/randomImg?d=2023-03-29 20:21:26
-tags: ['docker', 'drawio']
+tags: [docker, drawio]
+hide: true
 ---
 ```bash
 mkdir -p ~/app/draw && cd ~/app/draw && nano docker-compose.yml

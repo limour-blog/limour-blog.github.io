@@ -3,7 +3,7 @@ title: 【记录】搭建端到端加密的Enclosed和局域网传输数据的Sn
 urlname: Building-an-end-to-end-encrypted-enclosure-and-SnapDrop-for-LAN-data-transmission
 index_img: https://api.limour.top/randomImg?d=2024-10-09 06:19:19
 date: 2024-10-09 14:19:19
-tags: ['docker', 'ngpm']
+tags: [docker, ngpm]
 ---
 Enclosed，一个极简的网络应用程序，旨在发送私人和安全的消息。所有消息都是端到端加密的，确保服务器和存储对内容没有任何了解。用户可以设置密码，定义过期时间（TTL），并选择在阅读后让消息自毁。
 

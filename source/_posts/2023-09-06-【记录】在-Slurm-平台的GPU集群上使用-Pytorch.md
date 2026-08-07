@@ -3,7 +3,7 @@ title: 【记录】在 Slurm 平台的GPU集群上使用 Pytorch
 urlname: -ji-lu--zai--Slurm--ping-tai-de-GPU-ji-qun-shang-shi-yong--Pytorch
 date: 2023-09-06 20:24:43
 index_img: https://api.limour.top/randomImg?d=2023-09-06 20:24:43
-tags: ['slurm', 'nvidia', 'torch']
+tags: [slurm, nvidia, torch]
 ---
 {% note info %}
 更新：不用编译了，直接装最新版就行，cuda 是可以[兼容](https://docs.nvidia.com/deploy/cuda-compatibility/#use-the-right-compat-package)低版本驱动的，cuda-compat 似乎可以不装。之前运行检测失败是因为 HPC 上的环境变量没有指定驱动的 bin 和 lib 的路径。

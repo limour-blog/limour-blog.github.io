@@ -4,7 +4,8 @@ title: 【迁移】树莓派：Rclone+aria2做Onedrive离线下载机
 urlname: Rclone-aria2-zuo-Onedrive-li-xian-xia-zai-ji
 date: 2022-07-13 17:12:52
 index_img: https://api.limour.top/randomImg?d=2022-07-13 17:12:52
-tags: ['raspberrypi', 'rclone', 'aria2']
+tags: [raspberrypi, rclone, aria2]
+hide: true
 ---
 
 [Rclone使用自建应用挂上了Ondrive](/Rclone-bei-fen-VPS-shu-ju-dao-onedrive)，接下来就该配置aria2+自动上传脚本了。
