@@ -104,11 +104,8 @@ theme: fluid
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://oauth2:ghp_xxxx@xxx.limour.top/xxx/https://github.com/limour-blog/limour-blog.github.io.git
+  repo: git@github-2:limour-blog/limour-blog.github.io.git
   branch: gh-pages
-  token: ghp_xxxx
-  name: xxx@limour.top
-  email: xxx@limour.top
 
 # hexo-generator-feed
 # https://github.com/hexojs/hexo-generator-feed
