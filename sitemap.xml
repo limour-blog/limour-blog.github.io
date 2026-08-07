@@ -2,6 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://hexo.limour.top/-bai-piao--shi-yong-CloudFlare-R2-da-jian-ge-ren-tu-chuang</loc>
+    
+    <lastmod>2026-08-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://hexo.limour.top/-qian-yi--shi-yong-shou-biao-zuo-zhi-nan-zhen</loc>
+    
+    <lastmod>2026-08-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://hexo.limour.top/FFT-de-you-qu-ying-yong-ji-suan-zheng-shu-cheng-fa</loc>
+    
+    <lastmod>2026-08-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://hexo.limour.top/-qian-yi--shi-kong-tu--yi-tian-lang-xing-dan-cheng-l-xing-wei-li</loc>
+    
+    <lastmod>2026-08-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://hexo.limour.top/the-white-lab-coat-is-hung-on-the-hook</loc>
     
     <lastmod>2026-08-07</lastmod>
@@ -1097,13 +1133,6 @@
   </url>
   
   <url>
-    <loc>https://hexo.limour.top/tags/%E6%97%B6%E7%A9%BA%E5%9B%BE/</loc>
-    <lastmod>2026-08-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://hexo.limour.top/tags/rclone/</loc>
     <lastmod>2026-08-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -1405,20 +1434,6 @@
   </url>
   
   <url>
-    <loc>https://hexo.limour.top/tags/fft/</loc>
-    <lastmod>2026-08-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hexo.limour.top/tags/%E6%95%B4%E6%95%B0%E4%B9%98%E6%B3%95/</loc>
-    <lastmod>2026-08-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://hexo.limour.top/tags/%E7%83%AD%E7%82%B9/</loc>
     <lastmod>2026-08-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -1448,13 +1463,6 @@
   
   <url>
     <loc>https://hexo.limour.top/tags/onedrive/</loc>
-    <lastmod>2026-08-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hexo.limour.top/tags/%E5%9C%B0%E7%90%86/</loc>
     <lastmod>2026-08-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
