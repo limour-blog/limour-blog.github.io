@@ -11,6 +11,15 @@
    - 用户看完后会告知结果（效果 OK / 需要修改）
 4. 用户确认无误后再部署：`npx hexo deploy`
 
+## 部署确认流程（部署后必做）
+
+1. `npx hexo deploy` 部署到 gh-pages 分支
+2. 验证远程分支已推送：`git ls-remote git@github-2:limour-blog/limour-blog.github.io.git gh-pages`
+   - 返回的 commit 必须与 deploy 输出里的新 commit（`HEAD -> gh-pages (forced update)` 前的 hash）一致
+3. ssh b 执行 `~/update-hexo.sh` 拉取并更新服务器
+   - 成功标志：`HEAD is now at <commit> Site updated: ...`
+4. 三端 commit 一致（本地推送 / 远程 gh-pages / 服务器 b HEAD）= 部署完成
+
 ## 检查要点（用户自查参考）
 
 浏览器打开 http://localhost:3000/ 检查首页/文章/标签/归档等页面效果。
@@ -27,13 +36,21 @@
   必须用 `setsid nohup ... < /dev/null & disown` 才能常驻。
 - 预览启动初期服务器在做 neat html/css 处理，curl 可能返回 000，
   等约 20 秒再检查（HTTP 200 = 就绪）。
+- `npx hexo g` 输出 `0 files generated` 属正常（增量构建），关键看无 FATAL
+  且后续有 neat the html 处理日志。
+- deploy 成功标志：`INFO Deploy done: git` + `HEAD -> gh-pages (forced update)`；
+  输出里的 `branch 'master' set up to track ...` 是 hexo-deployer-git 内部提示，非错误。
+- deploy 后必须用 git ls-remote 校验远程 commit，再 ssh b 执行 ~/update-hexo.sh，
+  服务器 HEAD 与远程 commit 一致才算部署完成。
 ## 命令速查
 
 ```bash
-npx hexo g             # 构建；成功标志：INFO N files generated，无 FATAL
+npx hexo g             # 构建；成功标志：INFO N files generated（0 files 属增量正常），无 FATAL
 setsid nohup npx hexo s -p 3000 > /tmp/hexo-server.log 2>&1 < /dev/null & disown   # 后台启动预览 http://localhost:3000/（harness 下需 setsid 常驻）
 pkill -f "hexo s"      # 停止预览服务（注意 pgrep -f hexo 可能匹配到自身命令）
-npx hexo deploy        # 确认无误后再部署到 gh-pages 分支
+npx hexo deploy        # 确认无误后再部署到 gh-pages 分支；成功标志：Deploy done: git + forced update
+git ls-remote git@github-2:limour-blog/limour-blog.github.io.git gh-pages   # 校验远程 commit 与 deploy 输出一致
+ssh b 'bash ~/update-hexo.sh'   # 服务器拉取更新；成功标志：HEAD is now at <commit>
 ```
 
 > 注意：预览服务不停止也能 deploy，但会占用端口；检查完记得停掉。
