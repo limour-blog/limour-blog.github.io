@@ -125,8 +125,6 @@ markdown:
 
 sitemap:
   path: sitemap.xml
-baidusitemap:
-  path: baidusitemap.xml
 
 links:
   enable: true
