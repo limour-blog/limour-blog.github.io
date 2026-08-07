@@ -1091,17 +1091,17 @@ static_prefix:
 
   bootstrap: /cdn/bootstrap/
 
-  prismjs: https://lib.baomitu.com/prism/1.29.0/
+  prismjs: /cdn/prismjs/
 
   tocbot: /cdn/tocbot/
 
-  typed: https://lib.baomitu.com/typed.js/2.0.12/
+  typed: /cdn/typed/
 
-  fancybox: https://lib.baomitu.com/fancybox/3.5.7/
+  fancybox: /cdn/fancybox/
 
   nprogress: /cdn/nprogress/
 
-  mathjax: https://lib.baomitu.com/mathjax/3.2.2/
+  mathjax: /cdn/mathjax/
 
   katex: /cdn/katex/
 
@@ -1109,18 +1109,20 @@ static_prefix:
 
   clipboard: /cdn/clipboard-js/
 
-  mermaid: https://lib.baomitu.com/mermaid/8.14.0/
+  mermaid: /cdn/mermaid/
 
-  valine: https://lib.baomitu.com/valine/1.5.1/
+  valine: /cdn/valine/
 
   waline: /cdn/waline/
 
-  gitalk: https://lib.baomitu.com/gitalk/1.8.0/
+  gitalk: /cdn/gitalk/
 
-  disqusjs: https://lib.baomitu.com/disqusjs/1.3.0/
+  disqusjs: /cdn/disqusjs/
 
-  twikoo: https://lib.baomitu.com/twikoo/1.6.8/
+  twikoo: /cdn/twikoo/
 
-  discuss: https://lib.baomitu.com/discuss/1.2.1/
+  discuss: /cdn/discuss/
 
   hint: /cdn/hint.css/
+
+  moment: /cdn/moment/
