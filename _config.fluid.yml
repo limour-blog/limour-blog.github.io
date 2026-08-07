@@ -1016,28 +1016,10 @@ links:
   # Member item of page
   items:
     - {
-      title: "Fluid Blog",
-      intro: "主题博客",
-      link: "https://hexo.fluid-dev.com/",
-      avatar: "/img/favicon.png"
-    }
-    - {
-      title: "生信技能树",
-      intro: "曾老师的生信论坛",
-      link: "https://web.archive.org/web/20230605205823/http://www.biotrainee.com/",
-      avatar: "https://img.limour.top/2023/09/24/65104f9d6d28f.webp"
-    }
-    - {
       title: "浅秋枫影",
       intro: "记录生活，记录代码，给自己的网络生涯留下一笔精神财富！",
       link: "https://cuojue.org",
       avatar: "https://cuojue.org/avatar/b81741f1a25b57a016e223fe13f905b4"
-    }
-    - {
-      title: "zzxのブログ",
-      intro: "烟花易逝，人情长存",
-      link: "https://blog.xzzzx.xyz",
-      avatar: "https://blog.xzzzx.xyz/wp-content/uploads/2022/01/touxiang.jpg"
     }
     - {
       title: "博友圈",
