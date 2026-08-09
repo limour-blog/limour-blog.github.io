@@ -34,6 +34,11 @@
 - 若「我检查一下效果」时发现 gh-pages 与本地不一致，说明上次没部署。
 - harness bash 环境下 `nohup ... &` 启动的 hexo 会随命令退出被杀；
   必须用 `setsid nohup ... < /dev/null & disown` 才能常驻。
+- 直接 `setsid nohup npx hexo s ...` 单行后台启动可能失败（无输出、日志未生成），
+  疑似 rtk 命令包装干扰；稳妥做法是先 `cat > /tmp/start-hexo.sh` 写好脚本，
+  再 `setsid /tmp/start-hexo.sh < /dev/null > /dev/null 2>&1 & disown` 启动。
+- 停止预览：`pkill -f "hexo s"` 可能误杀自身 bash 包装命令（命令行含 hexo s 字样）
+  而杀不掉真正的 hexo 进程；改用 `ss -tlnp | grep ':3000'` 找 pid= 再 kill 最可靠。
 - 预览启动初期服务器在做 neat html/css 处理，curl 可能返回 000，
   等约 20 秒再检查（HTTP 200 = 就绪）。
 - `npx hexo g` 输出 `0 files generated` 属正常（增量构建），关键看无 FATAL
@@ -46,8 +51,14 @@
 
 ```bash
 npx hexo g             # 构建；成功标志：INFO N files generated（0 files 属增量正常），无 FATAL
-setsid nohup npx hexo s -p 3000 > /tmp/hexo-server.log 2>&1 < /dev/null & disown   # 后台启动预览 http://localhost:3000/（harness 下需 setsid 常驻）
-pkill -f "hexo s"      # 停止预览服务（注意 pgrep -f hexo 可能匹配到自身命令）
+# 后台启动预览（推荐脚本方式，见下方「启动脚本」）
+cat > /tmp/start-hexo.sh <<'EOF'
+#!/bin/bash
+cd /home/limour/limour-blog.github.io
+exec npx hexo s -p 3000 > /tmp/hexo-server.log 2>&1
+EOF
+chmod +x /tmp/start-hexo.sh && setsid /tmp/start-hexo.sh < /dev/null > /dev/null 2>&1 & disown   # 启动后访问 http://localhost:3000/
+port_pid=$(ss -tlnp 2>/dev/null | grep ':3000' | grep -oP '(?<=pid=)\d+' | head -1) && kill "$port_pid"   # 停止预览服务（按监听端口找 PID）
 npx hexo deploy        # 确认无误后再部署到 gh-pages 分支；成功标志：Deploy done: git + forced update
 git ls-remote git@github-2:limour-blog/limour-blog.github.io.git gh-pages   # 校验远程 commit 与 deploy 输出一致
 ssh b 'bash ~/update-hexo.sh'   # 服务器拉取更新；成功标志：HEAD is now at <commit>
