@@ -41,5 +41,20 @@ mkdir data && chmod 777 data && sudo docker compose up -d
 
 + 访问地址创建管理员密码完成初始化
 
+#### Nginx Proxy Manager 自定义 Nginx 配置
+在 Nginx Proxy Manager 的站点配置中，添加以下自定义 Nginx 配置以启用 CORS：
+
+```nginx
+# ===== CORS 允许所有来源 =====
+add_header Access-Control-Allow-Origin * always;
+add_header Access-Control-Allow-Methods "GET, POST, PUT, DELETE, PATCH, OPTIONS" always;
+add_header Access-Control-Allow-Headers * always;
+add_header Access-Control-Max-Age 86400 always;
+
+# ===== 处理 OPTIONS 预检请求（直接返回 204，不转发到上游）=====
+if ($request_method = OPTIONS) {
+    return 204;
+}
+```
 ## 渠道
 + [Vertex AI](https://docs.cloud.google.com/vertex-ai/generative-ai/docs/start/api-keys?usertype=standard)
