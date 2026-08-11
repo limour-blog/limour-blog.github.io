@@ -56,5 +56,28 @@ if ($request_method = OPTIONS) {
     return 204;
 }
 ```
+
+同时为了避免 SSE 流式响应延迟，添加以下配置：
+
+```nginx
+# ========== SSE 三件套 ==========
+proxy_buffering off;        # 1. 关响应缓冲（最关键）
+proxy_cache off;            # 2. 关缓存
+gzip off;                   # 3. 关 gzip，避免压缩攒包
+
+# 实时性
+tcp_nodelay on;
+tcp_nopush  off;
+
+# 长流超时调大（默认 60s 会在流式中间被断）
+proxy_connect_timeout 10s;
+proxy_read_timeout   3600s;
+proxy_send_timeout   3600s;
+send_timeout         3600s;
+
+# 告诉 Cloudflare：这个响应不要缓冲
+add_header X-Accel-Buffering no always;
+add_header Cache-Control no-store always;
+```
 ## 渠道
 + [Vertex AI](https://docs.cloud.google.com/vertex-ai/generative-ai/docs/start/api-keys?usertype=standard)
