@@ -305,7 +305,7 @@
     <link href="/replace-one-api-with-axonhub"/>
     <url>/replace-one-api-with-axonhub</url>
     
-    <content type="html"><![CDATA[部署反向代理端口映射访问地址创建管理员密码完成初始化Nginx Proxy Manager 自定义 Nginx 配置在 Nginx Proxy Manager 的站点配置中，添加以下自定义 Nginx 配置以启用 CORS：渠道Vertex AI]]></content>
+    <content type="html"><![CDATA[部署反向代理端口映射访问地址创建管理员密码完成初始化Nginx Proxy Manager 自定义 Nginx 配置在 Nginx Proxy Manager 的站点配置中，添加以下自定义 Nginx 配置以启用 CORS：同时为了避免 SSE 流式响应延迟，添加以下配置：渠道Vertex AI]]></content>
     
     
     
