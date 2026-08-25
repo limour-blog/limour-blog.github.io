@@ -206,7 +206,7 @@
     <link href="/installing-and-configuring-pi-agent"/>
     <url>/installing-and-configuring-pi-agent</url>
     
-    <content type="html"><![CDATA[准备工作debian虚拟机axonhubchrome安装并运行添加模型和插件模型格式选择 response 启用缓存一些好用的插件安装skill配置插件外部依赖安装好chrome，并完成初始设置nano ~/.local/bin/agent-browser 写入以下内容chmod +x ~/.local/bin/agent-browserchrome-use extension install注意事项接入格式用兼容 Anthropic 接口对工具识图更友好效果图附加 拓展推荐]]></content>
+    <content type="html"><![CDATA[准备工作debian虚拟机axonhubchrome安装并运行添加模型和插件安装skill配置插件外部依赖安装好chrome，并完成初始设置chrome-use extension install注意事项接入格式用兼容 Anthropic 接口对工具识图更友好效果图附加 拓展推荐]]></content>
     
     
     
