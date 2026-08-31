@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>【探索】让pi-agent带你从零玩转esp32s3</title>
+    <link href="/pi-agent-esp32s3-from-zero"/>
+    <url>/pi-agent-esp32s3-from-zero</url>
+    
+    <content type="html"><![CDATA[pi-esp32s3 是一个「写给 agent 看」的 ESP32-S3 MicroPython 项目：仓库里的手册不是给人逐字读的，而是让小白把整份文档复制给 pi-agent，由 agent 一步步指导你操作，直到环境跑通、实验完成。开发目录 ~/pi-esp32s3 已 clone，本文记录仓库结构与实际玩法。硬件与环境项目说明芯片ESP32-S3R8（QFN56 rev v0.2，内嵌 8MB Octal PSRAM）Flash16MB串口芯片WCH CH343（CDC-ACM 模式，Linux 下为 /dev/ttyACM0）固件MicroPython v1.29.0（ESP32_GENERIC_S3-SPIRAM_OCT 变体，选错变体 PSRAM 只剩几百 KB）工具esptool / mpremote / pyserial 已装核心设计：文档即 agent 的工作指令仓库的全部文档都按「agent 可执行」的标准写，三类文件各司其职：文件作用谁读SETUP_GUIDE.md从虚拟机 USB 直通到 MicroPython 验证的完整环境搭建，含排错速查小白直接整份复制发给 agentexamples/*/AGENT_GUIDE.md每个例程的「任务书」：串口定位、执行流程、预期现象、排错表agent 照着引导用户examples/*/EXPERIMENT_xx.md实验记录归档：环境、命令、踩坑结论新 agent / 新机器接手即用配套的 EXPERIMENT_GUIDE.md 甚至规定：每个例程实验完成后，agent 必须把过程与踩坑写进实验记录。这意味着换 agent、换机器都不需要重新摸索环境。五个例程，从点到网例程能力亮点01-led-blink点灯scan_leds.py 自动探测 LED 引脚（用户盯板确认），WS2812 彩虹02-ap-file-serverWiFi 热点 + HTTP 文件浏览 + LED 控制手机连热点即可浏览板子 Flash、/setled 控制灯03-ble-file-ledBLE 文件服务 + WS2812应用层 AUTH 密码认证04-wifi-ble-consoleBLE 网页控制台 + WiFi 配置Web Bluetooth 免装 App，断网有回退热点 AP 兜底05-mqtt-ws2812BLE 控制台 + WiFi + MQTTTLS 8883 控制 WS2812，无 AP；wifi.json / mqtt.json 存配置，上电自动连例程 05 是完整链路：浏览器（Web Bluetooth）→ 板子 BLE → 路由器 STA → MQTT Broker（TLS）→ 任何客户端发 #RRGGBB 即可点亮灯珠。配套的 mqtt-server-deploy.md 是自包含的 Mosquitto Docker 部署手册（TLS 8883 + WSS 8084 + 账号密码），同样可以直接丢给 agent 执行。我的体验这套仓库把「agent 协作」做到了极致：人只需要看板子、插线、回答 agent 的确认，烧录、探测、排错、归档全由 agent 按手册执行。对于「没写过一行嵌入式代码但想玩 ESP32」的人，这就是最短路径——你缺的不是教程，而是一个会按文档干活的助手。]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>探索</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【杂感】论自愿食粪者的精神胜利法</title>
     <link href="/the-spiritual-victory-of-willing-dung-eaters"/>
     <url>/the-spiritual-victory-of-willing-dung-eaters</url>
