@@ -19,6 +19,8 @@
 3. ssh b 执行 `~/update-hexo.sh` 拉取并更新服务器
    - 成功标志：`HEAD is now at <commit> Site updated: ...`
 4. 三端 commit 一致（本地推送 / 远程 gh-pages / 服务器 b HEAD）= 部署完成
+5. 源仓库提交并推送：`git add -A && git commit -m "..." && git push origin main`
+   - deploy 只推 gh-pages 分支；源仓库 main 分支的改动（新文章等）需单独提交推送
 
 ## 检查要点（用户自查参考）
 
@@ -62,6 +64,7 @@ port_pid=$(ss -tlnp 2>/dev/null | grep ':3000' | grep -oP '(?<=pid=)\d+' | head 
 npx hexo deploy        # 确认无误后再部署到 gh-pages 分支；成功标志：Deploy done: git + forced update
 git ls-remote git@github-2:limour-blog/limour-blog.github.io.git gh-pages   # 校验远程 commit 与 deploy 输出一致
 ssh b 'bash ~/update-hexo.sh'   # 服务器拉取更新；成功标志：HEAD is now at <commit>
+git add -A && git commit -m "post: ..." && git push origin main   # 部署后源仓库 main 提交推送（deploy 只推 gh-pages）
 ```
 
 > 注意：预览服务不停止也能 deploy，但会占用端口；检查完记得停掉。
