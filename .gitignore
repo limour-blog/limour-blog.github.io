@@ -2,6 +2,7 @@
 Thumbs.db
 db.json
 *.log
+draft/
 node_modules/*
 !node_modules/hexo-theme-fluid/scripts/generators/local-search.js
 !node_modules/hexo-theme-fluid/layout/_partials/head.ejs
